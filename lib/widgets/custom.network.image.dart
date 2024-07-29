@@ -48,7 +48,7 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
     final oldOriginPattern = RegExp(r'^https://d3r50zdh245qd1\.cloudfront\.net/');
     const newOrigin = 'https://fabpiks-media.s3.ap-south-1.amazonaws.com/';
 
-    return url.replaceFirst(oldOriginPattern, newOrigin);
+    return url.replaceAll(oldOriginPattern, newOrigin);
   }
 
   Future cacheImage() async {
