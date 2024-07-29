@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
- */
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -48,14 +44,20 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
     }
   }
 
+  String replaceUrlOrigin(String url) {
+    final oldOriginPattern = RegExp(r'^https://d3r50zdh245qd1\.cloudfront\.net/');
+    const newOrigin = 'https://fabpiks-media.s3.ap-south-1.amazonaws.com/';
+
+    return url.replaceFirst(oldOriginPattern, newOrigin);
+  }
+
   Future cacheImage() async {
+    final newImageUrl = replaceUrlOrigin(widget.imageUrl);
+
     if (kDebugMode) {
-      await precacheImage(
-          CachedNetworkImageProvider(
-              widget.imageUrl.replaceAll('https://d3r50zdh245qd1.cloudfront.net/', 'https://fabpiks-media.s3.ap-south-1.amazonaws.com/')),
-          context);
+      await precacheImage(CachedNetworkImageProvider(newImageUrl), context);
     } else {
-      await precacheImage(CachedNetworkImageProvider(widget.imageUrl), context);
+      await precacheImage(CachedNetworkImageProvider(newImageUrl), context);
     }
   }
 
@@ -67,6 +69,8 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl = replaceUrlOrigin(widget.imageUrl);
+
     return isLoading
         ? SizedBox(
             width: widget.width,
@@ -76,9 +80,7 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
             ),
           )
         : CachedNetworkImage(
-            imageUrl: kDebugMode
-                ? widget.imageUrl.replaceAll('https://d3r50zdh245qd1.cloudfront.net/', 'https://fabpiks-media.s3.ap-south-1.amazonaws.com/')
-                : widget.imageUrl,
+            imageUrl: imageUrl,
             width: widget.width,
             height: widget.height,
             fit: widget.fit,
