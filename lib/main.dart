@@ -114,7 +114,7 @@ class _FabpiksState extends State<Fabpiks> {
       child: ResponsiveSizer(
         builder: (context, orientation, screenType) {
           return MaterialApp.router(
-            onGenerateTitle: (context) => 'Fabpiks',
+            onGenerateTitle: (context) => 'Shipan',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               visualDensity: (kIsWeb && Device.width < 104) ? VisualDensity.adaptivePlatformDensity : VisualDensity.compact,
