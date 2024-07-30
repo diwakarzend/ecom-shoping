@@ -338,7 +338,7 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
                         ),
                         provider: provider,
                         cartHelper: _cartHelper,
-                        gridView: true,
+                        gridView: true, sub_category: '',
                       );
                     },
                   ),

@@ -237,7 +237,7 @@ class _BrandTrialDesktopScreenState extends State<BrandTrialDesktopScreen> with 
                           ),
                           provider: provider,
                           cartHelper: _cartHelper,
-                          gridView: true,
+                          gridView: true, sub_category: '',
                         );
                       }
                     },

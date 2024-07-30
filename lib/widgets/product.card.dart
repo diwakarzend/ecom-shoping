@@ -107,7 +107,7 @@ class ProductCard extends StatelessWidget {
                     },
                     provider: provider,
                     cartHelper: _cartHelper,
-                    gridView: true,
+                    gridView: true, sub_category: '',
                   )
                 : DealItems(
                     product: product,

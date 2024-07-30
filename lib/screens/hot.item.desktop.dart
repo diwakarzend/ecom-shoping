@@ -699,7 +699,7 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                                     context: context,
                                     productId: product.id,
                                   );
-                                },
+                                }, sub_category: '',
                               );
                             },
                             options: CarouselOptions(

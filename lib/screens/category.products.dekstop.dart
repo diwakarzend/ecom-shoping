@@ -253,7 +253,7 @@ class _CategoryProductsDesktopScreenState extends State<CategoryProductsDesktopS
                           ),
                           provider: provider,
                           cartHelper: _cartHelper,
-                          gridView: true,
+                          gridView: true, sub_category: '',
                         );
                       }
                     },

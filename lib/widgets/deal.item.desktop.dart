@@ -18,6 +18,7 @@ class DealItemDesktop extends StatelessWidget {
   final Product product;
   final Function() onProductClick;
   final Function() onAddToCart;
+  final String sub_category;
 
   const DealItemDesktop({
     super.key,
@@ -27,6 +28,8 @@ class DealItemDesktop extends StatelessWidget {
     required this.provider,
     required this.cartHelper,
     required this.gridView,
+    required this.sub_category,
+
   });
 
   @override

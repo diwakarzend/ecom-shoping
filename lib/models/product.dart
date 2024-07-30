@@ -42,6 +42,7 @@ class Product {
   final RetargetProduct? retargetProduct;
   final int sort;
   final int stock;
+  final String sub_category;
 
   Product({
     required this.id,
@@ -80,6 +81,7 @@ class Product {
     this.retargetProduct,
     required this.sort,
     required this.stock,
+    required this.sub_category,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -118,8 +120,10 @@ class Product {
       retargetProduct: json['retarget_product'] != null ? RetargetProduct.fromJson(json['retarget_product']) : null,
       sort: json['new_sort'] ?? 10000000000000000,
       stock: json['stock'] ?? 0,
+      sub_category: json['sub_category'] ?? '',
     );
   }
+
 
   Map<String, dynamic> toJson() {
     return {
