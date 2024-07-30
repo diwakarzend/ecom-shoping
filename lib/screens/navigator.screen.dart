@@ -19,6 +19,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'trail.screen.dart';
 
@@ -45,6 +46,12 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   bool popupOpenedTwo = false;
+
+
+  void _downloadAPK() async {
+    const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/shipanshop1-release.apk';
+    await launchUrl(Uri.parse(launchUri));
+  }
 
   @override
   void initState() {
@@ -169,6 +176,16 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                               child: const Icon(
                                 Ionicons.cart_outline,size: 30,
                               ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: _downloadAPK,
+                            child: Text('Download APK'),
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all(Colors.black),
+                              // Text color
+                              side: MaterialStateProperty.all(
+                                  BorderSide(color: Colors.blue, width: 2.0)), // Border
                             ),
                           ),
                         ],
@@ -1068,6 +1085,7 @@ class _BrandDialog extends StatelessWidget {
                   ],
                 ),
               ),
+
             ],
           ),
         ),
