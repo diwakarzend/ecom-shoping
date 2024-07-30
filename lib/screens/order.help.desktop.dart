@@ -82,7 +82,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                     });
                   },
                   title: Text(
-                    'What is FabPiks?',
+                    'What is Shipan?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

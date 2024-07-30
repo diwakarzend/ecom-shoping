@@ -130,74 +130,74 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   ],
                 ),
               ),
-              Expanded(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    // mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Connect with us',
-                        style: TextHelper.smallTextStyle.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                          fontSize: 17.0,
-                        ),
-                      ),
-                      SizedBox(
-                        height: height * .02,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () => _urlHelper.launchNonUrl(url: 'https://www.facebook.com/FabPiks'),
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            child: Image.asset('assets/images/face.png'),
-                          ),
-                          SizedBox(
-                            width: width * .02,
-                          ),
-                          InkWell(
-                            onTap: () => _urlHelper.launchNonUrl(url: 'https://www.instagram.com/fabpiks/'),
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            child: Image.asset('assets/images/insta.png'),
-                          ),
-                          SizedBox(
-                            width: width * .02,
-                          ),
-                          InkWell(
-                            onTap: () => _urlHelper.launchNonUrl(url: 'https://twitter.com/Fabpiksapp'),
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            child: Image.asset('assets/images/tweet.png'),
-                          ),
-                          SizedBox(
-                            width: width * .02,
-                          ),
-                          InkWell(
-                            onTap: () => _urlHelper.launchNonUrl(url: 'https://www.youtube.com/@fabpiks'),
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            child: Image.asset('assets/images/youtube.png'),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: height * .23,
-                      ),
-                    ],
-                  )),
-              SizedBox(
-                width: width * .1,
-              ),
+              // Expanded(
+              //     flex: 1,
+              //     child: Column(
+              //       mainAxisAlignment: MainAxisAlignment.start,
+              //       crossAxisAlignment: CrossAxisAlignment.center,
+              //       // mainAxisSize: MainAxisSize.max,
+              //       children: [
+              //         Text(
+              //           'Connect with us',
+              //           style: TextHelper.smallTextStyle.copyWith(
+              //             fontWeight: FontWeight.w500,
+              //             color: Colors.white,
+              //             fontSize: 17.0,
+              //           ),
+              //         ),
+              //         SizedBox(
+              //           height: height * .02,
+              //         ),
+              //         Row(
+              //           mainAxisAlignment: MainAxisAlignment.center,
+              //           children: [
+              //             InkWell(
+              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://www.facebook.com/FabPiks'),
+              //               splashFactory: NoSplash.splashFactory,
+              //               highlightColor: Colors.transparent,
+              //               hoverColor: Colors.transparent,
+              //               child: Image.asset('assets/images/face.png'),
+              //             ),
+              //             SizedBox(
+              //               width: width * .02,
+              //             ),
+              //             InkWell(
+              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://www.instagram.com/fabpiks/'),
+              //               splashFactory: NoSplash.splashFactory,
+              //               highlightColor: Colors.transparent,
+              //               hoverColor: Colors.transparent,
+              //               child: Image.asset('assets/images/insta.png'),
+              //             ),
+              //             SizedBox(
+              //               width: width * .02,
+              //             ),
+              //             InkWell(
+              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://twitter.com/Fabpiksapp'),
+              //               splashFactory: NoSplash.splashFactory,
+              //               highlightColor: Colors.transparent,
+              //               hoverColor: Colors.transparent,
+              //               child: Image.asset('assets/images/tweet.png'),
+              //             ),
+              //             SizedBox(
+              //               width: width * .02,
+              //             ),
+              //             InkWell(
+              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://www.youtube.com/@fabpiks'),
+              //               splashFactory: NoSplash.splashFactory,
+              //               highlightColor: Colors.transparent,
+              //               hoverColor: Colors.transparent,
+              //               child: Image.asset('assets/images/youtube.png'),
+              //             ),
+              //           ],
+              //         ),
+              //         SizedBox(
+              //           height: height * .23,
+              //         ),
+              //       ],
+              //     )),
+              // SizedBox(
+              //   width: width * .1,
+              // ),
               Expanded(
                 flex: 1,
                 child: Column(
