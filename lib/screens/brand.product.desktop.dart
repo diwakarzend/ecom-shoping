@@ -70,109 +70,109 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TopAppBar(),
-                SizedBox(height: height * .06),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: width * .12),
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap: () => context.router.navigate(const TrialRoute()),
-                          child: Container(
-                            width: double.infinity,
-                            height: height * .07,
-                            decoration: BoxDecoration(
-                              color: ColorConstants.dealColor,
-                              border: Border.all(color: ColorConstants.colorBorder),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  blurRadius: 15,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Shop Minis',
-                              textAlign: TextAlign.center,
-                              style: TextHelper.subTitleStyle.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: width * .05),
-                      Expanded(
-                        child: InkWell(
-                          onTap: () => context.router.navigate(const DealsRoute()),
-                          child: Container(
-                            width: double.infinity,
-                            height: height * .07,
-                            decoration: BoxDecoration(
-                              color: ColorConstants.sampleColor,
-                              border: Border.all(color: ColorConstants.colorBorder),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  blurRadius: 15,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Shop Deals',
-                              textAlign: TextAlign.center,
-                              style: TextHelper.subTitleStyle.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: width * .05),
-                      Expanded(
-                        child: InkWell(
-                          // onTap: () => context.router.navigate(const BrandProductsRoute()),
-                          child: Container(
-                            width: double.infinity,
-                            height: height * .07,
-                            decoration: BoxDecoration(
-                              color: ColorConstants.colorBlueTwentyTwo,
-                              border: Border.all(color: ColorConstants.colorBlueTwentyTwo),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  blurRadius: 15,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Free Samples',
-                              textAlign: TextAlign.center,
-                              style: TextHelper.subTitleStyle.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: height * .06),
+                // SizedBox(height: height * .06),
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: width * .12),
+                //   alignment: Alignment.center,
+                //   child: Row(
+                //     mainAxisSize: MainAxisSize.max,
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: [
+                //       Expanded(
+                //         child: InkWell(
+                //           onTap: () => context.router.navigate(const TrialRoute()),
+                //           child: Container(
+                //             width: double.infinity,
+                //             height: height * .07,
+                //             decoration: BoxDecoration(
+                //               color: ColorConstants.dealColor,
+                //               border: Border.all(color: ColorConstants.colorBorder),
+                //               borderRadius: BorderRadius.circular(10),
+                //               boxShadow: [
+                //                 BoxShadow(
+                //                   color: Colors.black.withOpacity(0.1),
+                //                   blurRadius: 15,
+                //                   offset: const Offset(0, 4),
+                //                 ),
+                //               ],
+                //             ),
+                //             alignment: Alignment.center,
+                //             child: Text(
+                //               'Shop Minis',
+                //               textAlign: TextAlign.center,
+                //               style: TextHelper.subTitleStyle.copyWith(
+                //                 fontWeight: FontWeight.w600,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //       SizedBox(width: width * .05),
+                //       Expanded(
+                //         child: InkWell(
+                //           onTap: () => context.router.navigate(const DealsRoute()),
+                //           child: Container(
+                //             width: double.infinity,
+                //             height: height * .07,
+                //             decoration: BoxDecoration(
+                //               color: ColorConstants.sampleColor,
+                //               border: Border.all(color: ColorConstants.colorBorder),
+                //               borderRadius: BorderRadius.circular(10),
+                //               boxShadow: [
+                //                 BoxShadow(
+                //                   color: Colors.black.withOpacity(0.1),
+                //                   blurRadius: 15,
+                //                   offset: const Offset(0, 4),
+                //                 ),
+                //               ],
+                //             ),
+                //             alignment: Alignment.center,
+                //             child: Text(
+                //               'Shop Deals',
+                //               textAlign: TextAlign.center,
+                //               style: TextHelper.subTitleStyle.copyWith(
+                //                 fontWeight: FontWeight.w600,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //       SizedBox(width: width * .05),
+                //       Expanded(
+                //         child: InkWell(
+                //           // onTap: () => context.router.navigate(const BrandProductsRoute()),
+                //           child: Container(
+                //             width: double.infinity,
+                //             height: height * .07,
+                //             decoration: BoxDecoration(
+                //               color: ColorConstants.colorBlueTwentyTwo,
+                //               border: Border.all(color: ColorConstants.colorBlueTwentyTwo),
+                //               borderRadius: BorderRadius.circular(10),
+                //               boxShadow: [
+                //                 BoxShadow(
+                //                   color: Colors.black.withOpacity(0.1),
+                //                   blurRadius: 15,
+                //                   offset: const Offset(0, 4),
+                //                 ),
+                //               ],
+                //             ),
+                //             alignment: Alignment.center,
+                //             child: Text(
+                //               'Free Samples',
+                //               textAlign: TextAlign.center,
+                //               style: TextHelper.subTitleStyle.copyWith(
+                //                 fontWeight: FontWeight.w600,
+                //                 color: Colors.white,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(height: height * .06),
                 Container(
                   // margin: EdgeInsets.symmetric(horizontal: width * .12),
                   alignment: Alignment.center,

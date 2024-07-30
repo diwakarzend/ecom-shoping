@@ -27,7 +27,7 @@ class HomeScreenDesktop extends StatefulWidget {
 
 class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
   bool supportExpanded = false;
-
+  static String newBannerCategory = "63976a676aba4031c062e5b2";
   int trialIndex = 0, dealIndex = 0, sampleIndex = 0;
 
   final CarouselController _miniController = CarouselController();
@@ -196,18 +196,20 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   //     ),
                   //   ),
                   // ),
-                  SizedBox(height: height * .01),
+                  // SizedBox(height: height * .01),
                   CarouselSlider(
                     items: provider.banners
-                        .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
+                        .where((element) =>
+                    (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
+                        element.deviceType == StringConstants.deviceTypeD)
                         .map(
                           (e) => CustomNetworkImage(
-                            imageUrl: e.banner,
-                            width: width,
-                            height: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        )
+                        imageUrl: e.banner,
+                        width: width,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    )
                         .toList(),
                     options: CarouselOptions(
                       disableCenter: true,
@@ -844,29 +846,29 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   ),
                   // FB5Container(
                   //   child:
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  if (provider.banners.any((element) => element.type == StringConstants.homeBannerMiddle))
-                    CarouselSlider(
-                      items: provider.banners
-                          .where((element) => element.type == StringConstants.homeBannerMiddle)
-                          .map(
-                            (e) => CustomNetworkImage(
-                              imageUrl: e.banner,
-                              width: width,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                          .toList(),
-                      options: CarouselOptions(
-                        disableCenter: true,
-                        viewportFraction: 1,
-                        height: height * .5,
-                        autoPlay: true,
-                      ),
-                    ),
+                  // const SizedBox(
+                  //   height: 15,
                   // ),
+                  // if (provider.banners.any((element) => element.type == StringConstants.homeBannerMiddle))
+                  //   CarouselSlider(
+                  //     items: provider.banners
+                  //         .where((element) => element.type == StringConstants.homeBannerMiddle)
+                  //         .map(
+                  //           (e) => CustomNetworkImage(
+                  //             imageUrl: e.banner,
+                  //             width: width,
+                  //             fit: BoxFit.cover,
+                  //           ),
+                  //         )
+                  //         .toList(),
+                  //     options: CarouselOptions(
+                  //       disableCenter: true,
+                  //       viewportFraction: 1,
+                  //       height: height * .5,
+                  //       autoPlay: true,
+                  //     ),
+                  //   ),
+                  // // ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
                     alignment: Alignment.center,
@@ -1207,28 +1209,28 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       ),
                     ),
                   ),
-                  Text(
-                    'UPto 80% OFF',
-                    style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18.sp),
-                  ),
-                  InkWell(
-                    onTap: () => context.router.navigate(const DealsRoute()),
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: width,
-                      height: height * .076,
-                      margin: EdgeInsets.symmetric(horizontal: width * .33, vertical: height * .01),
-                      decoration: BoxDecoration(
-                        color: const Color(0xff3e87ff),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Text(
-                        'SHOP NOW',
-                        style: TextHelper.normalTextStyle.copyWith(color: Colors.white, fontSize: 17.sp),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: height * .04),
+                  // Text(
+                  //   'UPto 80% OFF',
+                  //   style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18.sp),
+                  // ),
+                  // InkWell(
+                  //   onTap: () => context.router.navigate(const DealsRoute()),
+                  //   child: Container(
+                  //     alignment: Alignment.center,
+                  //     width: width,
+                  //     height: height * .076,
+                  //     margin: EdgeInsets.symmetric(horizontal: width * .33, vertical: height * .01),
+                  //     decoration: BoxDecoration(
+                  //       color: const Color(0xff3e87ff),
+                  //       borderRadius: BorderRadius.circular(15),
+                  //     ),
+                  //     child: Text(
+                  //       'SHOP NOW',
+                  //       style: TextHelper.normalTextStyle.copyWith(color: Colors.white, fontSize: 17.sp),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: height * .04),
                   const BottomAppBarPage(),
                 ],
               ),

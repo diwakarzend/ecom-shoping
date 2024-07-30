@@ -8,6 +8,7 @@ import 'package:flutter/material.dart' hide Badge;
 // import 'package:flutter_bootstrap5/flutter_bootstrap5.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../routes/router.gr.dart';
 import '../../widgets/data.search.dart';
@@ -276,27 +277,18 @@ class TopAppBar extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // IconButton(
-                    //   onPressed: () {
-                    //     context.router.push(CartRoute());n
-                    //   },
-                    //   color: colorBlackThree,
-                    //   iconSize: 35,
-                    //   icon: Badge(
-                    //     showBadge: provider.cartItems.isNotEmpty,
-                    //     badgeStyle: BadgeStyle(badgeColor: Colors.red),
-                    //     position: BadgePosition.topEnd(top: 0, end: 0),
-                    //     badgeContent: Text(
-                    //       provider.cartItems.length.toString(),
-                    //       style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
-                    //     ),
-                    //     child: const Icon(
-                    //       Ionicons.cart_outline,
-                    //     ),
-                    //   ),
-                    // ),
                     const SizedBox(
                       width: 15,
+                    ),
+                    TextButton(
+                      onPressed: _downloadAPK,
+                      child: Text('Download APK'),
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all(Colors.black),
+                        // Text color
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: Colors.blue, width: 2.0)), // Border
+                      ),
                     ),
                   ],
                 )),
@@ -305,4 +297,8 @@ class TopAppBar extends StatelessWidget {
       },
     );
   }
+}
+void _downloadAPK() async {
+  const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/subhpayshop1-release.apk+';
+  await launchUrl(Uri.parse(launchUri));
 }
