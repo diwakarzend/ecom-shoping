@@ -41,7 +41,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      'assets/images/app_logo.png',
+                      'assets/images/app_logo_1.png',
                       width: width * .12,
                     ),
                     SizedBox(

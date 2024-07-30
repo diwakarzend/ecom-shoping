@@ -71876,7 +71876,7 @@ v(a){var s,r,q,p,o,n,m,l,k,j=null,i=t.w,h=A.N(a,j,i).w.a.a,g=A.N(a,j,i).w.a.b
 i=h*0.1
 s=g*0.02
 r=t.p
-q=A.ac(A.H(A.a([A.bq("assets/images/app_logo.png",j,j,h*0.12),new A.i(j,s,j,j),A.c("shubhgamess is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it",j,100,j,j,j,$.b0().bF(B.i,12,B.k),B.eg,j)],r),B.r,B.l,B.v),1)
+q=A.ac(A.H(A.a([A.bq("assets/images/app_logo_1.png",j,j,h*0.12),new A.i(j,s,j,j),A.c("shubhgamess is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it",j,100,j,j,j,$.b0().bF(B.i,12,B.k),B.eg,j)],r),B.r,B.l,B.v),1)
 p=g*0.03
 p=A.ac(A.H(A.a([A.K(!1,j,!0,A.c("FAQ\u2019s",j,j,j,j,j,$.y().q(B.i,B.k),j,j),j,!0,j,j,j,j,j,j,j,j,j,j,new A.aSb(a),j,j,j,j,j,j,j),new A.i(j,p,j,j),A.K(!1,j,!0,A.c("Refund Policy",j,j,j,j,j,$.y().q(B.i,B.k),j,j),j,!0,j,j,j,j,j,j,j,j,j,j,new A.aSc(a),j,j,j,j,j,j,j),new A.i(j,p,j,j),A.K(!1,j,!0,A.c("Privacy Policy",j,j,j,j,j,$.y().q(B.i,B.k),j,j),j,!0,j,j,j,j,j,j,j,j,j,j,new A.aSd(a),j,j,j,j,j,j,j),new A.i(j,p,j,j),A.K(!1,j,!0,A.c("Need help?",j,j,j,j,j,$.y().q(B.i,B.k),j,j),j,!0,j,j,j,j,j,j,j,j,j,j,new A.aSe(a),j,j,j,j,j,j,j),new A.i(j,p,j,j),A.K(!1,j,!0,A.c("Profile",j,j,j,j,j,$.y().q(B.i,B.k),j,j),j,!0,j,j,j,j,j,j,j,j,j,j,new A.aSf(a),j,j,j,j,j,j,j)],r),B.r,B.l,B.e),1)
 o=A.c("For Brands & Agencies",j,j,j,j,j,$.y().bF(B.i,17,B.H),j,j)
@@ -71904,7 +71904,7 @@ A.a6A.prototype={
 v(a){var s=t.w,r=A.N(a,null,s).w
 return A.b8(new A.aNK(A.N(a,null,s).w.a.b,r.a.a),t.C)}}
 A.aNK.prototype={
-$3(a,b,c){var s,r,q=null,p=this.b,o=p*0.014,n=t.p,m=A.a([A.K(!1,q,!0,new A.a_(B.la,A.bq("assets/images/app_logo.png",q,q,p*0.1),q),q,!0,q,q,q,q,q,q,q,q,q,q,new A.aNB(a),q,q,q,q,q,q,q),B.cY],n)
+$3(a,b,c){var s,r,q=null,p=this.b,o=p*0.014,n=t.p,m=A.a([A.K(!1,q,!0,new A.a_(B.la,A.bq("assets/images/app_logo_1.png",q,q,p*0.1),q),q,!0,q,q,q,q,q,q,q,q,q,q,new A.aNB(a),q,q,q,q,q,q,q),B.cY],n)
 if(b.f==null)m.push(A.K(!1,q,!0,A.c("Sign up",q,q,q,q,q,$.v().S(B.k),q,q),q,!0,q,q,q,q,q,q,q,q,q,q,new A.aNC(b,a),q,q,q,q,q,q,q))
 if(b.f==null)m.push(B.au)
 if(b.f!=null){s=b.r

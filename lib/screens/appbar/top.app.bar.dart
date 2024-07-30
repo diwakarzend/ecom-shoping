@@ -90,7 +90,7 @@ class TopAppBar extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          'assets/images/app_logo.png',
+                          'assets/images/app_logo_1.png',
                           width: width * .10,
                         ),
                       ),
