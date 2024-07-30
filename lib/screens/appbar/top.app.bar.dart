@@ -225,11 +225,7 @@ class TopAppBar extends StatelessWidget {
   }
 }
 void _downloadAPK() async {
-  const launchUri = '(‘app-release.apk’)';
-  if (await canLaunch(launchUri)) {
-    await launch(launchUri);
-  } else {
-    throw 'Could not launch $launchUri';
-  }
+  const launchUri = 'app-release.apk';
+  await launchUrl(Uri.parse(launchUri));
 }
 
