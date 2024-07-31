@@ -205,7 +205,7 @@ class TopAppBar extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  TextButton(
+                  ElevatedButton (
                     onPressed: _downloadAPK,
                     child: Text('Download APK'),
                     style: ButtonStyle(

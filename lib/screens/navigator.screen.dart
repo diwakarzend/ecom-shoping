@@ -178,7 +178,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                               ),
                             ),
                           ),
-                          TextButton(
+                          ElevatedButton (
                             onPressed: _downloadAPK,
                             child: Text('Download APK'),
                             style: ButtonStyle(
