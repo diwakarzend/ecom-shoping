@@ -69665,7 +69665,7 @@ if(q.d!=null)q.R_()
 p=p.xR$
 p===$&&A.b()
 p.f=B.hW
-p.xS$="https://crm-shop.ship9x.com/api/v2/"
+p.xS$="https://sync.ship9x.com/api/v2/"
 return A.C(null,r)}})
 return A.D($async$lt,r)},
 R_(){var s=0,r=A.E(t.z),q=this,p,o,n,m
