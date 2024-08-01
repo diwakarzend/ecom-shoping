@@ -276,7 +276,7 @@ class _SignupScreenDesktopState extends State<SignupScreenDesktop> {
       provider.changeLoginStatus(true, temp, response.data['authorisation']['token'], temp.id, temp.role);
       if (!mounted) return;
       ScaffoldLoaderDialog.of(context).hide();
-      context.router.replace(NavigatorRoute(orderSuccess: false));
+      context.router.replace(HomeRoute(orderSuccess: false));
     } else {
       if (!mounted) return;
       ScaffoldLoaderDialog.of(context).hide();
