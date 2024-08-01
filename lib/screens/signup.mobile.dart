@@ -232,30 +232,30 @@ class _SignupScreenMobileState extends State<SignupScreenMobile> {
     }
   }
 
-  fetchPincode(AppProvider provider, String pincode) async {
-    try {
-      final response = await _dioHelper.dio.get(
-        '${StringConstants.pincodeApi}$pincode',
-        options: Options(
-          headers: {
-            'Accept': 'application/json',
-          },
-        ),
-      );
-      final data = response.data[0] as Map<String, dynamic>;
-      if (data['Status'] == 'Success' && data['PostOffice'].isNotEmpty) {
-        PostOffice temp = PostOffice.fromJson(data['PostOffice'][0]);
-        cityController.text = temp.division;
-        stateController.text = temp.state;
-        if (mounted) setState(() {});
-      } else {
-        if (!mounted) return;
-        ScaffoldSnackBar.of(context).show('Invalid pincode');
-      }
-    } on DioException catch (_, e) {
-      log(e.toString());
-    }
-  }
+  // fetchPincode(AppProvider provider, String pincode) async {
+  //   try {
+  //     final response = await _dioHelper.dio.get(
+  //       '${StringConstants.pincodeApi}$pincode',
+  //       options: Options(
+  //         headers: {
+  //           'Accept': 'application/json',
+  //         },
+  //       ),
+  //     );
+  //     final data = response.data[0] as Map<String, dynamic>;
+  //     if (data['Status'] == 'Success' && data['PostOffice'].isNotEmpty) {
+  //       PostOffice temp = PostOffice.fromJson(data['PostOffice'][0]);
+  //       cityController.text = temp.division;
+  //       stateController.text = temp.state;
+  //       if (mounted) setState(() {});
+  //     } else {
+  //       if (!mounted) return;
+  //       ScaffoldSnackBar.of(context).show('Invalid pincode');
+  //     }
+  //   } on DioException catch (_, e) {
+  //     log(e.toString());
+  //   }
+  // }
 
   Future<void> login(String mobile, String otp, AppProvider provider) async {
     ScaffoldLoaderDialog.of(context).show();
@@ -780,12 +780,12 @@ class _SignupScreenMobileState extends State<SignupScreenMobile> {
                               }
                               return null;
                             },
-                            onChanged: (v) {
-                              if (v.length >= 6) {
-                                FocusScope.of(context).unfocus();
-                                fetchPincode(provider, v);
-                              }
-                            },
+                            // onChanged: (v) {
+                            //   if (v.length >= 6) {
+                            //     FocusScope.of(context).unfocus();
+                            //     fetchPincode(provider, v);
+                            //   }
+                            // },
                             decoration: InputDecoration(
                               hintText: 'Pin Code',
                               labelText: 'Pin Code',
@@ -816,7 +816,7 @@ class _SignupScreenMobileState extends State<SignupScreenMobile> {
                           TextFormField(
                             style: TextHelper.normalTextStyle.copyWith(color: Colors.white),
                             controller: cityController,
-                            readOnly: true,
+                            readOnly: false,
                             validator: (v) {
                               if (v == null || v.length < 3) return 'Please enter valid city';
                               return null;
