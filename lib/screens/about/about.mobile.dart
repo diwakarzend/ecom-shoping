@@ -25,7 +25,7 @@ class _AboutScreenMobileState extends State<AboutScreenMobile> {
         return Scaffold(
           appBar: AppBar(
             title: const Text(
-              'About Fabpiks',
+              'About Shubhgamess',
             ),
             centerTitle: false,
           ),

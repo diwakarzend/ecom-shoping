@@ -244,33 +244,33 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                 // tabsRouter.setActiveIndex(0);
                               },
                             ),
-                            NavItem(
-                              icon: ImageIcon(
-                                const AssetImage('assets/images/icons/mini.png'),
-                                size: 28,
-                                color: provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
-                              ),
-                              name: NavLabel(
-                                text: 'Shop Minis',
-                                gradient: LinearGradient(
-                                  colors: provider.activeIndex == 1
-                                      ? [
-                                          ColorConstants.colorBlueFour,
-                                          ColorConstants.colorBlueFour,
-                                        ]
-                                      : [
-                                          ColorConstants.colorGreyFourteen,
-                                          ColorConstants.colorGreyFourteen,
-                                        ],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ),
-                              ),
-                              onTap: () {
-                                provider.changeIndex(1);
-                                // provider.changeActiveIndex(1);
-                              },
-                            ),
+                            // NavItem(
+                            //   icon: ImageIcon(
+                            //     const AssetImage('assets/images/icons/mini.png'),
+                            //     size: 28,
+                            //     color: provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                            //   ),
+                            //   name: NavLabel(
+                            //     text: 'Shop Minis',
+                            //     gradient: LinearGradient(
+                            //       colors: provider.activeIndex == 1
+                            //           ? [
+                            //               ColorConstants.colorBlueFour,
+                            //               ColorConstants.colorBlueFour,
+                            //             ]
+                            //           : [
+                            //               ColorConstants.colorGreyFourteen,
+                            //               ColorConstants.colorGreyFourteen,
+                            //             ],
+                            //       begin: Alignment.centerLeft,
+                            //       end: Alignment.centerRight,
+                            //     ),
+                            //   ),
+                            //   onTap: () {
+                            //     provider.changeIndex(1);
+                            //     // provider.changeActiveIndex(1);
+                            //   },
+                            // ),
                             NavItem(
                               icon: ImageIcon(
                                 const AssetImage('assets/images/icons/deal.png'),

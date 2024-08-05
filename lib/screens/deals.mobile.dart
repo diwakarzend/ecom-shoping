@@ -150,7 +150,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                 SizedBox(height: height * .02),
                 Align(
                   child: Text(
-                    'Deals & Combos',
+                    'Deals ',
                     style: TextHelper.subTitleStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -161,7 +161,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
                     child: Text(
-                      'Deals & Combo\'s: Special deals & combo offers with best discounts on top brands. Dare to compare pricing .',
+                      'Deals: Special deals & combo offers with best discounts on top brands. Dare to compare pricing .',
                       textAlign: TextAlign.center,
                     ),
                   ),

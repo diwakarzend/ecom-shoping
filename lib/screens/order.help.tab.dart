@@ -77,7 +77,7 @@ class _OrderHelpTabState extends State<OrderHelpTab> {
                     });
                   },
                   title: Text(
-                    'What is FabPiks?',
+                    'What is Shubhgamess?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
