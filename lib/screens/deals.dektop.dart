@@ -253,61 +253,61 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
                         ),
                       )
                     : const SizedBox.shrink(),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: width * .12),
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: height * .05),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                NewCategoryItems(
-                                  key: const Key('d_all'),
-                                  onTap: () {
-                                    setState(() {
-                                      trialIndex = 0;
-                                    });
-                                  },
-                                  active: trialIndex == 0,
-                                  name: 'All',
-                                ),
-                                ...provider.dealCategories
-                                    .asMap()
-                                    .map(
-                                      (i, c) => MapEntry(
-                                        i,
-                                        NewCategoryItems(
-                                          key: Key(c.id),
-                                          onTap: () {
-                                            setState(() {
-                                              trialIndex = i + 1;
-                                            });
-                                          },
-                                          active: (trialIndex == (i + 1)),
-                                          name: c.name,
-                                        ),
-                                      ),
-                                    )
-                                    .values,
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                      ],
-                    ),
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: width * .12),
+                //   alignment: Alignment.center,
+                //   child: Padding(
+                //     padding: EdgeInsets.only(top: height * .05),
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.max,
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [
+                //         Expanded(
+                //           child: SingleChildScrollView(
+                //             scrollDirection: Axis.horizontal,
+                //             child: Row(
+                //               mainAxisSize: MainAxisSize.max,
+                //               mainAxisAlignment: MainAxisAlignment.center,
+                //               crossAxisAlignment: CrossAxisAlignment.center,
+                //               children: [
+                //                 NewCategoryItems(
+                //                   key: const Key('d_all'),
+                //                   onTap: () {
+                //                     setState(() {
+                //                       trialIndex = 0;
+                //                     });
+                //                   },
+                //                   active: trialIndex == 0,
+                //                   name: 'All',
+                //                 ),
+                //                 ...provider.dealCategories
+                //                     .asMap()
+                //                     .map(
+                //                       (i, c) => MapEntry(
+                //                         i,
+                //                         NewCategoryItems(
+                //                           key: Key(c.id),
+                //                           onTap: () {
+                //                             setState(() {
+                //                               trialIndex = i + 1;
+                //                             });
+                //                           },
+                //                           active: (trialIndex == (i + 1)),
+                //                           name: c.name,
+                //                         ),
+                //                       ),
+                //                     )
+                //                     .values,
+                //               ],
+                //             ),
+                //           ),
+                //         ),
+                //         const SizedBox(width: 20),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: width * .12),
                   alignment: Alignment.center,

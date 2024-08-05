@@ -496,38 +496,40 @@ class AppProvider extends ChangeNotifier {
       dealProducts.clear();
       sampleProducts.clear();
       noTrailProducts.clear();
-      for (var p in response.data['records']['miniStore']) {
+      for (var p in response.data['records']['allRecord']) {
         try {
           Product temp = Product.fromJson(p);
-          miniProducts.add(temp);
+          if(temp.productType == StringConstants.hotDealProduct) {
+            dealProducts.add(temp);
+          }
         } catch (e) {
           debugPrint(e.toString());
         }
       }
-      for (var p in response.data['records']['dealCombo']) {
-        try {
-          Product temp = Product.fromJson(p);
-          dealProducts.add(temp);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
-      for (var p in response.data['records']['freeSamples']) {
-        try {
-          Product temp = Product.fromJson(p);
-          sampleProducts.add(temp);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
-      for (var p in response.data['records']['noTrial']) {
-        try {
-          Product temp = Product.fromJson(p);
-          noTrailProducts.add(temp);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
+      // for (var p in response.data['records']['dealCombo']) {
+      //   try {
+      //     Product temp = Product.fromJson(p);
+      //     dealProducts.add(temp);
+      //   } catch (e) {
+      //     debugPrint(e.toString());
+      //   }
+      // }
+      // for (var p in response.data['records']['freeSamples']) {
+      //   try {
+      //     Product temp = Product.fromJson(p);
+      //     sampleProducts.add(temp);
+      //   } catch (e) {
+      //     debugPrint(e.toString());
+      //   }
+      // }
+      // for (var p in response.data['records']['noTrial']) {
+      //   try {
+      //     Product temp = Product.fromJson(p);
+      //     noTrailProducts.add(temp);
+      //   } catch (e) {
+      //     debugPrint(e.toString());
+      //   }
+      // }
       for (var p in response.data['records']['surprised_product']) {
         try {
           Product temp = Product.fromJson(p);

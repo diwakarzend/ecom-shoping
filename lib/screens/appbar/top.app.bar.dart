@@ -70,7 +70,7 @@ class TopAppBar extends StatelessWidget {
             // ),
             Container(
                 height: height * .13,
-                color: ColorConstants.colorGreyTwentyFour,
+                color: ColorConstants.colorGreyNine,
                 padding: EdgeInsets.symmetric(horizontal: width * .014),
                 // padding: EdgeInsets.only(left: width * .12,right: width * .014),
                 alignment: Alignment.center,
