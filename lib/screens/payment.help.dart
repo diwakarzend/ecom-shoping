@@ -142,7 +142,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
             ),
             SizedBox(height: height * .03),
             InkWell(
-              onTap: () => _urlHelper.launchNonUrl(url: 'mailto:${provider.appSettings?.generalSettings.companyEmail}'),
+              onTap: () => _urlHelper.launchNonUrl(url: 'mailto:Privatelimitedshubhpay@gmail.com'),
               splashFactory: NoSplash.splashFactory,
               highlightColor: Colors.transparent,
               child: Container(
@@ -154,7 +154,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : ${provider.appSettings?.generalSettings.companyEmail}',
+                  'Mail us at : Privatelimitedshubhpay@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),
