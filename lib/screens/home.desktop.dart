@@ -54,6 +54,10 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
 
   int bannerIndex = 0;
 
+
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b31b913c766.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/deal banner/654b2f9234e42.jpg'];
+
   @override
   void initState() {
     if (widget.orderSuccess && widget.order != null) {
@@ -113,96 +117,95 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
-                  SizedBox(height: height * .01),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () => context.router.navigate(const CategoryRoute()),
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            child: Container(
-                              margin: const EdgeInsets.all(15),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: width * .05,
-                                    height: width * .05,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xff4b90f0),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Icon(
-                                      Icons.grid_view_rounded,
-                                      size: height * .05,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: height * .03,
-                                  ),
-                                  Text(
-                                    'View All',
-                                    style: TextHelper.smallTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          ...provider.categories.map(
-                            (e) => InkWell(
-                              onTap: () => context.router.push(CategoryProductRoute(categoryId: e.id)),
-                              splashFactory: NoSplash.splashFactory,
-                              highlightColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              child: Container(
-                                margin: const EdgeInsets.all(15),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: CustomNetworkImage(
-                                        imageUrl: e.icon ?? '',
-                                        width: width * .05,
-                                        height: width * .05,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: height * .03,
-                                    ),
-                                    Text(
-                                      e.name,
-                                      style: TextHelper.normalTextStyle.copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 12.sp,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // SizedBox(height: height * .01),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: SingleChildScrollView(
+                  //     scrollDirection: Axis.horizontal,
+                  //     child: Row(
+                  //       children: [
+                  //         InkWell(
+                  //           onTap: () => context.router.navigate(const CategoryRoute()),
+                  //           splashFactory: NoSplash.splashFactory,
+                  //           highlightColor: Colors.transparent,
+                  //           hoverColor: Colors.transparent,
+                  //           child: Container(
+                  //             margin: const EdgeInsets.all(15),
+                  //             child: Column(
+                  //               children: [
+                  //                 Container(
+                  //                   width: width * .05,
+                  //                   height: width * .05,
+                  //                   decoration: const BoxDecoration(
+                  //                     color: Color(0xff4b90f0),
+                  //                     shape: BoxShape.circle,
+                  //                   ),
+                  //                   child: Icon(
+                  //                     Icons.grid_view_rounded,
+                  //                     size: height * .05,
+                  //                     color: Colors.white,
+                  //                   ),
+                  //                 ),
+                  //                 SizedBox(
+                  //                   height: height * .03,
+                  //                 ),
+                  //                 Text(
+                  //                   'View All',
+                  //                   style: TextHelper.smallTextStyle.copyWith(
+                  //                     fontWeight: FontWeight.w500,
+                  //                     fontSize: 12.sp,
+                  //                   ),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         ...provider.categories.map(
+                  //           (e) => InkWell(
+                  //             onTap: () => context.router.push(CategoryProductRoute(categoryId: e.id)),
+                  //             splashFactory: NoSplash.splashFactory,
+                  //             highlightColor: Colors.transparent,
+                  //             hoverColor: Colors.transparent,
+                  //             child: Container(
+                  //               margin: const EdgeInsets.all(15),
+                  //               child: Column(
+                  //                 children: [
+                  //                   Container(
+                  //                     decoration: const BoxDecoration(
+                  //                       shape: BoxShape.circle,
+                  //                     ),
+                  //                     child: CustomNetworkImage(
+                  //                       imageUrl: e.icon ?? '',
+                  //                       width: width * .05,
+                  //                       height: width * .05,
+                  //                     ),
+                  //                   ),
+                  //                   SizedBox(
+                  //                     height: height * .03,
+                  //                   ),
+                  //                   Text(
+                  //                     e.name,
+                  //                     style: TextHelper.normalTextStyle.copyWith(
+                  //                       fontWeight: FontWeight.w500,
+                  //                       fontSize: 12.sp,
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(height: height * .01),
                   CarouselSlider(
-                    items: provider.banners
-                        .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
+                    items: _banners
                         .map(
                           (e) => CustomNetworkImage(
-                            imageUrl: e.banner,
+                            imageUrl: e,
                             width: width,
                             height: double.infinity,
                             fit: BoxFit.cover,
@@ -224,9 +227,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ...provider.banners
-                          .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                          .toList()
+                      ..._banners
                           .asMap()
                           .map(
                             (i, v) => MapEntry(

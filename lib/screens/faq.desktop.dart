@@ -47,7 +47,7 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
                   children: [
                     SizedBox(height: height * .03),
                     ...provider.faqs.map(
-                      (e) => Theme(
+                          (e) => Theme(
                         data: ThemeData().copyWith(dividerColor: Colors.transparent),
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: width * .12),

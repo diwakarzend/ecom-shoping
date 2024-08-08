@@ -122,6 +122,10 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
   //   );
   // }
 
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b31b913c766.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/deal banner/654b2f9234e42.jpg'];
+
+
   Future updateSource(AppProvider provider) async {
     await _dioHelper.post(
       'user/${provider.loginDetails?.uId}',
@@ -159,72 +163,72 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: height * .03),
-                  SizedBox(
-                    height: width * .3,
-                    width: width,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: provider.categories.length + 1,
-                      physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.only(left: 20),
-                      itemBuilder: (BuildContext context, int index) {
-                        if (index == 0) {
-                          return InkWell(
-                            onTap: () {
-                              context.router.navigate(const CategoryRoute());
-                            },
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                                  width: width * .15,
-                                  height: width * .15,
-                                  decoration: BoxDecoration(
-                                    color: ColorConstants.colorBlueEighteen,
-                                    shape: BoxShape.circle,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        blurRadius: 15,
-                                        offset: const Offset(0, 4),
-                                      ),
-                                    ],
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: const FittedBox(
-                                    child: Icon(
-                                      Ionicons.grid,
-                                      color: Colors.white,
-                                      size: 30,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  'View All',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                        return CategoryItems(
-                          Key(provider.categories[index - 1].id),
-                          onTap: () {
-                            context.router.push(CategoryProductRoute(categoryId: provider.categories[index - 1].id));
-                          },
-                          category: provider.categories[index - 1],
-                        );
-                      },
-                    ),
-                  ),
+                  // SizedBox(
+                  //   height: width * .3,
+                  //   width: width,
+                  //   child: ListView.builder(
+                  //     shrinkWrap: true,
+                  //     primary: false,
+                  //     scrollDirection: Axis.horizontal,
+                  //     itemCount: provider.categories.length + 1,
+                  //     physics: const BouncingScrollPhysics(),
+                  //     padding: const EdgeInsets.only(left: 20),
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       if (index == 0) {
+                  //         return InkWell(
+                  //           onTap: () {
+                  //             context.router.navigate(const CategoryRoute());
+                  //           },
+                  //           splashFactory: NoSplash.splashFactory,
+                  //           highlightColor: Colors.transparent,
+                  //           child: Column(
+                  //             mainAxisSize: MainAxisSize.min,
+                  //             mainAxisAlignment: MainAxisAlignment.center,
+                  //             crossAxisAlignment: CrossAxisAlignment.center,
+                  //             children: [
+                  //               // Container(
+                  //               //   margin: const EdgeInsets.symmetric(horizontal: 5),
+                  //               //   width: width * .15,
+                  //               //   height: width * .15,
+                  //               //   decoration: BoxDecoration(
+                  //               //     color: ColorConstants.colorBlueEighteen,
+                  //               //     shape: BoxShape.circle,
+                  //               //     boxShadow: [
+                  //               //       BoxShadow(
+                  //               //         color: Colors.black.withOpacity(0.1),
+                  //               //         blurRadius: 15,
+                  //               //         offset: const Offset(0, 4),
+                  //               //       ),
+                  //               //     ],
+                  //               //   ),
+                  //               //   alignment: Alignment.center,
+                  //               //   child: const FittedBox(
+                  //               //     child: Icon(
+                  //               //       Ionicons.grid,
+                  //               //       color: Colors.white,
+                  //               //       size: 30,
+                  //               //     ),
+                  //               //   ),
+                  //               // ),
+                  //               // const SizedBox(height: 10),
+                  //               // Text(
+                  //               //   'View All',
+                  //               //   style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree),
+                  //               // ),
+                  //             ],
+                  //           ),
+                  //         );
+                  //       }
+                  //       // return CategoryItems(
+                  //       //   Key(provider.categories[index - 1].id),
+                  //       //   onTap: () {
+                  //       //     context.router.push(CategoryProductRoute(categoryId: provider.categories[index - 1].id));
+                  //       //   },
+                  //       //   category: provider.categories[index - 1],
+                  //       // );
+                  //     },
+                  //   ),
+                  // ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     width: width,
@@ -378,81 +382,81 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                                 ],
                               ),
                             ),
-                            if (provider.banners.any((element) => element.type == StringConstants.vendyBanner))
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-                                child: CustomNetworkImage(
-                                  imageUrl: provider.banners.firstWhere((element) => element.type == StringConstants.vendyBanner).banner,
-                                  width: width,
-                                ),
-                              ),
+                            // if (provider.banners.any((element) => element.type == StringConstants.vendyBanner))
+                            //   Padding(
+                            //     padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                            //     child: CustomNetworkImage(
+                            //       imageUrl: provider.banners.firstWhere((element) => element.type == StringConstants.vendyBanner).banner,
+                            //       width: width,
+                            //     ),
+                            //   ),
                           ],
                         ),
                       ),
-                      Expanded(
-                        flex: 2,
-                        child: InkWell(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (c) => VendyScreen(
-                                vendyFunction: () async {
-                                  if (provider.currentUser != null) {
-                                    updateSource(provider);
-                                    final statusCamera = await Permission.camera.status;
-                                    final statusLocation = await Permission.location.status;
-                                    if (statusCamera.isGranted && statusLocation.isGranted) {
-                                    } else {}
-                                  } else {
-                                    ScaffoldSnackBar.of(context).show('Please login first');
-                                    context.router.push(AuthRoute(logOut: false));
-                                  }
-                                },
-                              ),
-                            );
-                          },
-                          // onTap: () => context.router.push(const VendyRoute()),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: ColorConstants.vendyColor,
-                              border: Border.all(color: ColorConstants.colorBorder),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                            margin: const EdgeInsets.only(right: 20),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Vendy',
-                                  style: TextHelper.smallTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14.sp,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Image.asset(
-                                  'assets/images/vendy_icon.png',
-                                  height: height * .13,
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  'Only at \nDelhi NCR',
-                                  maxLines: 2,
-                                  textAlign: TextAlign.center,
-                                  style: TextHelper.extraSmallTextStyle.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.red,
-                                    fontSize: 12.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Expanded(
+                      //   flex: 2,
+                      //   child: InkWell(
+                      //     onTap: () {
+                      //       showDialog(
+                      //         context: context,
+                      //         builder: (c) => VendyScreen(
+                      //           vendyFunction: () async {
+                      //             if (provider.currentUser != null) {
+                      //               updateSource(provider);
+                      //               final statusCamera = await Permission.camera.status;
+                      //               final statusLocation = await Permission.location.status;
+                      //               if (statusCamera.isGranted && statusLocation.isGranted) {
+                      //               } else {}
+                      //             } else {
+                      //               ScaffoldSnackBar.of(context).show('Please login first');
+                      //               context.router.push(AuthRoute(logOut: false));
+                      //             }
+                      //           },
+                      //         ),
+                      //       );
+                      //     },
+                      //     // onTap: () => context.router.push(const VendyRoute()),
+                      //     child: Container(
+                      //       decoration: BoxDecoration(
+                      //         color: ColorConstants.vendyColor,
+                      //         border: Border.all(color: ColorConstants.colorBorder),
+                      //         borderRadius: BorderRadius.circular(10),
+                      //       ),
+                      //       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      //       margin: const EdgeInsets.only(right: 20),
+                      //       child: Column(
+                      //         mainAxisSize: MainAxisSize.min,
+                      //         mainAxisAlignment: MainAxisAlignment.center,
+                      //         crossAxisAlignment: CrossAxisAlignment.center,
+                      //         children: [
+                      //           Text(
+                      //             'Vendy',
+                      //             style: TextHelper.smallTextStyle.copyWith(
+                      //               fontWeight: FontWeight.bold,
+                      //               fontSize: 14.sp,
+                      //             ),
+                      //           ),
+                      //           const SizedBox(height: 5),
+                      //           Image.asset(
+                      //             'assets/images/vendy_icon.png',
+                      //             height: height * .13,
+                      //           ),
+                      //           const SizedBox(height: 5),
+                      //           Text(
+                      //             'Only at \nDelhi NCR',
+                      //             maxLines: 2,
+                      //             textAlign: TextAlign.center,
+                      //             style: TextHelper.extraSmallTextStyle.copyWith(
+                      //               fontWeight: FontWeight.w600,
+                      //               color: Colors.red,
+                      //               fontSize: 12.sp,
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                   if (provider.banners
@@ -461,8 +465,8 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
                       child: CarouselSlider.builder(
-                        itemCount: provider.banners
-                            .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeM)
+                        itemCount: _banners
+                            // .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeM)
                             .length,
                         itemBuilder: (BuildContext context, int index, int i) {
                           return ClipRRect(

@@ -16,7 +16,7 @@ class Banner {
     required this.type,
     required this.status,
     required this.banner,
-    required this.deviceType,
+    required this.deviceType, required bannerurl,
   });
 
   factory Banner.fromJson(Map<String, dynamic> json) {
@@ -27,6 +27,7 @@ class Banner {
       status: json['status'] ?? '',
       banner: json['banner'] != null ? json['banner'].toString().replaceAll(' ', '%20') : '',
       deviceType: json['device_type'] ?? 'mobile',
+      bannerurl: json['url']?? '',
     );
   }
 
