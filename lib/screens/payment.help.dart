@@ -78,7 +78,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                     });
                   },
                   title: Text(
-                    'What is Shubhgamess?',
+                    'What is Meryano?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -142,7 +142,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
             ),
             SizedBox(height: height * .03),
             InkWell(
-              onTap: () => _urlHelper.launchNonUrl(url: 'mailto:Privatelimitedshubhpay@gmail.com'),
+              onTap: () => _urlHelper.launchNonUrl(url: 'mailto:meryanoenterisepvtltd@gmail.com'),
               splashFactory: NoSplash.splashFactory,
               highlightColor: Colors.transparent,
               child: Container(
@@ -154,7 +154,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : Privatelimitedshubhpay@gmail.com',
+                  'Mail us at : meryanoenterisepvtltd@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

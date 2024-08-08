@@ -139,7 +139,7 @@ class _HelpScreenDesktopState extends State<HelpScreenDesktop> {
                           height: height * .01,
                         ),
                         const Text(
-                          'Reach out to the shubhgamess support team',
+                          'Reach out to the Meryano support team',
                           style: TextStyle(fontSize: 13.0, color: Colors.white, fontFamily: 'Montserrat', letterSpacing: 1),
                         ),
                         InkWell(

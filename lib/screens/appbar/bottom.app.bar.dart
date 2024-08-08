@@ -20,6 +20,11 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
     super.initState();
   }
 
+  String replaceText(String text) {
+
+    return text.replaceAll('shubhgamess', 'Meryano');
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -48,7 +53,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'shubhgamess is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
+                      replaceText('Meryano is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it'),
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -72,7 +77,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   children: [
                     InkWell(
                       child: Text(
-                        'FAQ’s',
+                        replaceText('FAQ’s'),
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                       onTap: () {
@@ -87,7 +92,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         context.router.navigate(const RefundPolicyRoute());
                       },
                       child: Text(
-                        'Refund Policy',
+                        replaceText('Refund Policy'),
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
@@ -99,7 +104,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         context.router.navigate(const PrivacyPolicyRoute());
                       },
                       child: Text(
-                        'Privacy Policy',
+                        replaceText('Privacy Policy'),
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
@@ -111,7 +116,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         context.router.navigate(const HelpRoute());
                       },
                       child: Text(
-                        'Need help?',
+                        replaceText('Need help?'),
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
@@ -123,78 +128,13 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         context.router.navigate(const ProfileRoute());
                       },
                       child: Text(
-                        'Profile',
+                        replaceText('Profile'),
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
                   ],
                 ),
               ),
-              // Expanded(
-              //     flex: 1,
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       crossAxisAlignment: CrossAxisAlignment.center,
-              //       // mainAxisSize: MainAxisSize.max,
-              //       children: [
-              //         Text(
-              //           'Connect with us',
-              //           style: TextHelper.smallTextStyle.copyWith(
-              //             fontWeight: FontWeight.w500,
-              //             color: Colors.white,
-              //             fontSize: 17.0,
-              //           ),
-              //         ),
-              //         SizedBox(
-              //           height: height * .02,
-              //         ),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.center,
-              //           children: [
-              //             InkWell(
-              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://www.facebook.com/FabPiks'),
-              //               splashFactory: NoSplash.splashFactory,
-              //               highlightColor: Colors.transparent,
-              //               hoverColor: Colors.transparent,
-              //               child: Image.asset('assets/images/face.png'),
-              //             ),
-              //             SizedBox(
-              //               width: width * .02,
-              //             ),
-              //             InkWell(
-              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://www.instagram.com/fabpiks/'),
-              //               splashFactory: NoSplash.splashFactory,
-              //               highlightColor: Colors.transparent,
-              //               hoverColor: Colors.transparent,
-              //               child: Image.asset('assets/images/insta.png'),
-              //             ),
-              //             SizedBox(
-              //               width: width * .02,
-              //             ),
-              //             InkWell(
-              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://twitter.com/Fabpiksapp'),
-              //               splashFactory: NoSplash.splashFactory,
-              //               highlightColor: Colors.transparent,
-              //               hoverColor: Colors.transparent,
-              //               child: Image.asset('assets/images/tweet.png'),
-              //             ),
-              //             SizedBox(
-              //               width: width * .02,
-              //             ),
-              //             InkWell(
-              //               onTap: () => _urlHelper.launchNonUrl(url: 'https://www.youtube.com/@fabpiks'),
-              //               splashFactory: NoSplash.splashFactory,
-              //               highlightColor: Colors.transparent,
-              //               hoverColor: Colors.transparent,
-              //               child: Image.asset('assets/images/youtube.png'),
-              //             ),
-              //           ],
-              //         ),
-              //         SizedBox(
-              //           height: height * .23,
-              //         ),
-              //       ],
-              //     )),
               SizedBox(
                 width: width * .1,
               ),
@@ -206,7 +146,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'For Brands & Agencies',
+                      replaceText('For Brands & Agencies'),
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -217,7 +157,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'shubhgamess is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
+                      replaceText('Meryano is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from'),
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -236,7 +176,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        'Click here',
+                        replaceText('Click here'),
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500),
                       ),
                     ),

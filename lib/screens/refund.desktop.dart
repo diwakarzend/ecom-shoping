@@ -24,7 +24,7 @@ class _RefundPolicyDesktopState extends State<RefundPolicyDesktop> {
         String privacyPolicyText = provider.appSettings?.refund ?? '';
         privacyPolicyText = privacyPolicyText
             .replaceAll('Shipan Tech Private Limited', 'Shubhagmess')
-            .replaceAll('shipantechprivatelimited5@gmail.com', 'Privatelimitedshubhpay@gmail.com')
+            .replaceAll('shipantechprivatelimited5@gmail.com', 'meryanoenterisepvtltd@gmail.com')
             .replaceAll('Shipan', 'Shubhagmess')
             .replaceAll('shop NO. 2 karim Mansion Behind Pharmacy college', '4th Floor Office No.432 Geras Imperium Star')
             .replaceAll('SHIPAN', 'SHUBHAGMESS');

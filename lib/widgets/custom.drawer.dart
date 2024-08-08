@@ -440,7 +440,7 @@ class CustomDrawer extends Drawer {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'About Shubhgamess',
+                                          'About Meryano',
                                           style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
                                         ),
                                       ],

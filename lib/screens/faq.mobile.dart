@@ -25,7 +25,7 @@ class _FAQHelpMobileState extends State<FAQHelpMobile> {
         final modifiedFaqs = provider.faqs.map((faq) {
           final modifiedQuestion = faq.question.replaceAll(
             'What is Shipan?',
-            'What is Shubhgamess?',
+            'What is Meryano?',
           );
           final modifiedAnswer = faq.answer.replaceAll(
             'game.ship9x.com/',
