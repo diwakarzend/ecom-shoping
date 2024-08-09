@@ -771,53 +771,32 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                             padding: EdgeInsets.symmetric(vertical: height * .03),
                             child: CarouselSlider(
                               carouselController: _dealController,
-                              items: [
-                                if (dealIndex == 0)
-                                  ...provider.dealProducts
-                                      .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                      key: Key(e.id),
-                                      product: e,
-                                      onProductClick: () =>
-                                          _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                      onAddToCart: () => _cartHelper.addToCart(
-                                        provider: provider,
-                                        context: context,
-                                        productId: e.id,
-                                      ),
-                                      provider: provider,
-                                      cartHelper: _cartHelper,
-                                      gridView: false, category: '', sub_category: '',
-                                    ),
-                                  )
-                                else
-                                  ...provider.dealProducts
-                                      .where((element) => element.sub_category == "66b5d3474030aca39c0f1162")
-                                      .take(provider.dealProducts
-                                      .where((element) => element.sub_category == "66b5d3474030aca39c0f1162")
-                                      .length > 10
-                                      ? 10
-                                      : provider.dealProducts
-                                      .where((element) => element.sub_category == "66b5d3474030aca39c0f1162")
-                                      .length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                      key: Key(e.id),
-                                      product: e,
-                                      onProductClick: () =>
-                                          _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                      onAddToCart: () => _cartHelper.addToCart(
-                                        provider: provider,
-                                        context: context,
-                                        productId: e.id,
-                                      ),
-                                      provider: provider,
-                                      cartHelper: _cartHelper,
-                                      gridView: false, sub_category: '', category: '',
-                                    ),
+                              items: provider.dealProducts
+                                  .where((element) => element.sub_category == "66b5d3474030aca39c0f1162")
+                                  .take(10)
+                                  .map(
+                                    (e) => DealItemDesktop(
+                                  key: Key(e.id),
+                                  product: e,
+                                  onProductClick: () => _cartHelper.productClick(
+                                    context: context,
+                                    productId: e.id,
+                                    productType: e.productType,
+                                    provider: provider,
                                   ),
-                              ],
+                                  onAddToCart: () => _cartHelper.addToCart(
+                                    provider: provider,
+                                    context: context,
+                                    productId: e.id,
+                                  ),
+                                  provider: provider,
+                                  cartHelper: _cartHelper,
+                                  gridView: false,
+                                  sub_category: '',  // Adjust this based on your requirements
+                                  category: '',  // Adjust this based on your requirements
+                                ),
+                              )
+                                  .toList(),
                               options: CarouselOptions(
                                 aspectRatio: 3.1,
                                 viewportFraction: 0.2,
