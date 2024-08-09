@@ -29,6 +29,10 @@ class DealsScreenMobile extends StatefulWidget {
 class _DealsScreenMobileState extends State<DealsScreenMobile> {
   int trialIndex = 0;
 
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b5bf26e88c9.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b5bf26e89c1.jpg'];
+
+
   final CartHelper _cartHelper = CartHelper();
 
   bool gridview = true;
@@ -117,26 +121,22 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (provider.banners
-                    .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeM)
-                    .isNotEmpty)
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
-                    child: CarouselSlider(
-                      items: [
-                        ...provider.banners
-                            .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeM)
-                            .map(
-                              (e) => ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: CustomNetworkImage(
-                                  imageUrl: e.banner,
-                                  width: width,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                      ],
+                if (_banners.isNotEmpty)
+              Padding(
+              padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
+          child: CarouselSlider.builder(
+            itemCount: _banners.length,
+            itemBuilder: (BuildContext context, int index, int i) {
+              return ClipRRect(
+                key: Key('banner_$index'),
+                borderRadius: BorderRadius.circular(10),
+                child: CustomNetworkImage(
+                  imageUrl: _banners[index],
+                  width: width,
+                  fit: BoxFit.cover,
+                ),
+              );
+            },
                       options: CarouselOptions(
                         enableInfiniteScroll: false,
                         height: height * .45,
@@ -161,7 +161,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
                     child: Text(
-                      'Deals: Special deals & combo offers with best discounts on top brands. Dare to compare pricing .',
+                      'Discover unbeatable offers on top electronic brands with exclusive combos and best discounts. Dare to compare prices and save big on the latest gadgets! .',
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -232,58 +232,58 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                   ),
                 ),
                 SizedBox(height: height * .02),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              NewCategoryItems(
-                                key: const Key('d_all'),
-                                onTap: () {
-                                  setState(() {
-                                    trialIndex = 0;
-                                  });
-                                },
-                                active: trialIndex == 0,
-                                name: 'All',
-                              ),
-                              ...provider.dealCategories
-                                  .asMap()
-                                  .map(
-                                    (i, c) => MapEntry(
-                                      i,
-                                      NewCategoryItems(
-                                        key: Key(c.id),
-                                        onTap: () {
-                                          setState(() {
-                                            trialIndex = i + 1;
-                                          });
-                                        },
-                                        active: (trialIndex == (i + 1)),
-                                        name: c.name,
-                                      ),
-                                    ),
-                                  )
-                                  .values,
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                    ],
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 0),
+                //   child: Row(
+                //     mainAxisSize: MainAxisSize.max,
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: [
+                //       const SizedBox(width: 20),
+                //       Expanded(
+                //         child: SingleChildScrollView(
+                //           scrollDirection: Axis.horizontal,
+                //           child: Row(
+                //             mainAxisSize: MainAxisSize.max,
+                //             mainAxisAlignment: MainAxisAlignment.center,
+                //             crossAxisAlignment: CrossAxisAlignment.center,
+                //             children: [
+                //               NewCategoryItems(
+                //                 key: const Key('d_all'),
+                //                 onTap: () {
+                //                   setState(() {
+                //                     trialIndex = 0;
+                //                   });
+                //                 },
+                //                 active: trialIndex == 0,
+                //                 name: 'All',
+                //               ),
+                //               ...provider.dealCategories
+                //                   .asMap()
+                //                   .map(
+                //                     (i, c) => MapEntry(
+                //                       i,
+                //                       NewCategoryItems(
+                //                         key: Key(c.id),
+                //                         onTap: () {
+                //                           setState(() {
+                //                             trialIndex = i + 1;
+                //                           });
+                //                         },
+                //                         active: (trialIndex == (i + 1)),
+                //                         name: c.name,
+                //                       ),
+                //                     ),
+                //                   )
+                //                   .values,
+                //             ],
+                //           ),
+                //         ),
+                //       ),
+                //       const SizedBox(width: 20),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(height: height * .02),
                 GridView.builder(
                   shrinkWrap: true,

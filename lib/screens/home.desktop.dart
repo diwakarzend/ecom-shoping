@@ -54,6 +54,9 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
 
   int bannerIndex = 0;
 
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b5bf26e88c9.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b5bf26e89c1.jpg'];
+
   @override
   void initState() {
     if (widget.orderSuccess && widget.order != null) {
@@ -198,13 +201,14 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   // ),
                   // SizedBox(height: height * .01),
                   CarouselSlider(
-                    items: provider.banners
-                        .where((element) =>
-                    (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
-                        element.deviceType == StringConstants.deviceTypeD)
+                    items:_banners
+                  //   items: provider.banners
+                  //       .where((element) =>
+                  //   (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
+                  //       element.deviceType == StringConstants.deviceTypeD)
                         .map(
                           (e) => CustomNetworkImage(
-                        imageUrl: e.banner,
+                        imageUrl: e,
                         width: width,
                         height: double.infinity,
                         fit: BoxFit.cover,
@@ -226,9 +230,10 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ...provider.banners
-                          .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                          .toList()
+                      // ...provider.banners
+                      //     .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
+                      //     .toList()
+                      ..._banners
                           .asMap()
                           .map(
                             (i, v) => MapEntry(
@@ -676,7 +681,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Deals: Special deals & combo offers\nwith best discounts on top brands. Dare to compare pricing .',
+                            'Discover unbeatable offers on top electronic brands with exclusive combos and best discounts. \n Dare to compare prices and save big on the latest gadgets! .',
                             style: TextHelper.normalTextStyle.copyWith(
                               color: Colors.black.withOpacity(0.8),
                             ),
@@ -783,18 +788,18 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                                       ),
                                       provider: provider,
                                       cartHelper: _cartHelper,
-                                      gridView: false, sub_category: '',
+                                      gridView: false, category: '', sub_category: '',
                                     ),
                                   )
                                 else
                                   ...provider.dealProducts
-                                      .where((element) => element.sub_category == "66b4c0f932dcbafca20d8932")
+                                      .where((element) => element.sub_category == "66b5d3474030aca39c0f1162")
                                       .take(provider.dealProducts
-                                      .where((element) => element.sub_category == "66b4c0f932dcbafca20d8932")
+                                      .where((element) => element.sub_category == "66b5d3474030aca39c0f1162")
                                       .length > 10
                                       ? 10
                                       : provider.dealProducts
-                                      .where((element) => element.sub_category == "66b4c0f932dcbafca20d8932")
+                                      .where((element) => element.sub_category == "66b5d3474030aca39c0f1162")
                                       .length)
                                       .map(
                                         (e) => DealItemDesktop(
@@ -809,7 +814,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                                       ),
                                       provider: provider,
                                       cartHelper: _cartHelper,
-                                      gridView: false, sub_category: '',
+                                      gridView: false, sub_category: '', category: '',
                                     ),
                                   ),
                               ],

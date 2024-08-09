@@ -29,6 +29,9 @@ class DealsScreendesktop extends StatefulWidget {
 class _DealsScreendesktopState extends State<DealsScreendesktop> {
   int trialIndex = 0;
 
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b5bf26e88c9.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b5bf26e89c1.jpg'];
+
   final CartHelper _cartHelper = CartHelper();
 
   bool gridview = true;
@@ -232,13 +235,14 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
                         .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
                         .isNotEmpty)
                     ? CarouselSlider(
-                        items: provider.banners
-                            .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
+                        items: _banners
+                        // provider.banners
+                            // .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
                             .map(
                               (e) => ClipRRect(
                                 // borderRadius: BorderRadius.circular(10),
                                 child: CustomNetworkImage(
-                                  imageUrl: e.banner,
+                                  imageUrl: e,
                                   width: width,
                                   fit: BoxFit.cover,
                                 ),
@@ -338,7 +342,7 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
                         ),
                         provider: provider,
                         cartHelper: _cartHelper,
-                        gridView: true, sub_category: '',
+                        gridView: true, sub_category: '', category: '',
                       );
                     },
                   ),

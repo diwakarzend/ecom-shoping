@@ -432,7 +432,7 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                         ),
                                         provider: provider,
                                         cartHelper: _cartHelper,
-                                        gridView: false, sub_category: '',
+                                        gridView: false, sub_category: '', category: '',
                                       );
                                     },
                                     options: CarouselOptions(
