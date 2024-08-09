@@ -4,11 +4,14 @@
  * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
  */
 // ignore_for_file: avoid_web_libraries_in_flutter
+
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:html';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
+import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
@@ -18,9 +21,6 @@ import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-// import 'package:facebook_app_events/facebook_app_events.dart';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_razorpay_web/flutter_razorpay_web.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,41 +62,95 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
     super.initState();
   }
 
+  String generateSha256(String orderId, String amount) {
+    String value =
+        'apiKey=15c920d0928a4f79903b19733fd5d1fe~clientId=4827460565764284~amount=$amount~orderId=${orderId}rAiaB9hKSl6iB';
+    // String value =
+    //     'apiKey=15c920d0928a4f79903b19733fd5d1fe~clientId=4827460565764284~amount=1~orderId=85858585MNNRrAiaB9hKSl6iB';
+    log(value);
+    var bytes = utf8.encode(value);
+    var digest = sha256.convert(bytes);
+    return digest.toString().toUpperCase();
+  }
+
   openCheckout(AppProvider provider, double price) async {
     if (_order != null) {
-      RazorpayWeb razorpayWeb =
-          RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
-      var razorpayAmount = price * 100;
-      log(
-          (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
-              '',
-          name: 'razorpay_log');
-
-      final Map<String, dynamic> options = {
-        'key':
-            (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
-                '',
-        'amount': razorpayAmount,
-        'currency': 'INR',
-        'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
-        'order_id': _order?.paymentRefId,
-        'timeout': '300',
-        'description': 'Buying products',
-        'prefill': {'contact': provider.currentUser?.mobileNo, 'email': provider.currentUser?.email},
-        'readonly': {'contact': true, 'email': true},
-        'send_sms_hash': true,
-        'remember_customer': false,
-        'retry': {'enabled': false},
-        'hidden': {'contact': false, 'email': false}
-      };
-
-      try {
-        razorpayWeb.open(options);
-      } catch (e) {
-        if (kDebugMode) {
-          print(e.toString());
+      final response = await _dioHelper.dio.post(
+        'https://collect.ship9x.com/collect-service/api/authenticateByHash',
+        options: Options(
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        ),
+        // "4d6ada1aed0aa695455cd87e37a6b82ef25ccb984418092552a95a418da23453"
+        // "02BA2331B1CBA2C25CDC4A6A71C1BEFFFFED46C2ED7BBF6646BAE83A16C9CC0E"
+        data: {
+          'amount': _order?.grandTotal,
+          'apiKey': '15c920d0928a4f79903b19733fd5d1fe',
+          'orderId': _order?.id,
+          'clientId': '4827460565764284',
+          'hash': generateSha256(_order?.id ?? '', _order?.grandTotal.toString() ?? '0'),
+        },
+      );
+      if (response.statusCode == 200) {
+        final data = response.data as Map<String, dynamic>;
+        if (data.containsKey('api_token') && data.containsKey('id_token') && data.containsKey('userName')) {
+          final rr = await _dioHelper.dio.post(
+            'https://collect.ship9x.com/collect-service/api/upi/initiate/transaction',
+            options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'api-authorization': 'Bearer ${data['api_token']}',
+                'Authorization': 'Bearer ${data['id_token']}',
+              },
+            ),
+            data: {
+              'amount': _order?.grandTotal,
+              'orderId': _order?.id,
+              'customerEmail': provider.currentUser?.email ?? 'email@email.com',
+              'customerMobile': provider.currentUser?.mobileNo ?? '',
+              'transactionRemark': 'test',
+              // 'payerVpa': 'fpay.shipan@finobank'
+            },
+          );
+          log(response.data.toString());
         }
       }
+      //   RazorpayWeb razorpayWeb =
+      //       RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
+      //   var razorpayAmount = price * 100;
+      //   log(
+      //       (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
+      //           '',
+      //       name: 'razorpay_log');
+      //
+      //   final Map<String, dynamic> options = {
+      //     'key':
+      //         (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
+      //             '',
+      //     'amount': razorpayAmount,
+      //     'currency': 'INR',
+      //     'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
+      //     'order_id': _order?.paymentRefId,
+      //     'timeout': '300',
+      //     'description': 'Buying products',
+      //     'prefill': {'contact': provider.currentUser?.mobileNo, 'email': provider.currentUser?.email},
+      //     'readonly': {'contact': true, 'email': true},
+      //     'send_sms_hash': true,
+      //     'remember_customer': false,
+      //     'retry': {'enabled': false},
+      //     'hidden': {'contact': false, 'email': false}
+      //   };
+      //
+      //   try {
+      //     razorpayWeb.open(options);
+      //   } catch (e) {
+      //     if (kDebugMode) {
+      //       print(e.toString());
+      //     }
+      //   }
     }
   }
 

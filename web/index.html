@@ -33,8 +33,7 @@
     <link rel="manifest" href="manifest.json?version=2">
 
     <script>
-        // The value below is injected by flutter build, do not touch.
-        const serviceWorkerVersion = "1331065302";
+        const serviceWorkerVersion = {{flutter_service_worker_version}};
 
 
     </script>
@@ -66,26 +65,10 @@
 </head>
 <body>
 <div class="container" id="loading_indicator">
+    <script src="flutter_bootstrap.js" async></script>
     <!--  <img class="indicator" src="./assets/assets/animations/loading.gif"/>-->
     <img class="indicator" src="./assets/assets/animations/boll1.gif" alt="boll1.gif"/>
 </div>
-<script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-
-
-</script>
 <!-- razorpay checkout lib -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </body>
