@@ -339,7 +339,7 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
               iconTheme: const IconThemeData(color: Colors.white),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => context.router.pop(),
+                onPressed: () => context.router.maybePop(),
               ),
             ),
             body: Form(
@@ -385,7 +385,9 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                           Align(
                             child: InkWell(
                               onTap: () {
-                                if (mobileValidated != null && emailValidated != null && otpController.text.isNotEmpty) {
+                                if (mobileValidated != null &&
+                                    emailValidated != null &&
+                                    otpController.text.isNotEmpty) {
                                   login(mobileController.text, otpController.text, provider);
                                 } else {
                                   ScaffoldSnackBar.of(context).show('All fields are required');
@@ -423,7 +425,8 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                                   children: [
                                     TextSpan(
                                       text: '00:${_start > 9 ? _start : '0$_start'} ',
-                                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w600, color: Colors.white),
+                                      style: TextHelper.smallTextStyle
+                                          .copyWith(fontWeight: FontWeight.w600, color: Colors.white),
                                     ),
                                     TextSpan(
                                       text: 'Resend OTP',
@@ -434,7 +437,8 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                                     ),
                                   ],
                                 ),
-                                style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                                style: TextHelper.smallTextStyle
+                                    .copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                               ),
                             ),
                           ),
@@ -471,26 +475,30 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                                   decoration: InputDecoration(
                                     hintText: 'First Name',
                                     labelText: 'First Name',
-                                    hintStyle: TextHelper.normalTextStyle.copyWith(color: Colors.white.withOpacity(0.6)),
+                                    hintStyle:
+                                        TextHelper.normalTextStyle.copyWith(color: Colors.white.withOpacity(0.6)),
                                     labelStyle: TextHelper.normalTextStyle.copyWith(color: Colors.white),
                                     contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Colors.white.withOpacity(0.5),
                                       ),
-                                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Colors.white.withOpacity(0.5),
                                       ),
-                                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
                                     ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Colors.white.withOpacity(0.5),
                                       ),
-                                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
                                     ),
                                   ),
                                 ),
@@ -506,25 +514,29 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                                   decoration: InputDecoration(
                                     hintText: 'Last Name',
                                     labelText: 'Last Name',
-                                    hintStyle: TextHelper.normalTextStyle.copyWith(color: Colors.white.withOpacity(0.6)),
+                                    hintStyle:
+                                        TextHelper.normalTextStyle.copyWith(color: Colors.white.withOpacity(0.6)),
                                     labelStyle: TextHelper.normalTextStyle.copyWith(color: Colors.white),
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Colors.white.withOpacity(0.5),
                                       ),
-                                      borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                      borderRadius: const BorderRadius.only(
+                                          topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Colors.white.withOpacity(0.5),
                                       ),
-                                      borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                      borderRadius: const BorderRadius.only(
+                                          topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
                                     ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Colors.white.withOpacity(0.5),
                                       ),
-                                      borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                                      borderRadius: const BorderRadius.only(
+                                          topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
                                     ),
                                     contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                                   ),
@@ -648,7 +660,7 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                           TextFormField(
                             style: TextHelper.normalTextStyle.copyWith(color: Colors.white),
                             controller: mobileController,
-                            onChanged: (_) => validateMobile(_, provider),
+                            onChanged: (v) => validateMobile(v, provider),
                             maxLength: 10,
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly,
@@ -706,8 +718,8 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                           TextFormField(
                             style: TextHelper.normalTextStyle.copyWith(color: Colors.white),
                             controller: emailController,
-                            onChanged: (_) => validateEmail(
-                              _,
+                            onChanged: (v) => validateEmail(
+                              v,
                               provider,
                             ),
                             textAlignVertical: TextAlignVertical.center,
@@ -897,8 +909,10 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
                             child: Text.rich(
                               maxLines: 5,
                               TextSpan(
-                                style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w600, color: Colors.white),
-                                text: 'By Signing Up, You Consent to Receive SMS, WhatsApp Messages, Email and Telephone Calls! ',
+                                style: TextHelper.smallTextStyle
+                                    .copyWith(fontWeight: FontWeight.w600, color: Colors.white),
+                                text:
+                                    'By Signing Up, You Consent to Receive SMS, WhatsApp Messages, Email and Telephone Calls! ',
                                 children: [
                                   TextSpan(
                                     text: 'Read Terms',
@@ -967,7 +981,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             right: 25,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 40,
                 height: 40,

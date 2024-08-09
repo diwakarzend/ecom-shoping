@@ -67,7 +67,8 @@ class _NotificationScreenDesktopMobileState extends State<NotificationScreenDesk
                               element.qualified &&
                               !element.rejected &&
                               provider.currentUser != null &&
-                              !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                              !provider.currentUser!.orders
+                                  .any((e) => e.products.any((o) => o.id == element.product?.id)))
                           .map(
                         (e) {
                           return Container(
@@ -154,7 +155,7 @@ class _NotificationScreenDesktopMobileState extends State<NotificationScreenDesk
                                                 product: e.product!,
                                                 onCheckout: () {
                                                   provider.addCartItems(productID: e.productId ?? '');
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   context.router.push(const ShoppingTabOneDesktop());
                                                 },
                                                 onContinue: () {
@@ -175,7 +176,8 @@ class _NotificationScreenDesktopMobileState extends State<NotificationScreenDesk
                                           ),
                                           child: Text(
                                             'Add to cart',
-                                            style: TextHelper.extraSmallTextStyle.copyWith(fontWeight: FontWeight.w600, color: Colors.white, fontSize: 13.sp),
+                                            style: TextHelper.extraSmallTextStyle.copyWith(
+                                                fontWeight: FontWeight.w600, color: Colors.white, fontSize: 13.sp),
                                           ),
                                         ),
                                       ),
@@ -202,7 +204,8 @@ class _NotificationScreenDesktopMobileState extends State<NotificationScreenDesk
                               element.qualified &&
                               !element.rejected &&
                               provider.currentUser != null &&
-                              !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                              !provider.currentUser!.orders
+                                  .any((e) => e.products.any((o) => o.id == element.product?.id)))
                           .isEmpty)
                         Container(
                           margin: EdgeInsets.symmetric(vertical: height * .12, horizontal: width * .15),
@@ -233,7 +236,12 @@ class _Dialog extends StatelessWidget {
   final Function() onCheckout;
   final Function() onContinue;
 
-  const _Dialog({required this.height, required this.width, required this.product, required this.onCheckout, required this.onContinue});
+  const _Dialog(
+      {required this.height,
+      required this.width,
+      required this.product,
+      required this.onCheckout,
+      required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -273,7 +281,8 @@ class _Dialog extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextHelper.smallTextStyle.copyWith(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,fontSize: 13.sp,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13.sp,
                         ),
                       ),
                     ),
@@ -282,7 +291,7 @@ class _Dialog extends StatelessWidget {
                       bottom: 15,
                       right: width * .19,
                       child: Container(
-                        transform: Matrix4.translationValues(width * .01, 0,0),
+                        transform: Matrix4.translationValues(width * .01, 0, 0),
                         width: width * .10,
                         height: height * .12,
                         decoration: BoxDecoration(
@@ -332,7 +341,8 @@ class _Dialog extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: 'An amount of ${StringConstants.rupeeSign}${product.serviceCharge} shall be payable towards service/delivery fee.',
+                            text:
+                                'An amount of ${StringConstants.rupeeSign}${product.serviceCharge} shall be payable towards service/delivery fee.',
                             style: TextHelper.smallTextStyle.copyWith(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
@@ -404,7 +414,7 @@ class _Dialog extends StatelessWidget {
             top: 10,
             right: 10,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 30,
                 height: 30,

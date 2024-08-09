@@ -37,16 +37,20 @@ class _SplashScreenState extends State<SplashScreen> {
         (_) {
           if (_appProvider.loginDetails != null || _appProvider.guestLogin) {
             if (kIsWeb) {
+              if (!mounted) return;
               context.router.replace(HomeRoute());
             } else {
+              if (!mounted) return;
               context.router.replace(
                 NavigatorRoute(orderSuccess: false),
               );
             }
           } else {
-            context.router.replace(
-              AuthRoute(logOut: false),
-            );
+            if (mounted) {
+              context.router.replace(
+                AuthRoute(logOut: false),
+              );
+            }
           }
           // remove login function
           // context.router.replace(NavigatorRoute(fromSignup: false, orderSuccess: false));

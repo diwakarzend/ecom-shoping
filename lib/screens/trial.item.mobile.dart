@@ -17,7 +17,6 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/app.provider.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:ionicons/ionicons.dart';
@@ -64,25 +63,6 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
   //   return url;
   // }
 
-  addFirebaseProduct() async {
-    await FirebaseAnalytics.instance.logViewItem(
-      currency: 'INR',
-      value: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
-          ? 0
-          : _product?.salePrice.toDouble(),
-      items: [_product!.toGAP()],
-    );
-
-    // await facebookAppEvents.logViewContent(
-    //   id: _product?.id,
-    //   type: 'product',
-    //   currency: 'INR',
-    //   price: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
-    //       ? 0
-    //       : _product?.salePrice.toDouble(),
-    // );
-  }
-
   final DioHelper _dioHelper = DioHelper();
 
   likeProduct(AppProvider provider) async {
@@ -128,7 +108,6 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
     _product = provider.miniProducts.firstWhereOrNull((element) => element.id == widget.productId);
     if (_product != null) {
       _tabController ??= TabController(length: _product!.details.length, vsync: this);
-      addFirebaseProduct();
       controller = AnimationController(
         vsync: this,
         duration: const Duration(milliseconds: 400),
@@ -230,7 +209,8 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                                   (i, img) => MapEntry(
                                     i,
                                     InkWell(
-                                      onTap: () => context.router.push(ImageGalleryRoute(images: _product!.images, index: i)),
+                                      onTap: () =>
+                                          context.router.push(ImageGalleryRoute(images: _product!.images, index: i)),
                                       child: Container(
                                         margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                                         width: width,
@@ -378,13 +358,14 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                   //     ),
                   //   ),
                   // ),
-                SizedBox(height: height * .02),
+                  SizedBox(height: height * .02),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Text.rich(
                     TextSpan(
                       text: _product?.brand != null ? _product?.brand!.name : '',
-                      style: TextHelper.normalTextStyle.copyWith(color: ColorConstants.colorGreyTwo, fontWeight: FontWeight.w600),
+                      style: TextHelper.normalTextStyle
+                          .copyWith(color: ColorConstants.colorGreyTwo, fontWeight: FontWeight.w600),
                       children: [
                         TextSpan(
                           text: ' ${_product?.name}',
@@ -620,7 +601,8 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                     child: Column(
                       children: [
                         InkWell(
-                          onTap: () => _cartHelper.regularPackBuy(provider: provider, context: context, product: _product!),
+                          onTap: () =>
+                              _cartHelper.regularPackBuy(provider: provider, context: context, product: _product!),
                           child: Container(
                             width: width * .6,
                             height: height * .05,
@@ -649,7 +631,8 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                       ],
                     ),
                   ),
-                if (provider.feedbacks.any((element) => element.productId == _product?.id && element.review.isNotEmpty)) SizedBox(height: height * .02),
+                if (provider.feedbacks.any((element) => element.productId == _product?.id && element.review.isNotEmpty))
+                  SizedBox(height: height * .02),
                 if (provider.feedbacks.any((element) => element.productId == _product?.id && element.review.isNotEmpty))
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -670,13 +653,15 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                           },
                           child: Text(
                             'View All',
-                            style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreyThree),
+                            style: TextHelper.normalTextStyle
+                                .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreyThree),
                           ),
                         ),
                       ],
                     ),
                   ),
-                if (provider.feedbacks.any((element) => element.productId == _product?.id && element.review.isNotEmpty)) SizedBox(height: height * .02),
+                if (provider.feedbacks.any((element) => element.productId == _product?.id && element.review.isNotEmpty))
+                  SizedBox(height: height * .02),
                 if (provider.feedbacks.any((element) => element.productId == _product?.id && element.review.isNotEmpty))
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -685,9 +670,15 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                       runSpacing: 20,
                       children: provider.feedbacks
                           .where((element) => element.productId == _product?.id && element.review.isNotEmpty)
-                          .take(provider.feedbacks.where((element) => element.productId == _product?.id && element.review.isNotEmpty).length > 4
+                          .take(provider.feedbacks
+                                      .where(
+                                          (element) => element.productId == _product?.id && element.review.isNotEmpty)
+                                      .length >
+                                  4
                               ? 4
-                              : provider.feedbacks.where((element) => element.productId == _product?.id && element.review.isNotEmpty).length)
+                              : provider.feedbacks
+                                  .where((element) => element.productId == _product?.id && element.review.isNotEmpty)
+                                  .length)
                           .toList()
                           .map(
                             (e) => Container(
@@ -729,7 +720,8 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                   ),
                 SizedBox(height: height * .02),
                 if (provider.miniProducts
-                    .where((element) => _product?.brand != null && element.brandId == _product?.brand!.id && element.id != _product?.id)
+                    .where((element) =>
+                        _product?.brand != null && element.brandId == _product?.brand!.id && element.id != _product?.id)
                     .isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -748,31 +740,42 @@ class _TrialItemMobileState extends State<TrialItemMobile> with TickerProviderSt
                           },
                           child: Text(
                             'View All',
-                            style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreyThree),
+                            style: TextHelper.normalTextStyle
+                                .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreyThree),
                           ),
                         ),
                       ],
                     ),
                   ),
                 if (provider.miniProducts
-                    .where((element) => _product?.brand != null && element.brandId == _product?.brand!.id && element.id != _product?.id)
+                    .where((element) =>
+                        _product?.brand != null && element.brandId == _product?.brand!.id && element.id != _product?.id)
                     .isNotEmpty)
                   SizedBox(height: height * .02),
                 if (provider.miniProducts
-                    .where((element) => _product?.brand != null && element.brandId == _product?.brand!.id && element.id != _product?.id)
+                    .where((element) =>
+                        _product?.brand != null && element.brandId == _product?.brand!.id && element.id != _product?.id)
                     .isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: CarouselSlider.builder(
-                      itemCount: (provider.miniProducts.where((element) => element.brandId == _product?.brandId).length > 10
-                          ? 10
-                          : provider.miniProducts.where((element) => element.brandId == _product?.brand?.id).length),
+                      itemCount:
+                          (provider.miniProducts.where((element) => element.brandId == _product?.brandId).length > 10
+                              ? 10
+                              : provider.miniProducts
+                                  .where((element) => element.brandId == _product?.brand?.id)
+                                  .length),
                       itemBuilder: (BuildContext context, int index, int i) {
-                        Product product = provider.miniProducts.where((element) => element.brandId == _product?.brandId).toList()[index];
+                        Product product = provider.miniProducts
+                            .where((element) => element.brandId == _product?.brandId)
+                            .toList()[index];
                         return MiniItems(
                           product: product,
-                          onProductClick: () =>
-                              _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider),
+                          onProductClick: () => _cartHelper.productClick(
+                              context: context,
+                              productId: product.id,
+                              productType: product.productType,
+                              provider: provider),
                           onProductTry: () => _cartHelper.tryNow(
                             provider: provider,
                             context: context,

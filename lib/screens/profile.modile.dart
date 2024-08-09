@@ -111,7 +111,7 @@ class _ProfileScreenMobileState extends State<ProfileScreenMobile> {
           dialogContextTwo = c;
           return CustomDialog(
             onTap: () {
-              dialogContextTwo?.popRoute();
+              dialogContextTwo?.maybePop();
               context.router.push(const CartRoute());
             },
             icon: 'assets/images/icons/done.png',
@@ -620,7 +620,7 @@ class _Dialog extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          context.router.pop();
+                          context.router.maybePop();
                           onTap();
                         },
                         child: Container(
@@ -647,7 +647,7 @@ class _Dialog extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          context.router.pop();
+                          context.router.maybePop();
                         },
                         child: Container(
                           width: width * .5,
@@ -727,7 +727,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             child: GestureDetector(
               onTap: () {
-                context.router.pop();
+                context.router.maybePop();
               },
               child: Container(
                 width: 30,

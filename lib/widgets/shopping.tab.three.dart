@@ -75,7 +75,8 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                         iconSize: 20,
                         icon: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 300),
-                          child: Icon(!paymentExpanded ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded),
+                          child: Icon(
+                              !paymentExpanded ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded),
                         ),
                       ),
                     ],
@@ -87,7 +88,10 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty)
+                      if (provider.cart != null &&
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.trialProduct)
+                              .isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
@@ -107,13 +111,21 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                           ),
                         ),
                       if (provider.cart != null &&
-                          provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                          provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.trialProduct)
+                              .isNotEmpty &&
+                          provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.trialProduct)
+                                  .length >
                               provider.appSettings!.generalSettings.itemQty)
                         SizedBox(height: height * .02),
                       if (provider.cart != null &&
-                          provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                          provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.trialProduct)
+                              .isNotEmpty &&
+                          provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.trialProduct)
+                                  .length >
                               provider.appSettings!.generalSettings.itemQty)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -134,10 +146,14 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                           ),
                         ),
                       if (provider.cart != null &&
-                          provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.brandStoreProduct)
+                              .isNotEmpty)
                         SizedBox(height: height * .02),
                       if (provider.cart != null &&
-                          provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.brandStoreProduct)
+                              .isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
@@ -156,9 +172,15 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                             ],
                           ),
                         ),
-                      if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                      if (provider.cart != null &&
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.hotDealProduct)
+                              .isNotEmpty)
                         SizedBox(height: height * .02),
-                      if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                      if (provider.cart != null &&
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.hotDealProduct)
+                              .isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
@@ -177,9 +199,15 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                             ],
                           ),
                         ),
-                      if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                      if (provider.cart != null &&
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.noTrailProduct)
+                              .isNotEmpty)
                         SizedBox(height: height * .02),
-                      if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                      if (provider.cart != null &&
+                          provider.cart!.records
+                              .where((element) => element.productType == StringConstants.noTrailProduct)
+                              .isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
@@ -354,7 +382,8 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                                   text: 'Pay on delivery',
                                   children: [
                                     TextSpan(
-                                      text: ' (${StringConstants.rupeeSign}${(provider.appSettings?.generalSettings.codCharge ?? 0)} COD charges)',
+                                      text:
+                                          ' (${StringConstants.rupeeSign}${(provider.appSettings?.generalSettings.codCharge ?? 0)} COD charges)',
                                       style: TextHelper.smallTextStyle.copyWith(
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -603,7 +632,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             right: 25,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 40,
                 height: 40,

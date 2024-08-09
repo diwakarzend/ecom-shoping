@@ -65,7 +65,9 @@ class _OrderCardState extends State<OrderCard> {
 
   cancelOrder(Order order) async {
     Future.delayed(const Duration(seconds: 0)).then(
-      (value) => ScaffoldLoaderDialog.of(context).hide(),
+      (value) {
+        if (mounted) ScaffoldLoaderDialog.of(context).hide();
+      },
     );
     try {
       final response = await _dioHelper.get(
@@ -81,7 +83,7 @@ class _OrderCardState extends State<OrderCard> {
         _appProvider.initWithLogin();
       }
       if (!mounted) return;
-      context.popRoute();
+      context.maybePop();
     } on DioException catch (_, e) {
       log(e.toString());
     }
@@ -300,11 +302,13 @@ class _OrderCardState extends State<OrderCard> {
                     children: [
                       Text(
                         'Products',
-                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.5)),
+                        style: TextHelper.normalTextStyle.copyWith(
+                            fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.5)),
                       ),
                       Text(
                         widget.order.products.length.toString(),
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.8)),
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.8)),
                       ),
                     ],
                   ),
@@ -317,11 +321,13 @@ class _OrderCardState extends State<OrderCard> {
                     children: [
                       Text(
                         'Order Price',
-                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.5)),
+                        style: TextHelper.normalTextStyle.copyWith(
+                            fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.5)),
                       ),
                       Text(
                         '\u{20B9}${widget.order.grandTotal.toDouble().toStringAsFixed(2)}',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.8)),
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w600, color: ColorConstants.colorGreyThree.withOpacity(0.8)),
                       ),
                     ],
                   ),
@@ -386,7 +392,7 @@ class _Dialog extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          context.router.pop();
+                          context.router.maybePop();
                           onTap();
                         },
                         child: Container(
@@ -413,7 +419,7 @@ class _Dialog extends StatelessWidget {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          context.router.pop();
+                          context.router.maybePop();
                         },
                         child: Container(
                           width: width * .5,
@@ -493,7 +499,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             child: GestureDetector(
               onTap: () {
-                context.router.pop();
+                context.router.maybePop();
               },
               child: Container(
                 width: 30,

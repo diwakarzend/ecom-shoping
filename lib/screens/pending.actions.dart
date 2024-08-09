@@ -71,7 +71,8 @@ class _PendingActionsState extends State<PendingActions> {
                               element.qualified &&
                               !element.rejected &&
                               provider.currentUser != null &&
-                              !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                              !provider.currentUser!.orders
+                                  .any((e) => e.products.any((o) => o.id == element.product?.id)))
                           .isNotEmpty,
                       badgeContent: Text(
                         provider.reports
@@ -82,7 +83,8 @@ class _PendingActionsState extends State<PendingActions> {
                                 element.qualified &&
                                 !element.rejected &&
                                 provider.currentUser != null &&
-                                !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                                !provider.currentUser!.orders
+                                    .any((e) => e.products.any((o) => o.id == element.product?.id)))
                             .length
                             .toString(),
                         style: TextHelper.subTitleStyle.copyWith(
@@ -124,7 +126,10 @@ class _PendingActionsState extends State<PendingActions> {
                       ),
                     ),
                   ),
-                  if (approvalExpanded && provider.reports.where((element) => element.productId != null && element.qualified && !element.rejected).isEmpty)
+                  if (approvalExpanded &&
+                      provider.reports
+                          .where((element) => element.productId != null && element.qualified && !element.rejected)
+                          .isEmpty)
                     Container(
                       margin: const EdgeInsets.only(bottom: 20),
                       alignment: Alignment.center,
@@ -143,7 +148,8 @@ class _PendingActionsState extends State<PendingActions> {
                             element.qualified &&
                             !element.rejected &&
                             provider.currentUser != null &&
-                            !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                            !provider.currentUser!.orders
+                                .any((e) => e.products.any((o) => o.id == element.product?.id)))
                         .map(
                       (e) {
                         return Container(
@@ -182,11 +188,13 @@ class _PendingActionsState extends State<PendingActions> {
                                       maxLines: 3,
                                       TextSpan(
                                         text: e.product?.brand != null ? e.product?.brand!.name : '',
-                                        style: TextHelper.extraSmallTextStyle.copyWith(color: ColorConstants.colorGreyThree, fontWeight: FontWeight.w600),
+                                        style: TextHelper.extraSmallTextStyle.copyWith(
+                                            color: ColorConstants.colorGreyThree, fontWeight: FontWeight.w600),
                                         children: [
                                           TextSpan(
                                             text: ' ${e.product?.name ?? ''}',
-                                            style: TextHelper.extraSmallTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreyThree),
+                                            style: TextHelper.extraSmallTextStyle.copyWith(
+                                                fontWeight: FontWeight.w500, color: ColorConstants.colorGreyThree),
                                           ),
                                         ],
                                       ),
@@ -206,7 +214,9 @@ class _PendingActionsState extends State<PendingActions> {
                                 ),
                               ),
                               if (provider.currentUser != null &&
-                                  provider.currentUser!.orders.where((element) => element.products.any((o) => o.id == e.product?.id)).isEmpty)
+                                  provider.currentUser!.orders
+                                      .where((element) => element.products.any((o) => o.id == e.product?.id))
+                                      .isEmpty)
                                 Container(
                                   width: 2,
                                   height: height * .04,
@@ -214,10 +224,14 @@ class _PendingActionsState extends State<PendingActions> {
                                   margin: const EdgeInsets.symmetric(horizontal: 10),
                                 ),
                               if (provider.currentUser != null &&
-                                  provider.currentUser!.orders.where((element) => element.products.any((o) => o.id == e.product?.id)).isEmpty)
+                                  provider.currentUser!.orders
+                                      .where((element) => element.products.any((o) => o.id == e.product?.id))
+                                      .isEmpty)
                                 InkWell(
                                   onTap: () {
-                                    if (e.product != null && provider.cart != null && !provider.cart!.records.any((element) => element.id == e.product?.id)) {
+                                    if (e.product != null &&
+                                        provider.cart != null &&
+                                        !provider.cart!.records.any((element) => element.id == e.product?.id)) {
                                       showModalBottomSheet(
                                         context: context,
                                         backgroundColor: Colors.transparent,
@@ -228,7 +242,7 @@ class _PendingActionsState extends State<PendingActions> {
                                           product: e.product!,
                                           onCheckout: () {
                                             provider.addCartItems(productID: e.productId ?? '');
-                                            context.router.pop();
+                                            context.router.maybePop();
                                             context.router.push(const CartRoute());
                                           },
                                           onContinue: () {
@@ -374,7 +388,12 @@ class _Dialog extends StatelessWidget {
   final Function() onCheckout;
   final Function() onContinue;
 
-  const _Dialog({required this.height, required this.width, required this.product, required this.onCheckout, required this.onContinue});
+  const _Dialog(
+      {required this.height,
+      required this.width,
+      required this.product,
+      required this.onCheckout,
+      required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -472,7 +491,8 @@ class _Dialog extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: 'An amount of ${StringConstants.rupeeSign}${product.serviceCharge} shall be payable towards service/delivery fee.',
+                            text:
+                                'An amount of ${StringConstants.rupeeSign}${product.serviceCharge} shall be payable towards service/delivery fee.',
                             style: TextHelper.smallTextStyle.copyWith(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
@@ -544,7 +564,7 @@ class _Dialog extends StatelessWidget {
             top: 10,
             right: 10,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 30,
                 height: 30,

@@ -270,7 +270,7 @@ class ScaffoldLoaderDialog {
   }
 
   void hide() {
-    _context.router.pop();
+    _context.router.maybePop();
   }
 }
 

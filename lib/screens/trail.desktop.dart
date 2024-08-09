@@ -12,7 +12,6 @@ import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 
@@ -33,22 +32,6 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
 
   bool gridview = true;
 
-  addFirebaseAnalyticsTrialProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'trial store',
-      itemListName: 'Trial store products',
-      items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
-
-  addFirebaseAnalyticsHotProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'trial store',
-      itemListName: 'Hot Deal products',
-      items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
-
   Brand? selectedBrand;
   Category? selectedCategory;
 
@@ -58,7 +41,9 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
     int count = 60;
     if (selectedBrand != null && trialIndex > 0) {
       List<Product> products = provider.miniProducts
-          .where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id && element.brandId == selectedBrand?.id)
+          .where((element) =>
+              element.category?.id == provider.miniCategories[(trialIndex - 1)].id &&
+              element.brandId == selectedBrand?.id)
           .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
@@ -66,14 +51,17 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
         return products;
       }
     } else if (selectedBrand != null && trialIndex == 0) {
-      List<Product> products = provider.miniProducts.where((element) => element.brand?.id == selectedBrand?.id).toList();
+      List<Product> products =
+          provider.miniProducts.where((element) => element.brand?.id == selectedBrand?.id).toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
         return products;
       }
     } else if (trialIndex > 0 && selectedBrand == null) {
-      List<Product> products = provider.miniProducts.where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id).toList();
+      List<Product> products = provider.miniProducts
+          .where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id)
+          .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
@@ -113,8 +101,6 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
     final height = MediaQuery.of(context).size.height;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsTrialProducts(provider);
-        addFirebaseAnalyticsHotProducts(provider);
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
@@ -244,11 +230,15 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
                     // margin: EdgeInsets.symmetric(horizontal: width * .12),
                     alignment: Alignment.center,
                     child: (provider.banners
-                            .where((element) => element.type == StringConstants.trialBanner && element.deviceType == StringConstants.deviceTypeD)
+                            .where((element) =>
+                                element.type == StringConstants.trialBanner &&
+                                element.deviceType == StringConstants.deviceTypeD)
                             .isNotEmpty)
                         ? CarouselSlider(
                             items: provider.banners
-                                .where((element) => element.type == StringConstants.trialBanner && element.deviceType == StringConstants.deviceTypeD)
+                                .where((element) =>
+                                    element.type == StringConstants.trialBanner &&
+                                    element.deviceType == StringConstants.deviceTypeD)
                                 .map(
                                   (e) => ClipRRect(
                                     borderRadius: BorderRadius.circular(0),
@@ -345,7 +335,11 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
                         return MiniItemDesktop(
                           product: product,
                           onProductClick: () {
-                            _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider);
+                            _cartHelper.productClick(
+                                context: context,
+                                productId: product.id,
+                                productType: product.productType,
+                                provider: provider);
                           },
                           onProductTry: () {
                             _cartHelper.tryNow(provider: provider, context: context, productId: product.id);

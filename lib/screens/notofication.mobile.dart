@@ -132,7 +132,9 @@ class _NotificationScreenMobileState extends State<NotificationScreenMobile> {
                                   const SizedBox(height: 5),
                                   InkWell(
                                     onTap: () {
-                                      if (e.product != null && provider.cart != null && !provider.cart!.records.any((element) => element.id == e.product?.id)) {
+                                      if (e.product != null &&
+                                          provider.cart != null &&
+                                          !provider.cart!.records.any((element) => element.id == e.product?.id)) {
                                         showModalBottomSheet(
                                           context: context,
                                           backgroundColor: Colors.transparent,
@@ -143,7 +145,7 @@ class _NotificationScreenMobileState extends State<NotificationScreenMobile> {
                                             product: e.product!,
                                             onCheckout: () {
                                               provider.addCartItems(productID: e.productId ?? '');
-                                              context.router.pop();
+                                              context.router.maybePop();
                                               context.router.push(const CartRoute());
                                             },
                                             onContinue: () {
@@ -221,7 +223,12 @@ class _Dialog extends StatelessWidget {
   final Function() onCheckout;
   final Function() onContinue;
 
-  const _Dialog({required this.height, required this.width, required this.product, required this.onCheckout, required this.onContinue});
+  const _Dialog(
+      {required this.height,
+      required this.width,
+      required this.product,
+      required this.onCheckout,
+      required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -319,7 +326,8 @@ class _Dialog extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: 'An amount of ${StringConstants.rupeeSign}${product.serviceCharge} shall be payable towards service/delivery fee.',
+                            text:
+                                'An amount of ${StringConstants.rupeeSign}${product.serviceCharge} shall be payable towards service/delivery fee.',
                             style: TextHelper.smallTextStyle.copyWith(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
@@ -391,7 +399,7 @@ class _Dialog extends StatelessWidget {
             top: 10,
             right: 10,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 30,
                 height: 30,

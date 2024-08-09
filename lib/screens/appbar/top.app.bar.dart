@@ -16,14 +16,8 @@ class TopAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    final height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
         return Column(
@@ -77,15 +71,13 @@ class TopAppBar extends StatelessWidget {
                         color: ColorConstants.colorBlack,
                       ),
                     ),
-                  if (provider.loginDetails != null) SizedBox(
-                      width: width * .01),
+                  if (provider.loginDetails != null) SizedBox(width: width * .01),
                   if (provider.loginDetails != null)
                     const Icon(
                       Icons.waving_hand,
                       color: Color(0xfffd9846),
                     ),
-                  if (provider.loginDetails != null) SizedBox(
-                      width: width * .01),
+                  if (provider.loginDetails != null) SizedBox(width: width * .01),
                   if (provider.loginDetails != null)
                     InkWell(
                       onTap: () {
@@ -97,8 +89,7 @@ class TopAppBar extends StatelessWidget {
                         size: 28,
                       ),
                     ),
-                  if (provider.loginDetails != null) SizedBox(
-                      width: width * .01),
+                  if (provider.loginDetails != null) SizedBox(width: width * .01),
                   if (provider.loginDetails == null)
                     InkWell(
                       onTap: () {
@@ -122,34 +113,31 @@ class TopAppBar extends StatelessWidget {
                     child: Badge(
                       showBadge: provider.reports
                           .where((element) =>
-                      element.product != null &&
-                          element.product!.stock > 0 &&
-                          element.productId != null &&
-                          element.qualified &&
-                          !element.rejected &&
-                          provider.currentUser != null &&
-                          !provider.currentUser!.orders.any((e) =>
-                              e.products.any((o) => o.id ==
-                                  element.product?.id)))
+                              element.product != null &&
+                              element.product!.stock > 0 &&
+                              element.productId != null &&
+                              element.qualified &&
+                              !element.rejected &&
+                              provider.currentUser != null &&
+                              !provider.currentUser!.orders
+                                  .any((e) => e.products.any((o) => o.id == element.product?.id)))
                           .isNotEmpty,
                       badgeStyle: const BadgeStyle(badgeColor: Colors.red),
                       position: BadgePosition.topEnd(top: -5, end: 0),
                       badgeContent: Text(
                         provider.reports
                             .where((element) =>
-                        element.product != null &&
-                            element.product!.stock > 0 &&
-                            element.productId != null &&
-                            element.qualified &&
-                            !element.rejected &&
-                            provider.currentUser != null &&
-                            !provider.currentUser!.orders.any((e) =>
-                                e.products.any((o) => o.id ==
-                                    element.product?.id)))
+                                element.product != null &&
+                                element.product!.stock > 0 &&
+                                element.productId != null &&
+                                element.qualified &&
+                                !element.rejected &&
+                                provider.currentUser != null &&
+                                !provider.currentUser!.orders
+                                    .any((e) => e.products.any((o) => o.id == element.product?.id)))
                             .length
                             .toString(),
-                        style: TextHelper.extraSmallTextStyle.copyWith(
-                            color: Colors.white, fontSize: 8.sp),
+                        style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
                       ),
                       child: const Icon(
                         Icons.notifications_outlined,
@@ -165,14 +153,12 @@ class TopAppBar extends StatelessWidget {
                       context.router.navigate(const WishlistRoute());
                     },
                     child: Badge(
-                      showBadge: provider.wishlist != null &&
-                          provider.wishlist!.count > 0,
+                      showBadge: provider.wishlist != null && provider.wishlist!.count > 0,
                       badgeStyle: const BadgeStyle(badgeColor: Colors.red),
                       position: BadgePosition.topEnd(top: -5, end: 0),
                       badgeContent: Text(
                         provider.wishlist?.count.toString() ?? '',
-                        style: TextHelper.extraSmallTextStyle.copyWith(
-                            color: Colors.white, fontSize: 8.sp),
+                        style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
                       ),
                       child: const Icon(
                         Icons.favorite_outline,
@@ -193,8 +179,7 @@ class TopAppBar extends StatelessWidget {
                       position: BadgePosition.topEnd(top: -5, end: 0),
                       badgeContent: Text(
                         provider.cart?.count.toString() ?? '',
-                        style: TextHelper.extraSmallTextStyle.copyWith(
-                            color: Colors.white, fontSize: 8.sp),
+                        style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
                       ),
                       child: const Icon(
                         Icons.shopping_cart_outlined,
@@ -205,15 +190,14 @@ class TopAppBar extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  ElevatedButton (
+                  ElevatedButton(
                     onPressed: _downloadAPK,
-                    child: Text('Download APK'),
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.black),
+                      foregroundColor: WidgetStateProperty.all(Colors.black),
                       // Text color
-                      side: MaterialStateProperty.all(
-                          BorderSide(color: Colors.blue, width: 2.0)), // Border
+                      side: WidgetStateProperty.all(const BorderSide(color: Colors.blue, width: 2.0)), // Border
                     ),
+                    child: const Text('Download APK'),
                   ),
                 ],
               ),
@@ -224,8 +208,8 @@ class TopAppBar extends StatelessWidget {
     );
   }
 }
+
 void _downloadAPK() async {
   const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/shipanshop1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }
-

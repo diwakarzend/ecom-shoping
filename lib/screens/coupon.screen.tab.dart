@@ -122,7 +122,9 @@ class _CouponScreenTabState extends State<CouponScreenTab> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ...provider.coupons
-                              .where((element) => element.expiryStatus == 1 && (provider.cart?.charges.grandTotal ?? 0) >= int.parse(element.cartValue))
+                              .where((element) =>
+                                  element.expiryStatus == 1 &&
+                                  (provider.cart?.charges.grandTotal ?? 0) >= int.parse(element.cartValue))
                               .map(
                                 (e) => Container(
                                   width: width,
@@ -144,7 +146,7 @@ class _CouponScreenTabState extends State<CouponScreenTab> {
                                         onChanged: (_) {
                                           provider.applyCoupon(e);
                                           ScaffoldSnackBar.of(context).show('Coupon applied successfully!');
-                                          context.router.pop();
+                                          context.router.maybePop();
                                         },
                                       ),
                                       Expanded(

@@ -13,7 +13,6 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
@@ -31,16 +30,6 @@ class CategoryProductsMobileScreen extends StatefulWidget {
 }
 
 class _CategoryProductsMobileScreenState extends State<CategoryProductsMobileScreen> {
-  addFirebaseAnalyticsRewardCategoryProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'category trial products store',
-      itemListName: 'category trial products store',
-      items: category != null
-          ? List<AnalyticsEventItem>.from(provider.miniProducts.where((p) => p.category?.id == category?.id).map((x) => x.toGAP()))
-          : List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
-
   bool listView = false;
   Brand? selectedBrand;
   Category? selectedCategory;
@@ -58,7 +47,9 @@ class _CategoryProductsMobileScreenState extends State<CategoryProductsMobileScr
   List<Product> generateList(AppProvider provider, int page) {
     int count = 6;
     if (selectedIndex == 0 && selectedBrand != null) {
-      List<Product> products = provider.miniProducts.where((element) => element.category?.id == category?.id && element.brandId == selectedBrand?.id).toList();
+      List<Product> products = provider.miniProducts
+          .where((element) => element.category?.id == category?.id && element.brandId == selectedBrand?.id)
+          .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
@@ -72,7 +63,9 @@ class _CategoryProductsMobileScreenState extends State<CategoryProductsMobileScr
         return products;
       }
     } else if (selectedIndex != 0 && selectedBrand != null) {
-      List<Product> products = provider.dealProducts.where((element) => element.category?.id == category?.id && element.brandId == selectedBrand?.id).toList();
+      List<Product> products = provider.dealProducts
+          .where((element) => element.category?.id == category?.id && element.brandId == selectedBrand?.id)
+          .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
@@ -114,7 +107,6 @@ class _CategoryProductsMobileScreenState extends State<CategoryProductsMobileScr
     final height = MediaQuery.of(context).size.height;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsRewardCategoryProducts(provider);
         initCategory(provider);
         return Scaffold(
           appBar: AppBar(
@@ -314,8 +306,11 @@ class _CategoryProductsMobileScreenState extends State<CategoryProductsMobileScr
                       return MiniItems(
                         key: Key(product.id),
                         product: product,
-                        onProductClick: () =>
-                            _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider),
+                        onProductClick: () => _cartHelper.productClick(
+                            context: context,
+                            productId: product.id,
+                            productType: product.productType,
+                            provider: provider),
                         onProductTry: () => _cartHelper.tryNow(
                           provider: provider,
                           context: context,
@@ -329,8 +324,11 @@ class _CategoryProductsMobileScreenState extends State<CategoryProductsMobileScr
                       return DealItems(
                         key: Key(product.id),
                         product: product,
-                        onProductClick: () =>
-                            _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider),
+                        onProductClick: () => _cartHelper.productClick(
+                            context: context,
+                            productId: product.id,
+                            productType: product.productType,
+                            provider: provider),
                         onAddToCart: () => _cartHelper.addToCart(
                           provider: provider,
                           context: context,

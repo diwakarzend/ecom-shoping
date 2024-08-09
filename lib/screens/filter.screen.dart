@@ -46,9 +46,13 @@ class _FilterScreenState extends State<FilterScreen> {
     switch (widget.screenName) {
       case 'brand_p':
         if (widget.productType == 'mini') {
-          return provider.categories.where((element) => provider.miniProducts.any((p) => p.category?.id == element.id)).toList();
+          return provider.categories
+              .where((element) => provider.miniProducts.any((p) => p.category?.id == element.id))
+              .toList();
         } else {
-          return provider.categories.where((element) => provider.sampleProducts.any((p) => p.category?.id == element.id)).toList();
+          return provider.categories
+              .where((element) => provider.sampleProducts.any((p) => p.category?.id == element.id))
+              .toList();
         }
       // case 'reward':
       //   return provider.categories
@@ -157,7 +161,8 @@ class _FilterScreenState extends State<FilterScreen> {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Brand',
-                              style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
+                              style: TextHelper.normalTextStyle
+                                  .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
                             ),
                           ),
                         ),
@@ -184,7 +189,8 @@ class _FilterScreenState extends State<FilterScreen> {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Category',
-                              style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
+                              style: TextHelper.normalTextStyle
+                                  .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
                             ),
                           ),
                         ),
@@ -245,7 +251,8 @@ class _FilterScreenState extends State<FilterScreen> {
                                           e.name,
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 1,
-                                          style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
+                                          style: TextHelper.normalTextStyle.copyWith(
+                                              fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
                                         ),
                                       ),
                                     ],
@@ -297,7 +304,8 @@ class _FilterScreenState extends State<FilterScreen> {
                                           e.name,
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
-                                          style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
+                                          style: TextHelper.normalTextStyle.copyWith(
+                                              fontWeight: FontWeight.w500, color: ColorConstants.colorGreySeventeen),
                                         ),
                                       ),
                                     ],
@@ -399,13 +407,15 @@ class _FilterScreenState extends State<FilterScreen> {
                                     setState(() {
                                       selectedBrand = selectedCategory = null;
                                     });
-                                    dialogContext?.popRoute();
+                                    dialogContext?.maybePop();
                                     widget.onSubmit(brand: selectedBrand, category: selectedCategory);
                                   },
                                   child: Text(
                                     'Discard',
-                                    style: TextHelper.normalTextStyle
-                                        .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorBlueFive, decoration: TextDecoration.none),
+                                    style: TextHelper.normalTextStyle.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                        color: ColorConstants.colorBlueFive,
+                                        decoration: TextDecoration.none),
                                   ),
                                 ),
                               ],

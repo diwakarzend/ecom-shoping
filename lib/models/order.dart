@@ -2,9 +2,6 @@
  * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
  */
 
-import 'package:fabpiks_web/constants.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-
 import 'models.dart';
 
 class Order {
@@ -216,17 +213,6 @@ class OrderItem {
       inventry: json['inventry'] ?? 0,
       rewards: json['rewards'] ?? 0,
       brand: json['brand'] != null ? OrderBrand.fromJson(json['brand']) : null,
-    );
-  }
-
-  AnalyticsEventItem toGAP() {
-    return AnalyticsEventItem(
-      itemId: id,
-      itemName: name,
-      itemBrand: brand?.name,
-      itemCategory: brand?.name,
-      currency: 'INR',
-      price: productType == StringConstants.hotDealProduct || productType == StringConstants.brandStoreProduct ? salePrice.toDouble() : 0.00,
     );
   }
 }

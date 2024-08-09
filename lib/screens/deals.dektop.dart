@@ -11,7 +11,6 @@ import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 
@@ -35,21 +34,15 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
   Brand? selectedBrand;
   Category? selectedCategory;
 
-  addFirebaseAnalyticsHotProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'hot deal store',
-      itemListName: 'Hot Deal Products',
-      items: List<AnalyticsEventItem>.from(provider.dealProducts.map((x) => x.toGAP())),
-    );
-  }
-
   int selectedPage = 1;
 
   List<Product> generateList(AppProvider provider, int page) {
     int count = 60;
     if (selectedBrand != null && trialIndex > 0) {
       List<Product> products = provider.dealProducts
-          .where((element) => element.category?.id == provider.dealCategories[(trialIndex - 1)].id && element.brandId == selectedBrand?.id)
+          .where((element) =>
+              element.category?.id == provider.dealCategories[(trialIndex - 1)].id &&
+              element.brandId == selectedBrand?.id)
           .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
@@ -57,14 +50,17 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
         return products;
       }
     } else if (selectedBrand != null && trialIndex == 0) {
-      List<Product> products = provider.dealProducts.where((element) => element.brand?.id == selectedBrand?.id).toList();
+      List<Product> products =
+          provider.dealProducts.where((element) => element.brand?.id == selectedBrand?.id).toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
         return products;
       }
     } else if (trialIndex > 0 && selectedBrand == null) {
-      List<Product> products = provider.dealProducts.where((element) => element.category?.id == provider.dealCategories[(trialIndex - 1)].id).toList();
+      List<Product> products = provider.dealProducts
+          .where((element) => element.category?.id == provider.dealCategories[(trialIndex - 1)].id)
+          .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
@@ -104,7 +100,6 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsHotProducts(provider);
         return Scaffold(
           drawer: CustomDrawerDesktop(
             provider: provider,
@@ -229,11 +224,15 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
                 ),
                 SizedBox(height: height * .06),
                 (provider.banners
-                        .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
+                        .where((element) =>
+                            element.type == StringConstants.referBanner &&
+                            element.deviceType == StringConstants.deviceTypeD)
                         .isNotEmpty)
                     ? CarouselSlider(
                         items: provider.banners
-                            .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
+                            .where((element) =>
+                                element.type == StringConstants.referBanner &&
+                                element.deviceType == StringConstants.deviceTypeD)
                             .map(
                               (e) => ClipRRect(
                                 // borderRadius: BorderRadius.circular(10),
@@ -329,8 +328,11 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
                       return DealItemDesktop(
                         key: Key(product.id),
                         product: product,
-                        onProductClick: () =>
-                            _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider),
+                        onProductClick: () => _cartHelper.productClick(
+                            context: context,
+                            productId: product.id,
+                            productType: product.productType,
+                            provider: provider),
                         onAddToCart: () => _cartHelper.addToCart(
                           provider: provider,
                           context: context,

@@ -12,11 +12,8 @@ class BottomAppBarPage extends StatefulWidget {
 }
 
 class _BottomAppBarPageState extends State<BottomAppBarPage> {
-  late UrlHelper _urlHelper;
-
   @override
   void initState() {
-    _urlHelper = UrlHelper.internal();
     super.initState();
   }
 

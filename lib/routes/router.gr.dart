@@ -58,408 +58,6 @@ import 'package:fabpiks_web/screens/wishlist.screen.dart' as _i45;
 import 'package:flutter/foundation.dart' as _i49;
 import 'package:flutter/material.dart' as _i47;
 
-abstract class $AppRouter extends _i46.RootStackRouter {
-  $AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, _i46.PageFactory> pagesMap = {
-    AboutRoute.name: (routeData) {
-      final args = routeData.argsAs<AboutRouteArgs>(
-          orElse: () => const AboutRouteArgs());
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i1.AboutScreen(
-          key: args.key,
-          onResult: args.onResult,
-        ),
-      );
-    },
-    AddAddressRoute.name: (routeData) {
-      final args = routeData.argsAs<AddAddressRouteArgs>();
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i2.AddAddress(
-          key: args.key,
-          fromCart: args.fromCart,
-        ),
-      );
-    },
-    AuthRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i3.AuthScreen(
-          key: args.key,
-          logOut: args.logOut,
-        ),
-      );
-    },
-    BrandItemRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<BrandItemRouteArgs>(
-          orElse: () =>
-              BrandItemRouteArgs(productId: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i4.BrandItemScreen(
-          key: args.key,
-          productId: args.productId,
-        ),
-      );
-    },
-    BrandProductsRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i5.BrandProductScreen(),
-      );
-    },
-    BrandTrialRoute.name: (routeData) {
-      final args = routeData.argsAs<BrandTrialRouteArgs>();
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i6.BrandTrialScreen(
-          key: args.key,
-          brand: args.brand,
-        ),
-      );
-    },
-    CategoryRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i7.CategoriesScreen(),
-      );
-    },
-    CategoryProductRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<CategoryProductRouteArgs>(
-          orElse: () =>
-              CategoryProductRouteArgs(categoryId: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i8.CategoryProductsScreen(
-          key: args.key,
-          categoryId: args.categoryId,
-        ),
-      );
-    },
-    CouponRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i9.CouponScreen(),
-      );
-    },
-    DealsRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i10.DealsScreen(),
-      );
-    },
-    EditAddressRoute.name: (routeData) {
-      final args = routeData.argsAs<EditAddressRouteArgs>();
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i11.EditAddress(
-          key: args.key,
-          shipping: args.shipping,
-        ),
-      );
-    },
-    FAQHelpRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i12.FAQHelp(),
-      );
-    },
-    FeedbackRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i13.FeedbackScreen(),
-      );
-    },
-    FilterRoute.name: (routeData) {
-      final args = routeData.argsAs<FilterRouteArgs>();
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i14.FilterScreen(
-          key: args.key,
-          onSubmit: args.onSubmit,
-          selectedBrand: args.selectedBrand,
-          selectedCategory: args.selectedCategory,
-          screenName: args.screenName,
-          productType: args.productType,
-        ),
-      );
-    },
-    HelpRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i15.HelpScreen(),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i16.HomeScreen(
-          key: args.key,
-          orderSuccess: args.orderSuccess,
-          order: args.order,
-        ),
-      );
-    },
-    HotItemRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<HotItemRouteArgs>(
-          orElse: () =>
-              HotItemRouteArgs(productId: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i17.HotItemScreen(
-          key: args.key,
-          productId: args.productId,
-        ),
-      );
-    },
-    ImageGalleryRoute.name: (routeData) {
-      final args = routeData.argsAs<ImageGalleryRouteArgs>();
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i18.ImageGallery(
-          key: args.key,
-          images: args.images,
-          index: args.index,
-        ),
-      );
-    },
-    LoginRoute.name: (routeData) {
-      final args = routeData.argsAs<LoginRouteArgs>(
-          orElse: () => const LoginRouteArgs());
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i19.LoginScreen(
-          key: args.key,
-          onResult: args.onResult,
-        ),
-      );
-    },
-    ExploreByBrandsRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i20.LoginScreen(),
-      );
-    },
-    NavigatorRoute.name: (routeData) {
-      final args = routeData.argsAs<NavigatorRouteArgs>(
-          orElse: () => const NavigatorRouteArgs());
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i21.NavigatorScreen(
-          key: args.key,
-          orderSuccess: args.orderSuccess,
-          order: args.order,
-        ),
-      );
-    },
-    NotificationRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i22.NotificationScreen(),
-      );
-    },
-    OrderDetailsRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<OrderDetailsRouteArgs>(
-          orElse: () =>
-              OrderDetailsRouteArgs(orderId: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i23.OrderDetails(
-          key: args.key,
-          orderId: args.orderId,
-        ),
-      );
-    },
-    OrderHelpRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i24.OrderHelp(),
-      );
-    },
-    OrderRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i25.OrdersScreen(),
-      );
-    },
-    PaymentFailed.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<PaymentFailedArgs>(
-          orElse: () =>
-              PaymentFailedArgs(paymentID: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i26.PaymentFailed(
-          key: args.key,
-          paymentID: args.paymentID,
-        ),
-      );
-    },
-    PaymentHelpRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i27.PaymentHelp(),
-      );
-    },
-    PaymentSuccess.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<PaymentSuccessArgs>(
-          orElse: () =>
-              PaymentSuccessArgs(paymentID: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i28.PaymentSuccess(
-          key: args.key,
-          paymentID: args.paymentID,
-        ),
-      );
-    },
-    PendingActionsRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i29.PendingActions(),
-      );
-    },
-    PrivacyPolicyRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i30.PrivacyPolicy(),
-      );
-    },
-    ProductSurveyRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<ProductSurveyRouteArgs>(
-          orElse: () =>
-              ProductSurveyRouteArgs(productId: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.ProductSurvey(
-          key: args.key,
-          productId: args.productId,
-        ),
-      );
-    },
-    ProfileRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i32.ProfileScreen(),
-      );
-    },
-    RatingRoute.name: (routeData) {
-      final args = routeData.argsAs<RatingRouteArgs>();
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i33.RatingScreen(
-          key: args.key,
-          product: args.product,
-        ),
-      );
-    },
-    RefundPolicyRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i34.RefundPolicy(),
-      );
-    },
-    ShoppingHelpRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i35.ShoppingHelp(),
-      );
-    },
-    CartRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i36.ShoppingScreen(),
-      );
-    },
-    ShoppingTabOneDesktop.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i37.ShoppingTabOneDesktop(),
-      );
-    },
-    ShoppingTabThreeDesktop.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<ShoppingTabThreeDesktopArgs>(
-          orElse: () => ShoppingTabThreeDesktopArgs(
-              addressId: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i38.ShoppingTabThreeDesktop(
-          key: args.key,
-          addressId: args.addressId,
-        ),
-      );
-    },
-    ShoppingTabTwoDesktop.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i39.ShoppingTabTwoDesktop(),
-      );
-    },
-    SignupRoute.name: (routeData) {
-      final args = routeData.argsAs<SignupRouteArgs>();
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i40.SignupScreen(
-          key: args.key,
-          onResult: args.onResult,
-          referCode: args.referCode,
-        ),
-      );
-    },
-    SplashRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i41.SplashScreen(),
-      );
-    },
-    TermsConditionRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i42.TermsCondition(),
-      );
-    },
-    TrialItemRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<TrialItemRouteArgs>(
-          orElse: () =>
-              TrialItemRouteArgs(productId: pathParams.getString('id')));
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i43.TrialItemScreen(
-          key: args.key,
-          productId: args.productId,
-        ),
-      );
-    },
-    TrialRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i44.TrialScreen(),
-      );
-    },
-    WishlistRoute.name: (routeData) {
-      return _i46.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i45.WishlistScreenAll(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [_i1.AboutScreen]
 class AboutRoute extends _i46.PageRouteInfo<AboutRouteArgs> {
@@ -478,8 +76,17 @@ class AboutRoute extends _i46.PageRouteInfo<AboutRouteArgs> {
 
   static const String name = 'AboutRoute';
 
-  static const _i46.PageInfo<AboutRouteArgs> page =
-      _i46.PageInfo<AboutRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args =
+          data.argsAs<AboutRouteArgs>(orElse: () => const AboutRouteArgs());
+      return _i1.AboutScreen(
+        key: args.key,
+        onResult: args.onResult,
+      );
+    },
+  );
 }
 
 class AboutRouteArgs {
@@ -516,8 +123,16 @@ class AddAddressRoute extends _i46.PageRouteInfo<AddAddressRouteArgs> {
 
   static const String name = 'AddAddressRoute';
 
-  static const _i46.PageInfo<AddAddressRouteArgs> page =
-      _i46.PageInfo<AddAddressRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<AddAddressRouteArgs>();
+      return _i2.AddAddress(
+        key: args.key,
+        fromCart: args.fromCart,
+      );
+    },
+  );
 }
 
 class AddAddressRouteArgs {
@@ -554,8 +169,17 @@ class AuthRoute extends _i46.PageRouteInfo<AuthRouteArgs> {
 
   static const String name = 'AuthRoute';
 
-  static const _i46.PageInfo<AuthRouteArgs> page =
-      _i46.PageInfo<AuthRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args =
+          data.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
+      return _i3.AuthScreen(
+        key: args.key,
+        logOut: args.logOut,
+      );
+    },
+  );
 }
 
 class AuthRouteArgs {
@@ -593,8 +217,19 @@ class BrandItemRoute extends _i46.PageRouteInfo<BrandItemRouteArgs> {
 
   static const String name = 'BrandItemRoute';
 
-  static const _i46.PageInfo<BrandItemRouteArgs> page =
-      _i46.PageInfo<BrandItemRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<BrandItemRouteArgs>(
+          orElse: () =>
+              BrandItemRouteArgs(productId: pathParams.getString('id')));
+      return _i4.BrandItemScreen(
+        key: args.key,
+        productId: args.productId,
+      );
+    },
+  );
 }
 
 class BrandItemRouteArgs {
@@ -624,7 +259,12 @@ class BrandProductsRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'BrandProductsRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i5.BrandProductScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -645,8 +285,16 @@ class BrandTrialRoute extends _i46.PageRouteInfo<BrandTrialRouteArgs> {
 
   static const String name = 'BrandTrialRoute';
 
-  static const _i46.PageInfo<BrandTrialRouteArgs> page =
-      _i46.PageInfo<BrandTrialRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BrandTrialRouteArgs>();
+      return _i6.BrandTrialScreen(
+        key: args.key,
+        brand: args.brand,
+      );
+    },
+  );
 }
 
 class BrandTrialRouteArgs {
@@ -676,7 +324,12 @@ class CategoryRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'CategoryRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i7.CategoriesScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -699,8 +352,19 @@ class CategoryProductRoute
 
   static const String name = 'CategoryProductRoute';
 
-  static const _i46.PageInfo<CategoryProductRouteArgs> page =
-      _i46.PageInfo<CategoryProductRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<CategoryProductRouteArgs>(
+          orElse: () =>
+              CategoryProductRouteArgs(categoryId: pathParams.getString('id')));
+      return _i8.CategoryProductsScreen(
+        key: args.key,
+        categoryId: args.categoryId,
+      );
+    },
+  );
 }
 
 class CategoryProductRouteArgs {
@@ -730,7 +394,12 @@ class CouponRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'CouponRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i9.CouponScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -744,7 +413,12 @@ class DealsRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'DealsRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i10.DealsScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -765,8 +439,16 @@ class EditAddressRoute extends _i46.PageRouteInfo<EditAddressRouteArgs> {
 
   static const String name = 'EditAddressRoute';
 
-  static const _i46.PageInfo<EditAddressRouteArgs> page =
-      _i46.PageInfo<EditAddressRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<EditAddressRouteArgs>();
+      return _i11.EditAddress(
+        key: args.key,
+        shipping: args.shipping,
+      );
+    },
+  );
 }
 
 class EditAddressRouteArgs {
@@ -796,7 +478,12 @@ class FAQHelpRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'FAQHelpRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i12.FAQHelp();
+    },
+  );
 }
 
 /// generated route for
@@ -810,7 +497,12 @@ class FeedbackRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'FeedbackRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i13.FeedbackScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -842,8 +534,20 @@ class FilterRoute extends _i46.PageRouteInfo<FilterRouteArgs> {
 
   static const String name = 'FilterRoute';
 
-  static const _i46.PageInfo<FilterRouteArgs> page =
-      _i46.PageInfo<FilterRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<FilterRouteArgs>();
+      return _i14.FilterScreen(
+        key: args.key,
+        onSubmit: args.onSubmit,
+        selectedBrand: args.selectedBrand,
+        selectedCategory: args.selectedCategory,
+        screenName: args.screenName,
+        productType: args.productType,
+      );
+    },
+  );
 }
 
 class FilterRouteArgs {
@@ -888,7 +592,12 @@ class HelpRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'HelpRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i15.HelpScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -911,8 +620,18 @@ class HomeRoute extends _i46.PageRouteInfo<HomeRouteArgs> {
 
   static const String name = 'HomeRoute';
 
-  static const _i46.PageInfo<HomeRouteArgs> page =
-      _i46.PageInfo<HomeRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args =
+          data.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      return _i16.HomeScreen(
+        key: args.key,
+        orderSuccess: args.orderSuccess,
+        order: args.order,
+      );
+    },
+  );
 }
 
 class HomeRouteArgs {
@@ -953,8 +672,19 @@ class HotItemRoute extends _i46.PageRouteInfo<HotItemRouteArgs> {
 
   static const String name = 'HotItemRoute';
 
-  static const _i46.PageInfo<HotItemRouteArgs> page =
-      _i46.PageInfo<HotItemRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<HotItemRouteArgs>(
+          orElse: () =>
+              HotItemRouteArgs(productId: pathParams.getString('id')));
+      return _i17.HotItemScreen(
+        key: args.key,
+        productId: args.productId,
+      );
+    },
+  );
 }
 
 class HotItemRouteArgs {
@@ -993,8 +723,17 @@ class ImageGalleryRoute extends _i46.PageRouteInfo<ImageGalleryRouteArgs> {
 
   static const String name = 'ImageGalleryRoute';
 
-  static const _i46.PageInfo<ImageGalleryRouteArgs> page =
-      _i46.PageInfo<ImageGalleryRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ImageGalleryRouteArgs>();
+      return _i18.ImageGallery(
+        key: args.key,
+        images: args.images,
+        index: args.index,
+      );
+    },
+  );
 }
 
 class ImageGalleryRouteArgs {
@@ -1034,8 +773,17 @@ class LoginRoute extends _i46.PageRouteInfo<LoginRouteArgs> {
 
   static const String name = 'LoginRoute';
 
-  static const _i46.PageInfo<LoginRouteArgs> page =
-      _i46.PageInfo<LoginRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args =
+          data.argsAs<LoginRouteArgs>(orElse: () => const LoginRouteArgs());
+      return _i19.LoginScreen(
+        key: args.key,
+        onResult: args.onResult,
+      );
+    },
+  );
 }
 
 class LoginRouteArgs {
@@ -1065,7 +813,12 @@ class ExploreByBrandsRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'ExploreByBrandsRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i20.LoginScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -1088,8 +841,18 @@ class NavigatorRoute extends _i46.PageRouteInfo<NavigatorRouteArgs> {
 
   static const String name = 'NavigatorRoute';
 
-  static const _i46.PageInfo<NavigatorRouteArgs> page =
-      _i46.PageInfo<NavigatorRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<NavigatorRouteArgs>(
+          orElse: () => const NavigatorRouteArgs());
+      return _i21.NavigatorScreen(
+        key: args.key,
+        orderSuccess: args.orderSuccess,
+        order: args.order,
+      );
+    },
+  );
 }
 
 class NavigatorRouteArgs {
@@ -1122,7 +885,12 @@ class NotificationRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'NotificationRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i22.NotificationScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -1144,8 +912,19 @@ class OrderDetailsRoute extends _i46.PageRouteInfo<OrderDetailsRouteArgs> {
 
   static const String name = 'OrderDetailsRoute';
 
-  static const _i46.PageInfo<OrderDetailsRouteArgs> page =
-      _i46.PageInfo<OrderDetailsRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<OrderDetailsRouteArgs>(
+          orElse: () =>
+              OrderDetailsRouteArgs(orderId: pathParams.getString('id')));
+      return _i23.OrderDetails(
+        key: args.key,
+        orderId: args.orderId,
+      );
+    },
+  );
 }
 
 class OrderDetailsRouteArgs {
@@ -1175,7 +954,12 @@ class OrderHelpRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'OrderHelpRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i24.OrderHelp();
+    },
+  );
 }
 
 /// generated route for
@@ -1189,7 +973,12 @@ class OrderRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'OrderRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i25.OrdersScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -1211,8 +1000,19 @@ class PaymentFailed extends _i46.PageRouteInfo<PaymentFailedArgs> {
 
   static const String name = 'PaymentFailed';
 
-  static const _i46.PageInfo<PaymentFailedArgs> page =
-      _i46.PageInfo<PaymentFailedArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<PaymentFailedArgs>(
+          orElse: () =>
+              PaymentFailedArgs(paymentID: pathParams.getString('id')));
+      return _i26.PaymentFailed(
+        key: args.key,
+        paymentID: args.paymentID,
+      );
+    },
+  );
 }
 
 class PaymentFailedArgs {
@@ -1242,7 +1042,12 @@ class PaymentHelpRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'PaymentHelpRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i27.PaymentHelp();
+    },
+  );
 }
 
 /// generated route for
@@ -1264,8 +1069,19 @@ class PaymentSuccess extends _i46.PageRouteInfo<PaymentSuccessArgs> {
 
   static const String name = 'PaymentSuccess';
 
-  static const _i46.PageInfo<PaymentSuccessArgs> page =
-      _i46.PageInfo<PaymentSuccessArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<PaymentSuccessArgs>(
+          orElse: () =>
+              PaymentSuccessArgs(paymentID: pathParams.getString('id')));
+      return _i28.PaymentSuccess(
+        key: args.key,
+        paymentID: args.paymentID,
+      );
+    },
+  );
 }
 
 class PaymentSuccessArgs {
@@ -1295,7 +1111,12 @@ class PendingActionsRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'PendingActionsRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i29.PendingActions();
+    },
+  );
 }
 
 /// generated route for
@@ -1309,7 +1130,12 @@ class PrivacyPolicyRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'PrivacyPolicyRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i30.PrivacyPolicy();
+    },
+  );
 }
 
 /// generated route for
@@ -1331,8 +1157,19 @@ class ProductSurveyRoute extends _i46.PageRouteInfo<ProductSurveyRouteArgs> {
 
   static const String name = 'ProductSurveyRoute';
 
-  static const _i46.PageInfo<ProductSurveyRouteArgs> page =
-      _i46.PageInfo<ProductSurveyRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<ProductSurveyRouteArgs>(
+          orElse: () =>
+              ProductSurveyRouteArgs(productId: pathParams.getString('id')));
+      return _i31.ProductSurvey(
+        key: args.key,
+        productId: args.productId,
+      );
+    },
+  );
 }
 
 class ProductSurveyRouteArgs {
@@ -1362,7 +1199,12 @@ class ProfileRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'ProfileRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i32.ProfileScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -1383,8 +1225,16 @@ class RatingRoute extends _i46.PageRouteInfo<RatingRouteArgs> {
 
   static const String name = 'RatingRoute';
 
-  static const _i46.PageInfo<RatingRouteArgs> page =
-      _i46.PageInfo<RatingRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<RatingRouteArgs>();
+      return _i33.RatingScreen(
+        key: args.key,
+        product: args.product,
+      );
+    },
+  );
 }
 
 class RatingRouteArgs {
@@ -1414,7 +1264,12 @@ class RefundPolicyRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'RefundPolicyRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i34.RefundPolicy();
+    },
+  );
 }
 
 /// generated route for
@@ -1428,7 +1283,12 @@ class ShoppingHelpRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'ShoppingHelpRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i35.ShoppingHelp();
+    },
+  );
 }
 
 /// generated route for
@@ -1442,7 +1302,12 @@ class CartRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'CartRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i36.ShoppingScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -1456,7 +1321,12 @@ class ShoppingTabOneDesktop extends _i46.PageRouteInfo<void> {
 
   static const String name = 'ShoppingTabOneDesktop';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i37.ShoppingTabOneDesktop();
+    },
+  );
 }
 
 /// generated route for
@@ -1479,8 +1349,19 @@ class ShoppingTabThreeDesktop
 
   static const String name = 'ShoppingTabThreeDesktop';
 
-  static const _i46.PageInfo<ShoppingTabThreeDesktopArgs> page =
-      _i46.PageInfo<ShoppingTabThreeDesktopArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<ShoppingTabThreeDesktopArgs>(
+          orElse: () => ShoppingTabThreeDesktopArgs(
+              addressId: pathParams.getString('id')));
+      return _i38.ShoppingTabThreeDesktop(
+        key: args.key,
+        addressId: args.addressId,
+      );
+    },
+  );
 }
 
 class ShoppingTabThreeDesktopArgs {
@@ -1510,7 +1391,12 @@ class ShoppingTabTwoDesktop extends _i46.PageRouteInfo<void> {
 
   static const String name = 'ShoppingTabTwoDesktop';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i39.ShoppingTabTwoDesktop();
+    },
+  );
 }
 
 /// generated route for
@@ -1533,8 +1419,17 @@ class SignupRoute extends _i46.PageRouteInfo<SignupRouteArgs> {
 
   static const String name = 'SignupRoute';
 
-  static const _i46.PageInfo<SignupRouteArgs> page =
-      _i46.PageInfo<SignupRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SignupRouteArgs>();
+      return _i40.SignupScreen(
+        key: args.key,
+        onResult: args.onResult,
+        referCode: args.referCode,
+      );
+    },
+  );
 }
 
 class SignupRouteArgs {
@@ -1567,7 +1462,12 @@ class SplashRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i41.SplashScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -1581,7 +1481,12 @@ class TermsConditionRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'TermsConditionRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i42.TermsCondition();
+    },
+  );
 }
 
 /// generated route for
@@ -1603,8 +1508,19 @@ class TrialItemRoute extends _i46.PageRouteInfo<TrialItemRouteArgs> {
 
   static const String name = 'TrialItemRoute';
 
-  static const _i46.PageInfo<TrialItemRouteArgs> page =
-      _i46.PageInfo<TrialItemRouteArgs>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<TrialItemRouteArgs>(
+          orElse: () =>
+              TrialItemRouteArgs(productId: pathParams.getString('id')));
+      return _i43.TrialItemScreen(
+        key: args.key,
+        productId: args.productId,
+      );
+    },
+  );
 }
 
 class TrialItemRouteArgs {
@@ -1634,7 +1550,12 @@ class TrialRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'TrialRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i44.TrialScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -1648,5 +1569,10 @@ class WishlistRoute extends _i46.PageRouteInfo<void> {
 
   static const String name = 'WishlistRoute';
 
-  static const _i46.PageInfo<void> page = _i46.PageInfo<void>(name);
+  static _i46.PageInfo page = _i46.PageInfo(
+    name,
+    builder: (data) {
+      return const _i45.WishlistScreenAll();
+    },
+  );
 }

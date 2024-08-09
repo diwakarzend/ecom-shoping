@@ -10,7 +10,6 @@ import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
@@ -26,14 +25,6 @@ class BrandProductScreenMobile extends StatefulWidget {
 }
 
 class _BrandProductScreenMobileState extends State<BrandProductScreenMobile> {
-  addFirebaseAnalyticsBrandProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'brand store',
-      itemListName: 'Brand store products',
-      items: List<AnalyticsEventItem>.from(provider.dealProducts.map((x) => x.toGAP())),
-    );
-  }
-
   bool listView = false;
   Brand? selectedBrand;
   Category? selectedCategory;
@@ -49,7 +40,6 @@ class _BrandProductScreenMobileState extends State<BrandProductScreenMobile> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsBrandProducts(provider);
         return Scaffold(
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -60,14 +50,18 @@ class _BrandProductScreenMobileState extends State<BrandProductScreenMobile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (provider.banners
-                    .where((element) => element.type == StringConstants.brandBanner && element.deviceType == StringConstants.deviceTypeM)
+                    .where((element) =>
+                        element.type == StringConstants.brandBanner &&
+                        element.deviceType == StringConstants.deviceTypeM)
                     .isNotEmpty)
                   Padding(
                     padding: EdgeInsets.fromLTRB(20, height * .03, 20, 0),
                     child: CarouselSlider(
                       items: [
                         ...provider.banners
-                            .where((element) => element.type == StringConstants.brandBanner && element.deviceType == StringConstants.deviceTypeM)
+                            .where((element) =>
+                                element.type == StringConstants.brandBanner &&
+                                element.deviceType == StringConstants.deviceTypeM)
                             .map(
                               (e) => Container(
                                 key: Key(e.id),
@@ -242,12 +236,15 @@ class _BrandProductScreenMobileState extends State<BrandProductScreenMobile> {
                   children: [
                     if (selectedBrand != null && trialIndex > 0)
                       ...provider.sampleProducts
-                          .where((element) => element.category?.id == provider.sampleCategories[(trialIndex - 1)].id && element.brandId == selectedBrand?.id)
+                          .where((element) =>
+                              element.category?.id == provider.sampleCategories[(trialIndex - 1)].id &&
+                              element.brandId == selectedBrand?.id)
                           .map(
                             (e) => SampleItems(
                               key: Key(e.id),
                               product: e,
-                              onProductClick: () => _cartHelper.productClick(context: context, provider: provider, productId: e.id, productType: e.productType),
+                              onProductClick: () => _cartHelper.productClick(
+                                  context: context, provider: provider, productId: e.id, productType: e.productType),
                               onTry: () => _cartHelper.applyToTry(
                                 provider: provider,
                                 context: context,
@@ -265,7 +262,8 @@ class _BrandProductScreenMobileState extends State<BrandProductScreenMobile> {
                             (e) => SampleItems(
                               key: Key(e.id),
                               product: e,
-                              onProductClick: () => _cartHelper.productClick(context: context, provider: provider, productType: e.productType, productId: e.id),
+                              onProductClick: () => _cartHelper.productClick(
+                                  context: context, provider: provider, productType: e.productType, productId: e.id),
                               onTry: () => _cartHelper.applyToTry(
                                 provider: provider,
                                 context: context,
@@ -279,11 +277,14 @@ class _BrandProductScreenMobileState extends State<BrandProductScreenMobile> {
                             ),
                           )
                     else if (trialIndex > 0 && selectedBrand == null)
-                      ...provider.sampleProducts.where((element) => element.category?.id == provider.sampleCategories[(trialIndex - 1)].id).map(
+                      ...provider.sampleProducts
+                          .where((element) => element.category?.id == provider.sampleCategories[(trialIndex - 1)].id)
+                          .map(
                             (e) => SampleItems(
                               key: Key(e.id),
                               product: e,
-                              onProductClick: () => _cartHelper.productClick(context: context, productType: e.productType, productId: e.id, provider: provider),
+                              onProductClick: () => _cartHelper.productClick(
+                                  context: context, productType: e.productType, productId: e.id, provider: provider),
                               onTry: () => _cartHelper.applyToTry(
                                 provider: provider,
                                 context: context,
@@ -301,7 +302,8 @@ class _BrandProductScreenMobileState extends State<BrandProductScreenMobile> {
                         (e) => SampleItems(
                           key: Key(e.id),
                           product: e,
-                          onProductClick: () => _cartHelper.productClick(context: context, provider: provider, productId: e.id, productType: e.productType),
+                          onProductClick: () => _cartHelper.productClick(
+                              context: context, provider: provider, productId: e.id, productType: e.productType),
                           onTry: () => _cartHelper.applyToTry(
                             provider: provider,
                             context: context,

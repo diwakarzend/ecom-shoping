@@ -65,7 +65,8 @@ class _ProductRatingSheetState extends State<ProductRatingSheet> {
               Expanded(
                 child: Text(
                   widget.product.name,
-                  style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w600, color: Colors.black.withOpacity(0.6)),
+                  style: TextHelper.normalTextStyle
+                      .copyWith(fontWeight: FontWeight.w600, color: Colors.black.withOpacity(0.6)),
                 ),
               ),
             ],
@@ -123,7 +124,7 @@ class _ProductRatingSheetState extends State<ProductRatingSheet> {
           InkWell(
             onTap: () {
               if (rating > 0) {
-                context.popRoute();
+                context.router.maybePop();
                 widget.onSubmit(rating, controller.text);
               }
             },

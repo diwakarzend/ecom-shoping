@@ -135,38 +135,41 @@ class _ProductSurveyDesktopState extends State<ProductSurveyDesktop> {
         provider.addCartItems(productID: _product!.id);
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
+            if (!mounted) return;
+            context.router.maybePop().then(
               (_) {
                 BuildContext? dialogContext;
                 try {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (c) {
-                      dialogContext = c;
-                      return CustomDialog(
-                        onTap: () {
-                          dialogContext?.popRoute().then(
-                                (value) => Future.delayed(const Duration(seconds: 0)).then(
-                                  (value) => dialogContext?.router.popUntilRouteWithName(HomeRoute.name),
-                                ),
-                              );
-                        },
-                        onClose: () {
-                          dialogContext?.popRoute().then(
-                                (value) => Future.delayed(const Duration(seconds: 0)).then(
-                                  (value) => dialogContext?.router.popUntilRouteWithName(HomeRoute.name),
-                                ),
-                              );
-                        },
-                        icon: 'assets/images/icons/done.png',
-                        buttonName: 'Okay',
-                        title: 'Yay!\nYou are qualified for the FREE SAMPLE!',
-                        message: 'Proceed to cart and place your order',
-                        haveButtons: true,
-                      );
-                    },
-                  );
+                  if (mounted) {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (c) {
+                        dialogContext = c;
+                        return CustomDialog(
+                          onTap: () {
+                            dialogContext?.maybePop().then(
+                                  (value) => Future.delayed(const Duration(seconds: 0)).then(
+                                    (value) => dialogContext?.router.popUntilRouteWithName(HomeRoute.name),
+                                  ),
+                                );
+                          },
+                          onClose: () {
+                            dialogContext?.maybePop().then(
+                                  (value) => Future.delayed(const Duration(seconds: 0)).then(
+                                    (value) => dialogContext?.router.popUntilRouteWithName(HomeRoute.name),
+                                  ),
+                                );
+                          },
+                          icon: 'assets/images/icons/done.png',
+                          buttonName: 'Okay',
+                          title: 'Yay!\nYou are qualified for the FREE SAMPLE!',
+                          message: 'Proceed to cart and place your order',
+                          haveButtons: true,
+                        );
+                      },
+                    );
+                  }
                 } catch (e) {
                   debugPrint(e.toString());
                 }
@@ -177,37 +180,45 @@ class _ProductSurveyDesktopState extends State<ProductSurveyDesktop> {
       } else {
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
-              (_) {
-                BuildContext? dialogContext;
-                try {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (c) {
-                      dialogContext = c;
-                      return CustomDialog(
-                        onTap: () {
-                          dialogContext?.popRoute();
+            if (mounted) {
+              context.router.maybePop().then(
+                (_) {
+                  BuildContext? dialogContext;
+                  try {
+                    if (mounted) {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (c) {
+                          dialogContext = c;
+                          return CustomDialog(
+                            onTap: () {
+                              dialogContext?.maybePop();
+                            },
+                            onClose: () {
+                              dialogContext?.maybePop();
+                              Future.delayed(const Duration(seconds: 0)).then((value) {
+                                if (mounted) {
+                                  context.router.popUntilRouteWithName(NavigatorRoute.name);
+                                }
+                              });
+                            },
+                            icon: 'assets/images/icons/done.png',
+                            buttonName: '',
+                            title: '',
+                            message:
+                                'Thanks for your interest in the offer. We shall notify you if you are eligible. \nNote: Only qualified users will receive a notification.',
+                            haveButtons: false,
+                          );
                         },
-                        onClose: () {
-                          dialogContext?.popRoute();
-                          Future.delayed(const Duration(seconds: 0)).then((value) => context.router.popUntilRouteWithName(NavigatorRoute.name));
-                        },
-                        icon: 'assets/images/icons/done.png',
-                        buttonName: '',
-                        title: '',
-                        message:
-                            'Thanks for your interest in the offer. We shall notify you if you are eligible. \nNote: Only qualified users will receive a notification.',
-                        haveButtons: false,
                       );
-                    },
-                  );
-                } catch (e) {
-                  debugPrint(e.toString());
-                }
-              },
-            );
+                    }
+                  } catch (e) {
+                    debugPrint(e.toString());
+                  }
+                },
+              );
+            }
           },
         );
       }
@@ -259,10 +270,10 @@ class _ProductSurveyDesktopState extends State<ProductSurveyDesktop> {
                                 maxLines: 5,
                                 style: TextHelper.smallTextStyle.copyWith(
                                   fontWeight: FontWeight.w500,
-                                  color:
-                                      answers.firstWhere((element) => element.id == e.id).validated && answers.firstWhere((element) => element.id == e.id).error
-                                          ? ColorConstants.colorRedFour
-                                          : Colors.black,
+                                  color: answers.firstWhere((element) => element.id == e.id).validated &&
+                                          answers.firstWhere((element) => element.id == e.id).error
+                                      ? ColorConstants.colorRedFour
+                                      : Colors.black,
                                 ),
                               ),
                               const SizedBox(height: 34),
@@ -327,7 +338,8 @@ class _ProductSurveyDesktopState extends State<ProductSurveyDesktop> {
                             alignment: Alignment.center,
                             child: Text(
                               'Submit',
-                              style: TextHelper.normalTextStyle.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                              style:
+                                  TextHelper.normalTextStyle.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),

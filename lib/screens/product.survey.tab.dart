@@ -136,10 +136,12 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
         provider.addCartItems(productID: _product?.id ?? '');
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
+            if (!mounted) return;
+            context.router.maybePop().then(
               (_) {
                 BuildContext? dialogContext;
                 try {
+                  if (!mounted) return;
                   showDialog(
                     context: context,
                     barrierDismissible: false,
@@ -147,11 +149,13 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
                       dialogContext = c;
                       return CustomDialog(
                         onTap: () {
-                          dialogContext?.popRoute();
+                          dialogContext?.maybePop();
                         },
                         onClose: () {
-                          dialogContext?.popRoute();
-                          Future.delayed(const Duration(seconds: 0)).then((value) => context.router.popUntilRouteWithName(NavigatorRoute.name));
+                          dialogContext?.maybePop();
+                          Future.delayed(const Duration(seconds: 0)).then((value) {
+                            if (mounted) context.router.popUntilRouteWithName(NavigatorRoute.name);
+                          });
                         },
                         icon: 'assets/images/icons/done.png',
                         buttonName: 'Okay',
@@ -171,37 +175,43 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
       } else {
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
-              (_) {
-                BuildContext? dialogContext;
-                try {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (c) {
-                      dialogContext = c;
-                      return CustomDialog(
-                        onTap: () {
-                          dialogContext?.popRoute();
+            if (mounted) {
+              context.router.maybePop().then(
+                (_) {
+                  BuildContext? dialogContext;
+                  try {
+                    if (mounted) {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (c) {
+                          dialogContext = c;
+                          return CustomDialog(
+                            onTap: () {
+                              dialogContext?.maybePop();
+                            },
+                            onClose: () {
+                              dialogContext?.maybePop();
+                              Future.delayed(const Duration(seconds: 0)).then((value) {
+                                if (mounted) context.router.popUntilRouteWithName(NavigatorRoute.name);
+                              });
+                            },
+                            icon: 'assets/images/icons/done.png',
+                            buttonName: '',
+                            title: '',
+                            message:
+                                'Thanks for your interest in the offer. We shall notify you if you are eligible. \nNote: Only qualified users will receive a notification.',
+                            haveButtons: false,
+                          );
                         },
-                        onClose: () {
-                          dialogContext?.popRoute();
-                          Future.delayed(const Duration(seconds: 0)).then((value) => context.router.popUntilRouteWithName(NavigatorRoute.name));
-                        },
-                        icon: 'assets/images/icons/done.png',
-                        buttonName: '',
-                        title: '',
-                        message:
-                            'Thanks for your interest in the offer. We shall notify you if you are eligible. \nNote: Only qualified users will receive a notification.',
-                        haveButtons: false,
                       );
-                    },
-                  );
-                } catch (e) {
-                  debugPrint(e.toString());
-                }
-              },
-            );
+                    }
+                  } catch (e) {
+                    debugPrint(e.toString());
+                  }
+                },
+              );
+            }
           },
         );
       }
@@ -249,7 +259,8 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
                           maxLines: 5,
                           style: TextHelper.subTitleStyle.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: answers.firstWhere((element) => element.id == e.id).validated && answers.firstWhere((element) => element.id == e.id).error
+                            color: answers.firstWhere((element) => element.id == e.id).validated &&
+                                    answers.firstWhere((element) => element.id == e.id).error
                                 ? ColorConstants.colorRedFour
                                 : Colors.black,
                           ),

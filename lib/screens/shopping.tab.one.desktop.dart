@@ -7,7 +7,7 @@ import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/screens/screens.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -27,8 +27,8 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
   final CartHelper _cartHelper = CartHelper();
 
   bool supportExpanded = false;
-  final CarouselController _miniController = CarouselController();
-  final CarouselController _dealController = CarouselController();
+  // final CarouselController _miniController = CarouselController();
+  // final CarouselController _dealController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,8 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                         ),
                         Text(
                           'Your Cart is empty!',
-                          style: TextHelper.smallTextStyle.copyWith(color: Colors.black.withOpacity(0.6), fontSize: 13.sp),
+                          style:
+                              TextHelper.smallTextStyle.copyWith(color: Colors.black.withOpacity(0.6), fontSize: 13.sp),
                         ),
                         SizedBox(height: height * .02),
                         Padding(
@@ -158,18 +159,22 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                               builder: (c) => DeleteCartItem(
                                                 product: e,
                                                 remove: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.deleteCartItem(e.id);
                                                 },
                                                 move: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.moveCartItem(e.productId);
                                                 },
                                               ),
                                             );
                                           },
                                           onClick: () {
-                                            _cartHelper.productClick(context: context, provider: provider, productType: e.productType, productId: e.productId);
+                                            _cartHelper.productClick(
+                                                context: context,
+                                                provider: provider,
+                                                productType: e.productType,
+                                                productId: e.productId);
                                           },
                                         );
                                       case StringConstants.brandStoreProduct:
@@ -182,18 +187,22 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                               builder: (c) => DeleteCartItem(
                                                 product: e,
                                                 remove: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.deleteCartItem(e.id);
                                                 },
                                                 move: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.moveCartItem(e.productId);
                                                 },
                                               ),
                                             );
                                           },
                                           onClick: () {
-                                            _cartHelper.productClick(context: context, provider: provider, productType: e.productType, productId: e.productId);
+                                            _cartHelper.productClick(
+                                                context: context,
+                                                provider: provider,
+                                                productType: e.productType,
+                                                productId: e.productId);
                                           },
                                         );
                                       // case rewardStoreProduct:
@@ -211,11 +220,11 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                       //         builder: (c) => DeleteCartItem(
                                       //           product: e,
                                       //           remove: () {
-                                      //             context.router.pop();
+                                      //             context.router.maybePop();
                                       //             provider.deleteCartItem(e);
                                       //           },
                                       //           move: () {
-                                      //             context.router.pop();
+                                      //             context.router.maybePop();
                                       //             provider.moveCartItem(e);
                                       //           },
                                       //         ),
@@ -243,18 +252,22 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                               builder: (c) => DeleteCartItem(
                                                 product: e,
                                                 remove: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.deleteCartItem(e.id);
                                                 },
                                                 move: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.moveCartItem(e.productId);
                                                 },
                                               ),
                                             );
                                           },
                                           onClick: () {
-                                            _cartHelper.productClick(context: context, provider: provider, productType: e.productType, productId: e.productId);
+                                            _cartHelper.productClick(
+                                                context: context,
+                                                provider: provider,
+                                                productType: e.productType,
+                                                productId: e.productId);
                                           },
                                         );
                                       case StringConstants.surprisedProduct:
@@ -271,31 +284,44 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                           ),
                         ),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                            provider.cart!.records
+                                    .where((element) => element.productType == StringConstants.trialProduct)
+                                    .length >=
                                 provider.appSettings!.generalSettings.itemQty)
                           if (provider.noTrailProducts.isNotEmpty &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                              provider.cart!.records
+                                      .where((element) => element.productType == StringConstants.noTrailProduct)
+                                      .length <
                                   (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                             Container(
                               padding: const EdgeInsets.only(top: 10),
                               margin: EdgeInsets.symmetric(horizontal: width * .12),
                               child: Text(
                                 'Bonus Trial Offers',
-                                style: TextHelper.normalTextStyle.copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w700),
+                                style: TextHelper.normalTextStyle
+                                    .copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w700),
                               ),
                             ),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                            provider.cart!.records
+                                    .where((element) => element.productType == StringConstants.trialProduct)
+                                    .length >=
                                 provider.appSettings!.generalSettings.itemQty)
                           if (provider.noTrailProducts.isNotEmpty &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                              provider.cart!.records
+                                      .where((element) => element.productType == StringConstants.noTrailProduct)
+                                      .length <
                                   (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                             SizedBox(height: height * .01),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                            provider.cart!.records
+                                    .where((element) => element.productType == StringConstants.trialProduct)
+                                    .length >=
                                 provider.appSettings!.generalSettings.itemQty)
                           if (provider.noTrailProducts.isNotEmpty &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                              provider.cart!.records
+                                      .where((element) => element.productType == StringConstants.noTrailProduct)
+                                      .length <
                                   (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: width * .12),
@@ -303,14 +329,19 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               child: Text(
                                 'Exclusively for you! Choose upto 2 items, 100% FREE',
                                 maxLines: 5,
-                                style: TextHelper.smallTextStyle.copyWith(color: ColorConstants.colorGreySeven, fontWeight: FontWeight.w600),
+                                style: TextHelper.smallTextStyle
+                                    .copyWith(color: ColorConstants.colorGreySeven, fontWeight: FontWeight.w600),
                               ),
                             ),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                            provider.cart!.records
+                                    .where((element) => element.productType == StringConstants.trialProduct)
+                                    .length >=
                                 provider.appSettings!.generalSettings.itemQty)
                           if (provider.noTrailProducts.isNotEmpty &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                              provider.cart!.records
+                                      .where((element) => element.productType == StringConstants.noTrailProduct)
+                                      .length <
                                   (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: width * .12),
@@ -351,7 +382,8 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                             children: [
                               Text(
                                 'Deals & Combos',
-                                style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
+                                style:
+                                    TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
                               ),
                               Align(
                                 alignment: Alignment.centerRight,
@@ -384,99 +416,13 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               Text(
                                 'Deals & Combos: Special deals & combo offers with best discounts on top brands. Dare to compare pricing .',
                                 maxLines: 10,
-                                style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreySeven, fontSize: 13.sp),
+                                style: TextHelper.smallTextStyle.copyWith(
+                                    fontWeight: FontWeight.w600, color: ColorConstants.colorGreySeven, fontSize: 13.sp),
                               ),
                             ],
                           ),
                         ),
                         SizedBox(height: height * .02),
-
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: width * .06),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: InkWell(
-                                  splashFactory: NoSplash.splashFactory,
-                                  highlightColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  onTap: () {
-                                    _dealController.previousPage();
-                                  },
-                                  child: const Icon(
-                                    Icons.arrow_back_ios,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 12,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: height * .03),
-                                  child: CarouselSlider.builder(
-                                    carouselController: _miniController,
-                                    itemCount: (provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length),
-                                    itemBuilder: (BuildContext context, int index, int i) {
-                                      Product product = provider.dealProducts[index];
-                                      return DealItemDesktop(
-                                        key: Key(product.id),
-                                        product: product,
-                                        onProductClick: () =>
-                                            _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider),
-                                        onAddToCart: () => _cartHelper.addToCart(
-                                          provider: provider,
-                                          context: context,
-                                          productId: product.id,
-                                        ),
-                                        provider: provider,
-                                        cartHelper: _cartHelper,
-                                        gridView: false,
-                                      );
-                                    },
-                                    options: CarouselOptions(
-                                      // aspectRatio: 4.5,
-                                      // viewportFraction: 0.15,
-                                      // initialPage: 0,
-                                      // enableInfiniteScroll: false,
-                                      // reverse: false,
-                                      // disableCenter: true,
-                                      // padEnds: false,
-                                      // aspectRatio: 4.5,
-                                      aspectRatio: 3.1,
-                                      // viewportFraction: 0.15,
-                                      viewportFraction: .2,
-                                      initialPage: 0,
-                                      enableInfiniteScroll: false,
-                                      reverse: false,
-                                      disableCenter: true,
-                                      padEnds: false,
-                                      autoPlay: true,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: InkWell(
-                                  splashFactory: NoSplash.splashFactory,
-                                  highlightColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  onTap: () {
-                                    _miniController.nextPage();
-                                  },
-                                  child: const Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        SizedBox(height: height * .06),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: width * .12),
                           alignment: Alignment.centerLeft,
@@ -533,7 +479,8 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                             children: [
                               Text(
                                 'Payment Details',
-                                style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
+                                style:
+                                    TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
                               ),
                             ],
                           ),
@@ -547,7 +494,10 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                           ),
                         ),
                         SizedBox(height: height * .02),
-                        if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty)
+                        if (provider.cart != null &&
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.trialProduct)
+                                .isNotEmpty)
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: width * .12),
                             alignment: Alignment.center,
@@ -558,23 +508,33 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               children: [
                                 Text(
                                   'Shop Mini - Service Fee (${provider.cart?.charges.miniItemQuantity} ${(provider.cart?.charges.miniItemQuantity ?? 0) > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.serviceCharge.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 13.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 13.sp),
                                 ),
                               ],
                             ),
                           ),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.trialProduct)
+                                .isNotEmpty &&
+                            provider.cart!.records
+                                    .where((element) => element.productType == StringConstants.trialProduct)
+                                    .length >
                                 provider.appSettings!.generalSettings.itemQty)
                           SizedBox(height: height * .02),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.trialProduct)
+                                .isNotEmpty &&
+                            provider.cart!.records
+                                    .where((element) => element.productType == StringConstants.trialProduct)
+                                    .length >
                                 provider.appSettings!.generalSettings.itemQty)
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: width * .12),
@@ -586,20 +546,26 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               children: [
                                 Text(
                                   'Shop Mini - Addon Product Fee (${provider.cart?.charges.addonQuantity} ${(provider.cart?.charges.addonQuantity ?? 0) > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.addonUnitPrice.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
                           ),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.brandStoreProduct)
+                                .isNotEmpty)
                           SizedBox(height: height * .02),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.brandStoreProduct)
+                                .isNotEmpty)
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: width * .12),
                             alignment: Alignment.center,
@@ -610,20 +576,26 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               children: [
                                 Text(
                                   'Free Sample - Service Fee (${provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).length} ${provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).length > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.bounsServiceCharge.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
                           ),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.hotDealProduct)
+                                .isNotEmpty)
                           SizedBox(height: height * .02),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.hotDealProduct)
+                                .isNotEmpty)
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: width * .12),
                             alignment: Alignment.center,
@@ -634,20 +606,26 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               children: [
                                 Text(
                                   'Deals Combos (${_cartHelper.hotDealCount(provider)} ${_cartHelper.hotDealCount(provider) > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.hotDealsCharge.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
                           ),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.noTrailProduct)
+                                .isNotEmpty)
                           SizedBox(height: height * .02),
                         if (provider.cart != null &&
-                            provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                            provider.cart!.records
+                                .where((element) => element.productType == StringConstants.noTrailProduct)
+                                .isNotEmpty)
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: width * .12),
                             child: Row(
@@ -657,11 +635,13 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               children: [
                                 Text(
                                   'Bonus Trials(${provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length} ${provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   'FREE',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 13.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 13.sp),
                                 ),
                               ],
                             ),
@@ -722,7 +702,8 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.discount.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
@@ -748,8 +729,12 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                           ),
                         ),
                         SizedBox(height: height * .05),
-                        if (provider.cart != null && provider.cart!.records.any((element) => element.productType == StringConstants.trialProduct))
-                          if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                        if (provider.cart != null &&
+                            provider.cart!.records
+                                .any((element) => element.productType == StringConstants.trialProduct))
+                          if (provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.trialProduct)
+                                  .length >=
                               provider.appSettings!.generalSettings.itemQty)
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: width * .12),
@@ -913,7 +898,8 @@ class _HotItems extends StatelessWidget {
                   children: [
                     Text(
                       '${StringConstants.rupeeSign}${cartItem.mrp}',
-                      style: TextHelper.extraSmallTextStyle.copyWith(fontWeight: FontWeight.w500, decoration: TextDecoration.lineThrough),
+                      style: TextHelper.extraSmallTextStyle
+                          .copyWith(fontWeight: FontWeight.w500, decoration: TextDecoration.lineThrough),
                     ),
                     Container(
                       width: 5,
@@ -952,7 +938,10 @@ class _HotItems extends StatelessWidget {
                     ),
                     Text(
                       provider.cart != null && provider.cart!.records.any((element) => element.id == cartItem.id)
-                          ? provider.cart!.records.firstWhere((element) => element.id == cartItem.id).quantity.toString()
+                          ? provider.cart!.records
+                              .firstWhere((element) => element.id == cartItem.id)
+                              .quantity
+                              .toString()
                           : '0',
                       style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w400),
                     ),
@@ -1071,8 +1060,9 @@ class _SelectItems extends StatelessWidget {
                   children: [
                     Text(
                       cartItem.salePrice > 0 ? '${StringConstants.rupeeSign}${cartItem.salePrice}' : 'FREE',
-                      style: TextHelper.extraSmallTextStyle
-                          .copyWith(fontWeight: FontWeight.w500, color: cartItem.salePrice > 0 ? ColorConstants.colorBlack : ColorConstants.colorGreenTwo),
+                      style: TextHelper.extraSmallTextStyle.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: cartItem.salePrice > 0 ? ColorConstants.colorBlack : ColorConstants.colorGreenTwo),
                     ),
                   ],
                 ),
@@ -1175,7 +1165,8 @@ class _NoTrialItem extends StatelessWidget {
                   children: [
                     Text(
                       'FREE',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
+                      style: TextHelper.smallTextStyle
+                          .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
                     ),
                   ],
                 ),
@@ -1429,7 +1420,8 @@ class _BonusItems extends StatelessWidget {
             borderRadius: BorderRadius.circular(50),
           ),
           value: provider.cart != null &&
-              provider.cart!.records.any((element) => element.productType == StringConstants.noTrailProduct && element.id == product.id),
+              provider.cart!.records
+                  .any((element) => element.productType == StringConstants.noTrailProduct && element.id == product.id),
           onChanged: (v) {
             if (v != null && v) {
               // if (provider.currentUser != null &&
@@ -1440,11 +1432,14 @@ class _BonusItems extends StatelessWidget {
               //             .length <
               //         e.maximumQty) {
               if (provider.cart != null &&
-                  provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                  provider.cart!.records
+                          .where((element) => element.productType == StringConstants.noTrailProduct)
+                          .length <
                       (provider.appSettings?.generalSettings.samplesLimit ?? 2)) {
                 provider.addCartItems(productID: product.id);
               } else {
-                ScaffoldSnackBar.of(context).show('Oops you are eligible for ${(provider.appSettings?.generalSettings.samplesLimit ?? 2)} Bonus trials');
+                ScaffoldSnackBar.of(context).show(
+                    'Oops you are eligible for ${(provider.appSettings?.generalSettings.samplesLimit ?? 2)} Bonus trials');
               }
               // } else {
               //   showSnackBar(
@@ -1528,7 +1523,8 @@ class _SurpriseTrialItem extends StatelessWidget {
                   children: [
                     Text(
                       'FREE',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
+                      style: TextHelper.smallTextStyle
+                          .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
                     ),
                   ],
                 ),

@@ -47,7 +47,6 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
 
   bool popupOpenedTwo = false;
 
-
   void _downloadAPK() async {
     const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/shipanshop1-release.apk';
     await launchUrl(Uri.parse(launchUri));
@@ -60,21 +59,25 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
       BuildContext? dialogContext;
       Future.delayed(
         const Duration(milliseconds: 500),
-        () => showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (c) {
-            dialogContext = c;
+        () {
+          if (mounted) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (c) {
+                dialogContext = c;
 
-            return _OrderDialog(
-              orderId: widget.order?.orderNumber ?? '',
-              onRate: () async {},
-              onCancel: () {
-                dialogContext?.popRoute();
+                return _OrderDialog(
+                  orderId: widget.order?.orderNumber ?? '',
+                  onRate: () async {},
+                  onCancel: () {
+                    dialogContext?.maybePop();
+                  },
+                );
               },
             );
-          },
-        ),
+          }
+        },
       );
     }
     super.initState();
@@ -93,7 +96,9 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: provider.appLoading
               ? const _LoadingScreen()
-              : provider.appSettings != null && provider.appSettings!.maintenance.mode && !provider.appSettings!.maintenance.showOld
+              : provider.appSettings != null &&
+                      provider.appSettings!.maintenance.mode &&
+                      !provider.appSettings!.maintenance.showOld
                   ? _MaintenanceScreen(provider: provider)
                   : Scaffold(
                       key: _key,
@@ -136,7 +141,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                       element.qualified &&
                                       !element.rejected &&
                                       provider.currentUser != null &&
-                                      !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                                      !provider.currentUser!.orders
+                                          .any((e) => e.products.any((o) => o.id == element.product?.id)))
                                   .isNotEmpty,
                               badgeStyle: const BadgeStyle(badgeColor: Colors.red),
                               position: BadgePosition.topEnd(top: -5, end: 0),
@@ -149,13 +155,15 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                         element.qualified &&
                                         !element.rejected &&
                                         provider.currentUser != null &&
-                                        !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                                        !provider.currentUser!.orders
+                                            .any((e) => e.products.any((o) => o.id == element.product?.id)))
                                     .length
                                     .toString(),
                                 style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
                               ),
                               child: const Icon(
-                                Ionicons.notifications_outline,size: 30,
+                                Ionicons.notifications_outline,
+                                size: 30,
                               ),
                             ),
                           ),
@@ -174,19 +182,19 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                 style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
                               ),
                               child: const Icon(
-                                Ionicons.cart_outline,size: 30,
+                                Ionicons.cart_outline,
+                                size: 30,
                               ),
                             ),
                           ),
-                          ElevatedButton (
+                          ElevatedButton(
                             onPressed: _downloadAPK,
-                            child: Text('Download APK'),
                             style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all(Colors.black),
+                              foregroundColor: WidgetStateProperty.all(Colors.black),
                               // Text color
-                              side: MaterialStateProperty.all(
-                                  BorderSide(color: Colors.blue, width: 2.0)), // Border
+                              side: WidgetStateProperty.all(const BorderSide(color: Colors.blue, width: 2.0)), // Border
                             ),
+                            child: const Text('Download APK'),
                           ),
                         ],
                       ),
@@ -222,7 +230,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                               icon: ImageIcon(
                                 const AssetImage('assets/images/icons/home.png'),
                                 size: 27,
-                                color: provider.activeIndex == 0 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                                color:
+                                    provider.activeIndex == 0 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
                                 text: 'Home',
@@ -249,7 +258,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                               icon: ImageIcon(
                                 const AssetImage('assets/images/icons/mini.png'),
                                 size: 28,
-                                color: provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                                color:
+                                    provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
                                 text: 'Shop Minis',
@@ -276,7 +286,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                               icon: ImageIcon(
                                 const AssetImage('assets/images/icons/deal.png'),
                                 size: 28,
-                                color: provider.activeIndex == 2 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                                color:
+                                    provider.activeIndex == 2 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
                                 text: 'Deals & Combos',
@@ -303,7 +314,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                               icon: ImageIcon(
                                 const AssetImage('assets/images/icons/sample.png'),
                                 size: 28,
-                                color: provider.activeIndex == 3 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                                color:
+                                    provider.activeIndex == 3 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
                                 text: 'Free Samples',
@@ -348,7 +360,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                   // barrierColor: Colors.white.withOpacity(0.8),
                                   isScrollControlled: true,
                                   builder: (c) => InkWell(
-                                    onTap: () => context.router.popTop(),
+                                    onTap: () => context.router.maybePopTop(),
                                     child: _TrialDialog(appProvider: provider),
                                   ),
                                 );
@@ -370,7 +382,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                       // barrierColor: Colors.white.withOpacity(0.8),
                                       isScrollControlled: true,
                                       builder: (c) => InkWell(
-                                        onTap: () => context.router.popTop(),
+                                        onTap: () => context.router.maybePopTop(),
                                         child: _BrandDialog(appProvider: provider),
                                       ),
                                     );
@@ -638,7 +650,7 @@ class _TrialDialog extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: () => context.router.popTop(),
+      onTap: () => context.router.maybePopTop(),
       child: Center(
         child: Container(
           width: width,
@@ -883,7 +895,7 @@ class _BrandDialog extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: () => context.router.popTop(),
+      onTap: () => context.router.maybePopTop(),
       child: Center(
         child: Container(
           width: width,
@@ -1085,7 +1097,6 @@ class _BrandDialog extends StatelessWidget {
                   ],
                 ),
               ),
-
             ],
           ),
         ),

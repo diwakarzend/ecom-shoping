@@ -75,13 +75,13 @@ class _SignupScreenDesktopState extends State<SignupScreenDesktop> {
         'married': married != null && married!
             ? 'yes'
             : married != null && !married!
-            ? 'no'
-            : null,
+                ? 'no'
+                : null,
         'have_kids': haveKids != null && haveKids!
             ? 'yes'
             : haveKids != null && !haveKids!
-            ? 'no'
-            : null,
+                ? 'no'
+                : null,
         'number_of_kids': numberOfKids,
         'first_kid_age': firstKidAge,
         'first_kid_gender': firstKidGender,
@@ -108,7 +108,7 @@ class _SignupScreenDesktopState extends State<SignupScreenDesktop> {
       _start = 30;
       _timer = Timer.periodic(
         const Duration(seconds: 1),
-            (Timer timer) {
+        (Timer timer) {
           if (_start == 0) {
             _timer?.cancel();
           } else {
@@ -301,7 +301,7 @@ class _SignupScreenDesktopState extends State<SignupScreenDesktop> {
     _start = 30;
     _timer = Timer.periodic(
       const Duration(seconds: 1),
-          (Timer timer) {
+      (Timer timer) {
         if (_start == 0) {
           _timer?.cancel();
         } else {
@@ -360,180 +360,445 @@ class _SignupScreenDesktopState extends State<SignupScreenDesktop> {
                           flex: 5,
                           child: otpSent
                               ? Container(
-                            margin: EdgeInsets.only(
-                              top: height * .01,
-                              bottom: height * .01,
-                              right: width * .13,
-                            ),
-                            width: width * .3,
-                            alignment: Alignment.center,
-                            child: Column(
-                              children: [
-                                Text(
-                                  'For additional security, we’ve sent an OTP to your registered Mobile Number',
-                                  maxLines: 5,
-                                  textAlign: TextAlign.center,
-                                  style: TextHelper.smallTextStyle.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: ColorConstants.colorBlueTwelve,
+                                  margin: EdgeInsets.only(
+                                    top: height * .01,
+                                    bottom: height * .01,
+                                    right: width * .13,
                                   ),
-                                ),
-                                SizedBox(height: height * .02),
-                                Pinput(
-                                  controller: otpController,
-                                  length: 6,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  defaultPinTheme: PinTheme(
-                                    // width: 40,
-                                    height: height * .08,
-                                    textStyle: TextHelper.normalTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: ColorConstants.colorBlack),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: height * .02),
-                                Text(
-                                  '00:$_start',
-                                  style: TextHelper.smallTextStyle,
-                                ),
-                                CupertinoButton(
-                                  onPressed: _start < 1
-                                      ? () {
-                                    sendOtp(mobileController.text, true);
-                                    if (mounted) {
-                                      setState(() {
-                                        otpSent = true;
-                                      });
-                                    }
-                                  }
-                                      : null,
-                                  padding: EdgeInsets.zero,
-                                  child: RichText(
-                                    text: const TextSpan(
-                                      text: 'Didn’t receive the code? ',
-                                      style: TextStyle(
-                                        color: ColorConstants.colorBlueTwelve,
-                                        fontSize: 14.0,
+                                  width: width * .3,
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        'For additional security, we’ve sent an OTP to your registered Mobile Number',
+                                        maxLines: 5,
+                                        textAlign: TextAlign.center,
+                                        style: TextHelper.smallTextStyle.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          color: ColorConstants.colorBlueTwelve,
+                                        ),
                                       ),
+                                      SizedBox(height: height * .02),
+                                      Pinput(
+                                        controller: otpController,
+                                        length: 6,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        defaultPinTheme: PinTheme(
+                                          // width: 40,
+                                          height: height * .08,
+                                          textStyle: TextHelper.normalTextStyle.copyWith(
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: ColorConstants.colorBlack),
+                                            borderRadius: BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: height * .02),
+                                      Text(
+                                        '00:$_start',
+                                        style: TextHelper.smallTextStyle,
+                                      ),
+                                      CupertinoButton(
+                                        onPressed: _start < 1
+                                            ? () {
+                                                sendOtp(mobileController.text, true);
+                                                if (mounted) {
+                                                  setState(() {
+                                                    otpSent = true;
+                                                  });
+                                                }
+                                              }
+                                            : null,
+                                        padding: EdgeInsets.zero,
+                                        child: RichText(
+                                          text: const TextSpan(
+                                            text: 'Didn’t receive the code? ',
+                                            style: TextStyle(
+                                              color: ColorConstants.colorBlueTwelve,
+                                              fontSize: 14.0,
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text: 'Resend now',
+                                                style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18.0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          if (mobileValidated != null && otpController.text.isNotEmpty) {
+                                            login(mobileController.text, otpController.text, provider);
+                                          } else {
+                                            ScaffoldSnackBar.of(context).show('All fields are required');
+                                          }
+                                        },
+                                        splashFactory: NoSplash.splashFactory,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        child: Container(
+                                          height: height * .045,
+                                          width: width * .3,
+                                          margin: EdgeInsets.only(
+                                            top: height * .02,
+                                            bottom: height * .05,
+                                          ),
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: ColorConstants.colorBlueTwelve,
+                                            borderRadius: BorderRadius.circular(30),
+                                          ),
+                                          child: Text(
+                                            'Submit',
+                                            style: TextHelper.smallTextStyle
+                                                .copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Row(
                                       children: [
-                                        TextSpan(
-                                          text: 'Resend now',
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18.0,
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              RichText(
+                                                text: const TextSpan(
+                                                  text: 'First Name ',
+                                                  style: TextStyle(
+                                                    color: Color(0xff030d4e),
+                                                  ),
+                                                  children: [
+                                                    TextSpan(
+                                                        text: '*',
+                                                        style:
+                                                            TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.symmetric(vertical: height * .01),
+                                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                decoration: const BoxDecoration(
+                                                  // border: Border.all(width: width * .0005),
+                                                  // border: Border(
+                                                  //   right: BorderSide(
+                                                  //     color: Colors.black,
+                                                  //     width: 0.2,
+                                                  //   ),
+                                                  //   left: BorderSide(
+                                                  //     color: Colors.black,
+                                                  //     width: 0.6,
+                                                  //   ),
+                                                  //   bottom: BorderSide(
+                                                  //     color: Colors.black,
+                                                  //     width: 0.6,
+                                                  //   ),
+                                                  //   top: BorderSide(
+                                                  //     color: Colors.black,
+                                                  //     width: 0.6,
+                                                  //   ),
+                                                  // ),
+                                                  borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(10),
+                                                    bottomLeft: Radius.circular(10),
+                                                  ),
+                                                ),
+                                                child: TextFormField(
+                                                  validator: (v) {
+                                                    if (v == null || v.isEmpty) return 'Please enter valid first name';
+                                                    return null;
+                                                  },
+                                                  controller: firstNameController,
+                                                  decoration: InputDecoration(
+                                                    contentPadding: EdgeInsets.only(left: width * .01),
+                                                    border: const OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color: Colors.black,
+                                                        width: 0.2,
+                                                      ),
+                                                      borderRadius: BorderRadius.only(
+                                                        topLeft: Radius.circular(10),
+                                                        bottomLeft: Radius.circular(10),
+                                                      ),
+                                                    ),
+                                                    hintStyle: const TextStyle(
+                                                      fontSize: 17.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                            child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            RichText(
+                                              text: const TextSpan(
+                                                text: 'Last Name ',
+                                                style: TextStyle(
+                                                  color: Color(0xff030d4e),
+                                                ),
+                                                children: [
+                                                  TextSpan(
+                                                      text: '*',
+                                                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(vertical: height * .01),
+                                              decoration: const BoxDecoration(
+                                                // border: Border.all(),
+                                                // border: Border.all(width: width * .0005),
+                                                // border: Border(
+                                                //   right: BorderSide(
+                                                //     color: Colors.black,
+                                                //     width: 0.6,
+                                                //   ),
+                                                //   left: BorderSide(
+                                                //     color: Colors.black,
+                                                //     width: 0.2,
+                                                //   ),
+                                                //   bottom: BorderSide(
+                                                //     color: Colors.black,
+                                                //     width: 0.6,
+                                                //   ),
+                                                //   top: BorderSide(
+                                                //     color: Colors.black,
+                                                //     width: 0.6,
+                                                //   ),
+                                                // ),
+                                                borderRadius: BorderRadius.only(
+                                                  topRight: Radius.circular(10),
+                                                  bottomRight: Radius.circular(10),
+                                                ),
+                                              ),
+                                              child: TextFormField(
+                                                controller: lastNameController,
+                                                validator: (v) {
+                                                  if (v == null || v.isEmpty) return 'Please enter valid last name';
+                                                  return null;
+                                                },
+                                                decoration: InputDecoration(
+                                                  contentPadding: EdgeInsets.only(left: width * .01),
+                                                  border: const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Colors.black,
+                                                      width: 0.2,
+                                                    ),
+                                                    borderRadius: BorderRadius.only(
+                                                      topRight: Radius.circular(10),
+                                                      bottomRight: Radius.circular(10),
+                                                    ),
+                                                  ),
+                                                  hintStyle: const TextStyle(
+                                                    fontSize: 17.0,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: height * .02,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              RichText(
+                                                text: const TextSpan(
+                                                  text: 'Gender ',
+                                                  style: TextStyle(
+                                                    color: Color(0xff030d4e),
+                                                  ),
+                                                  children: [
+                                                    TextSpan(
+                                                        text: '*',
+                                                        style:
+                                                            TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          gender = 'M';
+                                                        });
+                                                      },
+                                                      child: Container(
+                                                        height: height * .07,
+                                                        alignment: Alignment.center,
+                                                        margin: EdgeInsets.symmetric(vertical: height * .01),
+                                                        decoration: BoxDecoration(
+                                                          color: gender == 'M' ? const Color(0xff030d4e) : Colors.white,
+                                                          // border: Border.fromBorderSide(),
+                                                          // border: Border.all(width: width * .0005),
+                                                          border: const Border(
+                                                            right: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.2,
+                                                            ),
+                                                            left: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.6,
+                                                            ),
+                                                            bottom: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.6,
+                                                            ),
+                                                            top: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.6,
+                                                            ),
+                                                          ),
+                                                          borderRadius: const BorderRadius.only(
+                                                            topLeft: Radius.circular(10),
+                                                            bottomLeft: Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          'Male',
+                                                          style: TextStyle(
+                                                            color: gender == 'M' ? Colors.white : Colors.black,
+                                                            fontSize: 20.0,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          gender = 'F';
+                                                        });
+                                                      },
+                                                      child: Container(
+                                                        height: height * .07,
+                                                        alignment: Alignment.center,
+                                                        margin: EdgeInsets.symmetric(vertical: height * .01),
+                                                        decoration: BoxDecoration(
+                                                          color: gender == 'F' ? const Color(0xff030d4e) : Colors.white,
+                                                          // border: Border.fromBorderSide(),
+                                                          // border: Border.all(width: width * .0005),
+                                                          border: const Border(
+                                                            right: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.6,
+                                                            ),
+                                                            left: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.2,
+                                                            ),
+                                                            bottom: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.6,
+                                                            ),
+                                                            top: BorderSide(
+                                                              color: Colors.black,
+                                                              width: 0.6,
+                                                            ),
+                                                          ),
+                                                          borderRadius: const BorderRadius.only(
+                                                            topRight: Radius.circular(10),
+                                                            bottomRight: Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          'Female',
+                                                          style: TextStyle(
+                                                            color: gender == 'F' ? Colors.white : Colors.black,
+                                                            fontSize: 20.0,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    if (mobileValidated != null && otpController.text.isNotEmpty) {
-                                      login(mobileController.text, otpController.text, provider);
-                                    } else {
-                                      ScaffoldSnackBar.of(context).show('All fields are required');
-                                    }
-                                  },
-                                  splashFactory: NoSplash.splashFactory,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  child: Container(
-                                    height: height * .045,
-                                    width: width * .3,
-                                    margin: EdgeInsets.only(
-                                      top: height * .02,
-                                      bottom: height * .05,
+                                    SizedBox(
+                                      height: height * .02,
                                     ),
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: ColorConstants.colorBlueTwelve,
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    child: Text(
-                                      'Submit',
-                                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                              : Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
+                                    Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         RichText(
                                           text: const TextSpan(
-                                            text: 'First Name ',
+                                            text: 'Age',
                                             style: TextStyle(
                                               color: Color(0xff030d4e),
                                             ),
                                             children: [
-                                              TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                              TextSpan(
+                                                  text: '*',
+                                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
                                             ],
                                           ),
                                         ),
                                         Container(
+                                          alignment: Alignment.center,
                                           margin: EdgeInsets.symmetric(vertical: height * .01),
-                                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                                          decoration: const BoxDecoration(
-                                            // border: Border.all(width: width * .0005),
-                                            // border: Border(
-                                            //   right: BorderSide(
-                                            //     color: Colors.black,
-                                            //     width: 0.2,
-                                            //   ),
-                                            //   left: BorderSide(
-                                            //     color: Colors.black,
-                                            //     width: 0.6,
-                                            //   ),
-                                            //   bottom: BorderSide(
-                                            //     color: Colors.black,
-                                            //     width: 0.6,
-                                            //   ),
-                                            //   top: BorderSide(
-                                            //     color: Colors.black,
-                                            //     width: 0.6,
-                                            //   ),
-                                            // ),
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(10),
-                                              bottomLeft: Radius.circular(10),
-                                            ),
-                                          ),
+                                          // decoration: BoxDecoration(
+                                          //   // border: Border.fromBorderSide(),
+                                          //   // border: Border.all(width: width * .0005),
+                                          //   // borderRadius: BorderRadius.only(
+                                          //   //   topRight: Radius.circular(10),
+                                          //   // ),
+                                          //   borderRadius: BorderRadius.circular(10),
+                                          // ),
                                           child: TextFormField(
+                                            controller: ageController,
                                             validator: (v) {
-                                              if (v == null || v.isEmpty) return 'Please enter valid first name';
+                                              if (v == null || v.isEmpty) return 'Please enter valid age';
                                               return null;
                                             },
-                                            controller: firstNameController,
                                             decoration: InputDecoration(
                                               contentPadding: EdgeInsets.only(left: width * .01),
-                                              border: const OutlineInputBorder(
-                                                borderSide: BorderSide(
+                                              border: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(10),
+                                                borderSide: const BorderSide(
                                                   color: Colors.black,
                                                   width: 0.2,
                                                 ),
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(10),
-                                                  bottomLeft: Radius.circular(10),
-                                                ),
                                               ),
+                                              hintText: '',
                                               hintStyle: const TextStyle(
                                                 fontSize: 17.0,
                                               ),
@@ -542,580 +807,334 @@ class _SignupScreenDesktopState extends State<SignupScreenDesktop> {
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  Expanded(
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          RichText(
-                                            text: const TextSpan(
-                                              text: 'Last Name ',
-                                              style: TextStyle(
-                                                color: Color(0xff030d4e),
-                                              ),
-                                              children: [
-                                                TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric(vertical: height * .01),
-                                            decoration: const BoxDecoration(
-                                              // border: Border.all(),
-                                              // border: Border.all(width: width * .0005),
-                                              // border: Border(
-                                              //   right: BorderSide(
-                                              //     color: Colors.black,
-                                              //     width: 0.6,
-                                              //   ),
-                                              //   left: BorderSide(
-                                              //     color: Colors.black,
-                                              //     width: 0.2,
-                                              //   ),
-                                              //   bottom: BorderSide(
-                                              //     color: Colors.black,
-                                              //     width: 0.6,
-                                              //   ),
-                                              //   top: BorderSide(
-                                              //     color: Colors.black,
-                                              //     width: 0.6,
-                                              //   ),
-                                              // ),
-                                              borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(10),
-                                                bottomRight: Radius.circular(10),
-                                              ),
-                                            ),
-                                            child: TextFormField(
-                                              controller: lastNameController,
-                                              validator: (v) {
-                                                if (v == null || v.isEmpty) return 'Please enter valid last name';
-                                                return null;
-                                              },
-                                              decoration: InputDecoration(
-                                                contentPadding: EdgeInsets.only(left: width * .01),
-                                                border: const OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Colors.black,
-                                                    width: 0.2,
-                                                  ),
-                                                  borderRadius: BorderRadius.only(
-                                                    topRight: Radius.circular(10),
-                                                    bottomRight: Radius.circular(10),
-                                                  ),
-                                                ),
-                                                hintStyle: const TextStyle(
-                                                  fontSize: 17.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * .02,
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
+                                    SizedBox(
+                                      height: height * .02,
+                                    ),
+                                    Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         RichText(
                                           text: const TextSpan(
-                                            text: 'Gender ',
+                                            text: 'Phone Number',
                                             style: TextStyle(
                                               color: Color(0xff030d4e),
                                             ),
                                             children: [
-                                              TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                              TextSpan(
+                                                  text: '*',
+                                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
                                             ],
                                           ),
                                         ),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: InkWell(
-                                                onTap: () {
-                                                  setState(() {
-                                                    gender = 'M';
-                                                  });
-                                                },
-                                                child: Container(
-                                                  height: height * .07,
-                                                  alignment: Alignment.center,
-                                                  margin: EdgeInsets.symmetric(vertical: height * .01),
-                                                  decoration: BoxDecoration(
-                                                    color: gender == 'M' ? const Color(0xff030d4e) : Colors.white,
-                                                    // border: Border.fromBorderSide(),
-                                                    // border: Border.all(width: width * .0005),
-                                                    border: const Border(
-                                                      right: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.2,
-                                                      ),
-                                                      left: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.6,
-                                                      ),
-                                                      bottom: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.6,
-                                                      ),
-                                                      top: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.6,
-                                                      ),
-                                                    ),
-                                                    borderRadius: const BorderRadius.only(
-                                                      topLeft: Radius.circular(10),
-                                                      bottomLeft: Radius.circular(10),
-                                                    ),
-                                                  ),
-                                                  child: Text(
-                                                    'Male',
-                                                    style: TextStyle(
-                                                      color: gender == 'M' ? Colors.white : Colors.black,
-                                                      fontSize: 20.0,
-                                                    ),
-                                                  ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.symmetric(vertical: height * .01),
+                                          // decoration: BoxDecoration(
+                                          //   // border: Border.fromBorderSide(),
+                                          //   border: Border.all(width: width * .0005),
+                                          //   // borderRadius: BorderRadius.only(
+                                          //   //   topRight: Radius.circular(10),
+                                          //   // ),
+                                          //   borderRadius: BorderRadius.circular(10),
+                                          // ),
+                                          child: TextFormField(
+                                            onChanged: (String v) => validateMobile(v, provider),
+                                            maxLength: 10,
+                                            inputFormatters: [
+                                              FilteringTextInputFormatter.digitsOnly,
+                                              FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                                              //To remove first '0'
+                                              FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                                            ],
+                                            controller: mobileController,
+                                            decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(left: width * .01),
+                                              border: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(10),
+                                                borderSide: const BorderSide(
+                                                  color: Colors.black,
+                                                  width: 0.2,
+                                                ),
+                                              ),
+                                              hintText: '',
+                                              hintStyle: const TextStyle(
+                                                fontSize: 17.0,
+                                              ),
+                                              counterText: '',
+                                              suffix: (mobileValidated == null)
+                                                  ? const SizedBox.shrink()
+                                                  : (mobileValidated != null && mobileValidated!)
+                                                      ? const Icon(
+                                                          Icons.check_circle_outline_rounded,
+                                                          color: ColorConstants.colorGreenFour,
+                                                        )
+                                                      : const Icon(
+                                                          Icons.error_outline_rounded,
+                                                          color: ColorConstants.colorRed,
+                                                        ),
+                                            ),
+                                          ),
+                                        ),
+                                        if (_phoneValidation != null && mobileController.text.isNotEmpty)
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 5),
+                                            child: Text(
+                                              _phoneValidation ?? '',
+                                              style: const TextStyle(
+                                                color: Colors.red,
+                                                fontSize: 12.0,
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: height * .02,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        RichText(
+                                          text: const TextSpan(
+                                            text: 'Email',
+                                            style: TextStyle(
+                                              color: Color(0xff030d4e),
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                  text: '*',
+                                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.symmetric(vertical: height * .01),
+                                          // decoration: BoxDecoration(
+                                          //   // border: Border.fromBorderSide(),
+                                          //   border: Border.all(width: width * .0005),
+                                          //   // borderRadius: BorderRadius.only(
+                                          //   //   topRight: Radius.circular(10),
+                                          //   // ),
+                                          //   borderRadius: BorderRadius.circular(10),
+                                          // ),
+                                          child: TextFormField(
+                                            controller: emailController,
+                                            onChanged: (v) => validateEmail(
+                                              v,
+                                              provider,
+                                            ),
+                                            decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(left: width * .01),
+                                              border: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(10),
+                                                borderSide: const BorderSide(
+                                                  color: Colors.black,
+                                                  width: 0.2,
+                                                ),
+                                              ),
+                                              hintText: '',
+                                              hintStyle: const TextStyle(
+                                                fontSize: 17.0,
+                                              ),
+                                              suffix: (_emailValidation == null)
+                                                  ? const SizedBox.shrink()
+                                                  : (emailValidated != null && emailValidated!)
+                                                      ? const Icon(
+                                                          Icons.check_circle_outline_rounded,
+                                                          color: ColorConstants.colorGreenFour,
+                                                        )
+                                                      : const Icon(
+                                                          Icons.error_outline_rounded,
+                                                          color: ColorConstants.colorRed,
+                                                        ),
+                                            ),
+                                          ),
+                                        ),
+                                        if (_emailValidation != null)
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 5),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                _emailValidation ?? '',
+                                                style: const TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 12,
                                                 ),
                                               ),
                                             ),
-                                            Expanded(
-                                              child: InkWell(
-                                                onTap: () {
-                                                  setState(() {
-                                                    gender = 'F';
-                                                  });
-                                                },
-                                                child: Container(
-                                                  height: height * .07,
-                                                  alignment: Alignment.center,
-                                                  margin: EdgeInsets.symmetric(vertical: height * .01),
-                                                  decoration: BoxDecoration(
-                                                    color: gender == 'F' ? const Color(0xff030d4e) : Colors.white,
-                                                    // border: Border.fromBorderSide(),
-                                                    // border: Border.all(width: width * .0005),
-                                                    border: const Border(
-                                                      right: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.6,
-                                                      ),
-                                                      left: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.2,
-                                                      ),
-                                                      bottom: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.6,
-                                                      ),
-                                                      top: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 0.6,
-                                                      ),
-                                                    ),
-                                                    borderRadius: const BorderRadius.only(
-                                                      topRight: Radius.circular(10),
-                                                      bottomRight: Radius.circular(10),
-                                                    ),
-                                                  ),
-                                                  child: Text(
-                                                    'Female',
-                                                    style: TextStyle(
-                                                      color: gender == 'F' ? Colors.white : Colors.black,
-                                                      fontSize: 20.0,
-                                                    ),
-                                                  ),
+                                          ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: height * .02,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        RichText(
+                                          text: const TextSpan(
+                                            text: 'Pincode',
+                                            style: TextStyle(
+                                              color: Color(0xff030d4e),
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                  text: '*',
+                                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.symmetric(vertical: height * .01),
+                                          // decoration: BoxDecoration(
+                                          //   // border: Border.fromBorderSide(),
+                                          //   border: Border.all(width: width * .0005),
+                                          //   // borderRadius: BorderRadius.only(
+                                          //   //   topRight: Radius.circular(10),
+                                          //   // ),
+                                          //   borderRadius: BorderRadius.circular(10),
+                                          // ),
+                                          child: TextFormField(
+                                            controller: pinController,
+                                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                                            validator: (v) {
+                                              if (v != null) {
+                                                if (v.isEmpty) {
+                                                  return 'Pincode cannot be blank';
+                                                } else if (v.isNotEmpty && v.length < 6) {
+                                                  return 'Enter a valid pincode';
+                                                } else if (v.isNotEmpty && v.length > 6) {
+                                                  return 'Enter a valid pincode';
+                                                } else {
+                                                  return null;
+                                                }
+                                              }
+                                              return null;
+                                            },
+                                            // onChanged: (v) {
+                                            //   if (v.length >= 6) {
+                                            //     FocusScope.of(context).unfocus();
+                                            //     fetchPincode(provider, v);
+                                            //   }
+                                            // },
+                                            decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(left: width * .01),
+                                              border: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(10),
+                                                borderSide: const BorderSide(
+                                                  color: Colors.black,
+                                                  width: 0.2,
                                                 ),
                                               ),
+                                              hintText: '',
+                                              hintStyle: const TextStyle(
+                                                fontSize: 17.0,
+                                              ),
                                             ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * .02,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: const TextSpan(
-                                      text: 'Age',
-                                      style: TextStyle(
-                                        color: Color(0xff030d4e),
-                                      ),
-                                      children: [
-                                        TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.symmetric(vertical: height * .01),
-                                    // decoration: BoxDecoration(
-                                    //   // border: Border.fromBorderSide(),
-                                    //   // border: Border.all(width: width * .0005),
-                                    //   // borderRadius: BorderRadius.only(
-                                    //   //   topRight: Radius.circular(10),
-                                    //   // ),
-                                    //   borderRadius: BorderRadius.circular(10),
-                                    // ),
-                                    child: TextFormField(
-                                      controller: ageController,
-                                      validator: (v) {
-                                        if (v == null || v.isEmpty) return 'Please enter valid age';
-                                        return null;
-                                      },
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(left: width * .01),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                            color: Colors.black,
-                                            width: 0.2,
                                           ),
                                         ),
-                                        hintText: '',
-                                        hintStyle: const TextStyle(
-                                          fontSize: 17.0,
-                                        ),
-                                      ),
+                                      ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * .02,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: const TextSpan(
-                                      text: 'Phone Number',
-                                      style: TextStyle(
-                                        color: Color(0xff030d4e),
-                                      ),
+                                    SizedBox(
+                                      height: height * .02,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.symmetric(vertical: height * .01),
-                                    // decoration: BoxDecoration(
-                                    //   // border: Border.fromBorderSide(),
-                                    //   border: Border.all(width: width * .0005),
-                                    //   // borderRadius: BorderRadius.only(
-                                    //   //   topRight: Radius.circular(10),
-                                    //   // ),
-                                    //   borderRadius: BorderRadius.circular(10),
-                                    // ),
-                                    child: TextFormField(
-                                      onChanged: (String v) => validateMobile(v, provider),
-                                      maxLength: 10,
-                                      inputFormatters: [
-                                        FilteringTextInputFormatter.digitsOnly,
-                                        FilteringTextInputFormatter.allow(RegExp('[0-9]')),
-                                        //To remove first '0'
-                                        FilteringTextInputFormatter.deny(RegExp(r'^0+')),
-                                      ],
-                                      controller: mobileController,
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(left: width * .01),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                            color: Colors.black,
-                                            width: 0.2,
+                                        RichText(
+                                          text: const TextSpan(
+                                            text: 'City',
+                                            style: TextStyle(
+                                              color: Color(0xff030d4e),
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                  text: '*',
+                                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                                            ],
                                           ),
                                         ),
-                                        hintText: '',
-                                        hintStyle: const TextStyle(
-                                          fontSize: 17.0,
-                                        ),
-                                        counterText: '',
-                                        suffix: (mobileValidated == null)
-                                            ? const SizedBox.shrink()
-                                            : (mobileValidated != null && mobileValidated!)
-                                            ? const Icon(
-                                          Icons.check_circle_outline_rounded,
-                                          color: ColorConstants.colorGreenFour,
-                                        )
-                                            : const Icon(
-                                          Icons.error_outline_rounded,
-                                          color: ColorConstants.colorRed,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  if (_phoneValidation != null && mobileController.text.isNotEmpty)
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Text(
-                                        _phoneValidation ?? '',
-                                        style: const TextStyle(
-                                          color: Colors.red,
-                                          fontSize: 12.0,
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * .02,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: const TextSpan(
-                                      text: 'Email',
-                                      style: TextStyle(
-                                        color: Color(0xff030d4e),
-                                      ),
-                                      children: [
-                                        TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.symmetric(vertical: height * .01),
-                                    // decoration: BoxDecoration(
-                                    //   // border: Border.fromBorderSide(),
-                                    //   border: Border.all(width: width * .0005),
-                                    //   // borderRadius: BorderRadius.only(
-                                    //   //   topRight: Radius.circular(10),
-                                    //   // ),
-                                    //   borderRadius: BorderRadius.circular(10),
-                                    // ),
-                                    child: TextFormField(
-                                      controller: emailController,
-                                      onChanged: (_) => validateEmail(
-                                        _,
-                                        provider,
-                                      ),
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(left: width * .01),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                            color: Colors.black,
-                                            width: 0.2,
+                                        Container(
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.symmetric(vertical: height * .01),
+                                          // decoration: BoxDecoration(
+                                          //   // border: Border.fromBorderSide(),
+                                          //   border: Border.all(width: width * .0005),
+                                          //   // borderRadius: BorderRadius.only(
+                                          //   //   topRight: Radius.circular(10),
+                                          //   // ),
+                                          //   borderRadius: BorderRadius.circular(10),
+                                          // ),
+                                          child: TextFormField(
+                                            controller: cityController,
+                                            readOnly: false,
+                                            validator: (v) {
+                                              if (v == null || v.length < 3) return 'Please enter valid city';
+                                              return null;
+                                            },
+                                            decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(left: width * .01),
+                                              border: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(10),
+                                                borderSide: const BorderSide(
+                                                  color: Colors.black,
+                                                  width: 0.2,
+                                                ),
+                                              ),
+                                              hintText: '',
+                                              hintStyle: const TextStyle(
+                                                fontSize: 17.0,
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                        hintText: '',
-                                        hintStyle: const TextStyle(
-                                          fontSize: 17.0,
-                                        ),
-                                        suffix: (_emailValidation == null)
-                                            ? const SizedBox.shrink()
-                                            : (emailValidated != null && emailValidated!)
-                                            ? const Icon(
-                                          Icons.check_circle_outline_rounded,
-                                          color: ColorConstants.colorGreenFour,
-                                        )
-                                            : const Icon(
-                                          Icons.error_outline_rounded,
-                                          color: ColorConstants.colorRed,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  if (_emailValidation != null)
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          _emailValidation ?? '',
-                                          style: const TextStyle(
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * .02,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: const TextSpan(
-                                      text: 'Pincode',
-                                      style: TextStyle(
-                                        color: Color(0xff030d4e),
-                                      ),
-                                      children: [
-                                        TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
                                       ],
                                     ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.symmetric(vertical: height * .01),
-                                    // decoration: BoxDecoration(
-                                    //   // border: Border.fromBorderSide(),
-                                    //   border: Border.all(width: width * .0005),
-                                    //   // borderRadius: BorderRadius.only(
-                                    //   //   topRight: Radius.circular(10),
-                                    //   // ),
-                                    //   borderRadius: BorderRadius.circular(10),
-                                    // ),
-                                    child: TextFormField(
-                                      controller: pinController,
-                                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                                      validator: (v) {
-                                        if (v != null) {
-                                          if (v.isEmpty) {
-                                            return 'Pincode cannot be blank';
-                                          } else if (v.isNotEmpty && v.length < 6) {
-                                            return 'Enter a valid pincode';
-                                          } else if (v.isNotEmpty && v.length > 6) {
-                                            return 'Enter a valid pincode';
-                                          } else {
-                                            return null;
-                                          }
+                                    SizedBox(
+                                      height: height * .04,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        final bool? validated = _registerForm.currentState?.validate();
+                                        if (validated != null &&
+                                            validated &&
+                                            mobileValidated != null &&
+                                            mobileValidated! &&
+                                            emailValidated != null &&
+                                            emailValidated! &&
+                                            gender != null) {
+                                          register(provider);
+                                        } else {
+                                          ScaffoldSnackBar.of(context).show('PLease enter correct details');
                                         }
-                                        return null;
                                       },
-                                      // onChanged: (v) {
-                                      //   if (v.length >= 6) {
-                                      //     FocusScope.of(context).unfocus();
-                                      //     fetchPincode(provider, v);
-                                      //   }
-                                      // },
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(left: width * .01),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                            color: Colors.black,
-                                            width: 0.2,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        width: width * .25,
+                                        height: height * .08,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xff030d4e),
+                                          borderRadius: BorderRadius.circular(30),
+                                        ),
+                                        child: const Text(
+                                          'Sign up',
+                                          style: TextStyle(
+                                            fontSize: 18.0,
+                                            color: Colors.white,
                                           ),
                                         ),
-                                        hintText: '',
-                                        hintStyle: const TextStyle(
-                                          fontSize: 17.0,
-                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * .02,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: const TextSpan(
-                                      text: 'City',
-                                      style: TextStyle(
-                                        color: Color(0xff030d4e),
-                                      ),
-                                      children: [
-                                        TextSpan(text: '*', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.symmetric(vertical: height * .01),
-                                    // decoration: BoxDecoration(
-                                    //   // border: Border.fromBorderSide(),
-                                    //   border: Border.all(width: width * .0005),
-                                    //   // borderRadius: BorderRadius.only(
-                                    //   //   topRight: Radius.circular(10),
-                                    //   // ),
-                                    //   borderRadius: BorderRadius.circular(10),
-                                    // ),
-                                    child: TextFormField(
-                                      controller: cityController,
-                                      readOnly: false,
-                                      validator: (v) {
-                                        if (v == null || v.length < 3) return 'Please enter valid city';
-                                        return null;
-                                      },
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(left: width * .01),
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                            color: Colors.black,
-                                            width: 0.2,
-                                          ),
-                                        ),
-                                        hintText: '',
-                                        hintStyle: const TextStyle(
-                                          fontSize: 17.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * .04,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  final bool? validated = _registerForm.currentState?.validate();
-                                  if (validated != null &&
-                                      validated &&
-                                      mobileValidated != null &&
-                                      mobileValidated! &&
-                                      emailValidated != null &&
-                                      emailValidated! &&
-                                      gender != null) {
-                                    register(provider);
-                                  } else {
-                                    ScaffoldSnackBar.of(context).show('PLease enter correct details');
-                                  }
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: width * .25,
-                                  height: height * .08,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xff030d4e),
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: const Text(
-                                    'Sign up',
-                                    style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                                    )
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
                         ),
                         const Expanded(
                           flex: 4,

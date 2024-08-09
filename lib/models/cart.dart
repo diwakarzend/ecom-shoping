@@ -1,5 +1,4 @@
 import 'package:fabpiks_web/constants.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 
 class Cart {
   final int count;
@@ -82,17 +81,6 @@ class CartItem {
       rewards: json['rewards'] ?? 0,
       brand: CartItemBrand.fromJson(json['brand']),
       inStock: (json['inventry'] ?? 0) > 0,
-    );
-  }
-
-  AnalyticsEventItem toGAP() {
-    return AnalyticsEventItem(
-      itemId: id,
-      itemName: name,
-      itemBrand: brand.name,
-      itemCategory: brand.name,
-      currency: 'INR',
-      price: productType == StringConstants.hotDealProduct || productType == StringConstants.brandStoreProduct ? salePrice.toDouble() : 0.00,
     );
   }
 }

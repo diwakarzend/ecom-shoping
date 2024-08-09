@@ -188,7 +188,7 @@ class _LoginScreenMobileState extends State<LoginScreenMobile> {
               iconTheme: const IconThemeData(color: Colors.white),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => context.router.pop(),
+                onPressed: () => context.router.maybePop(),
               ),
             ),
             body: SingleChildScrollView(
@@ -216,7 +216,7 @@ class _LoginScreenMobileState extends State<LoginScreenMobile> {
                         SizedBox(height: height * .03),
                         TextFormField(
                           controller: phoneController,
-                          onChanged: (_) => validateMobile(_, provider, false),
+                          onChanged: (v) => validateMobile(v, provider, false),
                           keyboardType: TextInputType.phone,
                           maxLength: 10,
                           cursorColor: ColorConstants.colorBlueTen,
@@ -382,7 +382,9 @@ class _LoginScreenMobileState extends State<LoginScreenMobile> {
                                 'Resend now',
                                 style: TextHelper.normalTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color: _start < 1 ? ColorConstants.colorLogin : ColorConstants.colorLogin.withOpacity(0.5),
+                                  color: _start < 1
+                                      ? ColorConstants.colorLogin
+                                      : ColorConstants.colorLogin.withOpacity(0.5),
                                 ),
                               ),
                             ),

@@ -11,7 +11,6 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
@@ -33,22 +32,6 @@ class _TrialScreenMobileState extends State<TrialScreenMobile> {
 
   bool gridview = true;
 
-  addFirebaseAnalyticsTrialProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'trial store',
-      itemListName: 'Trial store products',
-      items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
-
-  addFirebaseAnalyticsHotProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'trial store',
-      itemListName: 'Hot Deal products',
-      items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
-
   Brand? selectedBrand;
   Category? selectedCategory;
 
@@ -58,7 +41,9 @@ class _TrialScreenMobileState extends State<TrialScreenMobile> {
     int count = 6;
     if (selectedBrand != null && trialIndex > 0) {
       List<Product> products = provider.miniProducts
-          .where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id && element.brandId == selectedBrand?.id)
+          .where((element) =>
+              element.category?.id == provider.miniCategories[(trialIndex - 1)].id &&
+              element.brandId == selectedBrand?.id)
           .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
@@ -66,14 +51,17 @@ class _TrialScreenMobileState extends State<TrialScreenMobile> {
         return products;
       }
     } else if (selectedBrand != null && trialIndex == 0) {
-      List<Product> products = provider.miniProducts.where((element) => element.brand?.id == selectedBrand?.id).toList();
+      List<Product> products =
+          provider.miniProducts.where((element) => element.brand?.id == selectedBrand?.id).toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
         return products;
       }
     } else if (trialIndex > 0 && selectedBrand == null) {
-      List<Product> products = provider.miniProducts.where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id).toList();
+      List<Product> products = provider.miniProducts
+          .where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id)
+          .toList();
       if (products.length > (count * page)) {
         return products.take((count * page)).toList();
       } else {
@@ -111,8 +99,6 @@ class _TrialScreenMobileState extends State<TrialScreenMobile> {
     final height = MediaQuery.of(context).size.height;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsTrialProducts(provider);
-        addFirebaseAnalyticsHotProducts(provider);
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
@@ -125,20 +111,26 @@ class _TrialScreenMobileState extends State<TrialScreenMobile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (provider.banners
-                      .where((element) => element.type == StringConstants.trialBanner && element.deviceType == StringConstants.deviceTypeM)
+                      .where((element) =>
+                          element.type == StringConstants.trialBanner &&
+                          element.deviceType == StringConstants.deviceTypeM)
                       .isNotEmpty)
                     Padding(
                       padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
                       child: CarouselSlider.builder(
                         itemCount: provider.banners
-                            .where((element) => element.type == StringConstants.trialBanner && element.deviceType == StringConstants.deviceTypeM)
+                            .where((element) =>
+                                element.type == StringConstants.trialBanner &&
+                                element.deviceType == StringConstants.deviceTypeM)
                             .length,
                         itemBuilder: (BuildContext context, int i, int index) {
                           return ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: CustomNetworkImage(
                               imageUrl: provider.banners
-                                  .where((element) => element.type == StringConstants.trialBanner && element.deviceType == StringConstants.deviceTypeM)
+                                  .where((element) =>
+                                      element.type == StringConstants.trialBanner &&
+                                      element.deviceType == StringConstants.deviceTypeM)
                                   .toList()[index]
                                   .banner,
                               width: width,
@@ -313,7 +305,11 @@ class _TrialScreenMobileState extends State<TrialScreenMobile> {
                       return MiniItems(
                         product: product,
                         onProductClick: () {
-                          _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider);
+                          _cartHelper.productClick(
+                              context: context,
+                              productId: product.id,
+                              productType: product.productType,
+                              provider: provider);
                         },
                         onProductTry: () {
                           _cartHelper.tryNow(provider: provider, context: context, productId: product.id);

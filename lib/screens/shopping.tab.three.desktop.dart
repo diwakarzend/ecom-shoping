@@ -18,9 +18,8 @@ import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-
 // import 'package:facebook_app_events/facebook_app_events.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_razorpay_web/flutter_razorpay_web.dart';
@@ -65,12 +64,18 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
 
   openCheckout(AppProvider provider, double price) async {
     if (_order != null) {
-      RazorpayWeb razorpayWeb = RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
+      RazorpayWeb razorpayWeb =
+          RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
       var razorpayAmount = price * 100;
-      log((provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ?? '', name: 'razorpay_log');
+      log(
+          (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
+              '',
+          name: 'razorpay_log');
 
       final Map<String, dynamic> options = {
-        'key': (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ?? '',
+        'key':
+            (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
+                '',
         'amount': razorpayAmount,
         'currency': 'INR',
         'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
@@ -99,7 +104,6 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
     if (!mounted) return;
     _appProvider.initWithLogin();
     context.router.replace(HomeRoute(orderSuccess: true, order: _order));
-    orderSuccess(_order!, _appProvider);
   }
 
   void handlePaymentCancel(RpayCancelResponse response) {
@@ -230,8 +234,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
         if (!mounted) return;
         ScaffoldLoaderDialog.of(context).hide();
         if (!mounted) return;
-        context.router.pop();
-        orderSuccess(temp, provider);
+        context.router.maybePop();
         if (!mounted) return;
         context.router.replace(HomeRoute(orderSuccess: true, order: temp));
       } else {
@@ -264,60 +267,6 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
   }
 
   // static final facebookAppEvents = FacebookAppEvents();
-
-  orderSuccess(Order order, AppProvider provider) async {
-    await FirebaseAnalytics.instance.logPurchase(
-      transactionId: order.id,
-      currency: 'INR',
-      value: order.grandTotal.toDouble(),
-      shipping: order.shippingCost.toDouble(),
-      tax: 0,
-      items: List<AnalyticsEventItem>.from(order.products.map((e) => e.toGAP())),
-    );
-
-    // await facebookAppEvents.logPurchase(
-    //   amount: grandTotal ?? 0,
-    //   currency: 'INR',
-    // );
-  }
-
-  addProductsToFirebase(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewCart(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
-
-  beginCheckout(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logBeginCheckout(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-
-    // await facebookAppEvents.logInitiatedCheckout(
-    //   totalPrice: _cartHelper.calculateAllTotal(provider),
-    //   currency: 'INR',
-    // );
-  }
-
-  addShipping(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logAddShippingInfo(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
-
-  addPayment(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logAddPaymentInfo(
-      paymentType: selectedPayment,
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
 
   bool supportExpanded = false;
 
@@ -378,7 +327,8 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                           iconSize: 20,
                           icon: AnimatedSwitcher(
                             duration: const Duration(milliseconds: 300),
-                            child: Icon(!paymentExpanded ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded),
+                            child: Icon(
+                                !paymentExpanded ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded),
                           ),
                         ),
                       ],
@@ -394,7 +344,9 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty)
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.trialProduct)
+                                  .isNotEmpty)
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -402,22 +354,32 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'Shop Mini - Service Fee (${provider.cart?.charges.miniItemQuantity} ${(provider.cart?.charges.miniItemQuantity ?? 0) > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.serviceCharge.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.trialProduct)
+                                  .isNotEmpty &&
+                              provider.cart!.records
+                                      .where((element) => element.productType == StringConstants.trialProduct)
+                                      .length >
                                   provider.appSettings!.generalSettings.itemQty)
                             SizedBox(height: height * .02),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.trialProduct)
+                                  .isNotEmpty &&
+                              provider.cart!.records
+                                      .where((element) => element.productType == StringConstants.trialProduct)
+                                      .length >
                                   provider.appSettings!.generalSettings.itemQty)
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -426,19 +388,25 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'Shop Mini - Addon Product Fee (${provider.cart?.charges.addonQuantity} ${(provider.cart?.charges.addonQuantity ?? 0) > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.addonUnitPrice.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.brandStoreProduct)
+                                  .isNotEmpty)
                             SizedBox(height: height * .02),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.brandStoreProduct)
+                                  .isNotEmpty)
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -446,19 +414,25 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'Free Sample - Service Fee (${provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).length} ${provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).length > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.bounsServiceCharge.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.hotDealProduct)
+                                  .isNotEmpty)
                             SizedBox(height: height * .02),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.hotDealProduct)
+                                  .isNotEmpty)
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -466,19 +440,25 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'Deals & Combos (${_cartHelper.hotDealCount(provider)} ${_cartHelper.hotDealCount(provider) > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.hotDealsCharge.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.noTrailProduct)
+                                  .isNotEmpty)
                             SizedBox(height: height * .02),
                           if (provider.cart != null &&
-                              provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                              provider.cart!.records
+                                  .where((element) => element.productType == StringConstants.noTrailProduct)
+                                  .isNotEmpty)
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -486,11 +466,13 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'Bonus Trials (${provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length} ${provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length > 1 ? 'items' : 'item'})',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   'FREE',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
@@ -503,11 +485,13 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'COD Fee',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${(provider.appSettings?.generalSettings.codCharge ?? 0)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
@@ -520,11 +504,13 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'SubTotal',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${(provider.cart!.charges.subTotalWithoutDiscount + (selectedPayment == 'cod' ? (provider.appSettings?.generalSettings.codCharge ?? 0) : 0)).toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
                                 ),
                               ],
                             ),
@@ -537,11 +523,13 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'Coupon Applied',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${provider.cart?.charges.discount.toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),
                               ],
                             ),
@@ -554,11 +542,13 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                               children: [
                                 Text(
                                   'Total',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
                                 ),
                                 Text(
                                   '\u{20B9}${(provider.cart!.charges.grandTotal + (selectedPayment == 'cod' ? (provider.appSettings?.generalSettings.codCharge ?? 0) : 0)).toStringAsFixed(2)}',
-                                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
+                                  style:
+                                      TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
                                 ),
                               ],
                             ),
@@ -620,7 +610,8 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                           ),
                         ),
                       ),
-                  if ((provider.cart?.charges.grandTotal ?? 0) >= 500 && (provider.cart?.charges.grandTotal ?? 0) <= 1500)
+                  if ((provider.cart?.charges.grandTotal ?? 0) >= 500 &&
+                      (provider.cart?.charges.grandTotal ?? 0) <= 1500)
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: width * .12),
                       alignment: Alignment.center,
@@ -655,11 +646,14 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                                   child: Text.rich(
                                     TextSpan(
                                       text: 'Pay on delivery',
-                                      style: TextHelper.extraSmallTextStyle.copyWith(fontSize: 13.sp, fontWeight: FontWeight.bold),
+                                      style: TextHelper.extraSmallTextStyle
+                                          .copyWith(fontSize: 13.sp, fontWeight: FontWeight.bold),
                                       children: [
                                         TextSpan(
-                                          text: ' (${StringConstants.rupeeSign}${(provider.appSettings?.generalSettings.codCharge ?? 0)} COD charges)',
-                                          style: TextHelper.extraSmallTextStyle.copyWith(fontSize: 13.sp, fontWeight: FontWeight.normal),
+                                          text:
+                                              ' (${StringConstants.rupeeSign}${(provider.appSettings?.generalSettings.codCharge ?? 0)} COD charges)',
+                                          style: TextHelper.extraSmallTextStyle
+                                              .copyWith(fontSize: 13.sp, fontWeight: FontWeight.normal),
                                         ),
                                       ],
                                     ),
@@ -738,7 +732,8 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                           alignment: Alignment.center,
                           child: Text(
                             'Place Order',
-                            style: TextHelper.smallTextStyle.copyWith(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14.sp),
+                            style: TextHelper.smallTextStyle
+                                .copyWith(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14.sp),
                           ),
                         ),
                       ),
@@ -931,7 +926,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             right: 25,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 40,
                 height: 40,

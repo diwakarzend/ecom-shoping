@@ -17,7 +17,6 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/app.provider.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_razorpay_web/flutter_razorpay_web.dart';
@@ -44,11 +43,14 @@ class _ShoppingCartState extends State<ShoppingCart> {
 
   openCheckout(AppProvider provider, double price) async {
     if (_order != null) {
-      RazorpayWeb razorpayWeb = RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
+      RazorpayWeb razorpayWeb =
+          RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
       var razorpayAmount = price * 100;
 
       final Map<String, dynamic> options = {
-        'key': (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ?? '',
+        'key':
+            (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
+                '',
         'amount': razorpayAmount,
         'currency': 'INR',
         'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
@@ -77,7 +79,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
     if (!mounted) return;
     _appProvider.initWithLogin();
     context.router.replace(HomeRoute(orderSuccess: true, order: _order));
-    orderSuccess(_order!, _appProvider);
   }
 
   void handlePaymentCancel(RpayCancelResponse response) {
@@ -208,8 +209,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
         if (!mounted) return;
         ScaffoldLoaderDialog.of(context).hide();
         if (!mounted) return;
-        context.router.pop();
-        orderSuccess(temp, provider);
+        context.router.maybePop();
         if (!mounted) return;
         context.router.replace(HomeRoute(orderSuccess: true, order: temp));
       } else {
@@ -243,60 +243,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
 
   // static final facebookAppEvents = FacebookAppEvents();
 
-  orderSuccess(Order order, AppProvider provider) async {
-    await FirebaseAnalytics.instance.logPurchase(
-      transactionId: order.id,
-      currency: 'INR',
-      value: order.grandTotal.toDouble(),
-      shipping: order.shippingCost.toDouble(),
-      tax: 0,
-      items: List<AnalyticsEventItem>.from(order.products.map((e) => e.toGAP())),
-    );
-
-    // await facebookAppEvents.logPurchase(
-    //   amount: grandTotal ?? 0,
-    //   currency: 'INR',
-    // );
-  }
-
-  addProductsToFirebase(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewCart(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
-
-  beginCheckout(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logBeginCheckout(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-
-    // await facebookAppEvents.logInitiatedCheckout(
-    //   totalPrice: _cartHelper.calculateAllTotal(provider),
-    //   currency: 'INR',
-    // );
-  }
-
-  addShipping(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logAddShippingInfo(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
-
-  addPayment(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logAddPaymentInfo(
-      paymentType: selectedPayment,
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
-
   @override
   void initState() {
     _appProvider = Provider.of<AppProvider>(context, listen: false);
@@ -309,7 +255,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addProductsToFirebase(provider);
         return (provider.cart?.count ?? 0) > 0
             ? Scaffold(
                 appBar: AppBar(
@@ -338,7 +283,8 @@ class _ShoppingCartState extends State<ShoppingCart> {
                             highlightColor: Colors.transparent,
                             child: CircleAvatar(
                               radius: 17,
-                              backgroundColor: stepIndex == 0 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
+                              backgroundColor:
+                                  stepIndex == 0 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
                               child: const Icon(
                                 Icons.shopping_cart_outlined,
                                 color: Colors.white,
@@ -364,7 +310,8 @@ class _ShoppingCartState extends State<ShoppingCart> {
                             splashFactory: NoSplash.splashFactory,
                             highlightColor: Colors.transparent,
                             child: CircleAvatar(
-                              backgroundColor: stepIndex == 1 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
+                              backgroundColor:
+                                  stepIndex == 1 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
                               radius: 17,
                               child: const Icon(
                                 Icons.my_location_outlined,
@@ -391,7 +338,8 @@ class _ShoppingCartState extends State<ShoppingCart> {
                             splashFactory: NoSplash.splashFactory,
                             highlightColor: Colors.transparent,
                             child: CircleAvatar(
-                              backgroundColor: stepIndex == 2 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
+                              backgroundColor:
+                                  stepIndex == 2 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
                               radius: 17,
                               child: const Icon(
                                 Icons.payment_outlined,
@@ -411,9 +359,12 @@ class _ShoppingCartState extends State<ShoppingCart> {
                           ShoppingTabOne(
                             onCheckout: () {
                               if (provider.cart != null &&
-                                  provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                                  provider.cart!.records
+                                          .where((element) => element.productType == StringConstants.trialProduct)
+                                          .length >=
                                       provider.appSettings!.generalSettings.itemQty) {
-                                if (provider.cart!.records.any((element) => element.productType == StringConstants.noTrailProduct)) {
+                                if (provider.cart!.records
+                                    .any((element) => element.productType == StringConstants.noTrailProduct)) {
                                   setState(() {
                                     stepIndex = 1;
                                   });
@@ -426,14 +377,13 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                       dialogContext = c;
                                       return CustomDialog(
                                         onTap: () {
-                                          dialogContext?.popRoute();
+                                          dialogContext?.maybePop();
                                         },
                                         onClose: () {
-                                          dialogContext?.popRoute();
+                                          dialogContext?.maybePop();
                                           setState(() {
                                             stepIndex = 1;
                                           });
-                                          beginCheckout(provider);
                                         },
                                         icon: 'assets/images/icons/sad.png',
                                         buttonName: 'Add Bonus Products',
@@ -461,11 +411,11 @@ class _ShoppingCartState extends State<ShoppingCart> {
                               //       dialogContext = c;
                               //       return CustomDialog(
                               //         onTap: () {
-                              //           dialogContext?.popRoute();
+                              //           dialogContext?.maybePop();
                               //           dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
                               //         },
                               //         onClose: () {
-                              //           dialogContext?.popRoute();
+                              //           dialogContext?.maybePop();
                               //           setState(() {
                               //             stepIndex = 1;
                               //           });
@@ -500,7 +450,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                 setState(() {
                                   stepIndex = 2;
                                 });
-                                addShipping(provider);
                               } else {
                                 ScaffoldSnackBar.of(context).show('Please select shipping address');
                               }

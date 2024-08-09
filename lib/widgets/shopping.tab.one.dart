@@ -80,18 +80,22 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                                 builder: (c) => DeleteCartItem(
                                   product: e,
                                   remove: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.deleteCartItem(e.id);
                                   },
                                   move: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.moveCartItem(e.id);
                                   },
                                 ),
                               );
                             },
                             onClick: () {
-                              _cartHelper.productClick(context: context, productId: e.productId, productType: e.productType, provider: provider);
+                              _cartHelper.productClick(
+                                  context: context,
+                                  productId: e.productId,
+                                  productType: e.productType,
+                                  provider: provider);
                             },
                           );
                         case StringConstants.brandStoreProduct:
@@ -109,18 +113,22 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                                 builder: (c) => DeleteCartItem(
                                   product: e,
                                   remove: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.deleteCartItem(e.id);
                                   },
                                   move: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.moveCartItem(e.productId);
                                   },
                                 ),
                               );
                             },
                             onClick: () {
-                              _cartHelper.productClick(context: context, productId: e.productId, productType: e.productType, provider: provider);
+                              _cartHelper.productClick(
+                                  context: context,
+                                  productId: e.productId,
+                                  productType: e.productType,
+                                  provider: provider);
                             },
                           );
                         // case rewardStoreProduct:
@@ -138,11 +146,11 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                         //         builder: (c) => DeleteCartItem(
                         //           product: e,
                         //           remove: () {
-                        //             context.router.pop();
+                        //             context.router.maybePop();
                         //             provider.deleteCartItem(e);
                         //           },
                         //           move: () {
-                        //             context.router.pop();
+                        //             context.router.maybePop();
                         //             provider.moveCartItem(e);
                         //           },
                         //         ),
@@ -175,18 +183,22 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                                 builder: (c) => DeleteCartItem(
                                   product: e,
                                   remove: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.deleteCartItem(e.id);
                                   },
                                   move: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.moveCartItem(e.productId);
                                   },
                                 ),
                               );
                             },
                             onClick: () {
-                              _cartHelper.productClick(context: context, productId: e.productId, productType: e.productType, provider: provider);
+                              _cartHelper.productClick(
+                                  context: context,
+                                  productId: e.productId,
+                                  productType: e.productType,
+                                  provider: provider);
                             },
                           );
                         case StringConstants.surprisedProduct:
@@ -200,41 +212,58 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                     },
                   ),
                 if (provider.cart != null &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                    provider.cart!.records
+                            .where((element) => element.productType == StringConstants.trialProduct)
+                            .length >=
                         provider.appSettings!.generalSettings.itemQty)
                   if (provider.noTrailProducts.isNotEmpty &&
-                      provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                      provider.cart!.records
+                              .where((element) => element.productType == StringConstants.noTrailProduct)
+                              .length <
                           (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                     Text(
                       'Bonus Trial Offers',
                       style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
                     ),
                 if (provider.cart != null &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                    provider.cart!.records
+                            .where((element) => element.productType == StringConstants.trialProduct)
+                            .length >=
                         provider.appSettings!.generalSettings.itemQty)
                   if (provider.noTrailProducts.isNotEmpty &&
-                      provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                      provider.cart!.records
+                              .where((element) => element.productType == StringConstants.noTrailProduct)
+                              .length <
                           (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                     SizedBox(height: height * .01),
                 if (provider.cart != null &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                    provider.cart!.records
+                            .where((element) => element.productType == StringConstants.trialProduct)
+                            .length >=
                         provider.appSettings!.generalSettings.itemQty)
                   if (provider.noTrailProducts.isNotEmpty &&
-                      provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                      provider.cart!.records
+                              .where((element) => element.productType == StringConstants.noTrailProduct)
+                              .length <
                           (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                     Padding(
                       padding: EdgeInsets.only(bottom: height * .01),
                       child: Text(
                         'Exclusively for you! Choose upto 2 items, 100% FREE',
                         maxLines: 5,
-                        style: TextHelper.smallTextStyle.copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w500),
+                        style: TextHelper.smallTextStyle
+                            .copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w500),
                       ),
                     ),
                 if (provider.cart != null &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                    provider.cart!.records
+                            .where((element) => element.productType == StringConstants.trialProduct)
+                            .length >=
                         provider.appSettings!.generalSettings.itemQty)
                   if (provider.noTrailProducts.isNotEmpty &&
-                      provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                      provider.cart!.records
+                              .where((element) => element.productType == StringConstants.noTrailProduct)
+                              .length <
                           (provider.appSettings?.generalSettings.samplesLimit ?? 2))
                     CarouselSlider(
                       items: provider.noTrailProducts
@@ -307,8 +336,11 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                     return DealItems(
                       key: Key(product.id),
                       product: product,
-                      onProductClick: () =>
-                          _cartHelper.productClick(context: context, productId: product.id, productType: product.productType, provider: provider),
+                      onProductClick: () => _cartHelper.productClick(
+                          context: context,
+                          productId: product.id,
+                          productType: product.productType,
+                          provider: provider),
                       onAddToCart: () => _cartHelper.addToCart(
                         provider: provider,
                         context: context,
@@ -382,7 +414,10 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                   color: ColorConstants.colorGreyTwo,
                 ),
                 SizedBox(height: height * .02),
-                if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty)
+                if (provider.cart != null &&
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.trialProduct)
+                        .isNotEmpty)
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -399,13 +434,21 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                     ],
                   ),
                 if (provider.cart != null &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.trialProduct)
+                        .isNotEmpty &&
+                    provider.cart!.records
+                            .where((element) => element.productType == StringConstants.trialProduct)
+                            .length >
                         provider.appSettings!.generalSettings.itemQty)
                   SizedBox(height: height * .02),
                 if (provider.cart != null &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isNotEmpty &&
-                    provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.trialProduct)
+                        .isNotEmpty &&
+                    provider.cart!.records
+                            .where((element) => element.productType == StringConstants.trialProduct)
+                            .length >
                         provider.appSettings!.generalSettings.itemQty)
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -422,9 +465,15 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                       ),
                     ],
                   ),
-                if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                if (provider.cart != null &&
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.brandStoreProduct)
+                        .isNotEmpty)
                   SizedBox(height: height * .02),
-                if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.brandStoreProduct).isNotEmpty)
+                if (provider.cart != null &&
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.brandStoreProduct)
+                        .isNotEmpty)
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -440,9 +489,15 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                       ),
                     ],
                   ),
-                if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                if (provider.cart != null &&
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.hotDealProduct)
+                        .isNotEmpty)
                   SizedBox(height: height * .02),
-                if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.hotDealProduct).isNotEmpty)
+                if (provider.cart != null &&
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.hotDealProduct)
+                        .isNotEmpty)
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -458,9 +513,15 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                       ),
                     ],
                   ),
-                if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                if (provider.cart != null &&
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.noTrailProduct)
+                        .isNotEmpty)
                   SizedBox(height: height * .02),
-                if (provider.cart != null && provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).isNotEmpty)
+                if (provider.cart != null &&
+                    provider.cart!.records
+                        .where((element) => element.productType == StringConstants.noTrailProduct)
+                        .isNotEmpty)
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -548,8 +609,11 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                     ],
                   ),
                 SizedBox(height: height * .05),
-                if (provider.cart != null && provider.cart!.records.any((element) => element.productType == StringConstants.trialProduct))
-                  if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                if (provider.cart != null &&
+                    provider.cart!.records.any((element) => element.productType == StringConstants.trialProduct))
+                  if (provider.cart!.records
+                          .where((element) => element.productType == StringConstants.trialProduct)
+                          .length >=
                       provider.appSettings!.generalSettings.itemQty)
                     Align(
                       alignment: Alignment.centerRight,
@@ -699,7 +763,8 @@ class _HotItems extends StatelessWidget {
                   children: [
                     Text(
                       '${StringConstants.rupeeSign}${cartItem.mrp}',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, decoration: TextDecoration.lineThrough),
+                      style: TextHelper.smallTextStyle
+                          .copyWith(fontWeight: FontWeight.w500, decoration: TextDecoration.lineThrough),
                     ),
                     Container(
                       width: 5,
@@ -738,7 +803,10 @@ class _HotItems extends StatelessWidget {
                     ),
                     Text(
                       provider.cart != null && provider.cart!.records.any((element) => element.id == cartItem.id)
-                          ? provider.cart!.records.firstWhere((element) => element.id == cartItem.id).quantity.toString()
+                          ? provider.cart!.records
+                              .firstWhere((element) => element.id == cartItem.id)
+                              .quantity
+                              .toString()
                           : '0',
                       style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold),
                     ),
@@ -857,8 +925,9 @@ class _SelectItems extends StatelessWidget {
                   children: [
                     Text(
                       cartItem.salePrice > 0 ? '${StringConstants.rupeeSign}${cartItem.salePrice}' : 'FREE',
-                      style: TextHelper.smallTextStyle
-                          .copyWith(fontWeight: FontWeight.w500, color: cartItem.salePrice > 0 ? ColorConstants.colorBlack : ColorConstants.colorGreenTwo),
+                      style: TextHelper.smallTextStyle.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: cartItem.salePrice > 0 ? ColorConstants.colorBlack : ColorConstants.colorGreenTwo),
                     ),
                   ],
                 ),
@@ -961,7 +1030,8 @@ class _NoTrialItem extends StatelessWidget {
                   children: [
                     Text(
                       'FREE',
-                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
+                      style: TextHelper.normalTextStyle
+                          .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
                     ),
                   ],
                 ),
@@ -1209,7 +1279,9 @@ class _BonusItems extends StatelessWidget {
             borderRadius: BorderRadius.circular(50),
           ),
           value: provider.cart != null &&
-              provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct && element.id == product.id).isNotEmpty,
+              provider.cart!.records
+                  .where((element) => element.productType == StringConstants.noTrailProduct && element.id == product.id)
+                  .isNotEmpty,
           onChanged: (v) {
             if (v != null && v) {
               // if (provider.currentUser != null &&
@@ -1220,11 +1292,14 @@ class _BonusItems extends StatelessWidget {
               //             .length <
               //         e.maximumQty) {
               if (provider.cart != null &&
-                  provider.cart!.records.where((element) => element.productType == StringConstants.noTrailProduct).length <
+                  provider.cart!.records
+                          .where((element) => element.productType == StringConstants.noTrailProduct)
+                          .length <
                       (provider.appSettings?.generalSettings.samplesLimit ?? 2)) {
                 provider.addCartItems(productID: product.id);
               } else {
-                ScaffoldSnackBar.of(context).show('Oops you are eligible for ${(provider.appSettings?.generalSettings.samplesLimit ?? 2)} Bonus trials');
+                ScaffoldSnackBar.of(context).show(
+                    'Oops you are eligible for ${(provider.appSettings?.generalSettings.samplesLimit ?? 2)} Bonus trials');
               }
               // } else {
               //   showSnackBar(
@@ -1308,7 +1383,8 @@ class _SurpriseTrialItem extends StatelessWidget {
                   children: [
                     Text(
                       'FREE',
-                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
+                      style: TextHelper.normalTextStyle
+                          .copyWith(fontWeight: FontWeight.w500, color: ColorConstants.colorGreenTwo),
                     ),
                   ],
                 ),

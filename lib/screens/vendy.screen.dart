@@ -194,7 +194,7 @@ class VendyScreen extends StatelessWidget {
                 right: 5,
                 top: 0,
                 child: GestureDetector(
-                  onTap: () => context.router.popTop(),
+                  onTap: () => context.router.maybePopTop(),
                   child: const Material(
                     color: Colors.transparent,
                     elevation: 2,

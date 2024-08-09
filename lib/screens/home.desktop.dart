@@ -8,7 +8,7 @@ import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -30,9 +30,9 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
 
   int trialIndex = 0, dealIndex = 0, sampleIndex = 0;
 
-  final CarouselController _miniController = CarouselController();
-  final CarouselController _dealController = CarouselController();
-  final CarouselController _sampleController = CarouselController();
+  // final CarouselController _miniController = CarouselController();
+  // final CarouselController _dealController = CarouselController();
+  // final CarouselController _sampleController = CarouselController();
 
   final DioHelper _dioHelper = DioHelper();
 
@@ -54,9 +54,10 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
 
   int bannerIndex = 0;
 
-
-  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b31b913c766.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/deal banner/654b2f9234e42.jpg'];
+  final List<String> _banners = [
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b31b913c766.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/deal banner/654b2f9234e42.jpg'
+  ];
 
   @override
   void initState() {
@@ -64,26 +65,30 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
       BuildContext? dialogContext;
       Future.delayed(
         const Duration(milliseconds: 500),
-        () => showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (c) {
-            dialogContext = c;
+        () {
+          if (mounted) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (c) {
+                dialogContext = c;
 
-            return _OrderDialog(
-              orderId: widget.order?.orderNumber ?? '',
-              onRate: () async {
-                dialogContext?.popRoute();
-                // if (await inAppReview.isAvailable()) {
-                //   inAppReview.openStoreListing(appStoreId: '6447238261');
-                // }
-              },
-              onCancel: () {
-                dialogContext?.popRoute();
+                return _OrderDialog(
+                  orderId: widget.order?.orderNumber ?? '',
+                  onRate: () async {
+                    dialogContext?.maybePop();
+                    // if (await inAppReview.isAvailable()) {
+                    //   inAppReview.openStoreListing(appStoreId: '6447238261');
+                    // }
+                  },
+                  onCancel: () {
+                    dialogContext?.maybePop();
+                  },
+                );
               },
             );
-          },
-        ),
+          }
+        },
       );
     }
     super.initState();
@@ -518,111 +523,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _miniController.previousPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 13,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: height * .02),
-                            child: CarouselSlider(
-                              carouselController: _miniController,
-                              items: [
-                                if (trialIndex == 0)
-                                  ...provider.miniProducts.take(provider.miniProducts.length > 10 ? 10 : provider.miniProducts.length).map(
-                                        (e) => MiniItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onProductTry: () => _cartHelper.tryNow(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      )
-                                else
-                                  ...provider.miniProducts
-                                      .where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id)
-                                      .take((provider.miniProducts
-                                                  .where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id)
-                                                  .length) >
-                                              10
-                                          ? 10
-                                          : provider.miniProducts
-                                              .where((element) => element.category?.id == provider.miniCategories[(trialIndex - 1)].id)
-                                              .length)
-                                      .map(
-                                        (e) => MiniItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onProductTry: () => _cartHelper.tryNow(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      ),
-                              ],
-                              options: CarouselOptions(
-                                // aspectRatio: 4.5,
-                                aspectRatio: 3.1,
-                                viewportFraction: .2,
-                                // viewportFraction: 0.15,
-                                initialPage: 0,
-                                enableInfiniteScroll: false,
-                                reverse: false,
-                                disableCenter: true,
-                                padEnds: false,
-                                autoPlay: true,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _miniController.nextPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -737,111 +637,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                           const SizedBox(width: 20),
                         ],
                       ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _dealController.previousPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 12,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: height * .03),
-                            child: CarouselSlider(
-                              carouselController: _dealController,
-                              items: [
-                                if (dealIndex == 0)
-                                  ...provider.dealProducts.take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length).map(
-                                        (e) => DealItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onAddToCart: () => _cartHelper.addToCart(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      )
-                                else
-                                  ...provider.dealProducts
-                                      .where((element) => element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                                      .take((provider.dealProducts
-                                                  .where((element) => element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                                                  .length) >
-                                              10
-                                          ? 10
-                                          : provider.dealProducts
-                                              .where((element) => element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                                              .length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onAddToCart: () => _cartHelper.addToCart(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      ),
-                              ],
-                              options: CarouselOptions(
-                                // aspectRatio: 4.5,
-                                aspectRatio: 3.1,
-                                // viewportFraction: 0.15,
-                                viewportFraction: 0.2,
-                                initialPage: 0,
-                                enableInfiniteScroll: false,
-                                reverse: false,
-                                disableCenter: true,
-                                padEnds: false,
-                                autoPlay: true,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _dealController.nextPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                   // FB5Container(
@@ -988,117 +783,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       ),
                     ),
                   ),
-
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _sampleController.previousPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 12,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: height * .03),
-                            child: CarouselSlider(
-                              carouselController: _sampleController,
-                              items: [
-                                if (sampleIndex == 0)
-                                  ...provider.sampleProducts.take(provider.sampleProducts.length > 10 ? 10 : provider.sampleProducts.length).map(
-                                        (e) => SampleItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onTry: () => _cartHelper.applyToTry(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                            width: width,
-                                            height: height,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      )
-                                else
-                                  ...provider.sampleProducts
-                                      .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                      .take((provider.sampleProducts
-                                                  .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                                  .length) >
-                                              10
-                                          ? 10
-                                          : provider.sampleProducts
-                                              .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                              .length)
-                                      .map(
-                                        (e) => SampleItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onTry: () => _cartHelper.applyToTry(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                            width: width,
-                                            height: height,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      ),
-                              ],
-                              options: CarouselOptions(
-                                // aspectRatio: 4.5,
-                                aspectRatio: 3.1,
-                                // viewportFraction: 0.15,
-                                viewportFraction: .2,
-                                initialPage: 0,
-                                enableInfiniteScroll: false,
-                                reverse: false,
-                                disableCenter: true,
-                                padEnds: false,
-                                autoPlay: true,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _sampleController.nextPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
                     alignment: Alignment.center,
@@ -1211,7 +895,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   ),
                   Text(
                     'UPto 80% OFF',
-                    style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18.sp),
+                    style: TextHelper.normalTextStyle
+                        .copyWith(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18.sp),
                   ),
                   InkWell(
                     onTap: () => context.router.navigate(const DealsRoute()),
@@ -1288,7 +973,8 @@ class _OrderDialog extends StatelessWidget {
                 SizedBox(height: height * .02),
                 Text(
                   'Thanks for your order!',
-                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorBlackTwo, fontSize: 13.sp),
+                  style: TextHelper.smallTextStyle
+                      .copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorBlackTwo, fontSize: 13.sp),
                 ),
                 SizedBox(height: height * .02),
                 Padding(
@@ -1420,7 +1106,7 @@ class _OrderDialog extends StatelessWidget {
             top: 0,
             child: GestureDetector(
               onTap: () {
-                context.router.pop();
+                context.router.maybePop();
               },
               child: Container(
                 width: 40,

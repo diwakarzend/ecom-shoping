@@ -72,24 +72,38 @@ class CartHelper {
     if (settings != null && provider.cart != null) {
       if (provider.cart!.records.any((element) => element.id == product.id)) {
         return 'already_added';
-      } else if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).isEmpty) {
+      } else if (provider.cart!.records
+          .where((element) => element.productType == StringConstants.trialProduct)
+          .isEmpty) {
         return 'first_item';
-      } else if ((settings.itemQty - 1) > provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length) {
+      } else if ((settings.itemQty - 1) >
+          provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length) {
         return 'items_left';
-      } else if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >= (settings.itemQty - 1)) {
-        if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length == (settings.itemQty - 1)) {
+      } else if (provider.cart!.records
+              .where((element) => element.productType == StringConstants.trialProduct)
+              .length >=
+          (settings.itemQty - 1)) {
+        if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length ==
+            (settings.itemQty - 1)) {
           return 'item_complete';
-        } else if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length > (settings.itemQty - 1) &&
+        } else if (provider.cart!.records
+                    .where((element) => element.productType == StringConstants.trialProduct)
+                    .length >
+                (settings.itemQty - 1) &&
             provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length <
                 ((settings.itemQty + settings.addonQty) - 1)) {
           return 'addon_item_left';
-        } else if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+        } else if (provider.cart!.records
+                .where((element) => element.productType == StringConstants.trialProduct)
+                .length >=
             (settings.itemQty + settings.addonQty)) {
           return 'all_product_added';
         } else {
           return 'cart_complete';
         }
-      } else if (provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+      } else if (provider.cart!.records
+              .where((element) => element.productType == StringConstants.trialProduct)
+              .length >=
           (settings.itemQty + settings.addonQty)) {
         return 'all_product_added';
       } else {
@@ -103,12 +117,17 @@ class CartHelper {
   int calculateProductOrderLength(AppProvider provider, Product product) {
     List<String> valuesToCheck = ['cancelled', 'failed'];
     int count = provider.currentUser!.orders
-        .where((element) => element.products.any((p) => p.id == product.id) && !valuesToCheck.contains(element.status.toLowerCase()))
+        .where((element) =>
+            element.products.any((p) => p.id == product.id) && !valuesToCheck.contains(element.status.toLowerCase()))
         .length;
     return count;
   }
 
-  void tryNow({required AppProvider provider, required BuildContext context, required String productId, bool fromProductPage = false}) {
+  void tryNow(
+      {required AppProvider provider,
+      required BuildContext context,
+      required String productId,
+      bool fromProductPage = false}) {
     final Product? product = provider.miniProducts.firstWhereOrNull((element) => element.id == productId);
     if (provider.appSettings != null && provider.cart != null && product != null) {
       if (provider.currentUser != null) {
@@ -122,7 +141,7 @@ class CartHelper {
                 builder: (c) {
                   return Alreadyadded(
                     onTap: () {
-                      context.router.pop();
+                      context.router.maybePop();
                     },
                     icon: 'assets/images/icons/happy.png',
                     buttonName: '',
@@ -148,13 +167,14 @@ class CartHelper {
                       if (fromProductPage) {
                         dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
                       } else {
-                        dialogContext?.popRoute();
+                        dialogContext?.maybePop();
                       }
                     },
                     icon: 'assets/images/icons/happy.png',
                     buttonName: 'Add more minis',
                     title: 'Great choice',
-                    message: 'You have to choose minimum of ${(provider.appSettings?.generalSettings.itemQty ?? 0)} products! ',
+                    message:
+                        'You have to choose minimum of ${(provider.appSettings?.generalSettings.itemQty ?? 0)} products! ',
                     // message: ' add ${(provider.appSettings?.generalSettings.itemQty ?? 0) - 1} more products to complete your cart',
                     haveButtons: true,
                   );
@@ -172,7 +192,7 @@ class CartHelper {
                   dialogContext = c;
                   return CustomDialog(
                     onTap: () {
-                      dialogContext?.popRoute();
+                      dialogContext?.maybePop();
                     },
                     icon: 'assets/images/icons/happy.png',
                     buttonName: 'Add more minis',
@@ -209,7 +229,7 @@ class CartHelper {
                       if (fromProductPage) {
                         dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
                       } else {
-                        dialogContext?.popRoute();
+                        dialogContext?.maybePop();
                       }
                     },
                     have2ndButton: true,
@@ -246,7 +266,7 @@ class CartHelper {
                       if (fromProductPage) {
                         dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
                       } else {
-                        dialogContext?.popRoute();
+                        dialogContext?.maybePop();
                       }
                     },
                     have2ndButton: true,
@@ -319,7 +339,8 @@ class CartHelper {
   void regularPackBuy({required AppProvider provider, required BuildContext context, required Product product}) {
     if (provider.currentUser != null) {
       if (product.retargetProduct?.type == 'internal') {
-        Product? pr = provider.dealProducts.firstWhereOrNull((element) => element.id == product.retargetProduct?.productId);
+        Product? pr =
+            provider.dealProducts.firstWhereOrNull((element) => element.id == product.retargetProduct?.productId);
         if (pr != null) {
           productClick(context: context, productId: pr.id, productType: pr.productType, provider: provider);
         } else {
@@ -335,10 +356,16 @@ class CartHelper {
   }
 
   void applyToTry(
-      {required AppProvider provider, required String productId, required double width, required double height, required BuildContext context}) async {
+      {required AppProvider provider,
+      required String productId,
+      required double width,
+      required double height,
+      required BuildContext context}) async {
     Product? product = provider.sampleProducts.firstWhereOrNull((element) => element.id == productId);
     if (provider.currentUser != null) {
-      if (product != null && provider.currentUser!.orders.where((element) => element.products.any((p) => p.id == productId)).length < product.maximumQty) {
+      if (product != null &&
+          provider.currentUser!.orders.where((element) => element.products.any((p) => p.id == productId)).length <
+              product.maximumQty) {
         if (product.pSurvey != null) {
           if (provider.reports.any((element) => element.surveyId == product.pSurvey?.id)) {
             ScaffoldSnackBar.of(context).show('You have already requested for this mini offer.');
@@ -385,7 +412,8 @@ class CartHelper {
                       const SizedBox(width: 15),
                       Text(
                         'Product Added to cart ',
-                        style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwo, decoration: TextDecoration.none),
+                        style: TextHelper.subTitleStyle
+                            .copyWith(color: ColorConstants.colorGreyTwo, decoration: TextDecoration.none),
                       ),
                     ],
                   ),
@@ -393,9 +421,14 @@ class CartHelper {
               },
             ).whenComplete(() => closed = !closed);
 
-            Future.delayed(const Duration(seconds: 5), () {
-              if (!closed) context.router.pop();
-            });
+            Future.delayed(
+              const Duration(seconds: 5),
+              () {
+                if (!closed && context.mounted) {
+                  context.router.maybePop();
+                }
+              },
+            );
           }
         }
       } else {
@@ -418,7 +451,7 @@ class CartHelper {
         builder: (c) {
           return Alreadyadded(
             onTap: () {
-              context.router.pop();
+              context.router.maybePop();
             },
             icon: 'assets/images/icons/happy.png',
             buttonName: '',
@@ -437,7 +470,7 @@ class CartHelper {
         builder: (c) {
           return Alreadyadded(
             onTap: () {
-              context.router.pop();
+              context.router.maybePop();
             },
             icon: 'assets/images/icons/happy.png',
             buttonName: '',

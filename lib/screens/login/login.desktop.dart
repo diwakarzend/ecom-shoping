@@ -199,7 +199,7 @@ class _LoginPageDeskTopState extends State<LoginPageDeskTop> {
                   padding: EdgeInsets.symmetric(horizontal: width * .13),
                   child: TextFormField(
                     controller: phoneController,
-                    onChanged: (_) => validateMobile(_, provider, false),
+                    onChanged: (v) => validateMobile(v, provider, false),
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
                     cursorColor: ColorConstants.colorBlueTen,
@@ -373,7 +373,8 @@ class _LoginPageDeskTopState extends State<LoginPageDeskTop> {
                             ),
                             child: Text(
                               'Submit',
-                              style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                              style:
+                                  TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                             ),
                           ),
                         ),

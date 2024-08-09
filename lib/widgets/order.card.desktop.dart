@@ -65,7 +65,9 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
 
   cancelOrder(Order order) async {
     Future.delayed(const Duration(seconds: 0)).then(
-      (value) => ScaffoldLoaderDialog.of(context).hide(),
+      (value) {
+        if (mounted) ScaffoldLoaderDialog.of(context).hide();
+      },
     );
     try {
       final response = await _dioHelper.get(
@@ -81,7 +83,7 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
         _appProvider.initWithLogin();
       }
       if (!mounted) return;
-      context.popRoute();
+      context.maybePop();
     } on DioException catch (_, e) {
       log(e.toString());
     }
@@ -127,7 +129,8 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
               children: [
                 Text(
                   'Order No. #${widget.order.orderNumber}'.toUpperCase(),
-                  style: TextHelper.extraSmallTextStyle.copyWith(color: ColorConstants.colorBlack.withOpacity(0.8), fontWeight: FontWeight.bold,fontSize: 11.sp),
+                  style: TextHelper.extraSmallTextStyle.copyWith(
+                      color: ColorConstants.colorBlack.withOpacity(0.8), fontWeight: FontWeight.bold, fontSize: 11.sp),
                 ),
                 if (orderStatus() == 'accepted' && widget.order.cancelRequest == 0)
                   InkWell(
@@ -140,11 +143,11 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
                           dialogContext = c;
                           return CustomDialog(
                             onTap: () {
-                              dialogContext?.popRoute();
+                              dialogContext?.maybePop();
                               cancelOrder(widget.order);
                             },
                             on2ndButtonClicked: () {
-                              dialogContext?.popRoute();
+                              dialogContext?.maybePop();
                             },
                             icon: 'assets/images/icons/sad.png',
                             buttonName: 'Yes',
@@ -185,7 +188,8 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
                   '${DateFormat('dd MMM y').format(widget.order.orderDate)} | ${DateFormat('hh:mm').format(widget.order.orderDate)}',
                   style: TextHelper.smallTextStyle.copyWith(
                     color: ColorConstants.colorBlack.withOpacity(0.8),
-                    fontWeight: FontWeight.w500,fontSize: 13.sp,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13.sp,
                   ),
                 ),
               ],
@@ -285,7 +289,8 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
                         'Order Status',
                         style: TextHelper.extraSmallTextStyle.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: ColorConstants.colorGreyThree.withOpacity(0.5),fontSize: 10.sp,
+                          color: ColorConstants.colorGreyThree.withOpacity(0.5),
+                          fontSize: 10.sp,
                         ),
                       ),
                       if (widget.order.courierStatus.isEmpty)
@@ -326,12 +331,17 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
                     children: [
                       Text(
                         'Products',
-                        style: TextHelper.extraSmallTextStyle.copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorGreyThree.withOpacity(0.5),fontSize: 10.sp),
+                        style: TextHelper.extraSmallTextStyle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: ColorConstants.colorGreyThree.withOpacity(0.5),
+                            fontSize: 10.sp),
                       ),
                       Text(
                         widget.order.products.length.toString(),
-                        style: TextHelper.extraSmallTextStyle
-                            .copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorGreyThree.withOpacity(0.8), fontSize: 10.sp),
+                        style: TextHelper.extraSmallTextStyle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: ColorConstants.colorGreyThree.withOpacity(0.8),
+                            fontSize: 10.sp),
                       ),
                     ],
                   ),
@@ -345,12 +355,17 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
                     children: [
                       Text(
                         'Order Price',
-                        style: TextHelper.extraSmallTextStyle.copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorGreyThree.withOpacity(0.5),fontSize: 10.sp),
+                        style: TextHelper.extraSmallTextStyle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: ColorConstants.colorGreyThree.withOpacity(0.5),
+                            fontSize: 10.sp),
                       ),
                       Text(
                         '\u{20B9}${widget.order.grandTotal.toDouble().toStringAsFixed(2)}',
-                        style: TextHelper.extraSmallTextStyle
-                            .copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorGreyThree.withOpacity(0.8), fontSize: 10.sp),
+                        style: TextHelper.extraSmallTextStyle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: ColorConstants.colorGreyThree.withOpacity(0.8),
+                            fontSize: 10.sp),
                       ),
                     ],
                   ),

@@ -54,7 +54,9 @@ class CustomDialog extends StatelessWidget {
               color: ColorConstants.colorAlertBG,
               borderRadius: BorderRadius.circular(15),
             ),
-            padding: EdgeInsets.symmetric(horizontal: (Device.width >= 1024) ? 20 : width * .05, vertical: (Device.width >= 1024) ? 20 : width * .05),
+            padding: EdgeInsets.symmetric(
+                horizontal: (Device.width >= 1024) ? 20 : width * .05,
+                vertical: (Device.width >= 1024) ? 20 : width * .05),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -222,7 +224,7 @@ class CustomDialog extends StatelessWidget {
                 if (onClose != null) {
                   onClose!();
                 } else {
-                  context.router.pop();
+                  context.router.maybePop();
                 }
               },
               child: Container(

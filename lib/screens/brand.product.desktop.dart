@@ -11,7 +11,6 @@ import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 
@@ -26,14 +25,6 @@ class BrandProductScreenDesktop extends StatefulWidget {
 }
 
 class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
-  addFirebaseAnalyticsBrandProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'brand store',
-      itemListName: 'Brand store products',
-      items: List<AnalyticsEventItem>.from(provider.dealProducts.map((x) => x.toGAP())),
-    );
-  }
-
   bool listView = false;
   Brand? selectedBrand;
   Category? selectedCategory;
@@ -49,7 +40,6 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsBrandProducts(provider);
         return Scaffold(
           drawer: CustomDrawerDesktop(
             provider: provider,
@@ -177,11 +167,15 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
                   // margin: EdgeInsets.symmetric(horizontal: width * .12),
                   alignment: Alignment.center,
                   child: (provider.banners
-                          .where((element) => element.type == StringConstants.brandBanner && element.deviceType == StringConstants.deviceTypeD)
+                          .where((element) =>
+                              element.type == StringConstants.brandBanner &&
+                              element.deviceType == StringConstants.deviceTypeD)
                           .isNotEmpty)
                       ? CarouselSlider(
                           items: provider.banners
-                              .where((element) => element.type == StringConstants.brandBanner && element.deviceType == StringConstants.deviceTypeD)
+                              .where((element) =>
+                                  element.type == StringConstants.brandBanner &&
+                                  element.deviceType == StringConstants.deviceTypeD)
                               .map(
                                 (e) => ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
@@ -273,13 +267,15 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
                     children: [
                       if (selectedBrand != null && trialIndex > 0)
                         ...provider.sampleProducts
-                            .where((element) => element.category?.id == provider.sampleCategories[(trialIndex - 1)].id && element.brandId == selectedBrand?.id)
+                            .where((element) =>
+                                element.category?.id == provider.sampleCategories[(trialIndex - 1)].id &&
+                                element.brandId == selectedBrand?.id)
                             .map(
                               (e) => SampleItemDesktop(
                                 key: Key(e.id),
                                 product: e,
-                                onProductClick: () =>
-                                    _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                                onProductClick: () => _cartHelper.productClick(
+                                    context: context, productId: e.id, productType: e.productType, provider: provider),
                                 onTry: () => _cartHelper.applyToTry(
                                   provider: provider,
                                   context: context,
@@ -297,8 +293,8 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
                               (e) => SampleItemDesktop(
                                 key: Key(e.id),
                                 product: e,
-                                onProductClick: () =>
-                                    _cartHelper.productClick(context: context, provider: provider, productId: e.id, productType: e.productType),
+                                onProductClick: () => _cartHelper.productClick(
+                                    context: context, provider: provider, productId: e.id, productType: e.productType),
                                 onTry: () => _cartHelper.applyToTry(
                                   provider: provider,
                                   context: context,
@@ -312,12 +308,14 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
                               ),
                             )
                       else if (trialIndex > 0 && selectedBrand == null)
-                        ...provider.sampleProducts.where((element) => element.category?.id == provider.sampleCategories[(trialIndex - 1)].id).map(
+                        ...provider.sampleProducts
+                            .where((element) => element.category?.id == provider.sampleCategories[(trialIndex - 1)].id)
+                            .map(
                               (e) => SampleItemDesktop(
                                 key: Key(e.id),
                                 product: e,
-                                onProductClick: () =>
-                                    _cartHelper.productClick(context: context, productType: e.productType, productId: e.id, provider: provider),
+                                onProductClick: () => _cartHelper.productClick(
+                                    context: context, productType: e.productType, productId: e.id, provider: provider),
                                 onTry: () => _cartHelper.applyToTry(
                                   provider: provider,
                                   context: context,
@@ -335,7 +333,8 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
                           (e) => SampleItemDesktop(
                             key: Key(e.id),
                             product: e,
-                            onProductClick: () => _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                            onProductClick: () => _cartHelper.productClick(
+                                context: context, productId: e.id, productType: e.productType, provider: provider),
                             onTry: () => _cartHelper.applyToTry(
                               provider: provider,
                               context: context,

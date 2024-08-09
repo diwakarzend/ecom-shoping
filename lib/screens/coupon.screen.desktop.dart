@@ -71,7 +71,8 @@ class _CouponScreenDesktopState extends State<CouponScreenDesktop> {
                     color: const Color(0xff030d4e),
                     child: const Text(
                       'Apply Coupon',
-                      style: TextStyle(fontSize: 22.0, color: Colors.white, fontWeight: FontWeight.w600, fontFamily: 'Montserrat'),
+                      style: TextStyle(
+                          fontSize: 22.0, color: Colors.white, fontWeight: FontWeight.w600, fontFamily: 'Montserrat'),
                     ),
                   ),
                   SizedBox(height: height * .03),
@@ -120,7 +121,9 @@ class _CouponScreenDesktopState extends State<CouponScreenDesktop> {
                   ),
                   SizedBox(height: height * .03),
                   ...provider.coupons
-                      .where((element) => element.expiryStatus == 1 && (provider.cart?.charges.grandTotal ?? 0) >= int.parse(element.cartValue))
+                      .where((element) =>
+                          element.expiryStatus == 1 &&
+                          (provider.cart?.charges.grandTotal ?? 0) >= int.parse(element.cartValue))
                       .map(
                         (e) => Container(
                           width: width,
@@ -142,7 +145,7 @@ class _CouponScreenDesktopState extends State<CouponScreenDesktop> {
                                 onChanged: (_) {
                                   provider.applyCoupon(e);
                                   ScaffoldSnackBar.of(context).show('Coupon applied successfully!');
-                                  context.router.pop();
+                                  context.router.maybePop();
                                 },
                               ),
                               Expanded(
@@ -181,7 +184,9 @@ class _CouponScreenDesktopState extends State<CouponScreenDesktop> {
                         ),
                       ),
                   if (provider.coupons
-                      .where((element) => element.expiryStatus == 1 && (provider.cart?.charges.grandTotal ?? 0) >= int.parse(element.cartValue))
+                      .where((element) =>
+                          element.expiryStatus == 1 &&
+                          (provider.cart?.charges.grandTotal ?? 0) >= int.parse(element.cartValue))
                       .isEmpty)
                     Container(
                       width: width,
