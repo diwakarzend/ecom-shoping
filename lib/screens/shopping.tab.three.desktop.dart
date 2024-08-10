@@ -5,6 +5,7 @@
  */
 // ignore_for_file: avoid_web_libraries_in_flutter
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:html';
@@ -22,8 +23,8 @@ import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_razorpay_web/flutter_razorpay_web.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -62,6 +63,12 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
+
   String generateSha256(String orderId, String amount) {
     String value =
         'apiKey=15c920d0928a4f79903b19733fd5d1fe~clientId=4827460565764284~amount=$amount~orderId=${orderId}rAiaB9hKSl6iB';
@@ -71,6 +78,91 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
     var bytes = utf8.encode(value);
     var digest = sha256.convert(bytes);
     return digest.toString().toUpperCase();
+  }
+
+  Timer? _timer;
+
+  initTimer({
+    required String amount,
+    required String orderId,
+    required String apiToken,
+    required String idToken,
+    required bool qr,
+  }) async {
+    _timer = Timer.periodic(
+      const Duration(seconds: 5),
+      (_) async {
+        try {
+          Dio dio = Dio();
+          final Response finalRsp = await dio.get(
+            'https://collect.ship9x.com/collect-service/api/upi/check/status/$orderId',
+            options: Options(
+              headers: {
+                'Accept': 'application/json',
+                'api-Authorization': 'Bearer $apiToken',
+                'Authorization': 'Bearer $idToken',
+              },
+            ),
+          );
+          final finData = finalRsp.data as Map<String, dynamic>;
+          if (finData.containsKey('success') && finData['success']) {
+            if (finData['data']['orderStatus'] == 'SUCCESS') {
+              if (mounted) context.router.maybePopTop();
+              _timer?.cancel();
+              successOrder(_appProvider);
+            } else if (finData['data']['orderStatus'] == 'FAILED') {
+              if (!mounted) return;
+              context.router.maybePopTop();
+              _timer?.cancel();
+              final rsp = await cancelApi(finData['msg'] ?? '');
+              if (rsp?.data == 'Success') {
+                if (!mounted) return;
+                showDialog(
+                  context: context,
+                  builder: (c) => const AlertDialog(
+                    title: Text('Payment Failed!!'),
+                    content: Text("Seems like, Payment did not complete. Don't worry, "
+                        'We will add your money to wallet once we receive confirmation from bank'),
+                  ),
+                );
+              }
+            }
+          } else if (finData.containsKey('success') && !finData['success'] && finData.containsKey('msg')) {
+            if (!mounted) return;
+            context.router.maybePopTop();
+            _timer?.cancel();
+            final rsp = await cancelApi(finData['msg'] ?? '');
+            if (rsp?.data == 'Success') {
+              if (!mounted) return;
+              showDialog(
+                context: context,
+                builder: (c) => const AlertDialog(
+                  title: Text('Payment Failed!!'),
+                  content: Text("Seems like, Payment did not complete. Don't worry, "
+                      'We will add your money to wallet once we receive confirmation from bank'),
+                ),
+              );
+            }
+          }
+        } on DioException catch (e, _) {
+          log(e.response?.data.toString() ?? '');
+        }
+      },
+    );
+  }
+
+  successOrder(AppProvider provider) async {
+    await _dioHelper.post(
+      'ordder-accept',
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      ),
+      data: {
+        'id': _order?.id,
+      },
+    );
   }
 
   openCheckout(AppProvider provider, double price) async {
@@ -97,7 +189,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
         final data = response.data as Map<String, dynamic>;
         if (data.containsKey('api_token') && data.containsKey('id_token') && data.containsKey('userName')) {
           final rr = await _dioHelper.dio.post(
-            'https://collect.ship9x.com/collect-service/api/upi/initiate/transaction',
+            'https://collect.ship9x.com/collect-service/api/upi/get-dynamic-qr-collect',
             options: Options(
               headers: {
                 'Accept': 'application/json',
@@ -115,42 +207,29 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
               // 'payerVpa': 'fpay.shipan@finobank'
             },
           );
-          log(response.data.toString());
+          if (rr.statusCode == 200) {
+            initTimer(
+              amount: _order?.grandTotal.toString() ?? '',
+              orderId: _order?.id ?? '',
+              apiToken: data['api_token'],
+              idToken: data['id_token'],
+              qr: true,
+            );
+            if (!mounted) return;
+            final Uint8List qrImage = base64Decode(rr.data['data']['code']);
+            showDialog(
+              context: context,
+              builder: (c) => _PayNow(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                total:
+                    '\u{20B9}${(provider.cart!.charges.grandTotal + (selectedPayment == 'cod' ? (provider.appSettings?.generalSettings.codCharge ?? 0) : 0)).toStringAsFixed(2)}',
+                image: qrImage,
+              ),
+            );
+          }
         }
       }
-      //   RazorpayWeb razorpayWeb =
-      //       RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
-      //   var razorpayAmount = price * 100;
-      //   log(
-      //       (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
-      //           '',
-      //       name: 'razorpay_log');
-      //
-      //   final Map<String, dynamic> options = {
-      //     'key':
-      //         (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
-      //             '',
-      //     'amount': razorpayAmount,
-      //     'currency': 'INR',
-      //     'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
-      //     'order_id': _order?.paymentRefId,
-      //     'timeout': '300',
-      //     'description': 'Buying products',
-      //     'prefill': {'contact': provider.currentUser?.mobileNo, 'email': provider.currentUser?.email},
-      //     'readonly': {'contact': true, 'email': true},
-      //     'send_sms_hash': true,
-      //     'remember_customer': false,
-      //     'retry': {'enabled': false},
-      //     'hidden': {'contact': false, 'email': false}
-      //   };
-      //
-      //   try {
-      //     razorpayWeb.open(options);
-      //   } catch (e) {
-      //     if (kDebugMode) {
-      //       print(e.toString());
-      //     }
-      //   }
     }
   }
 
@@ -222,12 +301,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
             setState(() {
               _order = Order.fromJson(response.data['data']);
             });
-            Future.delayed(const Duration(milliseconds: 1000)).then(
-              (_) {
-                if (!mounted) return;
-                ScaffoldLoaderDialog.of(context).hide();
-              },
-            );
+            ScaffoldLoaderDialog.of(context).hide();
             if (selectedPayment == 'razorpay') {
               openCheckout(provider, _order?.grandTotal.toDouble() ?? 0);
             } else {
@@ -610,60 +684,60 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                       ),
                     ),
                   SizedBox(height: height * .03),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Choose Your Payment Mode',
-                          style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: height * .02),
-                  ...?provider.appSettings?.paymentGateway.where((element) => element.isActive).map(
-                        (e) => Container(
-                          margin: EdgeInsets.symmetric(horizontal: width * .12),
-                          alignment: Alignment.center,
-                          child: Container(
-                            width: width,
-                            margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: ColorConstants.colorGreyTwo.withOpacity(0.4),
-                                ),
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 5),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  e.gatway == 'razorpay' ? 'assets/images/razorpay.svg' : 'assets/images/easebuzz.svg',
-                                  height: height * .06,
-                                ),
-                                Radio(
-                                  value: e.gatway,
-                                  groupValue: selectedPayment,
-                                  onChanged: (v) {
-                                    setState(() {
-                                      selectedPayment = v!;
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: Row(
+                  //     mainAxisSize: MainAxisSize.max,
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Text(
+                  //         'Choose Your Payment Mode',
+                  //         style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SizedBox(height: height * .02),
+                  // ...?provider.appSettings?.paymentGateway.where((element) => element.isActive).map(
+                  //       (e) => Container(
+                  //         margin: EdgeInsets.symmetric(horizontal: width * .12),
+                  //         alignment: Alignment.center,
+                  //         child: Container(
+                  //           width: width,
+                  //           margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  //           decoration: BoxDecoration(
+                  //             color: Colors.white,
+                  //             border: Border(
+                  //               bottom: BorderSide(
+                  //                 color: ColorConstants.colorGreyTwo.withOpacity(0.4),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           padding: const EdgeInsets.symmetric(vertical: 5),
+                  //           child: Row(
+                  //             mainAxisSize: MainAxisSize.max,
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             crossAxisAlignment: CrossAxisAlignment.center,
+                  //             children: [
+                  //               SvgPicture.asset(
+                  //                 e.gatway == 'razorpay' ? 'assets/images/razorpay.svg' : 'assets/images/easebuzz.svg',
+                  //                 height: height * .06,
+                  //               ),
+                  //               Radio(
+                  //                 value: e.gatway,
+                  //                 groupValue: selectedPayment,
+                  //                 onChanged: (v) {
+                  //                   setState(() {
+                  //                     selectedPayment = v!;
+                  //                   });
+                  //                 },
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ),
                   if ((provider.cart?.charges.grandTotal ?? 0) >= 500 &&
                       (provider.cart?.charges.grandTotal ?? 0) <= 1500)
                     Container(
@@ -764,11 +838,14 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                       child: InkWell(
                         onTap: () {
                           if (provider.cart != null && provider.cart!.charges.grandTotal > 0) {
-                            if (selectedPayment.isNotEmpty) {
-                              saveOrder(provider: provider);
-                            } else {
-                              ScaffoldSnackBar.of(context).show('Please select payment method');
-                            }
+                            // if (selectedPayment.isNotEmpty) {
+                            setState(() {
+                              selectedPayment = 'razorpay';
+                            });
+                            saveOrder(provider: provider);
+                            // } else {
+                            //   ScaffoldSnackBar.of(context).show('Please select payment method');
+                            // }
                           } else {
                             saveOrder(provider: provider);
                           }
@@ -996,6 +1073,56 @@ class _Dialog extends StatelessWidget {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class _PayNow extends StatelessWidget {
+  final double height, width;
+  final String total;
+  final Uint8List image;
+
+  const _PayNow({required this.height, required this.width, required this.total, required this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            'Scan QR to Pay',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: height * .02),
+          Image.memory(image, width: height * .4),
+          SizedBox(height: height * .02),
+          Text(
+            'Order Amount $total',
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: height * .02),
+          ElevatedButton(
+            onPressed: () {
+              context.router.maybePopTop();
+            },
+            style:
+                ElevatedButton.styleFrom(backgroundColor: ColorConstants.colorPrimary, foregroundColor: Colors.white),
+            child: const Text('Cancel'),
+          ),
+          SizedBox(height: height * .02),
         ],
       ),
     );
