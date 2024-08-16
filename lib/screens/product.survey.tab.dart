@@ -136,7 +136,7 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
         provider.addCartItems(productID: _product?.id ?? '');
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
+            context.router.maybePop().then(
               (_) {
                 BuildContext? dialogContext;
                 try {
@@ -147,10 +147,10 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
                       dialogContext = c;
                       return CustomDialog(
                         onTap: () {
-                          dialogContext?.popRoute();
+                          dialogContext?.maybePop();
                         },
                         onClose: () {
-                          dialogContext?.popRoute();
+                          dialogContext?.maybePop();
                           Future.delayed(const Duration(seconds: 0)).then((value) => context.router.popUntilRouteWithName(NavigatorRoute.name));
                         },
                         icon: 'assets/images/icons/done.png',
@@ -171,7 +171,7 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
       } else {
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
+            context.router.maybePop().then(
               (_) {
                 BuildContext? dialogContext;
                 try {
@@ -182,10 +182,10 @@ class _ProductSurveyTabState extends State<ProductSurveyTab> {
                       dialogContext = c;
                       return CustomDialog(
                         onTap: () {
-                          dialogContext?.popRoute();
+                          dialogContext?.maybePop();
                         },
                         onClose: () {
-                          dialogContext?.popRoute();
+                          dialogContext?.maybePop();
                           Future.delayed(const Duration(seconds: 0)).then((value) => context.router.popUntilRouteWithName(NavigatorRoute.name));
                         },
                         icon: 'assets/images/icons/done.png',

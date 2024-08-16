@@ -81,7 +81,7 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
         _appProvider.initWithLogin();
       }
       if (!mounted) return;
-      context.popRoute();
+      context.maybePop();
     } on DioException catch (_, e) {
       log(e.toString());
     }
@@ -140,11 +140,11 @@ class _OrderCardDesktopState extends State<OrderCardDesktop> {
                           dialogContext = c;
                           return CustomDialog(
                             onTap: () {
-                              dialogContext?.popRoute();
+                              dialogContext?.maybePop();
                               cancelOrder(widget.order);
                             },
                             on2ndButtonClicked: () {
-                              dialogContext?.popRoute();
+                              dialogContext?.maybePop();
                             },
                             icon: 'assets/images/icons/sad.png',
                             buttonName: 'Yes',

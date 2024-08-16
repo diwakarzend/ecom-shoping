@@ -11,7 +11,7 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
@@ -35,13 +35,13 @@ class _DealsScreentabletState extends State<DealsScreentablet> {
   Brand? selectedBrand;
   Category? selectedCategory;
 
-  addFirebaseAnalyticsHotProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'hot deal store',
-      itemListName: 'Hot Deal Products',
-      items: List<AnalyticsEventItem>.from(provider.dealProducts.map((x) => x.toGAP())),
-    );
-  }
+  // addFirebaseAnalyticsHotProducts(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewItemList(
+  //     itemListId: 'hot deal store',
+  //     itemListName: 'Hot Deal Products',
+  //     items: List<AnalyticsEventItem>.from(provider.dealProducts.map((x) => x.toGAP())),
+  //   );
+  // }
 
   int selectedPage = 1;
 
@@ -102,7 +102,7 @@ class _DealsScreentabletState extends State<DealsScreentablet> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsHotProducts(provider);
+        // addFirebaseAnalyticsHotProducts(provider);
         return Scaffold(
           appBar: widget.fromCart
               ? AppBar(

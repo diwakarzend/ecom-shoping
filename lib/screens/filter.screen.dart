@@ -399,7 +399,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                     setState(() {
                                       selectedBrand = selectedCategory = null;
                                     });
-                                    dialogContext?.popRoute();
+                                    dialogContext?.maybePop();
                                     widget.onSubmit(brand: selectedBrand, category: selectedCategory);
                                   },
                                   child: Text(

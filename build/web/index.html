@@ -12,7 +12,7 @@
       * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
       This is a placeholder for base href that will be replaced by the value of
-      the `--base-href` argument provided to `flutter build`.
+      the --base-href argument provided to flutter build.
     -->
     <base href="/">
 
@@ -23,7 +23,7 @@
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="shubhgamess" name="apple-mobile-web-app-title">
+    <meta content="Shubhgamess" name="apple-mobile-web-app-title">
     <link rel="apple-touch-icon" href="icons/Icon-192.png?version=2">
 
     <!-- Favicon -->
@@ -33,8 +33,7 @@
     <link rel="manifest" href="manifest.json?version=2">
 
     <script>
-        // The value below is injected by flutter build, do not touch.
-        const serviceWorkerVersion = "3963429787";
+        const serviceWorkerVersion = "2524759040";
 
 
     </script>
@@ -66,26 +65,10 @@
 </head>
 <body>
 <div class="container" id="loading_indicator">
+    <script src="flutter_bootstrap.js" async></script>
     <!--  <img class="indicator" src="./assets/assets/animations/loading.gif"/>-->
     <img class="indicator" src="./assets/assets/animations/boll1.gif" alt="boll1.gif"/>
 </div>
-<script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-
-
-</script>
 <!-- razorpay checkout lib -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </body>

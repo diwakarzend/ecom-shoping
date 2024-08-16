@@ -80,11 +80,11 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                                 builder: (c) => DeleteCartItem(
                                   product: e,
                                   remove: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.deleteCartItem(e.id);
                                   },
                                   move: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.moveCartItem(e.id);
                                   },
                                 ),
@@ -109,11 +109,11 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                                 builder: (c) => DeleteCartItem(
                                   product: e,
                                   remove: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.deleteCartItem(e.id);
                                   },
                                   move: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.moveCartItem(e.productId);
                                   },
                                 ),
@@ -175,11 +175,11 @@ class _ShoppingTabOneState extends State<ShoppingTabOne> {
                                 builder: (c) => DeleteCartItem(
                                   product: e,
                                   remove: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.deleteCartItem(e.id);
                                   },
                                   move: () {
-                                    context.router.pop();
+                                    context.router.maybePop();
                                     provider.moveCartItem(e.productId);
                                   },
                                 ),

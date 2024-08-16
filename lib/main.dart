@@ -7,9 +7,9 @@ import 'package:fabpiks_web/firebase_options.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,18 +22,18 @@ import 'constants.dart';
 import 'models/models.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
 
   if (!kIsWeb) {
     FlutterError.onError = (errorDetails) {
-      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+      // FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     };
     // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
     PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      // FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;
     };
   }
@@ -91,8 +91,8 @@ class Fabpiks extends StatefulWidget {
 class _FabpiksState extends State<Fabpiks> {
   late AppRouter _appRouter;
 
-  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  // static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  // static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   void initState() {
@@ -135,7 +135,7 @@ class _FabpiksState extends State<Fabpiks> {
             ],
             routerDelegate: AutoRouterDelegate(
               _appRouter,
-              navigatorObservers: () => <NavigatorObserver>[observer],
+              // navigatorObservers: () => <NavigatorObserver>[observer],
             ),
             routeInformationParser: _appRouter.defaultRouteParser(),
           );

@@ -131,7 +131,7 @@ class _ProductSurveyMobileState extends State<ProductSurveyMobile> {
         provider.addCartItems(productID: _product!.id);
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
+            context.router.maybePop().then(
               (_) {
                 BuildContext? dialogContext;
                 try {
@@ -142,14 +142,14 @@ class _ProductSurveyMobileState extends State<ProductSurveyMobile> {
                       dialogContext = c;
                       return CustomDialog(
                         onTap: () {
-                          dialogContext?.popRoute().then(
+                          dialogContext?.maybePop().then(
                                 (value) => Future.delayed(const Duration(seconds: 0)).then(
                                   (value) => dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name),
                                 ),
                               );
                         },
                         onClose: () {
-                          dialogContext?.popRoute().then(
+                          dialogContext?.maybePop().then(
                                 (value) => Future.delayed(const Duration(seconds: 0)).then(
                                   (value) => dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name),
                                 ),
@@ -173,7 +173,7 @@ class _ProductSurveyMobileState extends State<ProductSurveyMobile> {
       } else {
         Future.delayed(const Duration(seconds: 1)).then(
           (_) {
-            context.router.pop().then(
+            context.router.maybePop().then(
               (_) {
                 BuildContext? dialogContext;
                 try {
@@ -184,10 +184,10 @@ class _ProductSurveyMobileState extends State<ProductSurveyMobile> {
                       dialogContext = c;
                       return CustomDialog(
                         onTap: () {
-                          dialogContext?.popRoute();
+                          dialogContext?.maybePop();
                         },
                         onClose: () {
-                          dialogContext?.popRoute();
+                          dialogContext?.maybePop();
                           Future.delayed(const Duration(seconds: 0)).then((value) => context.router.popUntilRouteWithName(NavigatorRoute.name));
                         },
                         icon: 'assets/images/icons/done.png',

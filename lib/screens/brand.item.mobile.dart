@@ -18,7 +18,7 @@ import 'package:fabpiks_web/providers/app.provider.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/custom.network.image.dart';
 import 'package:fabpiks_web/widgets/sample.items.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:ionicons/ionicons.dart';
@@ -64,24 +64,24 @@ class _BrandItemMobileState extends State<BrandItemMobile> with TickerProviderSt
   //   return url;
   // }
 
-  addFirebaseProduct() async {
-    await FirebaseAnalytics.instance.logViewItem(
-      currency: 'INR',
-      value: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
-          ? 0
-          : _product?.salePrice.toDouble(),
-      items: [_product!.toGAP()],
-    );
-
-    // await facebookAppEvents.logViewContent(
-    //   id: _product?.id,
-    //   type: 'product',
-    //   currency: 'INR',
-    //   price: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
-    //       ? 0
-    //       : _product?.salePrice.toDouble(),
-    // );
-  }
+  // addFirebaseProduct() async {
+  //   await FirebaseAnalytics.instance.logViewItem(
+  //     currency: 'INR',
+  //     value: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
+  //         ? 0
+  //         : _product?.salePrice.toDouble(),
+  //     items: [_product!.toGAP()],
+  //   );
+  //
+  //   // await facebookAppEvents.logViewContent(
+  //   //   id: _product?.id,
+  //   //   type: 'product',
+  //   //   currency: 'INR',
+  //   //   price: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
+  //   //       ? 0
+  //   //       : _product?.salePrice.toDouble(),
+  //   // );
+  // }
 
   // YoutubePlayerController? _controller;
 
@@ -128,7 +128,7 @@ class _BrandItemMobileState extends State<BrandItemMobile> with TickerProviderSt
     _product = provider.sampleProducts.firstWhereOrNull((element) => element.id == widget.productId);
     if (_product != null) {
       _tabController ??= TabController(length: _product!.details.length, vsync: this);
-      addFirebaseProduct();
+      // addFirebaseProduct();
       controller = AnimationController(
         vsync: this,
         duration: const Duration(milliseconds: 400),

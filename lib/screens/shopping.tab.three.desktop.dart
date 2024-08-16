@@ -20,7 +20,7 @@ import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
 
 // import 'package:facebook_app_events/facebook_app_events.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_razorpay_web/flutter_razorpay_web.dart';
@@ -99,7 +99,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
     if (!mounted) return;
     _appProvider.initWithLogin();
     context.router.replace(HomeRoute(orderSuccess: true, order: _order));
-    orderSuccess(_order!, _appProvider);
+    // orderSuccess(_order!, _appProvider);
   }
 
   void handlePaymentCancel(RpayCancelResponse response) {
@@ -230,8 +230,8 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
         if (!mounted) return;
         ScaffoldLoaderDialog.of(context).hide();
         if (!mounted) return;
-        context.router.pop();
-        orderSuccess(temp, provider);
+        context.router.maybePop();
+        // orderSuccess(temp, provider);
         if (!mounted) return;
         context.router.replace(HomeRoute(orderSuccess: true, order: temp));
       } else {
@@ -265,59 +265,59 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
 
   // static final facebookAppEvents = FacebookAppEvents();
 
-  orderSuccess(Order order, AppProvider provider) async {
-    await FirebaseAnalytics.instance.logPurchase(
-      transactionId: order.id,
-      currency: 'INR',
-      value: order.grandTotal.toDouble(),
-      shipping: order.shippingCost.toDouble(),
-      tax: 0,
-      items: List<AnalyticsEventItem>.from(order.products.map((e) => e.toGAP())),
-    );
+  // orderSuccess(Order order, AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logPurchase(
+  //     transactionId: order.id,
+  //     currency: 'INR',
+  //     value: order.grandTotal.toDouble(),
+  //     shipping: order.shippingCost.toDouble(),
+  //     tax: 0,
+  //     items: List<AnalyticsEventItem>.from(order.products.map((e) => e.toGAP())),
+  //   );
+  //
+  //   // await facebookAppEvents.logPurchase(
+  //   //   amount: grandTotal ?? 0,
+  //   //   currency: 'INR',
+  //   // );
+  // }
 
-    // await facebookAppEvents.logPurchase(
-    //   amount: grandTotal ?? 0,
-    //   currency: 'INR',
-    // );
-  }
-
-  addProductsToFirebase(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewCart(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
-
-  beginCheckout(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logBeginCheckout(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-
-    // await facebookAppEvents.logInitiatedCheckout(
-    //   totalPrice: _cartHelper.calculateAllTotal(provider),
-    //   currency: 'INR',
-    // );
-  }
-
-  addShipping(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logAddShippingInfo(
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
-
-  addPayment(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logAddPaymentInfo(
-      paymentType: selectedPayment,
-      currency: 'INR',
-      value: _order?.grandTotal.toDouble() ?? 0,
-      items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
-    );
-  }
+  // addProductsToFirebase(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewCart(
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  // }
+  //
+  // beginCheckout(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logBeginCheckout(
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  //
+  //   // await facebookAppEvents.logInitiatedCheckout(
+  //   //   totalPrice: _cartHelper.calculateAllTotal(provider),
+  //   //   currency: 'INR',
+  //   // );
+  // }
+  //
+  // addShipping(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logAddShippingInfo(
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  // }
+  //
+  // addPayment(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logAddPaymentInfo(
+  //     paymentType: selectedPayment,
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  // }
 
   bool supportExpanded = false;
 
@@ -931,7 +931,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             right: 25,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 40,
                 height: 40,

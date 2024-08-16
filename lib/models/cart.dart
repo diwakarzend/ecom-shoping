@@ -1,5 +1,5 @@
 import 'package:fabpiks_web/constants.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 
 class Cart {
   final int count;
@@ -85,16 +85,16 @@ class CartItem {
     );
   }
 
-  AnalyticsEventItem toGAP() {
-    return AnalyticsEventItem(
-      itemId: id,
-      itemName: name,
-      itemBrand: brand.name,
-      itemCategory: brand.name,
-      currency: 'INR',
-      price: productType == StringConstants.hotDealProduct || productType == StringConstants.brandStoreProduct ? salePrice.toDouble() : 0.00,
-    );
-  }
+  // AnalyticsEventItem toGAP() {
+  //   return AnalyticsEventItem(
+  //     itemId: id,
+  //     itemName: name,
+  //     itemBrand: brand.name,
+  //     itemCategory: brand.name,
+  //     currency: 'INR',
+  //     price: productType == StringConstants.hotDealProduct || productType == StringConstants.brandStoreProduct ? salePrice.toDouble() : 0.00,
+  //   );
+  // }
 }
 
 class CartItemBrand {

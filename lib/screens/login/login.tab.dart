@@ -182,7 +182,7 @@ class _LoginScreenTabState extends State<LoginScreenTab> {
               iconTheme: const IconThemeData(color: Colors.white),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => context.router.pop(),
+                onPressed: () => context.router.maybePop(),
               ),
             ),
             body: SingleChildScrollView(

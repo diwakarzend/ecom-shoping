@@ -11,7 +11,7 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 
@@ -30,15 +30,15 @@ class CategoryProductsDesktopScreen extends StatefulWidget {
 }
 
 class _CategoryProductsDesktopScreenState extends State<CategoryProductsDesktopScreen> {
-  addFirebaseAnalyticsRewardCategoryProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'category trial products store',
-      itemListName: 'category trial products store',
-      items: category != null
-          ? List<AnalyticsEventItem>.from(provider.miniProducts.where((p) => p.category?.id == category?.id).map((x) => x.toGAP()))
-          : List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
+  // addFirebaseAnalyticsRewardCategoryProducts(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewItemList(
+  //     itemListId: 'category trial products store',
+  //     itemListName: 'category trial products store',
+  //     items: category != null
+  //         ? List<AnalyticsEventItem>.from(provider.miniProducts.where((p) => p.category?.id == category?.id).map((x) => x.toGAP()))
+  //         : List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
+  //   );
+  // }
 
   bool listView = false;
   Brand? selectedBrand;
@@ -116,7 +116,7 @@ class _CategoryProductsDesktopScreenState extends State<CategoryProductsDesktopS
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
         initCategory(provider);
-        addFirebaseAnalyticsRewardCategoryProducts(provider);
+        // addFirebaseAnalyticsRewardCategoryProducts(provider);
         return Scaffold(
           drawer: CustomDrawerDesktop(
             provider: provider,

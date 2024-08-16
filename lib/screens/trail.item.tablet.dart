@@ -16,7 +16,7 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/app.provider.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:ionicons/ionicons.dart';
@@ -62,24 +62,24 @@ class _TrialItemTabletState extends State<TrialItemTablet> with TickerProviderSt
   //   return url;
   // }
 
-  addFirebaseProduct() async {
-    await FirebaseAnalytics.instance.logViewItem(
-      currency: 'INR',
-      value: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
-          ? 0
-          : _product?.salePrice.toDouble(),
-      items: [_product!.toGAP()],
-    );
-
-    // await facebookAppEvents.logViewContent(
-    //   id: _product?.id,
-    //   type: 'product',
-    //   currency: 'INR',
-    //   price: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
-    //       ? 0
-    //       : _product?.salePrice.toDouble(),
-    // );
-  }
+  // addFirebaseProduct() async {
+  //   await FirebaseAnalytics.instance.logViewItem(
+  //     currency: 'INR',
+  //     value: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
+  //         ? 0
+  //         : _product?.salePrice.toDouble(),
+  //     items: [_product!.toGAP()],
+  //   );
+  //
+  //   // await facebookAppEvents.logViewContent(
+  //   //   id: _product?.id,
+  //   //   type: 'product',
+  //   //   currency: 'INR',
+  //   //   price: _product?.productType == StringConstants.trialProduct || _product?.productType == StringConstants.brandStoreProduct
+  //   //       ? 0
+  //   //       : _product?.salePrice.toDouble(),
+  //   // );
+  // }
 
   final DioHelper _dioHelper = DioHelper();
 
@@ -126,7 +126,7 @@ class _TrialItemTabletState extends State<TrialItemTablet> with TickerProviderSt
     _product = provider.miniProducts.firstWhereOrNull((element) => element.id == widget.productId);
     if (_product != null) {
       _tabController = TabController(length: _product!.details.length, vsync: this);
-      addFirebaseProduct();
+      // addFirebaseProduct();
       controller = AnimationController(
         vsync: this,
         duration: const Duration(milliseconds: 400),

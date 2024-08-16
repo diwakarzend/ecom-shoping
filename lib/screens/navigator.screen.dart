@@ -64,7 +64,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
               orderId: widget.order?.orderNumber ?? '',
               onRate: () async {},
               onCancel: () {
-                dialogContext?.popRoute();
+                dialogContext?.maybePop();
               },
             );
           },
@@ -347,7 +347,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                   // barrierColor: Colors.white.withOpacity(0.8),
                                   isScrollControlled: true,
                                   builder: (c) => InkWell(
-                                    onTap: () => context.router.popTop(),
+                                    onTap: () => context.router.maybePop(),
                                     child: _TrialDialog(appProvider: provider),
                                   ),
                                 );
@@ -369,7 +369,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                       // barrierColor: Colors.white.withOpacity(0.8),
                                       isScrollControlled: true,
                                       builder: (c) => InkWell(
-                                        onTap: () => context.router.popTop(),
+                                        onTap: () => context.router.maybePop(),
                                         child: _BrandDialog(appProvider: provider),
                                       ),
                                     );
@@ -637,7 +637,7 @@ class _TrialDialog extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: () => context.router.popTop(),
+      onTap: () => context.router.maybePop,
       child: Center(
         child: Container(
           width: width,
@@ -882,7 +882,7 @@ class _BrandDialog extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: () => context.router.popTop(),
+      onTap: () => context.router.maybePop(),
       child: Center(
         child: Container(
           width: width,

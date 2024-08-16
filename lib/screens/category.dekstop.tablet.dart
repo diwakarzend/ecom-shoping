@@ -13,7 +13,7 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
@@ -31,15 +31,15 @@ class CategoryProductsTabletScreen extends StatefulWidget {
 }
 
 class _CategoryProductsTabletScreenState extends State<CategoryProductsTabletScreen> {
-  addFirebaseAnalyticsRewardCategoryProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'category trial products store',
-      itemListName: 'category trial products store',
-      items: category != null
-          ? List<AnalyticsEventItem>.from(provider.miniProducts.where((p) => p.category?.id == category?.id).map((x) => x.toGAP()))
-          : List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
+  // addFirebaseAnalyticsRewardCategoryProducts(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewItemList(
+  //     itemListId: 'category trial products store',
+  //     itemListName: 'category trial products store',
+  //     items: category != null
+  //         ? List<AnalyticsEventItem>.from(provider.miniProducts.where((p) => p.category?.id == category?.id).map((x) => x.toGAP()))
+  //         : List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
+  //   );
+  // }
 
   bool listView = false;
   Brand? selectedBrand;
@@ -114,7 +114,7 @@ class _CategoryProductsTabletScreenState extends State<CategoryProductsTabletScr
     final height = MediaQuery.of(context).size.height;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsRewardCategoryProducts(provider);
+        // addFirebaseAnalyticsRewardCategoryProducts(provider);
         initCategory(provider);
         return Scaffold(
           appBar: AppBar(

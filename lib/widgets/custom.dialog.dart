@@ -222,7 +222,7 @@ class CustomDialog extends StatelessWidget {
                 if (onClose != null) {
                   onClose!();
                 } else {
-                  context.router.pop();
+                  context.router.maybePop();
                 }
               },
               child: Container(

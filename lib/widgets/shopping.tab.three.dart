@@ -603,7 +603,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             right: 25,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 40,
                 height: 40,

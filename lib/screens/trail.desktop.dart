@@ -12,7 +12,7 @@ import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 
@@ -33,21 +33,21 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
 
   bool gridview = true;
 
-  addFirebaseAnalyticsTrialProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'trial store',
-      itemListName: 'Trial store products',
-      items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
-
-  addFirebaseAnalyticsHotProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'trial store',
-      itemListName: 'Hot Deal products',
-      items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
-    );
-  }
+  // addFirebaseAnalyticsTrialProducts(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewItemList(
+  //     itemListId: 'trial store',
+  //     itemListName: 'Trial store products',
+  //     items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
+  //   );
+  // }
+  //
+  // addFirebaseAnalyticsHotProducts(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewItemList(
+  //     itemListId: 'trial store',
+  //     itemListName: 'Hot Deal products',
+  //     items: List<AnalyticsEventItem>.from(provider.miniProducts.map((x) => x.toGAP())),
+  //   );
+  // }
 
   Brand? selectedBrand;
   Category? selectedCategory;
@@ -113,8 +113,8 @@ class _TrailScreenDesktopState extends State<TrailScreenDesktop> {
     final height = MediaQuery.of(context).size.height;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsTrialProducts(provider);
-        addFirebaseAnalyticsHotProducts(provider);
+        // addFirebaseAnalyticsTrialProducts(provider);
+        // addFirebaseAnalyticsHotProducts(provider);
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(

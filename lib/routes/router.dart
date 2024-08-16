@@ -11,7 +11,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 @AutoRouterConfig(
   replaceInRouteName: 'routes',
 )
-class AppRouter extends $AppRouter {
+class AppRouter extends RootStackRouter  {
   @override
   RouteType get defaultRouteType => const RouteType.material();
 

@@ -122,7 +122,7 @@ class CartHelper {
                 builder: (c) {
                   return Alreadyadded(
                     onTap: () {
-                      context.router.pop();
+                      context.router.maybePop();
                     },
                     icon: 'assets/images/icons/happy.png',
                     buttonName: '',
@@ -148,7 +148,7 @@ class CartHelper {
                       if (fromProductPage) {
                         dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
                       } else {
-                        dialogContext?.popRoute();
+                        dialogContext?.maybePop();
                       }
                     },
                     icon: 'assets/images/icons/happy.png',
@@ -172,7 +172,7 @@ class CartHelper {
                   dialogContext = c;
                   return CustomDialog(
                     onTap: () {
-                      dialogContext?.popRoute();
+                      dialogContext?.maybePop();
                     },
                     icon: 'assets/images/icons/happy.png',
                     buttonName: 'Add more minis',
@@ -209,7 +209,7 @@ class CartHelper {
                       if (fromProductPage) {
                         dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
                       } else {
-                        dialogContext?.popRoute();
+                        dialogContext?.maybePop();
                       }
                     },
                     have2ndButton: true,
@@ -246,7 +246,7 @@ class CartHelper {
                       if (fromProductPage) {
                         dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
                       } else {
-                        dialogContext?.popRoute();
+                        dialogContext?.maybePop();
                       }
                     },
                     have2ndButton: true,
@@ -394,7 +394,7 @@ class CartHelper {
             ).whenComplete(() => closed = !closed);
 
             Future.delayed(const Duration(seconds: 5), () {
-              if (!closed) context.router.pop();
+              if (!closed) context.router.maybePop();
             });
           }
         }
@@ -418,7 +418,7 @@ class CartHelper {
         builder: (c) {
           return Alreadyadded(
             onTap: () {
-              context.router.pop();
+              context.router.maybePop();
             },
             icon: 'assets/images/icons/happy.png',
             buttonName: '',
@@ -437,7 +437,7 @@ class CartHelper {
         builder: (c) {
           return Alreadyadded(
             onTap: () {
-              context.router.pop();
+              context.router.maybePop();
             },
             icon: 'assets/images/icons/happy.png',
             buttonName: '',

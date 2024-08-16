@@ -27,8 +27,8 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
   final CartHelper _cartHelper = CartHelper();
 
   bool supportExpanded = false;
-  final CarouselController _miniController = CarouselController();
-  final CarouselController _dealController = CarouselController();
+  // final CarouselController _miniController = CarouselController();
+  // final CarouselController _dealController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -158,11 +158,11 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                               builder: (c) => DeleteCartItem(
                                                 product: e,
                                                 remove: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.deleteCartItem(e.id);
                                                 },
                                                 move: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.moveCartItem(e.productId);
                                                 },
                                               ),
@@ -182,11 +182,11 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                               builder: (c) => DeleteCartItem(
                                                 product: e,
                                                 remove: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.deleteCartItem(e.id);
                                                 },
                                                 move: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.moveCartItem(e.productId);
                                                 },
                                               ),
@@ -243,11 +243,11 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                               builder: (c) => DeleteCartItem(
                                                 product: e,
                                                 remove: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.deleteCartItem(e.id);
                                                 },
                                                 move: () {
-                                                  context.router.pop();
+                                                  context.router.maybePop();
                                                   provider.moveCartItem(e.productId);
                                                 },
                                               ),
@@ -403,7 +403,7 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                   highlightColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   onTap: () {
-                                    _dealController.previousPage();
+                                    // _dealController.previousPage();
                                   },
                                   child: const Icon(
                                     Icons.arrow_back_ios,
@@ -416,7 +416,7 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(vertical: height * .03),
                                   child: CarouselSlider.builder(
-                                    carouselController: _miniController,
+                                    // carouselController: _miniController,
                                     itemCount: (provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length),
                                     itemBuilder: (BuildContext context, int index, int i) {
                                       Product product = provider.dealProducts[index];
@@ -464,7 +464,7 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                                   highlightColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   onTap: () {
-                                    _miniController.nextPage();
+                                    // _miniController.nextPage();
                                   },
                                   child: const Icon(
                                     Icons.arrow_forward_ios,

@@ -144,7 +144,7 @@ class _CouponScreenTabState extends State<CouponScreenTab> {
                                         onChanged: (_) {
                                           provider.applyCoupon(e);
                                           ScaffoldSnackBar.of(context).show('Coupon applied successfully!');
-                                          context.router.pop();
+                                          context.router.maybePop();
                                         },
                                       ),
                                       Expanded(

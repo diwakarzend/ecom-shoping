@@ -143,7 +143,7 @@ class _NotificationScreenMobileState extends State<NotificationScreenMobile> {
                                             product: e.product!,
                                             onCheckout: () {
                                               provider.addCartItems(productID: e.productId ?? '');
-                                              context.router.pop();
+                                              context.router.maybePop();
                                               context.router.push(const CartRoute());
                                             },
                                             onContinue: () {
@@ -391,7 +391,7 @@ class _Dialog extends StatelessWidget {
             top: 10,
             right: 10,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 30,
                 height: 30,

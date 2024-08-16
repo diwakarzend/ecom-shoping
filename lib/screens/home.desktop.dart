@@ -30,9 +30,9 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
   static String newBannerCategory = "63976a676aba4031c062e5b2";
   int trialIndex = 0, dealIndex = 0, sampleIndex = 0;
 
-  final CarouselController _miniController = CarouselController();
-  final CarouselController _dealController = CarouselController();
-  final CarouselController _sampleController = CarouselController();
+  // final CarouselController _miniController = CarouselController();
+  // final CarouselController _dealController = CarouselController();
+  // final CarouselController _sampleController = CarouselController();
 
   final DioHelper _dioHelper = DioHelper();
 
@@ -69,13 +69,13 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
             return _OrderDialog(
               orderId: widget.order?.orderNumber ?? '',
               onRate: () async {
-                dialogContext?.popRoute();
+                dialogContext?.maybePop();
                 // if (await inAppReview.isAvailable()) {
                 //   inAppReview.openStoreListing(appStoreId: '6447238261');
                 // }
               },
               onCancel: () {
-                dialogContext?.popRoute();
+                dialogContext?.maybePop();
               },
             );
           },
@@ -745,27 +745,27 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _dealController.previousPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
+                        // Expanded(
+                        //   flex: 1,
+                        //   child: InkWell(
+                        //     splashFactory: NoSplash.splashFactory,
+                        //     highlightColor: Colors.transparent,
+                        //     hoverColor: Colors.transparent,
+                        //     onTap: () {
+                        //       // _dealController.previousPage();
+                        //     },
+                        //     child: const Icon(
+                        //       Icons.arrow_back_ios,
+                        //       color: Colors.black,
+                        //     ),
+                        //   ),
+                        // ),
                         Expanded(
                           flex: 12,
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: height * .03),
                             child: CarouselSlider(
-                              carouselController: _dealController,
+                              // carouselController: _dealController,
                               items: [
                                 if (dealIndex == 0)
                                   ...provider.dealProducts
@@ -826,21 +826,21 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _dealController.nextPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
+                        // Expanded(
+                        //   flex: 1,
+                        //   child: InkWell(
+                        //     splashFactory: NoSplash.splashFactory,
+                        //     highlightColor: Colors.transparent,
+                        //     hoverColor: Colors.transparent,
+                        //     onTap: () {
+                        //       // _dealController.nextPage();
+                        //     },
+                        //     child: const Icon(
+                        //       Icons.arrow_forward_ios,
+                        //       color: Colors.black,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -869,70 +869,70 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   //     ),
                   //   ),
                   // // ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        bottom: height * .01,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Free Samples',
-                            textAlign: TextAlign.center,
-                            style: TextHelper.titleStyle.copyWith(
-                              fontWeight: FontWeight.bold,
-                              // fontSize: 25.0,
-                            ),
-                          ),
-                          const Spacer(),
-                          InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            splashColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              context.router.push(const BrandProductsRoute());
-                            },
-                            child: Text(
-                              'View All ',
-                              style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          const Icon(Icons.arrow_forward_ios),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: height * .008, bottom: height * .03, right: width * .25),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              'Free Samples: Explore exciting brands & products for free! Apply for our free sample offers & if you are a match, you only pay a small delivery free (max Rs 40-80) to get the product home delivered.',
-                              textAlign: TextAlign.justify,
-                              maxLines: 6,
-                              style: TextHelper.normalTextStyle.copyWith(
-                                color: Colors.black.withOpacity(0.8),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(
+                  //       bottom: height * .01,
+                  //     ),
+                  //     child: Row(
+                  //       mainAxisSize: MainAxisSize.max,
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       crossAxisAlignment: CrossAxisAlignment.center,
+                  //       children: [
+                  //         Text(
+                  //           'Free Samples',
+                  //           textAlign: TextAlign.center,
+                  //           style: TextHelper.titleStyle.copyWith(
+                  //             fontWeight: FontWeight.bold,
+                  //             // fontSize: 25.0,
+                  //           ),
+                  //         ),
+                  //         const Spacer(),
+                  //         InkWell(
+                  //           splashFactory: NoSplash.splashFactory,
+                  //           splashColor: Colors.transparent,
+                  //           hoverColor: Colors.transparent,
+                  //           onTap: () {
+                  //             context.router.push(const BrandProductsRoute());
+                  //           },
+                  //           child: Text(
+                  //             'View All ',
+                  //             style: TextHelper.normalTextStyle.copyWith(
+                  //               fontWeight: FontWeight.w500,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         const Icon(Icons.arrow_forward_ios),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(top: height * .008, bottom: height * .03, right: width * .25),
+                  //     child: Row(
+                  //       mainAxisSize: MainAxisSize.max,
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Expanded(
+                  //           child: Text(
+                  //             'Free Samples: Explore exciting brands & products for free! Apply for our free sample offers & if you are a match, you only pay a small delivery free (max Rs 40-80) to get the product home delivered.',
+                  //             textAlign: TextAlign.justify,
+                  //             maxLines: 6,
+                  //             style: TextHelper.normalTextStyle.copyWith(
+                  //               color: Colors.black.withOpacity(0.8),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   // Container(
                   //   padding: EdgeInsets.symmetric(horizontal: width * .12),
                   //   alignment: Alignment.center,
@@ -989,226 +989,226 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   //   ),
                   // ),
 
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _sampleController.previousPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 12,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: height * .03),
-                            child: CarouselSlider(
-                              carouselController: _sampleController,
-                              items: [
-                                if (sampleIndex == 0)
-                                  ...provider.sampleProducts.take(provider.sampleProducts.length > 10 ? 10 : provider.sampleProducts.length).map(
-                                        (e) => SampleItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onTry: () => _cartHelper.applyToTry(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                            width: width,
-                                            height: height,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      )
-                                else
-                                  ...provider.sampleProducts
-                                      .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                      .take((provider.sampleProducts
-                                                  .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                                  .length) >
-                                              10
-                                          ? 10
-                                          : provider.sampleProducts
-                                              .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                              .length)
-                                      .map(
-                                        (e) => SampleItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
-                                          onTry: () => _cartHelper.applyToTry(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                            width: width,
-                                            height: height,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                        ),
-                                      ),
-                              ],
-                              options: CarouselOptions(
-                                // aspectRatio: 4.5,
-                                aspectRatio: 3.1,
-                                // viewportFraction: 0.15,
-                                viewportFraction: .2,
-                                initialPage: 0,
-                                enableInfiniteScroll: false,
-                                reverse: false,
-                                disableCenter: true,
-                                padEnds: false,
-                                autoPlay: true,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              _sampleController.nextPage();
-                            },
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      // padding: EdgeInsets.only(bottom: height * .01),
-                      padding: EdgeInsets.only(bottom: height * .01, top: height * .02),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Explore By Brands',
-                            textAlign: TextAlign.center,
-                            style: TextHelper.titleStyle.copyWith(
-                              fontWeight: FontWeight.bold,
-                              // fontSize: 25.0,
-                            ),
-                          ),
-                          const Spacer(),
-                          InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            splashColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              context.router.navigate(const ExploreByBrandsRoute());
-                            },
-                            child: Text(
-                              'View All ',
-                              style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          const Icon(Icons.arrow_forward_ios),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: GridView.count(
-                      crossAxisCount: 6,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      shrinkWrap: true,
-                      primary: false,
-                      childAspectRatio: 1.11,
-                      padding: EdgeInsets.symmetric(vertical: height * .02),
-                      children: [
-                        ...provider.brands.take(provider.brands.length > 18 ? 18 : provider.brands.length).map(
-                              (e) => InkWell(
-                                onTap: () {
-                                  context.router.push(BrandTrialRoute(brand: e));
-                                },
-                                splashFactory: NoSplash.splashFactory,
-                                highlightColor: Colors.transparent,
-                                child: Container(
-                                  width: double.infinity,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                      color: ColorConstants.colorBlack.withOpacity(0.4),
-                                      width: 2,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        blurRadius: 15,
-                                        offset: const Offset(0, 4),
-                                      ),
-                                    ],
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: e.logo.isNotEmpty
-                                      ? CustomNetworkImage(
-                                          imageUrl: e.logo,
-                                        )
-                                      : null,
-                                ),
-                              ),
-                            ),
-                      ],
-                    ),
-                  ),
-                  // FB5Container(
-                  //   child:
-                  Padding(
-                    padding: EdgeInsets.only(top: height * .04, bottom: height * .03),
-                    child: CarouselSlider(
-                      items: [
-                        ...provider.banners.where((element) => element.type == StringConstants.homeSmall).map(
-                              (e) => CustomNetworkImage(
-                                imageUrl: e.banner,
-                                width: width,
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                      ],
-                      options: CarouselOptions(
-                        enableInfiniteScroll: false,
-                        height: height * .4,
-                        viewportFraction: 1,
-                        padEnds: true,
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .06),
+                  //   child: Row(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Expanded(
+                  //         flex: 1,
+                  //         child: InkWell(
+                  //           splashFactory: NoSplash.splashFactory,
+                  //           highlightColor: Colors.transparent,
+                  //           hoverColor: Colors.transparent,
+                  //           onTap: () {
+                  //             // _sampleController.previousPage();
+                  //           },
+                  //           child: const Icon(
+                  //             Icons.arrow_back_ios,
+                  //             color: Colors.black,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         flex: 12,
+                  //         child: Padding(
+                  //           padding: EdgeInsets.symmetric(vertical: height * .03),
+                  //           child: CarouselSlider(
+                  //             // carouselController: _sampleController,
+                  //             items: [
+                  //               if (sampleIndex == 0)
+                  //                 ...provider.sampleProducts.take(provider.sampleProducts.length > 10 ? 10 : provider.sampleProducts.length).map(
+                  //                       (e) => SampleItemDesktop(
+                  //                         key: Key(e.id),
+                  //                         product: e,
+                  //                         onProductClick: () =>
+                  //                             _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                  //                         onTry: () => _cartHelper.applyToTry(
+                  //                           provider: provider,
+                  //                           context: context,
+                  //                           productId: e.id,
+                  //                           width: width,
+                  //                           height: height,
+                  //                         ),
+                  //                         provider: provider,
+                  //                         cartHelper: _cartHelper,
+                  //                         gridView: false,
+                  //                       ),
+                  //                     )
+                  //               else
+                  //                 ...provider.sampleProducts
+                  //                     .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                  //                     .take((provider.sampleProducts
+                  //                                 .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                  //                                 .length) >
+                  //                             10
+                  //                         ? 10
+                  //                         : provider.sampleProducts
+                  //                             .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                  //                             .length)
+                  //                     .map(
+                  //                       (e) => SampleItemDesktop(
+                  //                         key: Key(e.id),
+                  //                         product: e,
+                  //                         onProductClick: () =>
+                  //                             _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                  //                         onTry: () => _cartHelper.applyToTry(
+                  //                           provider: provider,
+                  //                           context: context,
+                  //                           productId: e.id,
+                  //                           width: width,
+                  //                           height: height,
+                  //                         ),
+                  //                         provider: provider,
+                  //                         cartHelper: _cartHelper,
+                  //                         gridView: false,
+                  //                       ),
+                  //                     ),
+                  //             ],
+                  //             options: CarouselOptions(
+                  //               // aspectRatio: 4.5,
+                  //               aspectRatio: 3.1,
+                  //               // viewportFraction: 0.15,
+                  //               viewportFraction: .2,
+                  //               initialPage: 0,
+                  //               enableInfiniteScroll: false,
+                  //               reverse: false,
+                  //               disableCenter: true,
+                  //               padEnds: false,
+                  //               autoPlay: true,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         flex: 1,
+                  //         child: InkWell(
+                  //           splashFactory: NoSplash.splashFactory,
+                  //           highlightColor: Colors.transparent,
+                  //           hoverColor: Colors.transparent,
+                  //           onTap: () {
+                  //             // _sampleController.nextPage();
+                  //           },
+                  //           child: const Icon(
+                  //             Icons.arrow_forward_ios,
+                  //             color: Colors.black,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  //
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: Padding(
+                  //     // padding: EdgeInsets.only(bottom: height * .01),
+                  //     padding: EdgeInsets.only(bottom: height * .01, top: height * .02),
+                  //     child: Row(
+                  //       mainAxisSize: MainAxisSize.max,
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       crossAxisAlignment: CrossAxisAlignment.center,
+                  //       children: [
+                  //         Text(
+                  //           'Explore By Brands',
+                  //           textAlign: TextAlign.center,
+                  //           style: TextHelper.titleStyle.copyWith(
+                  //             fontWeight: FontWeight.bold,
+                  //             // fontSize: 25.0,
+                  //           ),
+                  //         ),
+                  //         const Spacer(),
+                  //         InkWell(
+                  //           splashFactory: NoSplash.splashFactory,
+                  //           splashColor: Colors.transparent,
+                  //           hoverColor: Colors.transparent,
+                  //           onTap: () {
+                  //             context.router.navigate(const ExploreByBrandsRoute());
+                  //           },
+                  //           child: Text(
+                  //             'View All ',
+                  //             style: TextHelper.normalTextStyle.copyWith(
+                  //               fontWeight: FontWeight.w500,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         const Icon(Icons.arrow_forward_ios),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: GridView.count(
+                  //     crossAxisCount: 6,
+                  //     mainAxisSpacing: 10,
+                  //     crossAxisSpacing: 10,
+                  //     shrinkWrap: true,
+                  //     primary: false,
+                  //     childAspectRatio: 1.11,
+                  //     padding: EdgeInsets.symmetric(vertical: height * .02),
+                  //     children: [
+                  //       ...provider.brands.take(provider.brands.length > 18 ? 18 : provider.brands.length).map(
+                  //             (e) => InkWell(
+                  //               onTap: () {
+                  //                 context.router.push(BrandTrialRoute(brand: e));
+                  //               },
+                  //               splashFactory: NoSplash.splashFactory,
+                  //               highlightColor: Colors.transparent,
+                  //               child: Container(
+                  //                 width: double.infinity,
+                  //                 clipBehavior: Clip.antiAlias,
+                  //                 decoration: BoxDecoration(
+                  //                   color: Colors.white,
+                  //                   borderRadius: BorderRadius.circular(10),
+                  //                   border: Border.all(
+                  //                     color: ColorConstants.colorBlack.withOpacity(0.4),
+                  //                     width: 2,
+                  //                   ),
+                  //                   boxShadow: [
+                  //                     BoxShadow(
+                  //                       color: Colors.black.withOpacity(0.1),
+                  //                       blurRadius: 15,
+                  //                       offset: const Offset(0, 4),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //                 alignment: Alignment.center,
+                  //                 child: e.logo.isNotEmpty
+                  //                     ? CustomNetworkImage(
+                  //                         imageUrl: e.logo,
+                  //                       )
+                  //                     : null,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // // FB5Container(
+                  // //   child:
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: height * .04, bottom: height * .03),
+                  //   child: CarouselSlider(
+                  //     items: [
+                  //       ...provider.banners.where((element) => element.type == StringConstants.homeSmall).map(
+                  //             (e) => CustomNetworkImage(
+                  //               imageUrl: e.banner,
+                  //               width: width,
+                  //               fit: BoxFit.fill,
+                  //             ),
+                  //           ),
+                  //     ],
+                  //     options: CarouselOptions(
+                  //       enableInfiniteScroll: false,
+                  //       height: height * .4,
+                  //       viewportFraction: 1,
+                  //       padEnds: true,
+                  //     ),
+                  //   ),
+                  // ),
                   // Text(
                   //   'UPto 80% OFF',
                   //   style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18.sp),
@@ -1420,7 +1420,7 @@ class _OrderDialog extends StatelessWidget {
             top: 0,
             child: GestureDetector(
               onTap: () {
-                context.router.pop();
+                context.router.maybePop();
               },
               child: Container(
                 width: 40,

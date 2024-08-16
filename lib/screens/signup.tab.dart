@@ -339,7 +339,7 @@ class _SignupScreenTabState extends State<SignupScreenTab> {
               iconTheme: const IconThemeData(color: Colors.white),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => context.router.pop(),
+                onPressed: () => context.router.maybePop(),
               ),
             ),
             body: Form(
@@ -967,7 +967,7 @@ class _Dialog extends StatelessWidget {
             top: 0,
             right: 25,
             child: InkWell(
-              onTap: () => context.router.pop(),
+              onTap: () => context.router.maybePop(),
               child: Container(
                 width: 40,
                 height: 40,

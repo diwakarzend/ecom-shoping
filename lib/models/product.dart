@@ -4,7 +4,7 @@
 
 import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/models/models.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 
 class Product {
   final String id;
@@ -163,16 +163,16 @@ class Product {
     };
   }
 
-  AnalyticsEventItem toGAP() {
-    return AnalyticsEventItem(
-      itemId: id,
-      itemName: name,
-      itemBrand: brand?.name,
-      itemCategory: category?.name ?? '',
-      currency: 'INR',
-      price: productType == StringConstants.hotDealProduct || productType == StringConstants.brandStoreProduct ? salePrice.toDouble() : 0.00,
-    );
-  }
+  // AnalyticsEventItem toGAP() {
+  //   return AnalyticsEventItem(
+  //     itemId: id,
+  //     itemName: name,
+  //     itemBrand: brand?.name,
+  //     itemCategory: category?.name ?? '',
+  //     currency: 'INR',
+  //     price: productType == StringConstants.hotDealProduct || productType == StringConstants.brandStoreProduct ? salePrice.toDouble() : 0.00,
+  //   );
+  // }
 }
 
 class RetargetProduct {

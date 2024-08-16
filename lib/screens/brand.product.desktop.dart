@@ -11,7 +11,7 @@ import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 
@@ -26,13 +26,13 @@ class BrandProductScreenDesktop extends StatefulWidget {
 }
 
 class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
-  addFirebaseAnalyticsBrandProducts(AppProvider provider) async {
-    await FirebaseAnalytics.instance.logViewItemList(
-      itemListId: 'brand store',
-      itemListName: 'Brand store products',
-      items: List<AnalyticsEventItem>.from(provider.dealProducts.map((x) => x.toGAP())),
-    );
-  }
+  // addFirebaseAnalyticsBrandProducts(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewItemList(
+  //     itemListId: 'brand store',
+  //     itemListName: 'Brand store products',
+  //     items: List<AnalyticsEventItem>.from(provider.dealProducts.map((x) => x.toGAP())),
+  //   );
+  // }
 
   bool listView = false;
   Brand? selectedBrand;
@@ -49,7 +49,7 @@ class _BrandProductScreenDesktopState extends State<BrandProductScreenDesktop> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
-        addFirebaseAnalyticsBrandProducts(provider);
+        // addFirebaseAnalyticsBrandProducts(provider);
         return Scaffold(
           drawer: CustomDrawerDesktop(
             provider: provider,
