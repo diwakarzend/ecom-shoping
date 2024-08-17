@@ -129,67 +129,67 @@ class _BrandTrialDesktopScreenState extends State<BrandTrialDesktopScreen> with 
                     height: height * .5,
                   ),
                 ),
-                SizedBox(height: height * .03),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: width * .12),
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = 0;
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          width: width * .1,
-                          height: height * .05,
-                          decoration: BoxDecoration(
-                            color: selectedIndex == 0 ? ColorConstants.colorBlackTwo : Colors.transparent,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Minis',
-                            style: TextHelper.smallTextStyle.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: selectedIndex == 0 ? Colors.white : ColorConstants.colorBlackTwo,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = 1;
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          width: width * .1,
-                          height: height * .05,
-                          decoration: BoxDecoration(
-                            color: selectedIndex == 1 ? ColorConstants.colorBlackTwo : Colors.transparent,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Deals & Combo',
-                            style: TextHelper.smallTextStyle.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: selectedIndex == 1 ? Colors.white : ColorConstants.colorBlackTwo,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                // SizedBox(height: height * .03),
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: width * .12),
+                //   alignment: Alignment.center,
+                //   child: Row(
+                //     mainAxisSize: MainAxisSize.max,
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: [
+                //       InkWell(
+                //         onTap: () {
+                //           setState(() {
+                //             selectedIndex = 0;
+                //           });
+                //         },
+                //         child: AnimatedContainer(
+                //           duration: const Duration(milliseconds: 300),
+                //           width: width * .1,
+                //           height: height * .05,
+                //           decoration: BoxDecoration(
+                //             color: selectedIndex == 0 ? ColorConstants.colorBlackTwo : Colors.transparent,
+                //             borderRadius: BorderRadius.circular(10),
+                //           ),
+                //           alignment: Alignment.center,
+                //           child: Text(
+                //             'Minis',
+                //             style: TextHelper.smallTextStyle.copyWith(
+                //               fontWeight: FontWeight.w500,
+                //               color: selectedIndex == 0 ? Colors.white : ColorConstants.colorBlackTwo,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //       const SizedBox(width: 20),
+                //       InkWell(
+                //         onTap: () {
+                //           setState(() {
+                //             selectedIndex = 1;
+                //           });
+                //         },
+                //         child: AnimatedContainer(
+                //           duration: const Duration(milliseconds: 300),
+                //           width: width * .1,
+                //           height: height * .05,
+                //           decoration: BoxDecoration(
+                //             color: selectedIndex == 1 ? ColorConstants.colorBlackTwo : Colors.transparent,
+                //             borderRadius: BorderRadius.circular(10),
+                //           ),
+                //           alignment: Alignment.center,
+                //           child: Text(
+                //             'Deals & Combo',
+                //             style: TextHelper.smallTextStyle.copyWith(
+                //               fontWeight: FontWeight.w500,
+                //               color: selectedIndex == 1 ? Colors.white : ColorConstants.colorBlackTwo,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 SizedBox(height: height * .06),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: width * .12),

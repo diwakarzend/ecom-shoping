@@ -228,31 +228,31 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
                 //   ),
                 // ),
                 // SizedBox(height: height * .06),
-                (provider.banners
-                        .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
-                        .isNotEmpty)
-                    ? CarouselSlider(
-                        items: provider.banners
-                            .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
-                            .map(
-                              (e) => ClipRRect(
-                                // borderRadius: BorderRadius.circular(10),
-                                child: CustomNetworkImage(
-                                  imageUrl: e.banner,
-                                  width: width,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            )
-                            .toList(),
-                        options: CarouselOptions(
-                          disableCenter: true,
-                          viewportFraction: 1,
-                          height: height * .8,
-                          autoPlay: true,
-                        ),
-                      )
-                    : const SizedBox.shrink(),
+                // (provider.banners
+                //         .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
+                //         .isNotEmpty)
+                //     ? CarouselSlider(
+                //         items: provider.banners
+                //             .where((element) => element.type == StringConstants.referBanner && element.deviceType == StringConstants.deviceTypeD)
+                //             .map(
+                //               (e) => ClipRRect(
+                //                 // borderRadius: BorderRadius.circular(10),
+                //                 child: CustomNetworkImage(
+                //                   imageUrl: e.banner,
+                //                   width: width,
+                //                   fit: BoxFit.cover,
+                //                 ),
+                //               ),
+                //             )
+                //             .toList(),
+                //         options: CarouselOptions(
+                //           disableCenter: true,
+                //           viewportFraction: 1,
+                //           height: height * .8,
+                //           autoPlay: true,
+                //         ),
+                //       )
+                //     : const SizedBox.shrink(),
                 // Container(
                 //   margin: EdgeInsets.symmetric(horizontal: width * .12),
                 //   alignment: Alignment.center,

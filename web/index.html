@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--
-      If you are serving your web app in a path other than the root, change the
-      href value below to reflect the base path you are serving from.
-
-      The path provided below has to start and end with a slash "/" in order for
-      it to work correctly.
-
-      For more details:
-      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-      This is a placeholder for base href that will be replaced by the value of
-      the --base-href argument provided to flutter build.
-    -->
     <base href="/">
 
     <meta charset="UTF-8">
@@ -34,8 +21,6 @@
 
     <script>
         const serviceWorkerVersion = {{flutter_service_worker_version}};
-
-
     </script>
     <!-- This script adds the flutter initialization JS code -->
     <script src="flutter.js?version=2" defer></script>
@@ -54,23 +39,13 @@
           justify-content: center;
           overflow: hidden;
         }
-
-        .indicator {
-          width: auto;
-          height: auto;
-        }
-
-
     </style>
 </head>
 <body>
 <div class="container" id="loading_indicator">
     <script src="flutter_bootstrap.js" async></script>
-    <!--  <img class="indicator" src="./assets/assets/animations/loading.gif"/>-->
-    <img class="indicator" src="./assets/assets/animations/boll1.gif" alt="boll1.gif"/>
 </div>
 <!-- razorpay checkout lib -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-</body>
 </body>
 </html>

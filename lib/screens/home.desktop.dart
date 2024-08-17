@@ -676,7 +676,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Deals: Special deals & combo offers\nwith best discounts on top brands. Dare to compare pricing .',
+                            'Deals: Special deals offers with best discounts on top brands. \nDare to compare pricing .',
                             style: TextHelper.normalTextStyle.copyWith(
                               color: Colors.black.withOpacity(0.8),
                             ),
