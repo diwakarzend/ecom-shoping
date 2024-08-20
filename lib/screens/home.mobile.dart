@@ -9,11 +9,8 @@ import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/app.provider.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
-import 'package:fabpiks_web/screens/vendy.screen.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
 import 'package:flutter/material.dart' hide Badge;
-import 'package:ionicons/ionicons.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -456,24 +453,32 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                   //   ],
                   // ),
                   if (provider.banners
-                      .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeM)
+                      .where((element) =>
+                          element.type == StringConstants.homeBanner &&
+                          element.deviceType == StringConstants.deviceTypeM)
                       .isNotEmpty)
                     Padding(
                       padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
                       child: CarouselSlider.builder(
                         itemCount: provider.banners
-                            .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeM)
+                            .where((element) =>
+                                element.type == StringConstants.homeBanner &&
+                                element.deviceType == StringConstants.deviceTypeM)
                             .length,
                         itemBuilder: (BuildContext context, int index, int i) {
                           return ClipRRect(
                             key: Key(provider.banners
-                                .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeM)
+                                .where((element) =>
+                                    element.type == StringConstants.homeBanner &&
+                                    element.deviceType == StringConstants.deviceTypeM)
                                 .toList()[index]
                                 .id),
                             borderRadius: BorderRadius.circular(10),
                             child: CustomNetworkImage(
                               imageUrl: provider.banners
-                                  .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeM)
+                                  .where((element) =>
+                                      element.type == StringConstants.homeBanner &&
+                                      element.deviceType == StringConstants.deviceTypeM)
                                   .toList()[index]
                                   .banner,
                               width: width,
@@ -683,7 +688,8 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                             maxLines: 10,
                             style: TextHelper.smallTextStyle.copyWith(
                               fontWeight: FontWeight.w600,
-                              color: ColorConstants.colorGreySeven,fontSize: 15.sp,
+                              color: ColorConstants.colorGreySeven,
+                              fontSize: 15.sp,
                             ),
                           ),
                         ),
@@ -743,12 +749,17 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                           child: CarouselSlider(
                             items: [
                               if (dealIndex == 0)
-                                ...provider.dealProducts.take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length).map(
+                                ...provider.dealProducts
+                                    .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
+                                    .map(
                                       (e) => DealItems(
                                         key: Key(e.id),
                                         product: e,
-                                        onProductClick: () =>
-                                            _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                                        onProductClick: () => _cartHelper.productClick(
+                                            context: context,
+                                            productId: e.id,
+                                            productType: e.productType,
+                                            provider: provider),
                                         onAddToCart: () => _cartHelper.addToCart(
                                           provider: provider,
                                           context: context,
@@ -761,19 +772,27 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                                     )
                               else
                                 ...provider.dealProducts
-                                    .where((element) => element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                    .where((element) =>
+                                        element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
                                     .take((provider.dealProducts
-                                                .where((element) => element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                                .where((element) =>
+                                                    element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
                                                 .length) >
                                             10
                                         ? 10
-                                        : provider.dealProducts.where((element) => element.category?.id == provider.dealCategories[(dealIndex - 1)].id).length)
+                                        : provider.dealProducts
+                                            .where((element) =>
+                                                element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                            .length)
                                     .map(
                                       (e) => DealItems(
                                         key: Key(e.id),
                                         product: e,
-                                        onProductClick: () =>
-                                            _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                                        onProductClick: () => _cartHelper.productClick(
+                                            context: context,
+                                            productId: e.id,
+                                            productType: e.productType,
+                                            provider: provider),
                                         onAddToCart: () => _cartHelper.addToCart(
                                           provider: provider,
                                           context: context,
@@ -800,35 +819,36 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                       ],
                     ),
                   ),
-                  if (provider.banners.where((element) => element.type == StringConstants.homeBannerMiddle).isNotEmpty) SizedBox(height: height * .01),
                   if (provider.banners.where((element) => element.type == StringConstants.homeBannerMiddle).isNotEmpty)
-                  //   Padding(
-                  //     padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
-                  //     child: CarouselSlider(
-                  //       items: [
-                  //         ...provider.banners.where((element) => element.type == StringConstants.homeBannerMiddle).map(
-                  //               (e) => ClipRRect(
-                  //                 key: Key(e.id),
-                  //                 borderRadius: BorderRadius.circular(10),
-                  //                 child: CustomNetworkImage(
-                  //                   imageUrl: e.banner,
-                  //                   fit: BoxFit.cover,
-                  //                   width: width,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //       ],
-                  //       options: CarouselOptions(
-                  //         enableInfiniteScroll: false,
-                  //         // autoPlay: true,
-                  //         // autoPlayInterval: const Duration(seconds: 2),
-                  //         height: height * .25,
-                  //         viewportFraction: 1,
-                  //         padEnds: true,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // SizedBox(height: height * .02),
+                    SizedBox(height: height * .01),
+                  if (provider.banners.where((element) => element.type == StringConstants.homeBannerMiddle).isNotEmpty)
+                    //   Padding(
+                    //     padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
+                    //     child: CarouselSlider(
+                    //       items: [
+                    //         ...provider.banners.where((element) => element.type == StringConstants.homeBannerMiddle).map(
+                    //               (e) => ClipRRect(
+                    //                 key: Key(e.id),
+                    //                 borderRadius: BorderRadius.circular(10),
+                    //                 child: CustomNetworkImage(
+                    //                   imageUrl: e.banner,
+                    //                   fit: BoxFit.cover,
+                    //                   width: width,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //       ],
+                    //       options: CarouselOptions(
+                    //         enableInfiniteScroll: false,
+                    //         // autoPlay: true,
+                    //         // autoPlayInterval: const Duration(seconds: 2),
+                    //         height: height * .25,
+                    //         viewportFraction: 1,
+                    //         padEnds: true,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // SizedBox(height: height * .02),
                     SizedBox(height: height * .02),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -863,7 +883,8 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                       maxLines: 10,
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: ColorConstants.colorGreySeven,fontSize: 15.sp,
+                        color: ColorConstants.colorGreySeven,
+                        fontSize: 15.sp,
                       ),
                     ),
                   ),
@@ -923,12 +944,17 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                     child: CarouselSlider(
                       items: [
                         if (sampleIndex == 0)
-                          ...provider.sampleProducts.take(provider.sampleProducts.length > 10 ? 10 : provider.sampleProducts.length).map(
+                          ...provider.sampleProducts
+                              .take(provider.sampleProducts.length > 10 ? 10 : provider.sampleProducts.length)
+                              .map(
                                 (e) => SampleItems(
                                   key: Key(e.id),
                                   product: e,
-                                  onProductClick: () =>
-                                      _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                                  onProductClick: () => _cartHelper.productClick(
+                                      context: context,
+                                      productId: e.id,
+                                      productType: e.productType,
+                                      provider: provider),
                                   onTry: () => _cartHelper.applyToTry(
                                     provider: provider,
                                     context: context,
@@ -943,19 +969,27 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                               )
                         else
                           ...provider.sampleProducts
-                              .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                              .where(
+                                  (element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
                               .take((provider.sampleProducts
-                                          .where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                                          .where((element) =>
+                                              element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
                                           .length) >
                                       10
                                   ? 10
-                                  : provider.sampleProducts.where((element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id).length)
+                                  : provider.sampleProducts
+                                      .where((element) =>
+                                          element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                                      .length)
                               .map(
                                 (e) => SampleItems(
                                   key: Key(e.id),
                                   product: e,
-                                  onProductClick: () =>
-                                      _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                                  onProductClick: () => _cartHelper.productClick(
+                                      context: context,
+                                      productId: e.id,
+                                      productType: e.productType,
+                                      provider: provider),
                                   onTry: () => _cartHelper.applyToTry(
                                     provider: provider,
                                     context: context,
