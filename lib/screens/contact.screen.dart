@@ -1,0 +1,24 @@
+import 'package:fabpiks_web/screens/Shipping.desktop.dart';
+import 'package:fabpiks_web/screens/contact.desktop.dart';
+import 'package:fabpiks_web/screens/shipping.tab.dart';
+import 'package:fabpiks_web/style/responsive.dart';
+import 'package:flutter/cupertino.dart';
+
+// @RoutePage(name: 'WishlistRoute')
+class ContactUsAll extends StatefulWidget {
+  const ContactUsAll({super.key});
+
+  @override
+  State<ContactUsAll> createState() => _ContactUsAllState();
+}
+
+class _ContactUsAllState extends State<ContactUsAll> {
+  @override
+  Widget build(BuildContext context) {
+    return const Responsive(
+      mobile: ShippingPolicyDesktop(),
+      desktop: ContactUsDesktop(),
+      tablet: ShippingPolicyTab(),
+    );
+  }
+}

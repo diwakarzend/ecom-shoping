@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
+import 'package:fabpiks_web/screens/contact.screen.dart';
+import 'package:fabpiks_web/screens/shipping.screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../routes/router.gr.dart';
@@ -100,6 +102,36 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Privacy Policy',
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ShippingPolicyAll()),
+                        );
+                      },
+                      child: Text(
+                        'Shipping Policy',
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ContactUsAll()),
+                        );
+                      },
+                      child: Text(
+                        'Contact Us',
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
