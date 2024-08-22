@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7860c51b-eb5b-42a3-a050-fe71e4fc28cf" name="Changes" comment="build_fix">
-      <change afterPath="$PROJECT_DIR$/lib/screens/Shipping.desktop.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/contact.desktop.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/contact.mobile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/contact.screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/contact.tab.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/shipping.mobile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/shipping.screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/shipping.tab.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/NOTICES" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/assets/images/trash_can.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/assets/images/trash_can.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/about/about.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/about/about.mobile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/about/about.tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/about/about.tab.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/faq.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/faq.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/faq.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/faq.mobile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/privacy.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/privacy.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/privacy.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/privacy.mobile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/refund.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/refund.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/refund.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/refund.mobile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,10 +75,11 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "shubhgamess__web",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "MTFeaturesSettingsConfigurable",
+    "settings.editor.selected.configurable": "flutter.settings",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>

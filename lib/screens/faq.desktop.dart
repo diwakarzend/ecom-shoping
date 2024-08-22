@@ -24,11 +24,11 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
         final modifiedFaqs = provider.faqs.map((faq) {
           final modifiedQuestion = faq.question.replaceAll(
             'What is Shipan?',
-            'What is Shubhgamess?',
+            'What is Shubh?',
           );
           final modifiedAnswer = faq.answer.replaceAll(
             'game.ship9x.com/',
-            'shop.shubhgamess.com',
+            'shop.shubh.com',
           );
           return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
         }).toList();

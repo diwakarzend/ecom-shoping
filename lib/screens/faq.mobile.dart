@@ -25,11 +25,11 @@ class _FAQHelpMobileState extends State<FAQHelpMobile> {
         final modifiedFaqs = provider.faqs.map((faq) {
           final modifiedQuestion = faq.question.replaceAll(
             'What is Shipan?',
-            'What is Shubhgamess?',
+            'What is Shubh?',
           );
           final modifiedAnswer = faq.answer.replaceAll(
             'game.ship9x.com/',
-            'shop.shubhgamess.com',
+            'shop.shubhpay.co.in',
           );
           return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
         }).toList();

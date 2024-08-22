@@ -22,10 +22,10 @@ class _PrivacyPolicyMobileState extends State<PrivacyPolicyMobile> {
       builder: (context, provider, _) {
         String privacyPolicyText = provider.appSettings?.privacy ?? '';
         privacyPolicyText = privacyPolicyText
-            .replaceAll('Shipan Tech Private Limited', 'Shubhagmess')
+            .replaceAll('Shipan Tech Private Limited', 'Shubh')
             .replaceAll('shipantechprivatelimited5@gmail.com', 'Privatelimitedshubhpay@gmail.com')
-            .replaceAll('Shipan', 'Shubhagmess')
-            .replaceAll('SHIPAN', 'SHUBHAGMESS')
+            .replaceAll('Shipan', 'Shubh')
+            .replaceAll('SHIPAN', 'SHUBH')
             .replaceAll('shop NO. 2, karim Mansion,Behind Pharmacy college', '4th Floor, Office No.432, Geras Imperium Star');
 
         return Scaffold(
