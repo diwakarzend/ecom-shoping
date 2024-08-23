@@ -27,7 +27,8 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
 
           final modifiedAnswer = faq.answer
               .replaceAll('game.ship9x.com/', 'shipan')
-              .replaceAll('Shipan', 'Shubh');
+              .replaceAll('Shipan', 'Shubh')
+          .replaceAll('shipantechprivatelimited5@gmail.com', 'privatelimitedshubhtech@gmail.com');
 
           return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
         }).toList();
