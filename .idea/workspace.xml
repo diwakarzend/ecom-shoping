@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7860c51b-eb5b-42a3-a050-fe71e4fc28cf" name="Changes" comment="change icon and some thing like word">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/fab_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/fab_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/assets/images/fab_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/assets/images/fab_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/main.dart.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/main.dart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/contact.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/contact.mobile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home.mobile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/navigator.screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/navigator.screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/order.help.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/order.help.mobile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/order.help.tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/order.help.tab.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/shipping.mobile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/shipping.mobile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/shopping.hep.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/shopping.hep.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom.drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom.drawer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom.drawer.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom.drawer.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/faq.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/faq.desktop.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +61,6 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "shubhgamess__web",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
@@ -119,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724406062691</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="change icon and some thing like word">
+      <option name="closed" value="true" />
+      <created>1724414300570</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724414300571</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
