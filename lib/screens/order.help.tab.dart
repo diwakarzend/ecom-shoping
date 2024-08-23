@@ -77,7 +77,7 @@ class _OrderHelpTabState extends State<OrderHelpTab> {
                     });
                   },
                   title: Text(
-                    'What is Shubhgamess?',
+                    'What is Shubh?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

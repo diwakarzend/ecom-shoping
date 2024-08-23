@@ -693,56 +693,56 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                             ),
                           ),
                         ),
-                        SizedBox(height: height * .02),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const SizedBox(width: 20),
-                            Expanded(
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    NewCategoryItems(
-                                      key: const Key('d_all'),
-                                      onTap: () {
-                                        setState(() {
-                                          dealIndex = 0;
-                                        });
-                                      },
-                                      active: dealIndex == 0,
-                                      name: 'All',
-                                    ),
-                                    ...provider.dealCategories
-                                        .asMap()
-                                        .map(
-                                          (i, c) => MapEntry(
-                                            i,
-                                            NewCategoryItems(
-                                              key: Key(c.id),
-                                              onTap: () {
-                                                setState(() {
-                                                  dealIndex = i + 1;
-                                                });
-                                              },
-                                              active: (dealIndex == (i + 1)),
-                                              name: c.name,
-                                            ),
-                                          ),
-                                        )
-                                        .values,
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 20),
-                          ],
-                        ),
+                        // SizedBox(height: height * .02),
+                        // Row(
+                        //   mainAxisSize: MainAxisSize.max,
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //   crossAxisAlignment: CrossAxisAlignment.center,
+                        //   children: [
+                        //     const SizedBox(width: 20),
+                        //     Expanded(
+                        //       child: SingleChildScrollView(
+                        //         scrollDirection: Axis.horizontal,
+                        //         child: Row(
+                        //           mainAxisSize: MainAxisSize.max,
+                        //           mainAxisAlignment: MainAxisAlignment.center,
+                        //           crossAxisAlignment: CrossAxisAlignment.center,
+                        //           children: [
+                        //             NewCategoryItems(
+                        //               key: const Key('d_all'),
+                        //               onTap: () {
+                        //                 setState(() {
+                        //                   dealIndex = 0;
+                        //                 });
+                        //               },
+                        //               active: dealIndex == 0,
+                        //               name: 'All',
+                        //             ),
+                        //             ...provider.dealCategories
+                        //                 .asMap()
+                        //                 .map(
+                        //                   (i, c) => MapEntry(
+                        //                     i,
+                        //                     NewCategoryItems(
+                        //                       key: Key(c.id),
+                        //                       onTap: () {
+                        //                         setState(() {
+                        //                           dealIndex = i + 1;
+                        //                         });
+                        //                       },
+                        //                       active: (dealIndex == (i + 1)),
+                        //                       name: c.name,
+                        //                     ),
+                        //                   ),
+                        //                 )
+                        //                 .values,
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     const SizedBox(width: 20),
+                        //   ],
+                        // ),
                         SizedBox(height: height * .02),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -849,172 +849,172 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                     //     ),
                     //   ),
                     // SizedBox(height: height * .02),
-                    SizedBox(height: height * .02),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Free Samples',
-                          style: TextHelper.subTitleStyle.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () => context.router.push(const BrandProductsRoute()),
-                          child: Text(
-                            'View All',
-                            style: TextHelper.normalTextStyle.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: height * .01),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      'Free Samples: Explore exciting brands & products for free! Apply for our free sample offers & if you are a match, you only pay a small delivery free ( max Rs 40-80) to get the product home delivered.',
-                      maxLines: 10,
-                      style: TextHelper.smallTextStyle.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: ColorConstants.colorGreySeven,
-                        fontSize: 15.sp,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: height * .02),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              NewCategoryItems(
-                                key: const Key('s_all'),
-                                onTap: () {
-                                  setState(() {
-                                    sampleIndex = 0;
-                                  });
-                                },
-                                active: sampleIndex == 0,
-                                name: 'All',
-                              ),
-                              ...provider.sampleCategories
-                                  .asMap()
-                                  .map(
-                                    (i, c) => MapEntry(
-                                      i,
-                                      NewCategoryItems(
-                                        key: Key(c.id),
-                                        onTap: () {
-                                          setState(() {
-                                            sampleIndex = i + 1;
-                                          });
-                                        },
-                                        active: (sampleIndex == (i + 1)),
-                                        name: c.name,
-                                      ),
-                                    ),
-                                  )
-                                  .values,
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                    ],
-                  ),
-                  SizedBox(height: height * .02),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: CarouselSlider(
-                      items: [
-                        if (sampleIndex == 0)
-                          ...provider.sampleProducts
-                              .take(provider.sampleProducts.length > 10 ? 10 : provider.sampleProducts.length)
-                              .map(
-                                (e) => SampleItems(
-                                  key: Key(e.id),
-                                  product: e,
-                                  onProductClick: () => _cartHelper.productClick(
-                                      context: context,
-                                      productId: e.id,
-                                      productType: e.productType,
-                                      provider: provider),
-                                  onTry: () => _cartHelper.applyToTry(
-                                    provider: provider,
-                                    context: context,
-                                    productId: e.id,
-                                    width: width,
-                                    height: height,
-                                  ),
-                                  provider: provider,
-                                  cartHelper: _cartHelper,
-                                  gridView: false,
-                                ),
-                              )
-                        else
-                          ...provider.sampleProducts
-                              .where(
-                                  (element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                              .take((provider.sampleProducts
-                                          .where((element) =>
-                                              element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                          .length) >
-                                      10
-                                  ? 10
-                                  : provider.sampleProducts
-                                      .where((element) =>
-                                          element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
-                                      .length)
-                              .map(
-                                (e) => SampleItems(
-                                  key: Key(e.id),
-                                  product: e,
-                                  onProductClick: () => _cartHelper.productClick(
-                                      context: context,
-                                      productId: e.id,
-                                      productType: e.productType,
-                                      provider: provider),
-                                  onTry: () => _cartHelper.applyToTry(
-                                    provider: provider,
-                                    context: context,
-                                    productId: e.id,
-                                    width: width,
-                                    height: height,
-                                  ),
-                                  provider: provider,
-                                  cartHelper: _cartHelper,
-                                  gridView: false,
-                                ),
-                              ),
-                      ],
-                      options: CarouselOptions(
-                        aspectRatio: 1.3,
-                        viewportFraction: 0.47,
-                        initialPage: 0,
-                        enableInfiniteScroll: false,
-                        reverse: false,
-                        disableCenter: true,
-                        padEnds: false,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: height * .02),
+                  //   SizedBox(height: height * .02),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                  //   child: Row(
+                  //     mainAxisSize: MainAxisSize.max,
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Text(
+                  //         'Free Samples',
+                  //         style: TextHelper.subTitleStyle.copyWith(
+                  //           fontWeight: FontWeight.w600,
+                  //         ),
+                  //       ),
+                  //       InkWell(
+                  //         onTap: () => context.router.push(const BrandProductsRoute()),
+                  //         child: Text(
+                  //           'View All',
+                  //           style: TextHelper.normalTextStyle.copyWith(
+                  //             fontWeight: FontWeight.w500,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SizedBox(height: height * .01),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                  //   child: Text(
+                  //     'Free Samples: Explore exciting brands & products for free! Apply for our free sample offers & if you are a match, you only pay a small delivery free ( max Rs 40-80) to get the product home delivered.',
+                  //     maxLines: 10,
+                  //     style: TextHelper.smallTextStyle.copyWith(
+                  //       fontWeight: FontWeight.w600,
+                  //       color: ColorConstants.colorGreySeven,
+                  //       fontSize: 15.sp,
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: height * .02),
+                  // Row(
+                  //   mainAxisSize: MainAxisSize.max,
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: [
+                  //     const SizedBox(width: 20),
+                  //     Expanded(
+                  //       child: SingleChildScrollView(
+                  //         scrollDirection: Axis.horizontal,
+                  //         child: Row(
+                  //           mainAxisSize: MainAxisSize.max,
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           crossAxisAlignment: CrossAxisAlignment.center,
+                  //           children: [
+                  //             NewCategoryItems(
+                  //               key: const Key('s_all'),
+                  //               onTap: () {
+                  //                 setState(() {
+                  //                   sampleIndex = 0;
+                  //                 });
+                  //               },
+                  //               active: sampleIndex == 0,
+                  //               name: 'All',
+                  //             ),
+                  //             ...provider.sampleCategories
+                  //                 .asMap()
+                  //                 .map(
+                  //                   (i, c) => MapEntry(
+                  //                     i,
+                  //                     NewCategoryItems(
+                  //                       key: Key(c.id),
+                  //                       onTap: () {
+                  //                         setState(() {
+                  //                           sampleIndex = i + 1;
+                  //                         });
+                  //                       },
+                  //                       active: (sampleIndex == (i + 1)),
+                  //                       name: c.name,
+                  //                     ),
+                  //                   ),
+                  //                 )
+                  //                 .values,
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     const SizedBox(width: 20),
+                  //   ],
+                  // ),
+                  // SizedBox(height: height * .02),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                  //   child: CarouselSlider(
+                  //     items: [
+                  //       if (sampleIndex == 0)
+                  //         ...provider.sampleProducts
+                  //             .take(provider.sampleProducts.length > 10 ? 10 : provider.sampleProducts.length)
+                  //             .map(
+                  //               (e) => SampleItems(
+                  //                 key: Key(e.id),
+                  //                 product: e,
+                  //                 onProductClick: () => _cartHelper.productClick(
+                  //                     context: context,
+                  //                     productId: e.id,
+                  //                     productType: e.productType,
+                  //                     provider: provider),
+                  //                 onTry: () => _cartHelper.applyToTry(
+                  //                   provider: provider,
+                  //                   context: context,
+                  //                   productId: e.id,
+                  //                   width: width,
+                  //                   height: height,
+                  //                 ),
+                  //                 provider: provider,
+                  //                 cartHelper: _cartHelper,
+                  //                 gridView: false,
+                  //               ),
+                  //             )
+                  //       else
+                  //         ...provider.sampleProducts
+                  //             .where(
+                  //                 (element) => element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                  //             .take((provider.sampleProducts
+                  //                         .where((element) =>
+                  //                             element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                  //                         .length) >
+                  //                     10
+                  //                 ? 10
+                  //                 : provider.sampleProducts
+                  //                     .where((element) =>
+                  //                         element.category?.id == provider.sampleCategories[(sampleIndex - 1)].id)
+                  //                     .length)
+                  //             .map(
+                  //               (e) => SampleItems(
+                  //                 key: Key(e.id),
+                  //                 product: e,
+                  //                 onProductClick: () => _cartHelper.productClick(
+                  //                     context: context,
+                  //                     productId: e.id,
+                  //                     productType: e.productType,
+                  //                     provider: provider),
+                  //                 onTry: () => _cartHelper.applyToTry(
+                  //                   provider: provider,
+                  //                   context: context,
+                  //                   productId: e.id,
+                  //                   width: width,
+                  //                   height: height,
+                  //                 ),
+                  //                 provider: provider,
+                  //                 cartHelper: _cartHelper,
+                  //                 gridView: false,
+                  //               ),
+                  //             ),
+                  //     ],
+                  //     options: CarouselOptions(
+                  //       aspectRatio: 1.3,
+                  //       viewportFraction: 0.47,
+                  //       initialPage: 0,
+                  //       enableInfiniteScroll: false,
+                  //       reverse: false,
+                  //       disableCenter: true,
+                  //       padEnds: false,
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: height * .02),
                   // if (provider.brands.where((element) => element.sort == 1 || element.sort == 2 || element.sort == 3 || element.sort == 4).isNotEmpty)
                   //   Padding(
                   //     padding: const EdgeInsets.symmetric(horizontal: 20),

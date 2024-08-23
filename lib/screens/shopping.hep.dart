@@ -78,7 +78,7 @@ class _ShoppingHelpState extends State<ShoppingHelp> {
                     });
                   },
                   title: Text(
-                    'What is Shubhgamess?',
+                    'What is Shubh?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

@@ -50,7 +50,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'shubh is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
+                      'Shubh is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -249,7 +249,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'shubh is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
+                      'Shubh is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(

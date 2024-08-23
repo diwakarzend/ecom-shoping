@@ -298,33 +298,33 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                 provider.changeIndex(2);
                               },
                             ),
-                            NavItem(
-                              icon: ImageIcon(
-                                const AssetImage('assets/images/icons/sample.png'),
-                                size: 28,
-                                color: provider.activeIndex == 3 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
-                              ),
-                              name: NavLabel(
-                                text: 'Free Samples',
-                                gradient: LinearGradient(
-                                  colors: provider.activeIndex == 3
-                                      ? [
-                                          ColorConstants.colorBlueFour,
-                                          ColorConstants.colorBlueFour,
-                                        ]
-                                      : [
-                                          ColorConstants.colorGreyFourteen,
-                                          ColorConstants.colorGreyFourteen,
-                                        ],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ),
-                              ),
-                              onTap: () {
-                                // provider.changeActiveIndex(4);
-                                provider.changeIndex(3);
-                              },
-                            ),
+                            // NavItem(
+                            //   icon: ImageIcon(
+                            //     const AssetImage('assets/images/icons/sample.png'),
+                            //     size: 28,
+                            //     color: provider.activeIndex == 3 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                            //   ),
+                            //   name: NavLabel(
+                            //     text: 'Free Samples',
+                            //     gradient: LinearGradient(
+                            //       colors: provider.activeIndex == 3
+                            //           ? [
+                            //               ColorConstants.colorBlueFour,
+                            //               ColorConstants.colorBlueFour,
+                            //             ]
+                            //           : [
+                            //               ColorConstants.colorGreyFourteen,
+                            //               ColorConstants.colorGreyFourteen,
+                            //             ],
+                            //       begin: Alignment.centerLeft,
+                            //       end: Alignment.centerRight,
+                            //     ),
+                            //   ),
+                            //   onTap: () {
+                            //     // provider.changeActiveIndex(4);
+                            //     provider.changeIndex(3);
+                            //   },
+                            // ),
                           ],
                         ),
                       ),
