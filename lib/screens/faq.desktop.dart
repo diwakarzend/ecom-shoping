@@ -28,7 +28,7 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
           );
           final modifiedAnswer = faq.answer.replaceAll(
             'game.ship9x.com/',
-            'shop.shubh.com',
+            'www.shubhpay.co.in',
           );
           return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
         }).toList();

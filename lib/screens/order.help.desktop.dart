@@ -82,7 +82,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                     });
                   },
                   title: Text(
-                    'What is Shubhgamess?',
+                    'What is Shubh?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

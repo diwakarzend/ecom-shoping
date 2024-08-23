@@ -29,7 +29,7 @@ class _FAQHelpMobileState extends State<FAQHelpMobile> {
           );
           final modifiedAnswer = faq.answer.replaceAll(
             'game.ship9x.com/',
-            'shop.shubhpay.co.in',
+            'www.shubhpay.co.in',
           );
           return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
         }).toList();

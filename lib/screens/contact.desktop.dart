@@ -22,7 +22,7 @@ class _ContactUsDesktopState extends State<ContactUsDesktop> {
         final String contactUsText = """
 CONTACT US
 Phone: +91- 7518006458
-Email: Subhgamesstechprivatelimited5@gmail.com
+Email: Privatelimitedshubhpay@gmail.com
 
 Address:
 4th Floor, Office No.432, Geras Imperium Star, Patto, Panaji, North Goa, Goa, 403001

@@ -258,20 +258,20 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         fontSize: 12.0,
                       ),
                     ),
-                    SizedBox(
-                      height: height * .02,
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: width * .02, vertical: height * .01),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        'Click here',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500),
-                      ),
-                    ),
+                    // SizedBox(
+                    //   height: height * .02,
+                    // ),
+                    // Container(
+                    //   padding: EdgeInsets.symmetric(horizontal: width * .02, vertical: height * .01),
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.white,
+                    //     borderRadius: BorderRadius.circular(10),
+                    //   ),
+                    //   child: Text(
+                    //     'Click here',
+                    //     style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
