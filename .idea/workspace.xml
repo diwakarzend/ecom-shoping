@@ -4,16 +4,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7860c51b-eb5b-42a3-a050-fe71e4fc28cf" name="Changes" comment="changes in the emailiid in faq">
-      <change afterPath="$PROJECT_DIR$/lib/screens/term.desktop.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/term.mobile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/term.screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/term.tab.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+    <list default="true" id="566356ac-b888-449e-8ef7-10acb5bc124b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom.drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom.drawer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom.drawer.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom.drawer.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/NOTICES" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/shaders/ink_sparkle.frag" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/shaders/ink_sparkle.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/shopping.tab.three.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/shopping.tab.three.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/term.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/term.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,38 +31,26 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dart File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;sayansr26&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Ritwik2511"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/diwakarzend/ecom-shoping.git&quot;,
-    &quot;accountId&quot;: &quot;6d8c14ab-1b8a-4d48-a4ed-a9cff256bea6&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/diwakarzend/ecom-shoping.git",
+    "accountId": "9d9412d2-6003-4c3f-8034-1d29f048ae66"
   }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2kvW7jOK09xpZ6g4AiM2n8xTvwO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2lCH1TvwEdA6yWjmOI3DbN8E1Ke" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -71,8 +67,8 @@
     "git-widget-placeholder": "shubhgamess__web",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/mac/StudioProjects/5new gaming/ecom-shoping",
-    "settings.editor.selected.configurable": "flutter.settings",
+    "last_opened_file_path": "D:/StudioProjects/mywin",
+    "settings.editor.selected.configurable": "dart.settings",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -85,59 +81,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7860c51b-eb5b-42a3-a050-fe71e4fc28cf" name="Changes" comment="" />
-      <created>1720019856908</created>
+      <changelist id="566356ac-b888-449e-8ef7-10acb5bc124b" name="Changes" comment="" />
+      <created>1724676922761</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1720019856908</updated>
+      <updated>1724676922761</updated>
     </task>
-    <task id="LOCAL-00001" summary="build_fix">
-      <option name="closed" value="true" />
-      <created>1724165833950</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1724165833950</updated>
-    </task>
-    <task id="LOCAL-00002" summary="change icon and some thing like word">
-      <option name="closed" value="true" />
-      <created>1724406062690</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1724406062691</updated>
-    </task>
-    <task id="LOCAL-00003" summary="change icon and some thing like word">
-      <option name="closed" value="true" />
-      <created>1724414300570</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1724414300571</updated>
-    </task>
-    <task id="LOCAL-00004" summary="change icon and some thing like word">
-      <option name="closed" value="true" />
-      <created>1724418559479</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1724418559479</updated>
-    </task>
-    <task id="LOCAL-00005" summary="changes in the emailiid in faq">
-      <option name="closed" value="true" />
-      <created>1724420231745</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1724420231745</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="build_fix" />
-    <MESSAGE value="change icon and some thing like word" />
-    <MESSAGE value="changes in the emailiid in faq" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in the emailiid in faq" />
   </component>
 </project>

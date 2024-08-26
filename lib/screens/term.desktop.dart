@@ -21,7 +21,7 @@ class _TermConditionDesktopState extends State<TermConditionDesktop> {
     final String shippingPolicyText = """
 Terms of Use
 
-Access to and use of shubhpay and the products and service available through the website are subject to the following terms, conditions, and notices (“Terms of Service”). By browsing through these Terms of Service and using the services provided by our website (www.shubhpay.in), you agree to all Terms of Service along with the Privacy Policy on our website, which may be updated by us from time to time. Please check this page regularly to take notice of any changes we may have made to the Terms of Service. We reserve the right to review and withdraw or amend the services without notice. We will not be liable if for any reason this Website is unavailable at any time or for any period. From time to time, we may restrict access to some parts or this entire Website.
+Access to and use of shubhpay and the products and service available through the website are subject to the following terms, conditions, and notices (“Terms of Service”). By browsing through these Terms of Service and using the services provided by our website (www.shubhpay.co.in), you agree to all Terms of Service along with the Privacy Policy on our website, which may be updated by us from time to time. Please check this page regularly to take notice of any changes we may have made to the Terms of Service. We reserve the right to review and withdraw or amend the services without notice. We will not be liable if for any reason this Website is unavailable at any time or for any period. From time to time, we may restrict access to some parts or this entire Website.
 
 Introduction
 
@@ -31,7 +31,7 @@ Meha Digitek is an online retailer of apparel and lifestyle products offered at 
 
 Third Party Websites and Content
 
-Our website provides links for sharing our content on Facebook, Twitter, and other such third-party websites. These are only for sharing and/or listing purposes, and we take no responsibility for the third-party websites and/or their contents listed on our website www.shubhpay.in and disclaim all our liabilities arising out of any or all third-party websites.
+Our website provides links for sharing our content on Facebook, Twitter, and other such third-party websites. These are only for sharing and/or listing purposes, and we take no responsibility for the third-party websites and/or their contents listed on our website www.shubhpay.co.in and disclaim all our liabilities arising out of any or all third-party websites.
 
 We disclaim all liabilities and take no responsibility for the content that may be posted on such third-party websites by the users of such websites in their personal capacity on any of the above-mentioned links for sharing and/or listing purposes as well as any content and/or comments that may be posted by such users in their personal capacity on any official webpage of Shubhpay on any social networking platform.
 
@@ -76,8 +76,7 @@ Violation & Termination
 You agree that the Company may, in its sole discretion and without prior notice, terminate your access to the website and block your future access if we determine that you have violated these Terms of Service or any other policies. If you or the Company terminates your use of any service, you shall still be liable to pay for any service that you have already ordered till the time of such termination.
 
 Disclaimer
-
-IN NO EVENT WILL THE COMPANY OR ITS REPRESENTATIVES BE LIABLE FOR
+ IN NO EVENT WILL THE COMPANY OR ITS REPRESENTATIVES BE LIABLE FOR ANY DAMAGES, ARISING OUT OF OR RELATED TO MISUSE OF PERSONAL INFORMATION OF THE CUSTOMER AND THE CUSTOMER IS SOLELY LIABLE FOR SUCH ACTS AND THEY ARE ADVISED NOT TO SHARE THEIR CONFIDENTIAL INFORMATION LIKE OTP, CREDIT/DEBIT CARD EXPIRY AND CVV WITH ANYONE EVEN THOUGH THEY CLAIM TO BE A MEHYA DIGITECH PRIVATE LIMITED EMPLOYEE. NONE OF OUR EMPLOYEES WILL ASK FOR SUCH TYPE OF QUESTIONS.
 """;
 
     return Scaffold(
