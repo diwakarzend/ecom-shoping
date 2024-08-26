@@ -7,6 +7,7 @@ import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
+import 'package:fabpiks_web/screens/term.screen.dart';
 import 'package:fabpiks_web/widgets/custom.network.image.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:ionicons/ionicons.dart';
@@ -476,6 +477,35 @@ class CustomDrawerDesktop extends Drawer {
                                       children: [
                                         Text(
                                           'Refund Policy',
+                                          style: TextHelper.extraSmallTextStyle.copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w600),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => TermConditionAll()),
+                                    );
+                                  },
+                                  child: Container(
+                                    width: kWidth,
+                                    height: kHeight * .06,
+                                    margin: const EdgeInsets.only(bottom: 20, left: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    decoration: BoxDecoration(
+                                      color: ColorConstants.colorGreyNine,
+                                      borderRadius: BorderRadius.circular(kHeight * .07),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Term & Condition',
                                           style: TextHelper.extraSmallTextStyle.copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w600),
                                         ),
                                       ],

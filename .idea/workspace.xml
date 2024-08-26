@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7860c51b-eb5b-42a3-a050-fe71e4fc28cf" name="Changes" comment="change icon and some thing like word">
+    <list default="true" id="7860c51b-eb5b-42a3-a050-fe71e4fc28cf" name="Changes" comment="changes in the emailiid in faq">
+      <change afterPath="$PROJECT_DIR$/lib/screens/term.desktop.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/term.mobile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/term.screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/term.tab.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/faq.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/faq.desktop.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/appbar/bottom.app.bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom.drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom.drawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom.drawer.desktop.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom.drawer.desktop.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +44,12 @@
     &quot;assignee&quot;: &quot;sayansr26&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/diwakarzend/ecom-shoping.git",
-    "accountId": "6d8c14ab-1b8a-4d48-a4ed-a9cff256bea6"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/diwakarzend/ecom-shoping.git&quot;,
+    &quot;accountId&quot;: &quot;6d8c14ab-1b8a-4d48-a4ed-a9cff256bea6&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -117,12 +123,21 @@
       <option name="project" value="LOCAL" />
       <updated>1724418559479</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changes in the emailiid in faq">
+      <option name="closed" value="true" />
+      <created>1724420231745</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724420231745</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="build_fix" />
     <MESSAGE value="change icon and some thing like word" />
-    <option name="LAST_COMMIT_MESSAGE" value="change icon and some thing like word" />
+    <MESSAGE value="changes in the emailiid in faq" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in the emailiid in faq" />
   </component>
 </project>
