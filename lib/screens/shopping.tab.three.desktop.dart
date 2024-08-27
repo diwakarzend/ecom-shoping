@@ -71,7 +71,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
 
   String generateSha256(String orderId, String amount) {
     String value =
-        'apiKey=d2ac81eef4824b4ebf39f76b6b0dbf44~clientId=4004892309281231~amount=$amount~orderId=${orderId}e7yayLmWmXJ9M';
+        'apiKey=d2ac81eef4824b4ebf39f76b6b0dbf44~clientId=4004892309281231~amount=$amount~orderId=${orderId}e7yayLmWmXJ90';
     // String value =
     //     'apiKey=15c920d0928a4f79903b19733fd5d1fe~clientId=4827460565764284~amount=1~orderId=85858585MNNRrAiaB9hKSl6iB';
     log(value);
@@ -836,18 +836,30 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                       alignment: Alignment.center,
                       child: InkWell(
                         onTap: () {
-                          if (provider.cart != null && provider.cart!.charges.grandTotal > 0) {
-                            // if (selectedPayment.isNotEmpty) {
-                            setState(() {
-                              selectedPayment = 'razorpay';
-                            });
-                            saveOrder(provider: provider);
-                            // } else {
-                            //   ScaffoldSnackBar.of(context).show('Please select payment method');
-                            // }
-                          } else {
-                            saveOrder(provider: provider);
-                          }
+                          // Display the error popup when the button is clicked.
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Error'),
+                                content: Text('An error occurred while placing your order.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+
+                          // Execute the actions to place the order.
+                          setState(() {
+                            selectedPayment = 'razorpay';
+                          });
+                          saveOrder(provider: provider);
                         },
                         splashFactory: NoSplash.splashFactory,
                         highlightColor: Colors.transparent,
@@ -862,8 +874,11 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                           alignment: Alignment.center,
                           child: Text(
                             'Place Order',
-                            style: TextHelper.smallTextStyle
-                                .copyWith(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14.sp),
+                            style: TextHelper.smallTextStyle.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14.sp,
+                            ),
                           ),
                         ),
                       ),
