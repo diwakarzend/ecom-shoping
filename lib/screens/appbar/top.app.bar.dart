@@ -299,6 +299,6 @@ class TopAppBar extends StatelessWidget {
   }
 }
 void _downloadAPK() async {
-  const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/subhpayshop1-release.apk+';
+  const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/subhpayshop1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

@@ -71,7 +71,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
 
   String generateSha256(String orderId, String amount) {
     String value =
-        'apiKey=d2ac81eef4824b4ebf39f76b6b0dbf44~clientId=4004892309281231~amount=$amount~orderId=${orderId}e7yayLmWmXJ90';
+        'apiKey=d2ac81eef4824b4ebf39f76b6b0dbf44~clientId=4004892309281231~amount=$amount~orderId=${orderId}e7yayLmWmXJ9M';
     // String value =
     //     'apiKey=15c920d0928a4f79903b19733fd5d1fe~clientId=4827460565764284~amount=1~orderId=85858585MNNRrAiaB9hKSl6iB';
     log(value);
@@ -189,14 +189,15 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
         final data = response.data as Map<String, dynamic>;
         if (data.containsKey('api_token') && data.containsKey('id_token') && data.containsKey('userName')) {
           final rr = await _dioHelper.dio.post(
-            'https://collect.ship9x.com/collect-service/api/upi/initiate/transcation/qr',            options: Options(
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'api-authorization': 'Bearer ${data['api_token']}',
-                'Authorization': 'Bearer ${data['id_token']}',
-              },
-            ),
+            'https://collect.ship9x.com/collect-service/api/upi/initiate/transaction/qr',
+            options: Options(
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'api-authorization': 'Bearer ${data['api_token']}',
+              'Authorization': 'Bearer ${data['id_token']}',
+            },
+          ),
             data: {
               'amount': _order?.grandTotal,
               'orderId': _order?.id,
@@ -836,30 +837,18 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                       alignment: Alignment.center,
                       child: InkWell(
                         onTap: () {
-                          // Display the error popup when the button is clicked.
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Error'),
-                                content: Text('An error occurred while placing your order.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text('OK'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-
-                          // Execute the actions to place the order.
-                          setState(() {
-                            selectedPayment = 'razorpay';
-                          });
-                          saveOrder(provider: provider);
+                          if (provider.cart != null && provider.cart!.charges.grandTotal > 0) {
+                            // if (selectedPayment.isNotEmpty) {
+                            setState(() {
+                              selectedPayment = 'razorpay';
+                            });
+                            saveOrder(provider: provider);
+                            // } else {
+                            //   ScaffoldSnackBar.of(context).show('Please select payment method');
+                            // }
+                          } else {
+                            saveOrder(provider: provider);
+                          }
                         },
                         splashFactory: NoSplash.splashFactory,
                         highlightColor: Colors.transparent,
@@ -874,11 +863,8 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
                           alignment: Alignment.center,
                           child: Text(
                             'Place Order',
-                            style: TextHelper.smallTextStyle.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14.sp,
-                            ),
+                            style: TextHelper.smallTextStyle
+                                .copyWith(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14.sp),
                           ),
                         ),
                       ),
