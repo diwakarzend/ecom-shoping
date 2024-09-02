@@ -71,7 +71,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
 
   String generateSha256(String orderId, String amount) {
     String value =
-        'apiKey=d2ac81eef4824b4ebf39f76b6b0dbf44~clientId=4004892309281231~amount=$amount~orderId=${orderId}e7yayLmWmXJ9M';
+        'apiKey=cf8a712bc2a841dd8eb11140c3c0dce8~clientId=0276105182657541~amount=$amount~orderId=${orderId}80VNphHYGYWB0';
     // String value =
     //     'apiKey=15c920d0928a4f79903b19733fd5d1fe~clientId=4827460565764284~amount=1~orderId=85858585MNNRrAiaB9hKSl6iB';
     log(value);
@@ -179,9 +179,9 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
         // "02BA2331B1CBA2C25CDC4A6A71C1BEFFFFED46C2ED7BBF6646BAE83A16C9CC0E"
         data: {
           'amount': _order?.grandTotal,
-          'apiKey': 'd2ac81eef4824b4ebf39f76b6b0dbf44',
+          'apiKey': 'cf8a712bc2a841dd8eb11140c3c0dce8',
           'orderId': _order?.id,
-          'clientId': '4004892309281231',
+          'clientId': '0276105182657541',
           'hash': generateSha256(_order?.id ?? '', _order?.grandTotal.toString() ?? '0'),
         },
       );
