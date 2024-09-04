@@ -55,8 +55,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
   int bannerIndex = 0;
 
 
-  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831f8c1.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c83149eb.jpg'];
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c8421745.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831a6d9.jpg'];
 
 
   @override
@@ -183,7 +183,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Clothes ',
+                            'Furniture  ',
                             textAlign: TextAlign.center,
                             style: TextHelper.titleStyle.copyWith(
                               fontWeight: FontWeight.bold,
@@ -221,7 +221,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
+                            'A cool and comfortable graphic tee that expresses your personality. ',
                             style: TextHelper.normalTextStyle.copyWith(
                               color: Colors.black.withOpacity(0.8),
                             ),

@@ -77,7 +77,7 @@ class OrderHelpMobileState extends State<OrderHelpMobile> {
                     });
                   },
                   title: Text(
-                    'What is Prestigepay?',
+                    'What is Classicpay?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -153,7 +153,7 @@ class OrderHelpMobileState extends State<OrderHelpMobile> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : info.prestigepaypvtltd@gmail.com',
+                  'Mail us at : classicpayinnovationspvt@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

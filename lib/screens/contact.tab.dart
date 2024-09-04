@@ -22,11 +22,10 @@ class _ContactUsTabState extends State<ContactUsTab> {
         final String contactUsText = """
 CONTACT US
 Phone: +91- 7838717985
-Email: info.prestigepaypvtltd@gmail.com
+Email: classicpayinnovationspvt@gmail.com
 
 Address:
-Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant
-Vihar, North West Delhi, Delhi- 110085
+265 PLOT NO C-33 2ND FLR, AGGARWAL MODERN BAZAAR, Keshav Puram (North West Delhi), North West Delhi, Delhi-  110035
 
 """;
 

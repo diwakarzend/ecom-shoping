@@ -22,11 +22,11 @@ class _PrivacyPolicyMobileState extends State<PrivacyPolicyMobile> {
       builder: (context, provider, _) {
         String privacyPolicyText = provider.appSettings?.privacy ?? '';
         privacyPolicyText = privacyPolicyText
-            .replaceAll('Shipan Tech Private Limited', 'Prestigepay PAYMENT SERVICES PRIVATE LIMITED')
-            .replaceAll('shipantechprivatelimited5@gmail.com', 'info.prestigepaypvtltd@gmail.com')
-            .replaceAll('Shipan', 'Prestigepay')
+            .replaceAll('Shipan Tech Private Limited', 'CLASSICPAY INNOVATIONS PRIVATE LIMITED')
+            .replaceAll('shipantechprivatelimited5@gmail.com', 'classicpayinnovationspvt@gmail.com')
+            .replaceAll('Shipan', 'Classicpay')
             .replaceAll('shop NO. 2 karim Mansion Behind Pharmacy college', 'Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085')
-            .replaceAll('SHIPAN', 'Prestigepay');
+            .replaceAll('SHIPAN', 'Classicpay');
         return Scaffold(
           appBar: AppBar(
             title: const Text('Privacy Policy'),

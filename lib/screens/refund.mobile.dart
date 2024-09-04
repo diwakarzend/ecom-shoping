@@ -25,11 +25,11 @@ shop NO. 2,karim Mansion,Behind Pharmacy college Panaji, North Goa, Goa, 403001
   void initState() {
     super.initState();
     privacyPolicyText = privacyPolicyText
-        .replaceAll('Shipan Tech Private Limited', 'PRESTIGEPAY SOLUTIONS PRIVATE LIMITED')
-        .replaceAll('shipantechprivatelimited5@gmail.com', 'info.prestigepaypvtltd@gmail.com')
-        .replaceAll('Shipan', 'Prestigepay')
+        .replaceAll('Shipan Tech Private Limited', 'CLASSICPAY INNOVATIONS PRIVATE LIMITED')
+        .replaceAll('shipantechprivatelimited5@gmail.com', 'classicpayinnovationspvt@gmail.com')
+        .replaceAll('Shipan', 'Classicpay')
         .replaceAll('shop NO. 2,karim Mansion,Behind Pharmacy college Panaji, North Goa, Goa, 403001', '364 3RD FLR AGGARWALPLAZA, COMM CENTER SEC14, Rithala, North West Delhi, Delhi- 110085')
-        .replaceAll('SHIPAN', 'PRESTIGEPAY');
+        .replaceAll('SHIPAN', 'CLASSICPAY');
   }
 
   @override

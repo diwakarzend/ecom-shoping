@@ -290,7 +290,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                     provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
-                                text: 'Clothes',
+                                text: 'Furniture ',
                                 gradient: LinearGradient(
                                   colors: provider.activeIndex == 1
                                       ? [

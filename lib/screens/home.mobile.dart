@@ -119,10 +119,8 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
   //   );
   // }
 
-  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831f8c1.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c83149eb.jpg'];
-
-
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c8421745.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831a6d9.jpg'];
   Future updateSource(AppProvider provider) async {
     await _dioHelper.post(
       'user/${provider.loginDetails?.uId}',
@@ -327,7 +325,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Clothes',
+                                'Furniture ',
                                 style: TextHelper.subTitleStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -351,7 +349,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
-                            'Clothes: A cool and comfortable graphic tee that expresses your personality.',
+                            'A cool and comfortable graphic tee that expresses your personality.',
                             maxLines: 10,
                             style: TextHelper.smallTextStyle.copyWith(
                               fontWeight: FontWeight.w600,
