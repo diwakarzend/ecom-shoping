@@ -2,7 +2,9 @@
  * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
  */
 
+import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/models/models.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 
 class Product {
   final String id;
@@ -40,6 +42,7 @@ class Product {
   final RetargetProduct? retargetProduct;
   final int sort;
   final int stock;
+  final String sub_category;
 
   Product({
     required this.id,
@@ -78,6 +81,7 @@ class Product {
     this.retargetProduct,
     required this.sort,
     required this.stock,
+    required this.sub_category,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -106,9 +110,7 @@ class Product {
       pSurvey: json['p_survey'] != null ? Survey.fromRes(json['p_survey']) : null,
       details: List<ProductDetails>.from(json['details'].map((x) => ProductDetails.fromJson(x))),
       review: json['review'] ?? 0,
-      tags: json['tags'] != null && json['tags'].toString().contains(',') && json['tags'].runtimeType == String
-          ? json['tags'].split(',')
-          : [],
+      tags: json['tags'] != null && json['tags'].toString().contains(',') && json['tags'].runtimeType == String ? json['tags'].split(',') : [],
       sku: json['sku'] ?? '',
       serviceCharge: json['service_charge'] ?? 0,
       dislike: json['dislike'] ?? 0,
@@ -118,8 +120,10 @@ class Product {
       retargetProduct: json['retarget_product'] != null ? RetargetProduct.fromJson(json['retarget_product']) : null,
       sort: json['new_sort'] ?? 10000000000000000,
       stock: json['stock'] ?? 0,
+      sub_category: json['sub_category'] ?? '',
     );
   }
+
 
   Map<String, dynamic> toJson() {
     return {
@@ -158,6 +162,17 @@ class Product {
       'stock': stock,
     };
   }
+
+// AnalyticsEventItem toGAP() {
+//   return AnalyticsEventItem(
+//     itemId: id,
+//     itemName: name,
+//     itemBrand: brand?.name,
+//     itemCategory: category?.name ?? '',
+//     currency: 'INR',
+//     price: productType == StringConstants.hotDealProduct || productType == StringConstants.brandStoreProduct ? salePrice.toDouble() : 0.00,
+//   );
+// }
 }
 
 class RetargetProduct {
@@ -180,8 +195,8 @@ class RetargetProduct {
   }
 
   Map<String, dynamic> toJson() => {
-        'type': type,
-        'product_id': productId,
-        'product_link': productLink,
-      };
+    'type': type,
+    'product_id': productId,
+    'product_link': productLink,
+  };
 }

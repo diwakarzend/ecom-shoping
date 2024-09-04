@@ -375,56 +375,6 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                         SizedBox(height: height * .04),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: width * .12),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Deals & Combos',
-                                style:
-                                    TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 15.sp),
-                              ),
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: InkWell(
-                                  // onTap: () => context.router.naviga(const DealsRoute()),
-                                  onTap: () => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (c) => const DealsScreen(),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    'View All',
-                                    style: TextHelper.normalTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: height * .01),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: width * .12),
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Deals & Combos: Special deals & combo offers with best discounts on top brands. Dare to compare pricing .',
-                                maxLines: 10,
-                                style: TextHelper.smallTextStyle.copyWith(
-                                    fontWeight: FontWeight.w600, color: ColorConstants.colorGreySeven, fontSize: 13.sp),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: height * .02),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: width * .12),
                           alignment: Alignment.centerLeft,
                           child: InkWell(
                             onTap: () => context.router.push(const CouponRoute()),
@@ -605,7 +555,7 @@ class _ShoppingTabOneDesktopState extends State<ShoppingTabOneDesktop> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Deals Combos (${_cartHelper.hotDealCount(provider)} ${_cartHelper.hotDealCount(provider) > 1 ? 'items' : 'item'})',
+                                  'Total Products (${_cartHelper.hotDealCount(provider)} ${_cartHelper.hotDealCount(provider) > 1 ? 'items' : 'item'})',
                                   style:
                                       TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, fontSize: 14.sp),
                                 ),

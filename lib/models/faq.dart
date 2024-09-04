@@ -4,8 +4,8 @@
 
 class FAQ {
   final String id;
-  final String question;
-  final String answer;
+  late final String question;
+  late final String answer;
   bool expanded;
 
   FAQ({
@@ -14,6 +14,14 @@ class FAQ {
     required this.answer,
     this.expanded = false,
   });
+
+  FAQ copyWith({String? question, String? answer, bool? expanded}) {
+    return FAQ(
+      question: question ?? this.question,
+      answer: answer ?? this.answer,
+      expanded: expanded ?? this.expanded, id: '',
+    );
+  }
 
   factory FAQ.fromJson(Map<String, dynamic> json) {
     return FAQ(

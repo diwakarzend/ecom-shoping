@@ -23,7 +23,7 @@ class BrandTrialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Responsive(
       mobile: BrandTrialMobileScreen(brand: brand),
-      desktop: BrandTrialDesktopScreen(brand: brand),
+      desktop: BrandTrialDesktopScreen(brand: brand, productId: '',),
       tablet: BrandTrialTabletScreen(brand: brand),
     );
   }

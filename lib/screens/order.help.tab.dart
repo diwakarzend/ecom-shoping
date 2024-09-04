@@ -77,7 +77,7 @@ class _OrderHelpTabState extends State<OrderHelpTab> {
                     });
                   },
                   title: Text(
-                    'What is Shipan?',
+                    'What is Agile?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -153,7 +153,7 @@ class _OrderHelpTabState extends State<OrderHelpTab> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : ${provider.appSettings?.generalSettings.companyEmail}',
+                  'Mail us at : agilepaymentservicesprivatelim@gmail.co',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

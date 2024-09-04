@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
+import 'package:fabpiks_web/screens/contact.screen.dart';
+import 'package:fabpiks_web/screens/shipping.screen.dart';
+import 'package:fabpiks_web/screens/term.screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../routes/router.gr.dart';
@@ -12,8 +15,11 @@ class BottomAppBarPage extends StatefulWidget {
 }
 
 class _BottomAppBarPageState extends State<BottomAppBarPage> {
+  late UrlHelper _urlHelper;
+
   @override
   void initState() {
+    _urlHelper = UrlHelper.internal();
     super.initState();
   }
 
@@ -45,7 +51,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'Shipan is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
+                      'Agile is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -97,6 +103,52 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Privacy Policy',
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ShippingPolicyAll()),
+                        );
+                      },
+                      child: Text(
+                        'Shipping Policy',
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => TermConditionAll()),
+                        );
+                      },
+                      child: Text(
+                        'Term & Condition',
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ContactUsAll()),
+                        );
+                      },
+                      child: Text(
+                        'Contact Us',
                         style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
@@ -192,9 +244,9 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
               //         ),
               //       ],
               //     )),
-              // SizedBox(
-              //   width: width * .1,
-              // ),
+              SizedBox(
+                width: width * .1,
+              ),
               Expanded(
                 flex: 1,
                 child: Column(
@@ -214,7 +266,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'Shipan is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
+                      'Agile is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -223,20 +275,20 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         fontSize: 12.0,
                       ),
                     ),
-                    SizedBox(
-                      height: height * .02,
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: width * .02, vertical: height * .01),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        'Click here',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500),
-                      ),
-                    ),
+                    // SizedBox(
+                    //   height: height * .02,
+                    // ),
+                    // Container(
+                    //   padding: EdgeInsets.symmetric(horizontal: width * .02, vertical: height * .01),
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.white,
+                    //     borderRadius: BorderRadius.circular(10),
+                    //   ),
+                    //   child: Text(
+                    //     'Click here',
+                    //     style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

@@ -82,7 +82,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                     });
                   },
                   title: Text(
-                    'What is Shipan?',
+                    'What is Agile?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -160,7 +160,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : ${provider.appSettings?.generalSettings.companyEmail}',
+                  'Mail us at : agilepaymentservicesprivatelim@gmail.co',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

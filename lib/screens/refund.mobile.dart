@@ -1,6 +1,3 @@
-/*
- * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
- */
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +13,25 @@ class RefundPolicyMobile extends StatefulWidget {
 class _RefundPolicyMobileState extends State<RefundPolicyMobile> {
   bool expandedOne = true, expandedTwo = false;
 
+  String privacyPolicyText = """
+  Shipan Tech Private Limited
+  shipantechprivatelimited5@gmail.com
+  Shipan
+  shop NO. 2 karim Mansion Behind Pharmacy college
+  SHIPAN
+  """;
+
+  @override
+  void initState() {
+    super.initState();
+    privacyPolicyText = privacyPolicyText
+        .replaceAll('Shipan Tech Private Limited', 'AGILE PAYMENT SERVICES PRIVATE LIMITED')
+        .replaceAll('shipantechprivatelimited5@gmail.com', 'agilepaymentservicesprivatelim@gmail.com')
+        .replaceAll('Shipan', 'Agile')
+        .replaceAll('shop NO. 2 karim Mansion Behind Pharmacy college', 'Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085')
+        .replaceAll('SHIPAN', 'AGILE');
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -24,9 +40,7 @@ class _RefundPolicyMobileState extends State<RefundPolicyMobile> {
       builder: (context, provider, _) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text(
-              'Refund Policy',
-            ),
+            title: const Text('Refund Policy'),
             centerTitle: false,
           ),
           body: SingleChildScrollView(
@@ -46,6 +60,13 @@ class _RefundPolicyMobileState extends State<RefundPolicyMobile> {
                       style: TextHelper.normalTextStyle,
                     ),
                   ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .05),
+                  child: Text(
+                    privacyPolicyText,
+                    style: TextHelper.normalTextStyle,
+                  ),
+                ),
                 SizedBox(height: height * .1),
               ],
             ),

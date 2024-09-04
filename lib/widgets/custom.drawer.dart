@@ -7,6 +7,11 @@ import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
+import 'package:fabpiks_web/screens/contact.mobile.dart';
+import 'package:fabpiks_web/screens/contact.screen.dart';
+import 'package:fabpiks_web/screens/shipping.mobile.dart';
+import 'package:fabpiks_web/screens/shipping.screen.dart';
+import 'package:fabpiks_web/screens/term.screen.dart';
 import 'package:fabpiks_web/widgets/custom.network.image.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:ionicons/ionicons.dart';
@@ -84,26 +89,26 @@ class CustomDrawer extends Drawer {
                   icon: Badge(
                     showBadge: provider.reports
                         .where((element) =>
-                            element.product != null &&
-                            element.product!.stock > 0 &&
-                            element.productId != null &&
-                            element.qualified &&
-                            !element.rejected &&
-                            provider.currentUser != null &&
-                            !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                    element.product != null &&
+                        element.product!.stock > 0 &&
+                        element.productId != null &&
+                        element.qualified &&
+                        !element.rejected &&
+                        provider.currentUser != null &&
+                        !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
                         .isNotEmpty,
                     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
                     position: BadgePosition.topEnd(top: -5, end: 0),
                     badgeContent: Text(
                       provider.reports
                           .where((element) =>
-                              element.product != null &&
-                              element.product!.stock > 0 &&
-                              element.productId != null &&
-                              element.qualified &&
-                              !element.rejected &&
-                              provider.currentUser != null &&
-                              !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                      element.product != null &&
+                          element.product!.stock > 0 &&
+                          element.productId != null &&
+                          element.qualified &&
+                          !element.rejected &&
+                          provider.currentUser != null &&
+                          !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
                           .length
                           .toString(),
                       style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
@@ -207,28 +212,28 @@ class CustomDrawer extends Drawer {
                                 highlightColor: Colors.transparent,
                                 child: provider.currentUser != null && provider.currentUser!.image != null
                                     ? ClipRRect(
-                                        borderRadius: BorderRadius.circular(kWidth * .2),
-                                        child: CustomNetworkImage(
-                                          imageUrl: provider.currentUser?.image ?? '',
-                                          width: kWidth * .15,
-                                          height: kWidth * .15,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )
+                                  borderRadius: BorderRadius.circular(kWidth * .2),
+                                  child: CustomNetworkImage(
+                                    imageUrl: provider.currentUser?.image ?? '',
+                                    width: kWidth * .15,
+                                    height: kWidth * .15,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
                                     : Container(
-                                        width: kWidth * .15,
-                                        height: kWidth * .15,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: ColorConstants.colorGreyNine,
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Image.asset(
-                                          'assets/images/user-check.png',
-                                          width: kWidth * .08,
-                                          height: kWidth * .08,
-                                        ),
-                                      ),
+                                  width: kWidth * .15,
+                                  height: kWidth * .15,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: ColorConstants.colorGreyNine,
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Image.asset(
+                                    'assets/images/user-check.png',
+                                    width: kWidth * .08,
+                                    height: kWidth * .08,
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 width: kWidth * .25,
@@ -301,13 +306,13 @@ class CustomDrawer extends Drawer {
                                   ),
                                   if (provider.reports
                                       .where((element) =>
-                                          element.product != null &&
-                                          element.product!.stock > 0 &&
-                                          element.productId != null &&
-                                          element.qualified &&
-                                          !element.rejected &&
-                                          provider.currentUser != null &&
-                                          !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                                  element.product != null &&
+                                      element.product!.stock > 0 &&
+                                      element.productId != null &&
+                                      element.qualified &&
+                                      !element.rejected &&
+                                      provider.currentUser != null &&
+                                      !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
                                       .isNotEmpty)
                                     Container(
                                       decoration: const BoxDecoration(
@@ -318,13 +323,13 @@ class CustomDrawer extends Drawer {
                                       child: Text(
                                         provider.reports
                                             .where((element) =>
-                                                element.product != null &&
-                                                element.product!.stock > 0 &&
-                                                element.productId != null &&
-                                                element.qualified &&
-                                                !element.rejected &&
-                                                provider.currentUser != null &&
-                                                !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
+                                        element.product != null &&
+                                            element.product!.stock > 0 &&
+                                            element.productId != null &&
+                                            element.qualified &&
+                                            !element.rejected &&
+                                            provider.currentUser != null &&
+                                            !provider.currentUser!.orders.any((e) => e.products.any((o) => o.id == element.product?.id)))
                                             .length
                                             .toString(),
                                         style: TextHelper.subTitleStyle.copyWith(
@@ -440,7 +445,7 @@ class CustomDrawer extends Drawer {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'About Shipan',
+                                          'About Shubh',
                                           style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
                                         ),
                                       ],
@@ -519,6 +524,90 @@ class CustomDrawer extends Drawer {
                                       children: [
                                         Text(
                                           'Privacy Policy',
+                                          style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => ShippingPolicyMobile()),
+                                    );                                  },
+                                  child: Container(
+                                    width: kWidth,
+                                    height: kHeight * .06,
+                                    margin: const EdgeInsets.only(bottom: 20, left: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    decoration: BoxDecoration(
+                                      color: ColorConstants.colorGreyNine,
+                                      borderRadius: BorderRadius.circular(kHeight * .07),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Shipping Policy',
+                                          style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => TermConditionAll()),
+                                    );                                  },
+                                  child: Container(
+                                    width: kWidth,
+                                    height: kHeight * .06,
+                                    margin: const EdgeInsets.only(bottom: 20, left: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    decoration: BoxDecoration(
+                                      color: ColorConstants.colorGreyNine,
+                                      borderRadius: BorderRadius.circular(kHeight * .07),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Term & Conditon',
+                                          style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => ContactUsMobile()),
+                                    );                                  },
+                                  child: Container(
+                                    width: kWidth,
+                                    height: kHeight * .06,
+                                    margin: const EdgeInsets.only(bottom: 20, left: 20),
+                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    decoration: BoxDecoration(
+                                      color: ColorConstants.colorGreyNine,
+                                      borderRadius: BorderRadius.circular(kHeight * .07),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Contact Us',
                                           style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
                                         ),
                                       ],

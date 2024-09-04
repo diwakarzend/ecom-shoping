@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
- */
-
 import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/text.helper.dart';
 import 'package:fabpiks_web/providers/providers.dart';
@@ -22,8 +18,21 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
+        final modifiedFaqs = provider.faqs.map((faq) {
+          final modifiedQuestion = faq.question
+              .replaceAll('What is Shipan?', 'What is Agile?');
+
+          final modifiedAnswer = faq.answer
+              .replaceAll('game.ship9x.com/', 'shipan')
+              .replaceAll('Shipan', 'Agile')
+              .replaceAll('shipantechprivatelimited5@gmail.com', 'agilepaymentservicesprivatelim@gmail.com');
+
+          return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
+        }).toList();
+
         return Scaffold(
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -46,7 +55,7 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
                 Column(
                   children: [
                     SizedBox(height: height * .03),
-                    ...provider.faqs.map(
+                    ...modifiedFaqs.map(
                           (e) => Theme(
                         data: ThemeData().copyWith(dividerColor: Colors.transparent),
                         child: Container(
@@ -99,15 +108,6 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
                     SizedBox(height: height * .1),
                   ],
                 ),
-
-                // Container(
-                //   margin: EdgeInsets.symmetric(horizontal: width * .2,vertical: height * .08),
-                //   child: const Text('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ali Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, '
-                //       'quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ali Lorem ipsum dolor sit amet, consectetuer adipiscing elit, '
-                //       'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ali Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation',style: TextStyle(
-                //     fontSize: 20.0,color: Colors.black,fontFamily: 'Montserrat'
-                //   ),),
-                // ),
                 const BottomAppBarPage(),
               ],
             ),

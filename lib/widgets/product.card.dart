@@ -26,29 +26,29 @@ class ProductCard extends StatelessWidget {
           builder: (context, provider, _) {
             return Device.width > 1024
                 ? MiniItemDesktop(
-                    product: product,
-                    onProductClick: () {
-                      _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
-                    },
-                    onProductTry: () {
-                      _cartHelper.tryNow(provider: provider, context: context, productId: product.id);
-                    },
-                    provider: provider,
-                    cartHelper: _cartHelper,
-                    gridView: true,
-                  )
+              product: product,
+              onProductClick: () {
+                _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
+              },
+              onProductTry: () {
+                _cartHelper.tryNow(provider: provider, context: context, productId: product.id);
+              },
+              provider: provider,
+              cartHelper: _cartHelper,
+              gridView: true,
+            )
                 : MiniItems(
-                    product: product,
-                    onProductClick: () {
-                      _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
-                    },
-                    onProductTry: () {
-                      _cartHelper.tryNow(provider: provider, context: context, productId: product.id);
-                    },
-                    provider: provider,
-                    cartHelper: _cartHelper,
-                    gridView: true,
-                  );
+              product: product,
+              onProductClick: () {
+                _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
+              },
+              onProductTry: () {
+                _cartHelper.tryNow(provider: provider, context: context, productId: product.id);
+              },
+              provider: provider,
+              cartHelper: _cartHelper,
+              gridView: true,
+            );
           },
         );
       case StringConstants.brandStoreProduct:
@@ -56,41 +56,41 @@ class ProductCard extends StatelessWidget {
           builder: (context, provider, _) {
             return Device.width > 1024
                 ? SampleItemDesktop(
-                    product: product,
-                    onProductClick: () {
-                      _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
-                    },
-                    onTry: () {
-                      _cartHelper.applyToTry(
-                        provider: provider,
-                        context: context,
-                        productId: product.id,
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                      );
-                    },
-                    provider: provider,
-                    cartHelper: _cartHelper,
-                    gridView: true,
-                  )
+              product: product,
+              onProductClick: () {
+                _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
+              },
+              onTry: () {
+                _cartHelper.applyToTry(
+                  provider: provider,
+                  context: context,
+                  productId: product.id,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                );
+              },
+              provider: provider,
+              cartHelper: _cartHelper,
+              gridView: true,
+            )
                 : SampleItems(
-                    product: product,
-                    onProductClick: () {
-                      _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
-                    },
-                    onTry: () {
-                      _cartHelper.applyToTry(
-                        provider: provider,
-                        context: context,
-                        productId: product.id,
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                      );
-                    },
-                    provider: provider,
-                    cartHelper: _cartHelper,
-                    gridView: true,
-                  );
+              product: product,
+              onProductClick: () {
+                _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
+              },
+              onTry: () {
+                _cartHelper.applyToTry(
+                  provider: provider,
+                  context: context,
+                  productId: product.id,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                );
+              },
+              provider: provider,
+              cartHelper: _cartHelper,
+              gridView: true,
+            );
           },
         );
       default:
@@ -98,29 +98,29 @@ class ProductCard extends StatelessWidget {
           builder: (context, provider, _) {
             return Device.width > 1024
                 ? DealItemDesktop(
-                    product: product,
-                    onProductClick: () {
-                      _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
-                    },
-                    onAddToCart: () {
-                      _cartHelper.addToCart(provider: provider, context: context, productId: product.id);
-                    },
-                    provider: provider,
-                    cartHelper: _cartHelper,
-                    gridView: true,
-                  )
+              product: product,
+              onProductClick: () {
+                _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
+              },
+              onAddToCart: () {
+                _cartHelper.addToCart(provider: provider, context: context, productId: product.id);
+              },
+              provider: provider,
+              cartHelper: _cartHelper,
+              gridView: true, sub_category: '',
+            )
                 : DealItems(
-                    product: product,
-                    onProductClick: () {
-                      _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
-                    },
-                    onAddToCart: () {
-                      _cartHelper.addToCart(provider: provider, context: context, productId: product.id);
-                    },
-                    provider: provider,
-                    cartHelper: _cartHelper,
-                    gridView: true,
-                  );
+              product: product,
+              onProductClick: () {
+                _cartHelper.productClick(context: context, provider: provider, productType: product.productType, productId: product.id);
+              },
+              onAddToCart: () {
+                _cartHelper.addToCart(provider: provider, context: context, productId: product.id);
+              },
+              provider: provider,
+              cartHelper: _cartHelper,
+              gridView: true,
+            );
           },
         );
     }

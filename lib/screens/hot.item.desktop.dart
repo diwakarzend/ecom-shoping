@@ -122,115 +122,115 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
               children: [
                 const TopAppBar(),
                 SizedBox(height: height * .06),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: width * .12),
-                  alignment: Alignment.center,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: height * .03),
-                    width: width,
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: InkWell(
-                            onTap: () => context.router.navigate(const TrialRoute()),
-                            child: Container(
-                              width: double.infinity,
-                              height: height * .08,
-                              decoration: BoxDecoration(
-                                color: ColorConstants.miniColor,
-                                border: Border.all(color: ColorConstants.colorBorder),
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius: 15,
-                                    offset: const Offset(0, 4),
-                                  ),
-                                ],
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Shop Minis',
-                                textAlign: TextAlign.center,
-                                style: TextHelper.normalTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: width * .05),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () => context.router.navigate(const DealsRoute()),
-                            child: Container(
-                              width: double.infinity,
-                              height: height * .08,
-                              decoration: BoxDecoration(
-                                color: ColorConstants.dealColor,
-                                border: Border.all(color: ColorConstants.colorBorder),
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius: 15,
-                                    offset: const Offset(0, 4),
-                                  ),
-                                ],
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Shop Deals',
-                                textAlign: TextAlign.center,
-                                style: TextHelper.normalTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 25.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: width * .05),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () => context.router.navigate(const BrandProductsRoute()),
-                            child: Container(
-                              width: double.infinity,
-                              height: height * .08,
-                              decoration: BoxDecoration(
-                                color: ColorConstants.sampleColor,
-                                border: Border.all(color: ColorConstants.colorBorder),
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius: 15,
-                                    offset: const Offset(0, 4),
-                                  ),
-                                ],
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Free Samples',
-                                textAlign: TextAlign.center,
-                                style: TextHelper.normalTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 25.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: width * .12),
+                //   alignment: Alignment.center,
+                //   child: Container(
+                //     margin: EdgeInsets.symmetric(vertical: height * .03),
+                //     width: width,
+                //     decoration: const BoxDecoration(
+                //       color: Colors.transparent,
+                //     ),
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.max,
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Expanded(
+                //           child: InkWell(
+                //             onTap: () => context.router.navigate(const TrialRoute()),
+                //             child: Container(
+                //               width: double.infinity,
+                //               height: height * .08,
+                //               decoration: BoxDecoration(
+                //                 color: ColorConstants.miniColor,
+                //                 border: Border.all(color: ColorConstants.colorBorder),
+                //                 borderRadius: BorderRadius.circular(10),
+                //                 boxShadow: [
+                //                   BoxShadow(
+                //                     color: Colors.black.withOpacity(0.1),
+                //                     blurRadius: 15,
+                //                     offset: const Offset(0, 4),
+                //                   ),
+                //                 ],
+                //               ),
+                //               alignment: Alignment.center,
+                //               child: Text(
+                //                 'Shop Minis',
+                //                 textAlign: TextAlign.center,
+                //                 style: TextHelper.normalTextStyle.copyWith(
+                //                   fontWeight: FontWeight.w600,
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //         SizedBox(width: width * .05),
+                //         Expanded(
+                //           child: InkWell(
+                //             onTap: () => context.router.navigate(const DealsRoute()),
+                //             child: Container(
+                //               width: double.infinity,
+                //               height: height * .08,
+                //               decoration: BoxDecoration(
+                //                 color: ColorConstants.dealColor,
+                //                 border: Border.all(color: ColorConstants.colorBorder),
+                //                 borderRadius: BorderRadius.circular(10),
+                //                 boxShadow: [
+                //                   BoxShadow(
+                //                     color: Colors.black.withOpacity(0.1),
+                //                     blurRadius: 15,
+                //                     offset: const Offset(0, 4),
+                //                   ),
+                //                 ],
+                //               ),
+                //               alignment: Alignment.center,
+                //               child: Text(
+                //                 'Shop Deals',
+                //                 textAlign: TextAlign.center,
+                //                 style: TextHelper.normalTextStyle.copyWith(
+                //                   fontWeight: FontWeight.w600,
+                //                   fontSize: 25.0,
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //         SizedBox(width: width * .05),
+                //         Expanded(
+                //           child: InkWell(
+                //             onTap: () => context.router.navigate(const BrandProductsRoute()),
+                //             child: Container(
+                //               width: double.infinity,
+                //               height: height * .08,
+                //               decoration: BoxDecoration(
+                //                 color: ColorConstants.sampleColor,
+                //                 border: Border.all(color: ColorConstants.colorBorder),
+                //                 borderRadius: BorderRadius.circular(10),
+                //                 boxShadow: [
+                //                   BoxShadow(
+                //                     color: Colors.black.withOpacity(0.1),
+                //                     blurRadius: 15,
+                //                     offset: const Offset(0, 4),
+                //                   ),
+                //                 ],
+                //               ),
+                //               alignment: Alignment.center,
+                //               child: Text(
+                //                 'Free Samples',
+                //                 textAlign: TextAlign.center,
+                //                 style: TextHelper.normalTextStyle.copyWith(
+                //                   fontWeight: FontWeight.w600,
+                //                   fontSize: 25.0,
+                //                 ),
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 // Container(
                 //   margin: EdgeInsets.symmetric(horizontal: width * .12),
                 //   alignment: Alignment.center,
@@ -307,36 +307,36 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                                     children: _product!.images
                                         .map(
                                           (e) => InkWell(
-                                            onTap: () {
-                                              setState(() {
-                                                selectedImage = e;
-                                              });
-                                            },
-                                            splashFactory: NoSplash.splashFactory,
-                                            highlightColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            child: Container(
-                                              width: height * .06,
-                                              height: height * .08,
-                                              margin: const EdgeInsets.only(right: 10),
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(5),
-                                                border: Border.all(
-                                                  color: ColorConstants.colorBlack.withOpacity(0.6),
-                                                ),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.circular(5),
-                                                child: CustomNetworkImage(
-                                                  imageUrl: e,
-                                                  width: height * .06,
-                                                  height: height * .08,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
+                                        onTap: () {
+                                          setState(() {
+                                            selectedImage = e;
+                                          });
+                                        },
+                                        splashFactory: NoSplash.splashFactory,
+                                        highlightColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        child: Container(
+                                          width: height * .06,
+                                          height: height * .08,
+                                          margin: const EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(5),
+                                            border: Border.all(
+                                              color: ColorConstants.colorBlack.withOpacity(0.6),
                                             ),
                                           ),
-                                        )
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(5),
+                                            child: CustomNetworkImage(
+                                              imageUrl: e,
+                                              width: height * .06,
+                                              height: height * .08,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
                                         .toList(),
                                   ),
                                 ),
@@ -359,7 +359,7 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                                   TextSpan(
                                     text: ' ${_product?.name}',
                                     style:
-                                        TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyTwo, fontSize: 15.sp),
+                                    TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w600, color: ColorConstants.colorGreyTwo, fontSize: 15.sp),
                                   ),
                                 ],
                               ),
@@ -601,9 +601,9 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                               tabs: _product!.details
                                   .map(
                                     (e) => Tab(
-                                      text: e.label,
-                                    ),
-                                  )
+                                  text: e.label,
+                                ),
+                              )
                                   .toList(),
                             ),
                           ),
@@ -613,14 +613,14 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                             children: _product!.details
                                 .map(
                                   (e) => Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
-                                    child: Text(
-                                      e.description,
-                                      maxLines: 1000000,
-                                      style: TextHelper.smallTextStyle,
-                                    ),
-                                  ),
-                                )
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
+                                child: Text(
+                                  e.description,
+                                  maxLines: 1000000,
+                                  style: TextHelper.smallTextStyle,
+                                ),
+                              ),
+                            )
                                 .toList(),
                           ),
                       ],
@@ -699,7 +699,7 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                                     context: context,
                                     productId: product.id,
                                   );
-                                },
+                                }, sub_category: '',
                               );
                             },
                             options: CarouselOptions(

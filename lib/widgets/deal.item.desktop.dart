@@ -18,6 +18,7 @@ class DealItemDesktop extends StatelessWidget {
   final Product product;
   final Function() onProductClick;
   final Function() onAddToCart;
+  final String sub_category;
 
   const DealItemDesktop({
     super.key,
@@ -27,6 +28,8 @@ class DealItemDesktop extends StatelessWidget {
     required this.provider,
     required this.cartHelper,
     required this.gridView,
+    required this.sub_category,
+
   });
 
   @override
@@ -69,13 +72,13 @@ class DealItemDesktop extends StatelessWidget {
                       },
                       icon: provider.wishlist != null && provider.wishlist!.records.any((element) => element.id == product.id)
                           ? const Icon(
-                              Ionicons.heart,
-                              color: Colors.red,
-                            )
+                        Ionicons.heart,
+                        color: Colors.red,
+                      )
                           : Icon(
-                              Ionicons.heart_outline,
-                              color: ColorConstants.colorBlackTwo.withOpacity(0.5),
-                            ),
+                        Ionicons.heart_outline,
+                        color: ColorConstants.colorBlackTwo.withOpacity(0.5),
+                      ),
                     ),
                   ),
                 ],
