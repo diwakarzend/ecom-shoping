@@ -23,11 +23,11 @@ class _RefundPolicyDesktopState extends State<RefundPolicyDesktop> {
       builder: (context, provider, _) {
         String privacyPolicyText = provider.appSettings?.refund ?? '';
         privacyPolicyText = privacyPolicyText
-            .replaceAll('Shipan Tech Private Limited', 'AGILE PAYMENT SERVICES PRIVATE LIMITED')
-            .replaceAll('shipantechprivatelimited5@gmail.com', 'agilepaymentservicesprivatelim@gmail.com')
-            .replaceAll('Shipan', 'Agile')
+            .replaceAll('Shipan Tech Private Limited', 'Prestigepay PAYMENT SERVICES PRIVATE LIMITED')
+            .replaceAll('shipantechprivatelimited5@gmail.com', 'info.prestigepaypvtltd@gmail.com')
+            .replaceAll('Shipan', 'Prestigepay')
             .replaceAll('shop NO. 2 karim Mansion Behind Pharmacy college', 'Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085')
-            .replaceAll('SHIPAN', 'AGILE');
+            .replaceAll('SHIPAN', 'Prestigepay');
 
 
         return Scaffold(

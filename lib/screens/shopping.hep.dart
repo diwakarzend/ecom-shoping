@@ -154,7 +154,7 @@ class _ShoppingHelpState extends State<ShoppingHelp> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : ${provider.appSettings?.generalSettings.companyEmail}',
+                  'Mail us at : info.prestigepaypvtltd@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

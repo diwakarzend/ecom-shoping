@@ -119,10 +119,9 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
   //   );
   // }
 
-  final List<String> _banners = [
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66b31b913c766.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/deal banner/654b2f9234e42.jpg'
-  ];
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831f8c1.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c83149eb.jpg'];
+
 
   Future updateSource(AppProvider provider) async {
     await _dioHelper.post(

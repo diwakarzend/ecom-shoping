@@ -21,7 +21,7 @@ class _AboutTabState extends State<AboutTab> {
         return Scaffold(
           appBar: AppBar(
             title: const Text(
-              'About Agile',
+              'About Prestigepay',
             ),
             centerTitle: false,
           ),

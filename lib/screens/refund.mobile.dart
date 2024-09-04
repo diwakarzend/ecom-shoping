@@ -17,19 +17,19 @@ class _RefundPolicyMobileState extends State<RefundPolicyMobile> {
   Shipan Tech Private Limited
   shipantechprivatelimited5@gmail.com
   Shipan
-  shop NO. 2 karim Mansion Behind Pharmacy college
-  SHIPAN
+shop NO. 2,karim Mansion,Behind Pharmacy college Panaji, North Goa, Goa, 403001
+ SHIPAN
   """;
 
   @override
   void initState() {
     super.initState();
     privacyPolicyText = privacyPolicyText
-        .replaceAll('Shipan Tech Private Limited', 'AGILE PAYMENT SERVICES PRIVATE LIMITED')
-        .replaceAll('shipantechprivatelimited5@gmail.com', 'agilepaymentservicesprivatelim@gmail.com')
-        .replaceAll('Shipan', 'Agile')
-        .replaceAll('shop NO. 2 karim Mansion Behind Pharmacy college', 'Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085')
-        .replaceAll('SHIPAN', 'AGILE');
+        .replaceAll('Shipan Tech Private Limited', 'PRESTIGEPAY SOLUTIONS PRIVATE LIMITED')
+        .replaceAll('shipantechprivatelimited5@gmail.com', 'info.prestigepaypvtltd@gmail.com')
+        .replaceAll('Shipan', 'Prestigepay')
+        .replaceAll('shop NO. 2,karim Mansion,Behind Pharmacy college Panaji, North Goa, Goa, 403001', '364 3RD FLR AGGARWALPLAZA, COMM CENTER SEC14, Rithala, North West Delhi, Delhi- 110085')
+        .replaceAll('SHIPAN', 'PRESTIGEPAY');
   }
 
   @override

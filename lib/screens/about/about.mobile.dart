@@ -25,7 +25,7 @@ class _AboutScreenMobileState extends State<AboutScreenMobile> {
         return Scaffold(
           appBar: AppBar(
             title: const Text(
-              'About Agile',
+              'About Prestigepay',
             ),
             centerTitle: false,
           ),

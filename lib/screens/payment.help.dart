@@ -78,7 +78,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                     });
                   },
                   title: Text(
-                    'What is Agile?',
+                    'What is Prestigepay?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -154,7 +154,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : ${provider.appSettings?.generalSettings.companyEmail}',
+                  'Mail us at : info.prestigepaypvtltd@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

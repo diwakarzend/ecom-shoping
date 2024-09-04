@@ -54,6 +54,11 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
 
   int bannerIndex = 0;
 
+
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831f8c1.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c83149eb.jpg'];
+
+
   @override
   void initState() {
     if (widget.orderSuccess && widget.order != null) {
@@ -114,13 +119,14 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 children: [
                   const TopAppBar(),
                   CarouselSlider(
-                    items: provider.banners
-                        .where((element) =>
-                    (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
-                        element.deviceType == StringConstants.deviceTypeD)
+                    items: _banners
+                    // items: provider.banners
+                    //     .where((element) =>
+                    // (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
+                    //     element.deviceType == StringConstants.deviceTypeD)
                         .map(
                           (e) => CustomNetworkImage(
-                        imageUrl: e.banner,
+                        imageUrl: e,
                         width: width,
                         height: double.infinity,
                         fit: BoxFit.cover,
@@ -141,9 +147,10 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ...provider.banners
-                          .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                          .toList()
+                      // ...provider.banners
+                      //     .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
+                      //     .toList()
+                      ..._banners
                           .asMap()
                           .map(
                             (i, v) => MapEntry(

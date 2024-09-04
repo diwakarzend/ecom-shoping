@@ -28,6 +28,10 @@ class DealsScreenMobile extends StatefulWidget {
 class _DealsScreenMobileState extends State<DealsScreenMobile> {
   int trialIndex = 0;
 
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831f8c1.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c83149eb.jpg'];
+
+
   final CartHelper _cartHelper = CartHelper();
 
   bool gridview = true;
@@ -120,15 +124,16 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                     padding: EdgeInsets.fromLTRB(20, height * .02, 20, 0),
                     child: CarouselSlider(
                       items: [
-                        ...provider.banners
-                            .where((element) =>
-                                element.type == StringConstants.referBanner &&
-                                element.deviceType == StringConstants.deviceTypeM)
+                        ..._banners
+                        // ...provider.banners
+                        //     .where((element) =>
+                        //         element.type == StringConstants.referBanner &&
+                        //         element.deviceType == StringConstants.deviceTypeM)
                             .map(
                               (e) => ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: CustomNetworkImage(
-                                  imageUrl: e.banner,
+                                  imageUrl: e,
                                   width: width,
                                   fit: BoxFit.cover,
                                 ),
@@ -148,7 +153,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                 SizedBox(height: height * .02),
                 Align(
                   child: Text(
-                    'Deals & Combos',
+                    'Clothes',
                     style: TextHelper.subTitleStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -159,7 +164,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
                     child: Text(
-                      'Deals & Combo\'s: Special deals & combo offers with best discounts on top brands. Dare to compare pricing .',
+                      'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -226,59 +231,6 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: height * .02),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              NewCategoryItems(
-                                key: const Key('d_all'),
-                                onTap: () {
-                                  setState(() {
-                                    trialIndex = 0;
-                                  });
-                                },
-                                active: trialIndex == 0,
-                                name: 'All',
-                              ),
-                              ...provider.dealCategories
-                                  .asMap()
-                                  .map(
-                                    (i, c) => MapEntry(
-                                      i,
-                                      NewCategoryItems(
-                                        key: Key(c.id),
-                                        onTap: () {
-                                          setState(() {
-                                            trialIndex = i + 1;
-                                          });
-                                        },
-                                        active: (trialIndex == (i + 1)),
-                                        name: c.name,
-                                      ),
-                                    ),
-                                  )
-                                  .values,
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
                     ],
                   ),
                 ),

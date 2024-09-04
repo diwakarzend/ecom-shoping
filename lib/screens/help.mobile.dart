@@ -181,7 +181,7 @@ class _HelpScreenMobileState extends State<HelpScreenMobile> {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    'Mail us at : ${provider.appSettings?.generalSettings.companyEmail}',
+                    'Mail us at : info.prestigepaypvtltd@gmail.com',
                     style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                   ),
                 ),

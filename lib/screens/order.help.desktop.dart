@@ -82,7 +82,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                     });
                   },
                   title: Text(
-                    'What is Agile?',
+                    'What is Prestigepay?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -160,7 +160,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : agilepaymentservicesprivatelim@gmail.co',
+                  'Mail us at : info.prestigepaypvtltd@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),
