@@ -1031,7 +1031,7 @@ class _Dialog extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'In transit orders - ${StringConstants.rupeeSign}60 shall be deducted for orders in transit, users can email at care@fabpiks.com for cancellations.',
+                  'In transit orders - ${StringConstants.rupeeSign}60 shall be deducted for orders in transit, users can email at care@prestigepay.com for cancellations.',
                   maxLines: 1000,
                   textAlign: TextAlign.center,
                   style: TextHelper.extraSmallTextStyle,
