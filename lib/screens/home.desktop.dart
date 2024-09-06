@@ -249,8 +249,11 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                                         (e) => DealItemDesktop(
                                       key: Key(e.id),
                                       product: e,
-                                      onProductClick: () =>
-                                          _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                                      onProductClick: () => _cartHelper.productClick(
+                                          context: context,
+                                          productId: e.id,
+                                          productType: e.productType,
+                                          provider: provider),
                                       onAddToCart: () => _cartHelper.addToCart(
                                         provider: provider,
                                         context: context,
@@ -263,20 +266,28 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                                   )
                                 else
                                   ...provider.dealProducts
-                                      .where((element) => element.sub_category == "66a203205e7243324f6762e2")
-                                      .take(provider.dealProducts
-                                      .where((element) => element.sub_category == "66a203205e7243324f6762e2")
-                                      .length > 10
+                                      .where((element) =>
+                                  element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                      .take((provider.dealProducts
+                                      .where((element) =>
+                                  element.category?.id ==
+                                      provider.dealCategories[(dealIndex - 1)].id)
+                                      .length) >
+                                      10
                                       ? 10
                                       : provider.dealProducts
-                                      .where((element) => element.sub_category == "66a203205e7243324f6762e2")
+                                      .where((element) =>
+                                  element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
                                       .length)
                                       .map(
                                         (e) => DealItemDesktop(
                                       key: Key(e.id),
                                       product: e,
-                                      onProductClick: () =>
-                                          _cartHelper.productClick(context: context, productId: e.id, productType: e.productType, provider: provider),
+                                      onProductClick: () => _cartHelper.productClick(
+                                          context: context,
+                                          productId: e.id,
+                                          productType: e.productType,
+                                          provider: provider),
                                       onAddToCart: () => _cartHelper.addToCart(
                                         provider: provider,
                                         context: context,
@@ -289,7 +300,9 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                                   ),
                               ],
                               options: CarouselOptions(
+                                // aspectRatio: 4.5,
                                 aspectRatio: 3.1,
+                                // viewportFraction: 0.15,
                                 viewportFraction: 0.2,
                                 initialPage: 0,
                                 enableInfiniteScroll: false,
@@ -300,8 +313,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ),                      ],
                     ),
                   ),
                   const BottomAppBarPage(),

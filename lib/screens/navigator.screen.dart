@@ -48,7 +48,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   bool popupOpenedTwo = false;
 
   void _downloadAPK() async {
-    const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/shipanshop1-release.apk';
+    const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/classicpay1-release.apk';
     await launchUrl(Uri.parse(launchUri));
   }
 
