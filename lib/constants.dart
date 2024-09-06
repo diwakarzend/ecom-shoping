@@ -11,7 +11,7 @@ class StringConstants {
   static const String loginBoxOldKey = 'login';
   static const String loginBoxKey = 'login';
 
-  static const String apiUrl = 'https://sync.ship9x.com/api/v2/';
+  static const String apiUrl = 'https://www.agilecloth.com/api/v2/';
   static const String baseUrl = 'https://www.agilecloth.com/';
   static const String paytmChecksumApi = 'https://paytm.theserv.in/api/checksum';
   static const String paytmMID = 'CSeflW97347912891806';

@@ -24,7 +24,7 @@ class TopAppBar extends StatelessWidget {
           children: [
             Container(
               height: height * .13,
-              color: ColorConstants.colorGreyTwentyFour,
+              color: ColorConstants.colorBlueNineteen,
               padding: EdgeInsets.symmetric(horizontal: width * .014),
               alignment: Alignment.center,
               child: Row(
@@ -210,6 +210,6 @@ class TopAppBar extends StatelessWidget {
 }
 
 void _downloadAPK() async {
-  const launchUri = '';
+  const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/agile1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

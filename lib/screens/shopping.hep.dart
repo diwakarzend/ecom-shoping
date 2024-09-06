@@ -78,7 +78,7 @@ class _ShoppingHelpState extends State<ShoppingHelp> {
                     });
                   },
                   title: Text(
-                    'What is Shipan?',
+                    'What is Agile?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

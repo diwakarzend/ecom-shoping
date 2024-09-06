@@ -189,7 +189,7 @@ class _ShoppingTabThreeState extends State<ShoppingTabThree> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Deals & Combos (${_cartHelper.hotDealCount(provider)} ${_cartHelper.hotDealCount(provider) > 1 ? 'items' : 'item'})',
+                                'No of Products (${_cartHelper.hotDealCount(provider)} ${_cartHelper.hotDealCount(provider) > 1 ? 'items' : 'item'})',
                                 style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500),
                               ),
                               Text(

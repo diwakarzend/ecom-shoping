@@ -148,7 +148,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                 SizedBox(height: height * .02),
                 Align(
                   child: Text(
-                    'Deals & Combos',
+                    'Clothes',
                     style: TextHelper.subTitleStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -159,7 +159,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
                     child: Text(
-                      'Deals & Combo\'s: Special deals & combo offers with best discounts on top brands. Dare to compare pricing .',
+                      'Fashion is the armor to survive the reality of everyday life',
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -226,59 +226,6 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: height * .02),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              NewCategoryItems(
-                                key: const Key('d_all'),
-                                onTap: () {
-                                  setState(() {
-                                    trialIndex = 0;
-                                  });
-                                },
-                                active: trialIndex == 0,
-                                name: 'All',
-                              ),
-                              ...provider.dealCategories
-                                  .asMap()
-                                  .map(
-                                    (i, c) => MapEntry(
-                                      i,
-                                      NewCategoryItems(
-                                        key: Key(c.id),
-                                        onTap: () {
-                                          setState(() {
-                                            trialIndex = i + 1;
-                                          });
-                                        },
-                                        active: (trialIndex == (i + 1)),
-                                        name: c.name,
-                                      ),
-                                    ),
-                                  )
-                                  .values,
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
                     ],
                   ),
                 ),

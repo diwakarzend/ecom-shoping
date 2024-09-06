@@ -48,7 +48,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   bool popupOpenedTwo = false;
 
   void _downloadAPK() async {
-    const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/shipanshop1-release.apk';
+    const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/agile1-release.apk';
     await launchUrl(Uri.parse(launchUri));
   }
 
@@ -254,34 +254,34 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                 // tabsRouter.setActiveIndex(0);
                               },
                             ),
-                            NavItem(
-                              icon: ImageIcon(
-                                const AssetImage('assets/images/icons/mini.png'),
-                                size: 28,
-                                color:
-                                    provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
-                              ),
-                              name: NavLabel(
-                                text: 'Shop Minis',
-                                gradient: LinearGradient(
-                                  colors: provider.activeIndex == 1
-                                      ? [
-                                          ColorConstants.colorBlueFour,
-                                          ColorConstants.colorBlueFour,
-                                        ]
-                                      : [
-                                          ColorConstants.colorGreyFourteen,
-                                          ColorConstants.colorGreyFourteen,
-                                        ],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ),
-                              ),
-                              onTap: () {
-                                provider.changeIndex(1);
-                                // provider.changeActiveIndex(1);
-                              },
-                            ),
+                            // NavItem(
+                            //   icon: ImageIcon(
+                            //     const AssetImage('assets/images/icons/mini.png'),
+                            //     size: 28,
+                            //     color:
+                            //         provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                            //   ),
+                            //   name: NavLabel(
+                            //     text: 'Shop Minis',
+                            //     gradient: LinearGradient(
+                            //       colors: provider.activeIndex == 1
+                            //           ? [
+                            //               ColorConstants.colorBlueFour,
+                            //               ColorConstants.colorBlueFour,
+                            //             ]
+                            //           : [
+                            //               ColorConstants.colorGreyFourteen,
+                            //               ColorConstants.colorGreyFourteen,
+                            //             ],
+                            //       begin: Alignment.centerLeft,
+                            //       end: Alignment.centerRight,
+                            //     ),
+                            //   ),
+                            //   onTap: () {
+                            //     provider.changeIndex(1);
+                            //     // provider.changeActiveIndex(1);
+                            //   },
+                            // ),
                             NavItem(
                               icon: ImageIcon(
                                 const AssetImage('assets/images/icons/deal.png'),
@@ -290,7 +290,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                     provider.activeIndex == 2 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
-                                text: 'Deals & Combos',
+                                text: 'Product',
                                 gradient: LinearGradient(
                                   colors: provider.activeIndex == 2
                                       ? [
@@ -310,34 +310,34 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                 provider.changeIndex(2);
                               },
                             ),
-                            NavItem(
-                              icon: ImageIcon(
-                                const AssetImage('assets/images/icons/sample.png'),
-                                size: 28,
-                                color:
-                                    provider.activeIndex == 3 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
-                              ),
-                              name: NavLabel(
-                                text: 'Free Samples',
-                                gradient: LinearGradient(
-                                  colors: provider.activeIndex == 3
-                                      ? [
-                                          ColorConstants.colorBlueFour,
-                                          ColorConstants.colorBlueFour,
-                                        ]
-                                      : [
-                                          ColorConstants.colorGreyFourteen,
-                                          ColorConstants.colorGreyFourteen,
-                                        ],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ),
-                              ),
-                              onTap: () {
-                                // provider.changeActiveIndex(4);
-                                provider.changeIndex(3);
-                              },
-                            ),
+                            // NavItem(
+                            //   icon: ImageIcon(
+                            //     const AssetImage('assets/images/icons/sample.png'),
+                            //     size: 28,
+                            //     color:
+                            //         provider.activeIndex == 3 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
+                            //   ),
+                            //   name: NavLabel(
+                            //     text: 'Free Samples',
+                            //     gradient: LinearGradient(
+                            //       colors: provider.activeIndex == 3
+                            //           ? [
+                            //               ColorConstants.colorBlueFour,
+                            //               ColorConstants.colorBlueFour,
+                            //             ]
+                            //           : [
+                            //               ColorConstants.colorGreyFourteen,
+                            //               ColorConstants.colorGreyFourteen,
+                            //             ],
+                            //       begin: Alignment.centerLeft,
+                            //       end: Alignment.centerRight,
+                            //     ),
+                            //   ),
+                            //   onTap: () {
+                            //     // provider.changeActiveIndex(4);
+                            //     provider.changeIndex(3);
+                            //   },
+                            // ),
                           ],
                         ),
                       ),

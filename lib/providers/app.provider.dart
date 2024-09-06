@@ -496,42 +496,26 @@ class AppProvider extends ChangeNotifier {
       dealProducts.clear();
       sampleProducts.clear();
       noTrailProducts.clear();
-      for (var p in response.data['records']['miniStore']) {
+      for (var p in response.data['records']['allRecord']) {
         try {
           Product temp = Product.fromJson(p);
-          miniProducts.add(temp);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
-      for (var p in response.data['records']['dealCombo']) {
-        try {
-          Product temp = Product.fromJson(p);
-          dealProducts.add(temp);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
-      for (var p in response.data['records']['freeSamples']) {
-        try {
-          Product temp = Product.fromJson(p);
-          sampleProducts.add(temp);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
-      for (var p in response.data['records']['noTrial']) {
-        try {
-          Product temp = Product.fromJson(p);
-          noTrailProducts.add(temp);
-        } catch (e) {
-          debugPrint(e.toString());
-        }
-      }
-      for (var p in response.data['records']['surprised_product']) {
-        try {
-          Product temp = Product.fromJson(p);
-          surprisedProducts.add(temp);
+          switch (temp.productType) {
+            case StringConstants.trialProduct:
+              miniProducts.add(temp);
+              break;
+            case StringConstants.hotDealProduct:
+              dealProducts.add(temp);
+              break;
+            case StringConstants.brandStoreProduct:
+              sampleProducts.add(temp);
+              break;
+            case StringConstants.noTrailProduct:
+              noTrailProducts.add(temp);
+              break;
+            case StringConstants.surprisedProduct:
+              surprisedProducts.add(temp);
+              break;
+          }
         } catch (e) {
           debugPrint(e.toString());
         }
@@ -540,7 +524,6 @@ class AppProvider extends ChangeNotifier {
       return 'getProducts';
     }
   }
-
   Future getCategories() async {
     final Response? response = await _dioHelper.get('category-tag');
     if (response != null && response.data['status']) {
