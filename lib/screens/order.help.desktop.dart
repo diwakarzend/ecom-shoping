@@ -160,7 +160,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : info.prestigepaypvtltd@gmail.com',
+                  'Mail us at : ${provider.appSettings?.generalSettings.companyEmail}',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),
