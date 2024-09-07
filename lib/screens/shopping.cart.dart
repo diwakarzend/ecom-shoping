@@ -17,6 +17,7 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/app.provider.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_razorpay_web/flutter_razorpay_web.dart';
@@ -43,14 +44,11 @@ class _ShoppingCartState extends State<ShoppingCart> {
 
   openCheckout(AppProvider provider, double price) async {
     if (_order != null) {
-      RazorpayWeb razorpayWeb =
-          RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
+      RazorpayWeb razorpayWeb = RazorpayWeb(onSuccess: handlePaymentSuccess, onCancel: handlePaymentCancel, onFailed: handlePaymentError);
       var razorpayAmount = price * 100;
 
       final Map<String, dynamic> options = {
-        'key':
-            (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ??
-                '',
+        'key': (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ?? '',
         'amount': razorpayAmount,
         'currency': 'INR',
         'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
@@ -79,6 +77,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
     if (!mounted) return;
     _appProvider.initWithLogin();
     context.router.replace(HomeRoute(orderSuccess: true, order: _order));
+    // orderSuccess(_order!, _appProvider);
   }
 
   void handlePaymentCancel(RpayCancelResponse response) {
@@ -144,7 +143,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
               _order = Order.fromJson(response.data['data']);
             });
             Future.delayed(const Duration(milliseconds: 1000)).then(
-              (_) {
+                  (_) {
                 if (!mounted) return;
                 ScaffoldLoaderDialog.of(context).hide();
               },
@@ -210,6 +209,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
         ScaffoldLoaderDialog.of(context).hide();
         if (!mounted) return;
         context.router.maybePop();
+        // orderSuccess(temp, provider);
         if (!mounted) return;
         context.router.replace(HomeRoute(orderSuccess: true, order: temp));
       } else {
@@ -243,6 +243,60 @@ class _ShoppingCartState extends State<ShoppingCart> {
 
   // static final facebookAppEvents = FacebookAppEvents();
 
+  // orderSuccess(Order order, AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logPurchase(
+  //     transactionId: order.id,
+  //     currency: 'INR',
+  //     value: order.grandTotal.toDouble(),
+  //     shipping: order.shippingCost.toDouble(),
+  //     tax: 0,
+  //     items: List<AnalyticsEventItem>.from(order.products.map((e) => e.toGAP())),
+  //   );
+  //
+  //   // await facebookAppEvents.logPurchase(
+  //   //   amount: grandTotal ?? 0,
+  //   //   currency: 'INR',
+  //   // );
+  // }
+
+  // addProductsToFirebase(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logViewCart(
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  // }
+
+  // beginCheckout(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logBeginCheckout(
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  //
+  //   // await facebookAppEvents.logInitiatedCheckout(
+  //   //   totalPrice: _cartHelper.calculateAllTotal(provider),
+  //   //   currency: 'INR',
+  //   // );
+  // }
+
+  // addShipping(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logAddShippingInfo(
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  // }
+
+  // addPayment(AppProvider provider) async {
+  //   await FirebaseAnalytics.instance.logAddPaymentInfo(
+  //     paymentType: selectedPayment,
+  //     currency: 'INR',
+  //     value: _order?.grandTotal.toDouble() ?? 0,
+  //     items: List<AnalyticsEventItem>.from(provider.cart!.records.map((x) => x.toGAP())),
+  //   );
+  // }
+
   @override
   void initState() {
     _appProvider = Provider.of<AppProvider>(context, listen: false);
@@ -255,289 +309,286 @@ class _ShoppingCartState extends State<ShoppingCart> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
+        // addProductsToFirebase(provider);
         return (provider.cart?.count ?? 0) > 0
             ? Scaffold(
-                appBar: AppBar(
-                  centerTitle: false,
-                  title: const Text('Shopping Cart'),
-                ),
-                body: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          appBar: AppBar(
+            centerTitle: false,
+            title: const Text('Shopping Cart'),
+          ),
+          body: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: height * .02),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * .1),
+                child: Row(
                   children: [
-                    SizedBox(height: height * .02),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width * .1),
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              if (stepIndex > 0) {
-                                setState(() {
-                                  stepIndex = 0;
-                                });
-                              }
-                            },
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            child: CircleAvatar(
-                              radius: 17,
-                              backgroundColor:
-                                  stepIndex == 0 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
-                              child: const Icon(
-                                Icons.shopping_cart_outlined,
-                                color: Colors.white,
-                                size: 15,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              width: double.infinity,
-                              height: 2,
-                              color: ColorConstants.colorGreyTwo,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              if (stepIndex > 1) {
-                                setState(() {
-                                  stepIndex = 1;
-                                });
-                              }
-                            },
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            child: CircleAvatar(
-                              backgroundColor:
-                                  stepIndex == 1 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
-                              radius: 17,
-                              child: const Icon(
-                                Icons.my_location_outlined,
-                                color: Colors.white,
-                                size: 15,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              width: double.infinity,
-                              height: 2,
-                              color: ColorConstants.colorGreyTwo,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              if (stepIndex > 2) {
-                                setState(() {
-                                  stepIndex = 2;
-                                });
-                              }
-                            },
-                            splashFactory: NoSplash.splashFactory,
-                            highlightColor: Colors.transparent,
-                            child: CircleAvatar(
-                              backgroundColor:
-                                  stepIndex == 2 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
-                              radius: 17,
-                              child: const Icon(
-                                Icons.payment_outlined,
-                                color: Colors.white,
-                                size: 15,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: height * .01),
-                    Expanded(
-                      child: IndexedStack(
-                        index: stepIndex,
-                        children: [
-                          ShoppingTabOne(
-                            onCheckout: () {
-                              if (provider.cart != null &&
-                                  provider.cart!.records
-                                          .where((element) => element.productType == StringConstants.trialProduct)
-                                          .length >=
-                                      provider.appSettings!.generalSettings.itemQty) {
-                                if (provider.cart!.records
-                                    .any((element) => element.productType == StringConstants.noTrailProduct)) {
-                                  setState(() {
-                                    stepIndex = 1;
-                                  });
-                                } else {
-                                  BuildContext? dialogContext;
-                                  showDialog(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    builder: (c) {
-                                      dialogContext = c;
-                                      return CustomDialog(
-                                        onTap: () {
-                                          dialogContext?.maybePop();
-                                        },
-                                        onClose: () {
-                                          dialogContext?.maybePop();
-                                          setState(() {
-                                            stepIndex = 1;
-                                          });
-                                        },
-                                        icon: 'assets/images/icons/sad.png',
-                                        buttonName: 'Add Bonus Products',
-                                        title: 'Reminder',
-                                        message:
-                                            'You haven\'t picked the bonus trial products.\nChoose any of the ${provider.appSettings?.generalSettings.samplesLimit ?? 2} and proceed to checkout',
-                                        haveButtons: true,
-                                      );
-                                    },
-                                  );
-                                }
-                              } else {
-                                setState(() {
-                                  stepIndex = 1;
-                                });
-                              }
-                              // if (provider.currentUser != null &&
-                              //     provider.cartItems.any((element) => element.productType == trialProduct) &&
-                              //     provider.currentUser!.trialPoint - _cartHelper.calculateTrailPoints(provider) > 0) {
-                              //   BuildContext? dialogContext;
-                              //   showDialog(
-                              //     context: context,
-                              //     barrierDismissible: false,
-                              //     builder: (c) {
-                              //       dialogContext = c;
-                              //       return CustomDialog(
-                              //         onTap: () {
-                              //           dialogContext?.maybePop();
-                              //           dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
-                              //         },
-                              //         onClose: () {
-                              //           dialogContext?.maybePop();
-                              //           setState(() {
-                              //             stepIndex = 1;
-                              //           });
-                              //           beginCheckout(provider);
-                              //         },
-                              //         icon: 'assets/images/icons/puzzle.png',
-                              //         buttonName: 'Add trials',
-                              //         title: 'Heads Up!',
-                              //         message:
-                              //             'You still have ${_cartHelper.calculateAvailableTrialPoint(provider)} trial points left! Sure you want to proceed?',
-                              //         haveButtons: true,
-                              //       );
-                              //     },
-                              //   );
-                              // } else {
-                              //   setState(() {
-                              //     stepIndex = 1;
-                              //   });
-                              // }
-                            },
-                          ),
-                          ShoppingTabTwo(
-                            changeAddress: (Shipping address) {
-                              setState(() {
-                                address.selected = true;
-                                selectedAddress = address;
-                              });
-                            },
-                            selectedAddress: selectedAddress,
-                            onContinue: () {
-                              if (selectedAddress != null) {
-                                setState(() {
-                                  stepIndex = 2;
-                                });
-                              } else {
-                                ScaffoldSnackBar.of(context).show('Please select shipping address');
-                              }
-                            },
-                          ),
-                          ShoppingTabThree(
-                            selectedPayment: selectedPayment,
-                            onChanged: (String? v) {
-                              setState(() {
-                                selectedPayment = v!;
-                              });
-                            },
-                            placeOrder: () {
-                              if (provider.cart != null && provider.cart!.charges.grandTotal > 0) {
-                                if (selectedPayment.isNotEmpty) {
-                                  saveOrder(provider: provider);
-                                } else {
-                                  ScaffoldSnackBar.of(context).show('Please select payment method');
-                                }
-                              } else {
-                                saveOrder(provider: provider);
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : Scaffold(
-                backgroundColor: Colors.white,
-                appBar: AppBar(
-                  backgroundColor: Colors.white,
-                  iconTheme: const IconThemeData(
-                    color: Colors.black,
-                  ),
-                  centerTitle: false,
-                  title: const Text(
-                    'Shopping Cart',
-                  ),
-                ),
-                body: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(height: height * .1),
-                    Align(
-                      child: Image.asset(
-                        'assets/images/shooping_cart.png',
-                        height: height * .3,
-                      ),
-                    ),
-                    Text(
-                      'Your Cart is empty!',
-                      style: TextHelper.titleStyle.copyWith(color: Colors.black.withOpacity(0.6)),
-                    ),
-                    SizedBox(height: height * .02),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Text(
-                        'This feels too light! Go on, add all your favourites.',
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        style: TextHelper.normalTextStyle,
-                      ),
-                    ),
-                    SizedBox(height: height * .05),
                     InkWell(
                       onTap: () {
-                        context.router.popUntilRouteWithName(NavigatorRoute.name);
+                        if (stepIndex > 0) {
+                          setState(() {
+                            stepIndex = 0;
+                          });
+                        }
                       },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: ColorConstants.colorBlueEighteen,
-                          borderRadius: BorderRadius.circular(10),
+                      splashFactory: NoSplash.splashFactory,
+                      highlightColor: Colors.transparent,
+                      child: CircleAvatar(
+                        radius: 17,
+                        backgroundColor: stepIndex == 0 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
+                        child: const Icon(
+                          Icons.shopping_cart_outlined,
+                          color: Colors.white,
+                          size: 15,
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                        child: Text(
-                          'Try Now',
-                          style: TextHelper.titleStyle.copyWith(color: Colors.white),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        height: 2,
+                        color: ColorConstants.colorGreyTwo,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (stepIndex > 1) {
+                          setState(() {
+                            stepIndex = 1;
+                          });
+                        }
+                      },
+                      splashFactory: NoSplash.splashFactory,
+                      highlightColor: Colors.transparent,
+                      child: CircleAvatar(
+                        backgroundColor: stepIndex == 1 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
+                        radius: 17,
+                        child: const Icon(
+                          Icons.my_location_outlined,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        height: 2,
+                        color: ColorConstants.colorGreyTwo,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (stepIndex > 2) {
+                          setState(() {
+                            stepIndex = 2;
+                          });
+                        }
+                      },
+                      splashFactory: NoSplash.splashFactory,
+                      highlightColor: Colors.transparent,
+                      child: CircleAvatar(
+                        backgroundColor: stepIndex == 2 ? ColorConstants.colorPrimaryTwo : ColorConstants.colorGreySix,
+                        radius: 17,
+                        child: const Icon(
+                          Icons.payment_outlined,
+                          color: Colors.white,
+                          size: 15,
                         ),
                       ),
                     ),
                   ],
                 ),
-              );
+              ),
+              SizedBox(height: height * .01),
+              Expanded(
+                child: IndexedStack(
+                  index: stepIndex,
+                  children: [
+                    ShoppingTabOne(
+                      onCheckout: () {
+                        if (provider.cart != null &&
+                            provider.cart!.records.where((element) => element.productType == StringConstants.trialProduct).length >=
+                                provider.appSettings!.generalSettings.itemQty) {
+                          if (provider.cart!.records.any((element) => element.productType == StringConstants.noTrailProduct)) {
+                            setState(() {
+                              stepIndex = 1;
+                            });
+                          } else {
+                            BuildContext? dialogContext;
+                            showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (c) {
+                                dialogContext = c;
+                                return CustomDialog(
+                                  onTap: () {
+                                    // dialogContext?.popRoute();
+                                  },
+                                  onClose: () {
+                                    // dialogContext?.popRoute();
+                                    setState(() {
+                                      stepIndex = 1;
+                                    });
+                                    // beginCheckout(provider);
+                                  },
+                                  icon: 'assets/images/icons/sad.png',
+                                  buttonName: 'Add Bonus Products',
+                                  title: 'Reminder',
+                                  message:
+                                  'You haven\'t picked the bonus trial products.\nChoose any of the ${provider.appSettings?.generalSettings.samplesLimit ?? 2} and proceed to checkout',
+                                  haveButtons: true,
+                                );
+                              },
+                            );
+                          }
+                        } else {
+                          setState(() {
+                            stepIndex = 1;
+                          });
+                        }
+                        // if (provider.currentUser != null &&
+                        //     provider.cartItems.any((element) => element.productType == trialProduct) &&
+                        //     provider.currentUser!.trialPoint - _cartHelper.calculateTrailPoints(provider) > 0) {
+                        //   BuildContext? dialogContext;
+                        //   showDialog(
+                        //     context: context,
+                        //     barrierDismissible: false,
+                        //     builder: (c) {
+                        //       dialogContext = c;
+                        //       return CustomDialog(
+                        //         onTap: () {
+                        //           dialogContext?.popRoute();
+                        //           dialogContext?.router.popUntilRouteWithName(NavigatorRoute.name);
+                        //         },
+                        //         onClose: () {
+                        //           dialogContext?.popRoute();
+                        //           setState(() {
+                        //             stepIndex = 1;
+                        //           });
+                        //           beginCheckout(provider);
+                        //         },
+                        //         icon: 'assets/images/icons/puzzle.png',
+                        //         buttonName: 'Add trials',
+                        //         title: 'Heads Up!',
+                        //         message:
+                        //             'You still have ${_cartHelper.calculateAvailableTrialPoint(provider)} trial points left! Sure you want to proceed?',
+                        //         haveButtons: true,
+                        //       );
+                        //     },
+                        //   );
+                        // } else {
+                        //   setState(() {
+                        //     stepIndex = 1;
+                        //   });
+                        // }
+                      },
+                    ),
+                    ShoppingTabTwo(
+                      changeAddress: (Shipping address) {
+                        setState(() {
+                          address.selected = true;
+                          selectedAddress = address;
+                        });
+                      },
+                      selectedAddress: selectedAddress,
+                      onContinue: () {
+                        if (selectedAddress != null) {
+                          setState(() {
+                            stepIndex = 2;
+                          });
+                          // addShipping(provider);
+                        } else {
+                          ScaffoldSnackBar.of(context).show('Please select shipping address');
+                        }
+                      },
+                    ),
+                    ShoppingTabThree(
+                      selectedPayment: selectedPayment,
+                      onChanged: (String? v) {
+                        setState(() {
+                          selectedPayment = v!;
+                        });
+                      },
+                      placeOrder: () {
+                        if (provider.cart != null && provider.cart!.charges.grandTotal > 0) {
+                          if (selectedPayment.isNotEmpty) {
+                            saveOrder(provider: provider);
+                          } else {
+                            ScaffoldSnackBar.of(context).show('Please select payment method');
+                          }
+                        } else {
+                          saveOrder(provider: provider);
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        )
+            : Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            iconTheme: const IconThemeData(
+              color: Colors.black,
+            ),
+            centerTitle: false,
+            title: const Text(
+              'Shopping Cart',
+            ),
+          ),
+          body: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: height * .1),
+              Align(
+                child: Image.asset(
+                  'assets/images/shooping_cart.png',
+                  height: height * .3,
+                ),
+              ),
+              Text(
+                'Your Cart is empty!',
+                style: TextHelper.titleStyle.copyWith(color: Colors.black.withOpacity(0.6)),
+              ),
+              SizedBox(height: height * .02),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'This feels too light! Go on, add all your favourites.',
+                  maxLines: 3,
+                  textAlign: TextAlign.center,
+                  style: TextHelper.normalTextStyle,
+                ),
+              ),
+              SizedBox(height: height * .05),
+              InkWell(
+                onTap: () {
+                  context.router.popUntilRouteWithName(NavigatorRoute.name);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: ColorConstants.colorBlueEighteen,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  child: Text(
+                    'Try Now',
+                    style: TextHelper.titleStyle.copyWith(color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
       },
     );
   }

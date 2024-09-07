@@ -27,7 +27,7 @@ Introduction
 
 The domain name https://shop.agilecloth.com.com, a company incorporated under the laws of India with our registered office at:- Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085.
 
-Meha Digitek is an online retailer of apparel and lifestyle products offered at great values to the consumer. Membership allows customers to purchase a variety of products. Upon placing an order, agile.in shall ship the product to you and be entitled to its payment for the service. Additionally, we may provide you with information about other services, we consider similar to those that you are either already using, or have enquired about, or that may interest you or any combination thereof. Upon registering with us, we may contact you by electronic means (i.e. either e-mail or SMS or telephone or any combination thereof) to inform you about these services.
+Agile is an online retailer of apparel and lifestyle products offered at great values to the consumer. Membership allows customers to purchase a variety of products. Upon placing an order, agile.in shall ship the product to you and be entitled to its payment for the service. Additionally, we may provide you with information about other services, we consider similar to those that you are either already using, or have enquired about, or that may interest you or any combination thereof. Upon registering with us, we may contact you by electronic means (i.e. either e-mail or SMS or telephone or any combination thereof) to inform you about these services.
 
 Third Party Websites and Content
 
@@ -76,7 +76,7 @@ Violation & Termination
 You agree that the Company may, in its sole discretion and without prior notice, terminate your access to the website and block your future access if we determine that you have violated these Terms of Service or any other policies. If you or the Company terminates your use of any service, you shall still be liable to pay for any service that you have already ordered till the time of such termination.
 
 Disclaimer
- IN NO EVENT WILL THE COMPANY OR ITS REPRESENTATIVES BE LIABLE FOR ANY DAMAGES, ARISING OUT OF OR RELATED TO MISUSE OF PERSONAL INFORMATION OF THE CUSTOMER AND THE CUSTOMER IS SOLELY LIABLE FOR SUCH ACTS AND THEY ARE ADVISED NOT TO SHARE THEIR CONFIDENTIAL INFORMATION LIKE OTP, CREDIT/DEBIT CARD EXPIRY AND CVV WITH ANYONE EVEN THOUGH THEY CLAIM TO BE A MEHYA DIGITECH PRIVATE LIMITED EMPLOYEE. NONE OF OUR EMPLOYEES WILL ASK FOR SUCH TYPE OF QUESTIONS.
+ IN NO EVENT WILL THE COMPANY OR ITS REPRESENTATIVES BE LIABLE FOR ANY DAMAGES, ARISING OUT OF OR RELATED TO MISUSE OF PERSONAL INFORMATION OF THE CUSTOMER AND THE CUSTOMER IS SOLELY LIABLE FOR SUCH ACTS AND THEY ARE ADVISED NOT TO SHARE THEIR CONFIDENTIAL INFORMATION LIKE OTP, CREDIT/DEBIT CARD EXPIRY AND CVV WITH ANYONE EVEN THOUGH THEY CLAIM TO BE A AGILE PAYMENT SERVICES PRIVATE LIMITED EMPLOYEE. NONE OF OUR EMPLOYEES WILL ASK FOR SUCH TYPE OF QUESTIONS.
 """;
 
     return Scaffold(
