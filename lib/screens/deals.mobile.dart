@@ -153,7 +153,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                 SizedBox(height: height * .02),
                 Align(
                   child: Text(
-                    'Clothes',
+                    '',
                     style: TextHelper.subTitleStyle.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
@@ -164,7 +164,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
                     child: Text(
-                      'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
+                      'accessories: A cool and comfortable graphic tee that expresses your personality. ',
                       textAlign: TextAlign.center,
                     ),
                   ),

@@ -21,12 +21,12 @@ class _ContactUsTabState extends State<ContactUsTab> {
       builder: (context, provider, _) {
         final String contactUsText = """
 CONTACT US
-Phone: +91- 7838717985
-Email: info.prestigepaypvtltd@gmail.com
+Phone: +91- 7836879833
+Email: amanapaypaymentsservicespvtltd@gmail.com
 
 Address:
-Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant
-Vihar, North West Delhi, Delhi- 110085
+F-108 &109 Plot No1 Aditya, Complex Blk-KP C.C, Saraswati
+Vihar, North West Delhi, Delhi,-110034
 
 """;
 

@@ -82,7 +82,7 @@ class _OrderHelpDesktopState extends State<OrderHelpDesktop> {
                     });
                   },
                   title: Text(
-                    'What is Prestigepay?',
+                    'What is Amanapay?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

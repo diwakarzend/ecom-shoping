@@ -183,7 +183,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Clothes ',
+                            'accessories ',
                             textAlign: TextAlign.center,
                             style: TextHelper.titleStyle.copyWith(
                               fontWeight: FontWeight.bold,
@@ -221,7 +221,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
+                            'accessories: A cool and comfortable graphic tee that expresses your personality. ',
                             style: TextHelper.normalTextStyle.copyWith(
                               color: Colors.black.withOpacity(0.8),
                             ),

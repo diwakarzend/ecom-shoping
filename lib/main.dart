@@ -95,7 +95,7 @@ class _FabpiksState extends State<Fabpiks> {
       child: ResponsiveSizer(
         builder: (context, orientation, screenType) {
           return MaterialApp.router(
-            onGenerateTitle: (context) => 'Prestigepay',
+            onGenerateTitle: (context) => 'Amanapay',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               visualDensity:

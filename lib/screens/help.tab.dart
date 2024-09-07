@@ -178,7 +178,7 @@ class _HelpTabState extends State<HelpTab> {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    'Mail us at :info.prestigepaypvtltd@gmail.com',
+                    'Mail us at :info.Amanapaypvtltd@gmail.com',
                     style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                   ),
                 ),

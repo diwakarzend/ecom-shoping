@@ -24,7 +24,7 @@ class TopAppBar extends StatelessWidget {
           children: [
             Container(
               height: height * .13,
-              color: ColorConstants.colorYellowThree,
+              color: ColorConstants.colorBlueNineteen,
               padding: EdgeInsets.symmetric(horizontal: width * .014),
               alignment: Alignment.center,
               child: Row(
@@ -210,6 +210,6 @@ class TopAppBar extends StatelessWidget {
 }
 
 void _downloadAPK() async {
-  const launchUri =  'https://stylishbucket11.s3.ap-south-1.amazonaws.com/prestigepay1-release.apk';
+  const launchUri =  'https://stylishbucket11.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

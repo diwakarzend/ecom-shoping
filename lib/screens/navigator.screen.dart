@@ -48,7 +48,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   bool popupOpenedTwo = false;
 
   void _downloadAPK() async {
-    const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/prestigepay1-release.apk';
+    const launchUri = 'https://stylishbucket11.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
     await launchUrl(Uri.parse(launchUri));
   }
 
@@ -290,7 +290,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                     provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
-                                text: 'Clothes',
+                                text: 'accessories',
                                 gradient: LinearGradient(
                                   colors: provider.activeIndex == 1
                                       ? [

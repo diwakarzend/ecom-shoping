@@ -327,7 +327,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Clothes',
+                                'accessories',
                                 style: TextHelper.subTitleStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -351,7 +351,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
-                            'Clothes: A cool and comfortable graphic tee that expresses your personality.',
+                            'accessories: A cool and comfortable graphic tee that expresses your personality.',
                             maxLines: 10,
                             style: TextHelper.smallTextStyle.copyWith(
                               fontWeight: FontWeight.w600,
