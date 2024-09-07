@@ -28,7 +28,7 @@ Introduction
 The domain name www.shop.classicpayfurniture.com, a company incorporated under the laws of India with our registered office at:- Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant
 Vihar, North West Delhi, Delhi- 110085.
 
-Meha Digitek is an online retailer of apparel and lifestyle products offered at great values to the consumer. Membership allows customers to purchase a variety of products. Upon placing an order, Classicpay.in shall ship the product to you and be entitled to its payment for the service. Additionally, we may provide you with information about other services, we consider similar to those that you are either already using, or have enquired about, or that may interest you or any combination thereof. Upon registering with us, we may contact you by electronic means (i.e. either e-mail or SMS or telephone or any combination thereof) to inform you about these services.
+Classicpay is an online retailer of apparel and lifestyle products offered at great values to the consumer. Membership allows customers to purchase a variety of products. Upon placing an order, Classicpay.in shall ship the product to you and be entitled to its payment for the service. Additionally, we may provide you with information about other services, we consider similar to those that you are either already using, or have enquired about, or that may interest you or any combination thereof. Upon registering with us, we may contact you by electronic means (i.e. either e-mail or SMS or telephone or any combination thereof) to inform you about these services.
 
 Third Party Websites and Content
 
