@@ -73,7 +73,7 @@ class _ShoppingTabThreeDesktopState extends State<ShoppingTabThreeDesktop> {
         'key': (provider.appSettings?.paymentGateway.firstWhereOrNull((element) => element.gatway == 'razorpay'))?.key1 ?? '',
         'amount': razorpayAmount,
         'currency': 'INR',
-        'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
+        // 'image': 'https://lh3.googleusercontent.com/n-wZcjDIdIUahSl7k-Mf7d62O6_szbP2YXBuVpXSM9t4Y9EGxIRTi0pdwstdjEpSAQ',
         'order_id': _order?.paymentRefId,
         'timeout': '300',
         'description': 'Buying products',
