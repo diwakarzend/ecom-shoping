@@ -210,6 +210,6 @@ class TopAppBar extends StatelessWidget {
 }
 
 void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/classicpay1-release.apk';
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/Classicfur.apk';
   await launchUrl(Uri.parse(launchUri));
 }
