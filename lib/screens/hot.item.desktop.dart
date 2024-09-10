@@ -554,7 +554,7 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                               onTap: () => _cartHelper.addToCart(provider: provider, context: context, productId: _product!.id),
                               child: Container(
                                 alignment: Alignment.center,
-                                height: height * .07,
+                                height: height * .05,
                                 width: width * .17,
                                 padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
                                 decoration: BoxDecoration(
