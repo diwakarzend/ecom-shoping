@@ -8,6 +8,7 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/widgets/custom.network.image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -34,6 +35,8 @@ class DealItemDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: () => onProductClick(),
       child: Container(
@@ -138,21 +141,35 @@ class DealItemDesktop extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   InkWell(
-                    onTap: () => onAddToCart(),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: const Text('Here'),
+                          content: const Text('This feature is only available on our app.'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => _downloadAPK(),
+                              child: const Text('Download APK'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                     child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: ColorConstants.colorBlueEighteen,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 6),
                       alignment: Alignment.center,
+                      height: height * .07,
+                      width: width * .17,
+                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blueAccent,
+                      ),
                       child: Text(
                         'Add to Cart',
                         style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
                           color: Colors.white,
-                          fontSize: 12.0,
                         ),
                       ),
                     ),
@@ -165,4 +182,10 @@ class DealItemDesktop extends StatelessWidget {
       ),
     );
   }
+}
+
+
+void _downloadAPK() async {
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/Classicfur.apk';
+  await launchUrl(Uri.parse(launchUri));
 }
