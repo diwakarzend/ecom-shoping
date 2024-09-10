@@ -57,9 +57,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: TermsConditionRoute.page, path: '/terms'),
         AutoRoute(page: PrivacyPolicyRoute.page, path: '/privacy'),
         AutoRoute(page: RefundPolicyRoute.page, path: '/refund-policy'),
-        AutoRoute(page: ShoppingTabOneDesktop.page, guards: [AuthGuard()], path: '/checkout-one'),
-        AutoRoute(page: ShoppingTabTwoDesktop.page, guards: [AuthGuard()], path: '/checkout-two'),
-        AutoRoute(page: ShoppingTabThreeDesktop.page, guards: [AuthGuard()], path: '/checkout-final/:id'),
+        // AutoRoute(page: ShoppingTabOneDesktop.page, guards: [AuthGuard()], path: '/checkout-one'),
+        // AutoRoute(page: ShoppingTabTwoDesktop.page, guards: [AuthGuard()], path: '/checkout-two'),
+        // AutoRoute(page: ShoppingTabThreeDesktop.page, guards: [AuthGuard()], path: '/checkout-final/:id'),
         AutoRoute(page: PaymentFailed.page, guards: [AuthGuard()], path: '/payment-failed/:id'),
         AutoRoute(page: PaymentSuccess.page, guards: [AuthGuard()], path: '/payment-success/:id'),
       ];

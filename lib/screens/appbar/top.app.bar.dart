@@ -139,54 +139,54 @@ class TopAppBar extends StatelessWidget {
                             .toString(),
                         style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
                       ),
-                      child: const Icon(
-                        Icons.notifications_outlined,
-                        size: 28,
-                      ),
+                      // child: const Icon(
+                      //   Icons.notifications_outlined,
+                      //   size: 28,
+                      // ),
                     ),
                   ),
                   const SizedBox(
                     width: 15,
                   ),
-                  InkWell(
-                    onTap: () {
-                      context.router.navigate(const WishlistRoute());
-                    },
-                    child: Badge(
-                      showBadge: provider.wishlist != null && provider.wishlist!.count > 0,
-                      badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                      position: BadgePosition.topEnd(top: -5, end: 0),
-                      badgeContent: Text(
-                        provider.wishlist?.count.toString() ?? '',
-                        style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
-                      ),
-                      child: const Icon(
-                        Icons.favorite_outline,
-                        size: 28,
-                      ),
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     context.router.navigate(const WishlistRoute());
+                  //   },
+                  //   child: Badge(
+                  //     showBadge: provider.wishlist != null && provider.wishlist!.count > 0,
+                  //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
+                  //     position: BadgePosition.topEnd(top: -5, end: 0),
+                  //     badgeContent: Text(
+                  //       provider.wishlist?.count.toString() ?? '',
+                  //       style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
+                  //     ),
+                  //     child: const Icon(
+                  //       Icons.favorite_outline,
+                  //       size: 28,
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(
                     width: 15,
                   ),
-                  InkWell(
-                    onTap: () {
-                      context.router.navigate(const ShoppingTabOneDesktop());
-                    },
-                    child: Badge(
-                      showBadge: (provider.cart?.count ?? 0) > 0,
-                      badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                      position: BadgePosition.topEnd(top: -5, end: 0),
-                      badgeContent: Text(
-                        provider.cart?.count.toString() ?? '',
-                        style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
-                      ),
-                      child: const Icon(
-                        Icons.shopping_cart_outlined,
-                        size: 28,
-                      ),
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     context.router.navigate(const ShoppingTabOneDesktop());
+                  //   },
+                  //   child: Badge(
+                  //     showBadge: (provider.cart?.count ?? 0) > 0,
+                  //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
+                  //     position: BadgePosition.topEnd(top: -5, end: 0),
+                  //     badgeContent: Text(
+                  //       provider.cart?.count.toString() ?? '',
+                  //       style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
+                  //     ),
+                  //     child: const Icon(
+                  //       Icons.shopping_cart_outlined,
+                  //       size: 28,
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(
                     width: 15,
                   ),

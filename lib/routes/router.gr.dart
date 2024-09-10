@@ -1321,12 +1321,12 @@ class ShoppingTabOneDesktop extends _i46.PageRouteInfo<void> {
 
   static const String name = 'ShoppingTabOneDesktop';
 
-  static _i46.PageInfo page = _i46.PageInfo(
-    name,
-    builder: (data) {
-      return const _i37.ShoppingTabOneDesktop();
-    },
-  );
+  // static _i46.PageInfo page = _i46.PageInfo(
+  //   name,
+  //   // builder: (data) {
+  //   //   return const _i37.ShoppingTabOneDesktop();
+  //   // },
+  // );
 }
 
 /// generated route for
@@ -1349,19 +1349,19 @@ class ShoppingTabThreeDesktop
 
   static const String name = 'ShoppingTabThreeDesktop';
 
-  static _i46.PageInfo page = _i46.PageInfo(
-    name,
-    builder: (data) {
-      final pathParams = data.inheritedPathParams;
-      final args = data.argsAs<ShoppingTabThreeDesktopArgs>(
-          orElse: () => ShoppingTabThreeDesktopArgs(
-              addressId: pathParams.getString('id')));
-      return _i38.ShoppingTabThreeDesktop(
-        key: args.key,
-        addressId: args.addressId,
-      );
-    },
-  );
+  // static _i46.PageInfo page = _i46.PageInfo(
+  //   name,
+  //   builder: (data) {
+  //     final pathParams = data.inheritedPathParams;
+  //     final args = data.argsAs<ShoppingTabThreeDesktopArgs>(
+  //         orElse: () => ShoppingTabThreeDesktopArgs(
+  //             addressId: pathParams.getString('id')));
+  //     return _i38.ShoppingTabThreeDesktop(
+  //       key: args.key,
+  //       addressId: args.addressId,
+  //     );
+  //   },
+  // );
 }
 
 class ShoppingTabThreeDesktopArgs {
@@ -1391,12 +1391,12 @@ class ShoppingTabTwoDesktop extends _i46.PageRouteInfo<void> {
 
   static const String name = 'ShoppingTabTwoDesktop';
 
-  static _i46.PageInfo page = _i46.PageInfo(
-    name,
-    builder: (data) {
-      return const _i39.ShoppingTabTwoDesktop();
-    },
-  );
+  // static _i46.PageInfo page = _i46.PageInfo(
+  //   name,
+  //   builder: (data) {
+  //     return const _i39.ShoppingTabTwoDesktop();
+  //   },
+  // );
 }
 
 /// generated route for
