@@ -167,26 +167,26 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                               ),
                             ),
                           ),
-                          IconButton(
-                            onPressed: () {
-                              context.router.push(const CartRoute());
-                            },
-                            color: ColorConstants.colorBlackThree,
-                            iconSize: 35,
-                            icon: Badge(
-                              showBadge: (provider.cart?.count ?? 0) > 0,
-                              badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                              position: BadgePosition.topEnd(top: 0, end: 0),
-                              badgeContent: Text(
-                                provider.cart?.count.toString() ?? '',
-                                style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
-                              ),
-                              child: const Icon(
-                                Ionicons.cart_outline,
-                                size: 30,
-                              ),
-                            ),
-                          ),
+                          // IconButton(
+                          //   onPressed: () {
+                          //     context.router.push(const CartRoute());
+                          //   },
+                          //   color: ColorConstants.colorBlackThree,
+                          //   iconSize: 35,
+                          //   icon: Badge(
+                          //     showBadge: (provider.cart?.count ?? 0) > 0,
+                          //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
+                          //     position: BadgePosition.topEnd(top: 0, end: 0),
+                          //     badgeContent: Text(
+                          //       provider.cart?.count.toString() ?? '',
+                          //       style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
+                          //     ),
+                          //     child: const Icon(
+                          //       Ionicons.cart_outline,
+                          //       size: 30,
+                          //     ),
+                          //   ),
+                          // ),
                           ElevatedButton(
                             onPressed: _downloadAPK,
                             style: ButtonStyle(
