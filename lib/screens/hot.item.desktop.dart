@@ -547,26 +547,26 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: height * .03,
-                            ),
-                            InkWell(
-                              onTap: () => _cartHelper.addToCart(provider: provider, context: context, productId: _product!.id),
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: height * .07,
-                                width: width * .17,
-                                padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.blueAccent,
-                                ),
-                                child: Text(
-                                  'Add to Cart',
-                                  style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-                                ),
-                              ),
-                            ),
+                            // SizedBox(
+                            //   height: height * .03,
+                            // ),
+                            // InkWell(
+                            //   onTap: () => _cartHelper.addToCart(provider: provider, context: context, productId: _product!.id),
+                            //   child: Container(
+                            //     alignment: Alignment.center,
+                            //     height: height * .07,
+                            //     width: width * .17,
+                            //     padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
+                            //     decoration: BoxDecoration(
+                            //       borderRadius: BorderRadius.circular(10),
+                            //       color: Colors.blueAccent,
+                            //     ),
+                            //     child: Text(
+                            //       'Add to Cartrrrrrr',
+                            //       style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
