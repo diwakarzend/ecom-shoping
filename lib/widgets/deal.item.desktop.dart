@@ -145,7 +145,7 @@ class DealItemDesktop extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Here'),
+                          title: const Text('Alert'),
                           content: const Text('This feature is only available on our app.'),
                           actions: <Widget>[
                             TextButton(
