@@ -68646,7 +68646,7 @@ A.S1.prototype={
 Dm(){var s=0,r=A.F(t.H)
 var $async$Dm=A.B(function(a,b){if(a===1)return A.C(b,r)
 while(true)switch(s){case 0:s=2
-return A.L(A.ajt(A.fa("https://stylishbucket11.s3.ap-south-1.amazonaws.com/agile1-release.apk",0,null),B.uW,B.n4),$async$Dm)
+return A.L(A.ajt(A.fa(u.Y,0,null),B.uW,B.n4),$async$Dm)
 case 2:return A.D(null,r)}})
 return A.E($async$Dm,r)},
 a5(){this.a.toString
