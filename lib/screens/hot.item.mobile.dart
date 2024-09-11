@@ -169,25 +169,25 @@ class _HotItemMobileState extends State<HotItemMobile> with TickerProviderStateM
                         Ionicons.heart_outline,
                       ),
               ),
-              IconButton(
-                onPressed: () {
-                  context.router.push(const CartRoute());
-                },
-                color: ColorConstants.colorBlackThree,
-                iconSize: 35,
-                icon: Badge(
-                  showBadge: (provider.cart?.count ?? 0) > 0,
-                  badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                  position: BadgePosition.topEnd(top: 0, end: 0),
-                  badgeContent: Text(
-                    provider.cart?.count.toString() ?? '',
-                    style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
-                  ),
-                  child: const Icon(
-                    Ionicons.cart_outline,
-                  ),
-                ),
-              ),
+              // IconButton(
+              //   onPressed: () {
+              //     context.router.push(const CartRoute());
+              //   },
+              //   color: ColorConstants.colorBlackThree,
+              //   iconSize: 35,
+              //   icon: Badge(
+              //     showBadge: (provider.cart?.count ?? 0) > 0,
+              //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
+              //     position: BadgePosition.topEnd(top: 0, end: 0),
+              //     badgeContent: Text(
+              //       provider.cart?.count.toString() ?? '',
+              //       style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
+              //     ),
+              //     child: const Icon(
+              //       Ionicons.cart_outline,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           body: SingleChildScrollView(
@@ -328,28 +328,28 @@ class _HotItemMobileState extends State<HotItemMobile> with TickerProviderStateM
                       //   ),
                     ],
                   ),
-                SizedBox(height: height * .02),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: InkWell(
-                    onTap: () => _cartHelper.addToCart(provider: provider, context: context, productId: _product!.id),
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 25),
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      decoration: BoxDecoration(
-                        color: ColorConstants.colorBlueEighteen,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        'Add to Cart',
-                        style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // SizedBox(height: height * .02),
+                // Align(
+                //   alignment: Alignment.centerRight,
+                //   child: InkWell(
+                //     onTap: () => _cartHelper.addToCart(provider: provider, context: context, productId: _product!.id),
+                //     child: Container(
+                //       margin: const EdgeInsets.only(right: 25),
+                //       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                //       decoration: BoxDecoration(
+                //         color: ColorConstants.colorBlueEighteen,
+                //         borderRadius: BorderRadius.circular(10),
+                //       ),
+                //       child: Text(
+                //         'Add to Cart',
+                //         style: TextHelper.normalTextStyle.copyWith(
+                //           fontWeight: FontWeight.w600,
+                //           color: Colors.white,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: height * .02),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -779,30 +779,30 @@ class _HotItemMobileState extends State<HotItemMobile> with TickerProviderStateM
               ],
             ),
           ),
-          bottomNavigationBar: InkWell(
-            onTap: () => _cartHelper.addToCart(
-              provider: provider,
-              context: context,
-              productId: _product!.id,
-            ),
-            child: Container(
-              width: width,
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              height: height * .06,
-              decoration: BoxDecoration(
-                color: ColorConstants.colorBlueEighteen,
-                borderRadius: BorderRadius.circular(height * .05),
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                'Add to Cart',
-                style: TextHelper.subTitleStyle.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
+          // bottomNavigationBar: InkWell(
+          //   onTap: () => _cartHelper.addToCart(
+          //     provider: provider,
+          //     context: context,
+          //     productId: _product!.id,
+          //   ),
+          //   child: Container(
+          //     width: width,
+          //     margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          //     height: height * .06,
+          //     decoration: BoxDecoration(
+          //       color: ColorConstants.colorBlueEighteen,
+          //       borderRadius: BorderRadius.circular(height * .05),
+          //     ),
+          //     alignment: Alignment.center,
+          //     child: Text(
+          //       'Add to Cart',
+          //       style: TextHelper.subTitleStyle.copyWith(
+          //         fontWeight: FontWeight.w600,
+          //         color: Colors.white,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         );
       },
     );

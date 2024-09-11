@@ -150,7 +150,7 @@ class DealItems extends StatelessWidget {
                     },
                     child: Container(
                       alignment: Alignment.center,
-                      height: height * .06,
+                      height: height * .09,
                       width: width * .17,
                       padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
                       decoration: BoxDecoration(

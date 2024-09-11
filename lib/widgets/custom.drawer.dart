@@ -118,25 +118,25 @@ class CustomDrawer extends Drawer {
                     ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    context.router.push(const CartRoute());
-                  },
-                  color: ColorConstants.colorBlackThree,
-                  iconSize: 35,
-                  icon: Badge(
-                    showBadge: (provider.cart?.count ?? 0) > 0,
-                    badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                    position: BadgePosition.topEnd(top: 0, end: 0),
-                    badgeContent: Text(
-                      provider.cart?.count.toString() ?? '',
-                      style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
-                    ),
-                    child: const Icon(
-                      Ionicons.cart_outline,
-                    ),
-                  ),
-                ),
+                // IconButton(
+                //   onPressed: () {
+                //     context.router.push(const CartRoute());
+                //   },
+                //   color: ColorConstants.colorBlackThree,
+                //   iconSize: 35,
+                //   icon: Badge(
+                //     showBadge: (provider.cart?.count ?? 0) > 0,
+                //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
+                //     position: BadgePosition.topEnd(top: 0, end: 0),
+                //     badgeContent: Text(
+                //       provider.cart?.count.toString() ?? '',
+                //       style: TextHelper.smallTextStyle.copyWith(color: Colors.white),
+                //     ),
+                //     child: const Icon(
+                //       Ionicons.cart_outline,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             Expanded(
@@ -256,32 +256,32 @@ class CustomDrawer extends Drawer {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          InkWell(
-                            onTap: () {
-                              context.router.push(const OrderRoute());
-                            },
-                            child: Container(
-                              width: kWidth,
-                              height: kHeight * .06,
-                              margin: const EdgeInsets.only(bottom: 20),
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
-                              decoration: BoxDecoration(
-                                color: ColorConstants.colorGreyNine,
-                                borderRadius: BorderRadius.circular(kHeight * .07),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Orders',
-                                    style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                          // InkWell(
+                          //   onTap: () {
+                          //     context.router.push(const OrderRoute());
+                          //   },
+                          //   child: Container(
+                          //     width: kWidth,
+                          //     height: kHeight * .06,
+                          //     margin: const EdgeInsets.only(bottom: 20),
+                          //     padding: const EdgeInsets.symmetric(horizontal: 20),
+                          //     decoration: BoxDecoration(
+                          //       color: ColorConstants.colorGreyNine,
+                          //       borderRadius: BorderRadius.circular(kHeight * .07),
+                          //     ),
+                          //     child: Row(
+                          //       mainAxisSize: MainAxisSize.max,
+                          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //       crossAxisAlignment: CrossAxisAlignment.center,
+                          //       children: [
+                          //         Text(
+                          //           'Orders',
+                          //           style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorBlack),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
                           InkWell(
                             onTap: () {
                               context.router.push(const PendingActionsRoute());
