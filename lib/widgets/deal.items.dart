@@ -134,7 +134,7 @@ class DealItems extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   InkWell(
-                    onTap: () => _downloadAPK(),
+                    onTap: () => _showDownloadDialog(context),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -145,23 +145,57 @@ class DealItems extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         'Add to Cart',
-                        style: TextHelper.smallTextStyle.copyWith(
+                        style: TextStyle(
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ]),
+            )])));
+  }
+
+  void _showDownloadDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Download APK'),
+          content: Text('This Feature is only available on your APP?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _downloadAPK();
+              },
+              child: Text('Download'),
             ),
           ],
-        ),
-      ),
+        );
+      },
     );
   }
+
+  void _downloadAPK() async {
+    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+    if (await canLaunch(launchUri)) {
+      await launch(launchUri);
+    } else {
+      print('Could not launch $launchUri');
+    }
+  }
 }
-void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
-  await launchUrl(Uri.parse(launchUri));
-}
+
+//
+// void _downloadAPK() async {
+//   const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+//   await launchUrl(Uri.parse(launchUri));
+// }
