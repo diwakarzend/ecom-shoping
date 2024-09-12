@@ -138,7 +138,7 @@ class DealItems extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.blue[800],
+                        color: ColorConstants.colorBlueEighteen,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 6),
