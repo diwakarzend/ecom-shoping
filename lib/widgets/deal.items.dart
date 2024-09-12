@@ -8,8 +8,9 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/widgets/custom.network.image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+// import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DealItems extends StatelessWidget {
   final bool gridView;
@@ -132,47 +133,63 @@ class DealItems extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  InkWell(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Alert'),
-                          content: const Text('This feature is only available on our app.'),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () => _downloadAPK(),
-                              child: const Text('Download APK'),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: height * .09,
-                      width: width * .17,
-                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blueAccent,
-                      ),
-                      child: Text(
-                        'Add to Cart',
-                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+    InkWell(
+    onTap: () => _showDownloadDialog(context),
+    child: Container(
+    width: double.infinity,
+    decoration: BoxDecoration(
+    color: Colors.blue[800],
+    borderRadius: BorderRadius.circular(10),
+    ),
+    padding: const EdgeInsets.symmetric(vertical: 6),
+    alignment: Alignment.center,
+    child: Text(
+    'Add to Cart',
+    style: TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+    ),
+    ),
+    ),
+    ),
+    ]),
+    )])));
+  }
+
+  void _showDownloadDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Download APK'),
+          content: Text('This Feature is only available on your APP?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _downloadAPK();
+              },
+              child: Text('Download'),
             ),
           ],
-        ),
-      ),
+        );
+      },
     );
   }
-}
-void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
-  await launchUrl(Uri.parse(launchUri));
+
+  void _downloadAPK() async {
+    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
+    if (await canLaunch(launchUri)) {
+      await launch(launchUri);
+    } else {
+      print('Could not launch $launchUri');
+    }
+  }
 }
