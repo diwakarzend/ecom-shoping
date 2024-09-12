@@ -8,8 +8,9 @@ import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/widgets/custom.network.image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+// import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DealItems extends StatelessWidget {
   final bool gridView;
@@ -133,37 +134,24 @@ class DealItems extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   InkWell(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Alert'),
-                          content: const Text('This feature is only available on our app.'),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () => _downloadAPK(),
-                              child: const Text('Download APK'),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                    onTap: () => _downloadAPK(),
                     child: Container(
-                      alignment: Alignment.center,
-                      height: height * .10,
-                      width: width * .17,
-                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: width * .01),
+                      width: double.infinity,
                       decoration: BoxDecoration(
+                        color: ColorConstants.colorBlueEighteen,
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.blueAccent,
                       ),
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      alignment: Alignment.center,
                       child: Text(
                         'Add to Cart',
-                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
