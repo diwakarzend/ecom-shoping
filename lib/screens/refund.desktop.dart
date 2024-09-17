@@ -23,9 +23,9 @@ class _RefundPolicyDesktopState extends State<RefundPolicyDesktop> {
       builder: (context, provider, _) {
         String privacyPolicyText = provider.appSettings?.refund ?? '';
         privacyPolicyText = privacyPolicyText
-            .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'anamprotechnologypvtltd@gmail.com')
-            .replaceAll('Agile', 'Anampro')
-            .replaceAll('AGILE', 'ANAMPRO');
+            .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'excueetsimmediapvtltd@gmail.com')
+            .replaceAll('Agile', 'excueets')
+            .replaceAll('AGILE', 'excueets');
         return Scaffold(
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),

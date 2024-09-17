@@ -119,8 +119,8 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
   //   );
   // }
 
-  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab1ea5f8.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab25beb4.jpg'];
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab270c35.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab2ee4f2.jpg'];
 
 
 

@@ -21,11 +21,11 @@ class _ContactUsTabState extends State<ContactUsTab> {
       builder: (context, provider, _) {
         final String contactUsText = """
 CONTACT US
-Phone: +91- 7836879833
-Email: anamprotechnologypvtltd@gmail.com
+Phone: +91- 8859362732
+Email: excueetsimmediapvtltd@gmail.com
 
 Address:
-SHOP NO. 2, UPPER GROUND FLOOR, BLOCK-N, KIRTI NAGAR NEW DELHI-110015.
+355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085
 
 """;
 

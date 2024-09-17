@@ -48,7 +48,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   bool popupOpenedTwo = false;
 
   void _downloadAPK() async {
-    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/Anampro1-release.apk';
+    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/excueets1-release.apk';
     await launchUrl(Uri.parse(launchUri));
   }
 
@@ -121,7 +121,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                         ),
                         titleSpacing: 0,
                         title: Image.asset(
-                          'assets/images/app_icon1.png',
+                          'assets/images/fab_logo.png',
                           height: height * .04,
                         ),
                         centerTitle: false,

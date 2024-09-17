@@ -22,12 +22,12 @@ class _PrivacyPolicyMobileState extends State<PrivacyPolicyMobile> {
       builder: (context, provider, _) {
         String privacyPolicyText = provider.appSettings?.privacy ?? '';
         privacyPolicyText = privacyPolicyText
-            .replaceAll('AGILE PAYMENT SERVICES PRIVATE LIMITED', 'ANAMPRO TECHNOLOGY PRIVATE LIMITED')
-            .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'anamprotechnologypvtltd@gmail.com@gmail.com')
-            .replaceAll('Agile', 'Anampro')
-            .replaceAll('AGILE', 'ANAMPRO')
+            .replaceAll('AGILE PAYMENT SERVICES PRIVATE LIMITED', 'EXCUEETS IMMEDIA SERVICES PRIVATE LIMITED')
+            .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'excueetsimmediapvtltd@gmail')
+            .replaceAll('Agile', 'excueets')
+            .replaceAll('AGILE', 'EXCUEETS')
             .replaceAll('Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085 ',
-            'SHOP NO. 2, UPPER GROUND FLOOR, BLOCK-N, KIRTI NAGAR NEW DELHI-110015.');
+            '355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085.');
 
         return Scaffold(
           appBar: AppBar(

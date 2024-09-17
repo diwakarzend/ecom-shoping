@@ -78,7 +78,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                     });
                   },
                   title: Text(
-                    'What is Anampro?',
+                    'What is excueets?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -154,7 +154,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : anamprotechnologypvtltd@gmail.com',
+                  'Mail us at : excueetsimmediapvtltd@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

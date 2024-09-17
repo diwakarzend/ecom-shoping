@@ -423,7 +423,7 @@ class CustomDrawerDesktop extends Drawer {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'About Anampro',
+                                          'About excueets',
                                           style: TextHelper.extraSmallTextStyle.copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w600),
                                         ),
                                       ],

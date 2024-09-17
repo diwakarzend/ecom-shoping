@@ -25,11 +25,11 @@ class _RefundPolicyMobileState extends State<RefundPolicyMobile> {
   void initState() {
     super.initState();
     privacyPolicyText = privacyPolicyText
-        .replaceAll('Shipan Tech Private Limited', 'ANAMPRO TECHNOLOGY PRIVATE LIMITED')
-        .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'anamprotechnologypvtltd@gmail.com')
-        .replaceAll('Agile', 'Anampro')
-        .replaceAll('shop NO. 2 karim Mansion Behind Pharmacy college', '4th Floor Office No.432 Geras Imperium Star')
-        .replaceAll('AGILE', 'ANAMPRO');
+        .replaceAll('Shipan Tech Private Limited', 'EXCUEETS IMMEDIA SERVICES PRIVATE LIMITED')
+        .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'excueetsimmediapvtltd@gmail.com')
+        .replaceAll('Agile', 'excueets')
+        .replaceAll('shop NO. 2 karim Mansion Behind Pharmacy college', '355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085')
+        .replaceAll('AGILE', 'excueets');
   }
 
   @override

@@ -24,7 +24,7 @@ class TopAppBar extends StatelessWidget {
           children: [
             Container(
               height: height * .13,
-              color: ColorConstants.colorGreenTwo,
+              color: ColorConstants.colorGreyNine,
               padding: EdgeInsets.symmetric(horizontal: width * .014),
               alignment: Alignment.center,
               child: Row(
@@ -39,7 +39,7 @@ class TopAppBar extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
-                        'assets/images/app_icon1.png',
+                        'assets/images/app_logo.png',
                         width: width * .10,
                       ),
                     ),
@@ -198,7 +198,7 @@ class TopAppBar extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.download, color: Colors.white),
+                        Icon(Icons.download, color: Colors.black),
                         SizedBox(width: 8),
                         Text('Download APK'),
                       ],
@@ -215,6 +215,6 @@ class TopAppBar extends StatelessWidget {
 }
 
 void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/Anampro1-release.apk';
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/excueets1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

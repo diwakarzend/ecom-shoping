@@ -49,7 +49,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  '+91-8859820115',
+                  '+91-8859362732',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),
@@ -63,7 +63,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  'anamprotechnologypvtltd@gmail.com',
+                  'excueetsimmediapvtltd@gmail.com',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),
@@ -77,7 +77,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  'SHOP NO. 2, UPPER GROUND FLOOR, BLOCK-N, KIRTI NAGAR NEW DELHI-110015',
+                  '355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),

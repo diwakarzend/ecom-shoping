@@ -31,7 +31,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
       children: [
         Container(
           padding: EdgeInsets.only(left: width * .10, top: 40, right: width * .10, bottom: 40),
-          color: const Color(0xffebebeb),
+          color: const Color(0xff343434FF),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +51,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'Anampro is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
+                      'excueets is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -255,18 +255,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'For Brands & Agencies',
-                      style: TextHelper.smallTextStyle.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 17.0,
-                      ),
-                    ),
-                    SizedBox(
-                      height: height * .02,
-                    ),
-                    Text(
-                      'Anampro is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
+                      'excueets is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(

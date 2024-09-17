@@ -23,12 +23,12 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
       builder: (context, provider, _) {
         final modifiedFaqs = provider.faqs.map((faq) {
           final modifiedQuestion = faq.question
-              .replaceAll('What is Agile?', 'What is Anampro?');
+              .replaceAll('What is Agile?', 'What is excueets?');
 
           final modifiedAnswer = faq.answer
-              .replaceAll('game.agilecloth.com/', 'shop.anamprocloth.com')
-              .replaceAll('Agile', 'Anampro')
-              .replaceAll('shipantechprivatelimited5@gmail.com', 'anamprotechnologypvtltd@gmail.com');
+              .replaceAll('www.shop.agilecloth.com/', 'www.shop.excueetscloth.com')
+              .replaceAll('Agile', 'Excueets')
+              .replaceAll('shipantechprivatelimited5@gmail.com', 'excueetsimmediapvtltd@gmail.com');
 
           return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
         }).toList();

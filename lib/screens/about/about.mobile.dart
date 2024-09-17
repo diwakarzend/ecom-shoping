@@ -25,7 +25,7 @@ class _AboutScreenMobileState extends State<AboutScreenMobile> {
         return Scaffold(
           appBar: AppBar(
             title: const Text(
-              'About Anampro',
+              'About excueets',
             ),
             centerTitle: false,
           ),
@@ -41,9 +41,10 @@ class _AboutScreenMobileState extends State<AboutScreenMobile> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: width * .05),
                     child: Text(
-                      provider.appSettings!.aboutUs,
+                      provider.appSettings!.aboutUs
+                          .replaceAll('Agile', 'Excueets'),
                       maxLines: 10000000000,
-                      style: TextHelper.normalTextStyle,
+                      style: TextHelper.smallTextStyle,
                     ),
                   ),
                 SizedBox(height: height * .1),

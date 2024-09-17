@@ -58,7 +58,7 @@ class StringConstants {
 class ColorConstants {
   static const Color colorGrey = Color(0xff646464);
   static const Color colorGreyTwo = Color(0xff707070);
-  static const Color colorGreyThree = Color(0xff5d5d5d);
+  static const Color colorGreyThree = Color(0xff343434);
 
   // static const Color colorGreyFour = Color(0xff595959);
   static const Color colorGreyFive = Color(0xffACACAC);
