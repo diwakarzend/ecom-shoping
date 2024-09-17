@@ -48,7 +48,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   bool popupOpenedTwo = false;
 
   void _downloadAPK() async {
-    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/Anampro1-release.apk';
     await launchUrl(Uri.parse(launchUri));
   }
 
@@ -121,7 +121,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                         ),
                         titleSpacing: 0,
                         title: Image.asset(
-                          'assets/images/fab_logo.png',
+                          'assets/images/app_icon1.png',
                           height: height * .04,
                         ),
                         centerTitle: false,
@@ -190,11 +190,14 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                           ElevatedButton(
                             onPressed: _downloadAPK,
                             style: ButtonStyle(
-                              foregroundColor: WidgetStateProperty.all(Colors.black),
-                              // Text color
-                              side: WidgetStateProperty.all(const BorderSide(color: Colors.blue, width: 2.0)), // Border
+                              foregroundColor: MaterialStateProperty.all(Colors.black),
                             ),
-                            child: const Text('Download APK'),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                Icon(Icons.download),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -290,7 +293,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                                     provider.activeIndex == 1 ? ColorConstants.colorBlueTen : ColorConstants.colorBlack,
                               ),
                               name: NavLabel(
-                                text: 'accessories',
+                                text: 'Fashion',
                                 gradient: LinearGradient(
                                   colors: provider.activeIndex == 1
                                       ? [

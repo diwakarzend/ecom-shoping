@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
- */
-
 import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/text.helper.dart';
 import 'package:fabpiks_web/providers/providers.dart';
@@ -22,8 +18,21 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
+        final modifiedFaqs = provider.faqs.map((faq) {
+          final modifiedQuestion = faq.question
+              .replaceAll('What is Agile?', 'What is Anampro?');
+
+          final modifiedAnswer = faq.answer
+              .replaceAll('game.agilecloth.com/', 'shop.anamprocloth.com')
+              .replaceAll('Agile', 'Anampro')
+              .replaceAll('shipantechprivatelimited5@gmail.com', 'anamprotechnologypvtltd@gmail.com');
+
+          return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
+        }).toList();
+
         return Scaffold(
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -46,7 +55,7 @@ class _FAQHelpDesktopState extends State<FAQHelpDesktop> {
                 Column(
                   children: [
                     SizedBox(height: height * .03),
-                    ...provider.faqs.map(
+                    ...modifiedFaqs.map(
                           (e) => Theme(
                         data: ThemeData().copyWith(dividerColor: Colors.transparent),
                         child: Container(

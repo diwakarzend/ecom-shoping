@@ -24,7 +24,7 @@ class TopAppBar extends StatelessWidget {
           children: [
             Container(
               height: height * .13,
-              color: ColorConstants.colorBlueNineteen,
+              color: ColorConstants.colorGreenTwo,
               padding: EdgeInsets.symmetric(horizontal: width * .014),
               alignment: Alignment.center,
               child: Row(
@@ -39,7 +39,7 @@ class TopAppBar extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
-                        'assets/images/app_logo.png',
+                        'assets/images/app_icon1.png',
                         width: width * .10,
                       ),
                     ),
@@ -190,15 +190,20 @@ class TopAppBar extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  ElevatedButton(
+                  TextButton(
                     onPressed: _downloadAPK,
                     style: ButtonStyle(
-                      foregroundColor: WidgetStateProperty.all(Colors.black),
-                      // Text color
-                      side: WidgetStateProperty.all(const BorderSide(color: Colors.blue, width: 2.0)), // Border
+                      foregroundColor: MaterialStateProperty.all(Colors.black), // Text color
                     ),
-                    child: const Text('Download APK'),
-                  ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.download, color: Colors.white),
+                        SizedBox(width: 8),
+                        Text('Download APK'),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -210,6 +215,6 @@ class TopAppBar extends StatelessWidget {
 }
 
 void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/Anampro1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

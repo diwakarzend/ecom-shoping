@@ -49,7 +49,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  '+91-7838717985',
+                  '+91-8859820115',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),
@@ -63,7 +63,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  'amanapaypaymentsservicespvtltd@gmail.com',
+                  'anamprotechnologypvtltd@gmail.com',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),
@@ -77,7 +77,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  'Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085',
+                  'SHOP NO. 2, UPPER GROUND FLOOR, BLOCK-N, KIRTI NAGAR NEW DELHI-110015',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),

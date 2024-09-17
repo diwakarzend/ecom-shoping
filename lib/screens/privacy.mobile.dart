@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2023 Website Duniya. All rights reserved. The contents of this ide, including all code, text, images, and other materials, are protected by United States and international copyright laws and may not be reproduced, modified, distributed, or used for commercial purposes without express written consent.
- */
-
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +17,21 @@ class _PrivacyPolicyMobileState extends State<PrivacyPolicyMobile> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
+        String privacyPolicyText = provider.appSettings?.privacy ?? '';
+        privacyPolicyText = privacyPolicyText
+            .replaceAll('AGILE PAYMENT SERVICES PRIVATE LIMITED', 'ANAMPRO TECHNOLOGY PRIVATE LIMITED')
+            .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'anamprotechnologypvtltd@gmail.com@gmail.com')
+            .replaceAll('Agile', 'Anampro')
+            .replaceAll('AGILE', 'ANAMPRO')
+            .replaceAll('Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085 ',
+            'SHOP NO. 2, UPPER GROUND FLOOR, BLOCK-N, KIRTI NAGAR NEW DELHI-110015.');
+
         return Scaffold(
           appBar: AppBar(
-            title: const Text(
-              'Privacy Policy',
-            ),
+            title: const Text('Privacy Policy'),
             centerTitle: false,
           ),
           body: SingleChildScrollView(
@@ -42,7 +46,7 @@ class _PrivacyPolicyMobileState extends State<PrivacyPolicyMobile> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: width * .05),
                     child: Text(
-                      provider.appSettings!.privacy,
+                      privacyPolicyText,
                       maxLines: 10000000000,
                       style: TextHelper.normalTextStyle,
                     ),

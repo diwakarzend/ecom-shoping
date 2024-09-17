@@ -11,8 +11,8 @@ class StringConstants {
   static const String loginBoxOldKey = 'login';
   static const String loginBoxKey = 'login';
 
-  static const String apiUrl = 'https://amanapaychairable.com/api/v2/';
-  static const String baseUrl = 'https://amanapaychairable.com/';
+  static const String apiUrl = 'https://agilecloth.com/api/v2/';
+  static const String baseUrl = 'https://agilecloth.com/';
   static const String paytmChecksumApi = 'https://paytm.theserv.in/api/checksum';
   static const String paytmMID = 'CSeflW97347912891806';
   static const String pincodeApi = 'https://api.postalpincode.in/pincode/';
@@ -20,7 +20,6 @@ class StringConstants {
   static const String deviceTypeM = 'mobile';
   static const String deviceTypeD = 'desktop';
   static const String deviceTypeT = 'tab';
-
   static const String couponFlat = 'flat';
   static const String couponPercentage = 'percentage';
 

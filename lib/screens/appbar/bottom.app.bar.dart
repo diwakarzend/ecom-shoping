@@ -31,7 +31,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
       children: [
         Container(
           padding: EdgeInsets.only(left: width * .10, top: 40, right: width * .10, bottom: 40),
-          color: const Color(0xff30456b),
+          color: const Color(0xffebebeb),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,12 +51,12 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'Amanapay is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
+                      'Anampro is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 12.0,
                       ),
                     )
@@ -76,7 +76,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     InkWell(
                       child: Text(
                         'FAQ’s',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                       onTap: () {
                         context.router.navigate(const FAQHelpRoute());
@@ -91,7 +91,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Refund Policy',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                     ),
                     SizedBox(
@@ -103,7 +103,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Privacy Policy',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                     ),
                     SizedBox(
@@ -118,7 +118,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Shipping Policy',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                     ),
                     SizedBox(
@@ -133,7 +133,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Term & Condition',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                     ),
 
@@ -149,7 +149,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Contact Us',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                     ),
                     SizedBox(
@@ -161,7 +161,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Need help?',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                     ),
                     SizedBox(
@@ -173,7 +173,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Profile',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
                       ),
                     ),
                   ],
@@ -258,7 +258,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       'For Brands & Agencies',
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 17.0,
                       ),
                     ),
@@ -266,12 +266,12 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'Amanapay is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
+                      'Anampro is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 12.0,
                       ),
                     ),

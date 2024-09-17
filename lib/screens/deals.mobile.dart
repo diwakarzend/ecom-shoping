@@ -28,8 +28,10 @@ class DealsScreenMobile extends StatefulWidget {
 class _DealsScreenMobileState extends State<DealsScreenMobile> {
   int trialIndex = 0;
 
-  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66dbf2e85ed75.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66dbf2e85eccc.jpg'];
+
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab1ea5f8.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab25beb4.jpg'];
+
 
 
   final CartHelper _cartHelper = CartHelper();
@@ -164,7 +166,7 @@ class _DealsScreenMobileState extends State<DealsScreenMobile> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Align(
                     child: Text(
-                      'accessories: A cool and comfortable graphic tee that expresses your personality. ',
+                      'Fashion: A cool and comfortable graphic tee that expresses your personality. ',
                       textAlign: TextAlign.center,
                     ),
                   ),

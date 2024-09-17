@@ -22,6 +22,18 @@ class _FAQHelpMobileState extends State<FAQHelpMobile> {
     final width = MediaQuery.of(context).size.width;
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
+        final modifiedFaqs = provider.faqs.map((faq) {
+          final modifiedQuestion = faq.question.replaceAll(
+            'What is Agile?',
+            'What is Anampro?',
+          );
+          final modifiedAnswer = faq.answer
+              .replaceAll('game.ship9x.com/', 'shop.anamprocloth.com/')
+              .replaceAll('shipantechprivatelimited5@gmail.com', 'anamprotechnologypvtltd@gmail.com');
+
+          return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
+        }).toList();
+
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -37,7 +49,7 @@ class _FAQHelpMobileState extends State<FAQHelpMobile> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: height * .03),
-                ...provider.faqs.map(
+                ...modifiedFaqs.map(
                       (e) => Theme(
                     data: ThemeData().copyWith(dividerColor: Colors.transparent),
                     child: Container(

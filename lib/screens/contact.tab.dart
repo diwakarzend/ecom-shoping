@@ -22,11 +22,10 @@ class _ContactUsTabState extends State<ContactUsTab> {
         final String contactUsText = """
 CONTACT US
 Phone: +91- 7836879833
-Email: amanapaypaymentsservicespvtltd@gmail.com
+Email: anamprotechnologypvtltd@gmail.com
 
 Address:
-F-108 &109 Plot No1 Aditya, Complex Blk-KP C.C, Saraswati
-Vihar, North West Delhi, Delhi,-110034
+SHOP NO. 2, UPPER GROUND FLOOR, BLOCK-N, KIRTI NAGAR NEW DELHI-110015.
 
 """;
 

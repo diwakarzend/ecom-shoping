@@ -119,8 +119,9 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
   //   );
   // }
 
-  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831f8c1.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c83149eb.jpg'];
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab1ea5f8.jpg',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66e95ab25beb4.jpg'];
+
 
 
   Future updateSource(AppProvider provider) async {
@@ -327,7 +328,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'accessories',
+                                'Fashion',
                                 style: TextHelper.subTitleStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -351,7 +352,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
-                            'accessories: A cool and comfortable graphic tee that expresses your personality.',
+                            'Fashion: Style is a way to say who you are without having to speak',
                             maxLines: 10,
                             style: TextHelper.smallTextStyle.copyWith(
                               fontWeight: FontWeight.w600,
