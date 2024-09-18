@@ -99,7 +99,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor:ColorConstants.colorGreenFour,
             drawer: CustomDrawerDesktop(
               provider: provider,
               onSupportExtend: () {
@@ -187,6 +187,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                             textAlign: TextAlign.center,
                             style: TextHelper.titleStyle.copyWith(
                               fontWeight: FontWeight.bold,
+                              color: Colors.white
                               // fontSize: 25.0,
                             ),
                           ),
@@ -201,11 +202,11 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                             child: Text(
                               'View All ',
                               style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w500,color: Colors.white
                               ),
                             ),
                           ),
-                          const Icon(Icons.arrow_forward_ios),
+                          const Icon(Icons.arrow_forward_ios,color: Colors.white,),
                         ],
                       ),
                     ),
@@ -223,7 +224,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                           Text(
                             'A cool and comfortable graphic tee that expresses your personality. ',
                             style: TextHelper.normalTextStyle.copyWith(
-                              color: Colors.black.withOpacity(0.8),
+                              color: Colors.white.withOpacity(0.8),
                             ),
                           ),
                         ],
