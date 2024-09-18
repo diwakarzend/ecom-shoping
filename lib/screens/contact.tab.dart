@@ -22,7 +22,7 @@ class _ContactUsTabState extends State<ContactUsTab> {
         final String contactUsText = """
 CONTACT US
 Phone: +91- 8859362732
-Email: excueetsimmediapvtltd@gmail.com
+Email: omegaasaperfectpvtltd@gmail.com
 
 Address:
 355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085

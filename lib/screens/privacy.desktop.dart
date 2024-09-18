@@ -23,10 +23,10 @@ class _PrivacyPolicyDesktopState extends State<PrivacyPolicyDesktop> {
       builder: (context, provider, _) {
         String privacyPolicyText = provider.appSettings?.privacy ?? '';
         privacyPolicyText = privacyPolicyText
-            .replaceAll('AGILE PAYMENT SERVICES PRIVATE LIMITED', 'EXCUEETS IMMEDIA SERVICES PRIVATE LIMITED')
-            .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'excueetsimmediapvtltd@gmail.com')
-            .replaceAll('Agile', 'excueets')
-            .replaceAll('AGILE', 'excueets')
+            .replaceAll('AGILE PAYMENT SERVICES PRIVATE LIMITED', 'OMEGAASA PERFECT MARKETING PRIVATE LIMITED')
+            .replaceAll('agilepaymentservicesprivatelim@gmail.com', 'Omegaasaimmediapvtltd@gmail.com')
+            .replaceAll('Agile', 'Omegaasa')
+            .replaceAll('AGILE', 'Omegaasa')
             .replaceAll('Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant Vihar, North West Delhi, Delhi- 110085 ',
             '355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085.');
         return Scaffold(
