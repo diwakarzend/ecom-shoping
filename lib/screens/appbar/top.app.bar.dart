@@ -3,6 +3,7 @@ import 'package:badges/badges.dart';
 import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
+import 'package:fabpiks_web/screens/contact.screen.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -46,6 +47,45 @@ class TopAppBar extends StatelessWidget {
                   ),
                   const Spacer(),
                   if (provider.loginDetails == null)
+                    InkWell(
+                      onTap: () {
+                        context.router.navigate(const ProfileRoute());
+                      },
+                      child: Text(
+                        'Profile',
+                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                      ),
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  InkWell(
+                    child: Text(
+                      'FAQ’s',
+                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                    ),
+                    onTap: () {
+                      context.router.navigate(const FAQHelpRoute());
+                    },
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactUsAll()),
+                      );
+                    },
+                    child: Text(
+                      'Contact Us',
+                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
                     InkWell(
                       onTap: () {
                         provider.changeLoginStatus(false, null, '', '', '');
@@ -190,15 +230,19 @@ class TopAppBar extends StatelessWidget {
                   // const SizedBox(
                   //   width: 15,
                   // ),
-                  ElevatedButton(
+                  TextButton(
                     onPressed: _downloadAPK,
-                    style: ButtonStyle(
-                      foregroundColor: WidgetStateProperty.all(Colors.black),
-                      // Text color
-                      side: WidgetStateProperty.all(const BorderSide(color: Colors.blue, width: 2.0)), // Border
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.download, color: Colors.black),
+                        SizedBox(width: 8),
+                        Text('Download APP',style: TextHelper.normalTextStyle.copyWith(
+                          fontWeight: FontWeight.w500,
+                        ),),
+                      ],
                     ),
-                    child: const Text('Download APK'),
-                  ),
+                  )
                 ],
               ),
             ),
