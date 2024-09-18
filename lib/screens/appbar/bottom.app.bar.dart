@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/screens/contact.screen.dart';
 import 'package:fabpiks_web/screens/shipping.screen.dart';
@@ -31,7 +32,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
       children: [
         Container(
           padding: EdgeInsets.only(left: width * .10, top: 40, right: width * .10, bottom: 40),
-          color: const Color(0xff30456b),
+          color: ColorConstants.colorBlueNineteen,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
