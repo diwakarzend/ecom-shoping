@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/screens/contact.screen.dart';
 import 'package:fabpiks_web/screens/shipping.screen.dart';
@@ -31,7 +32,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
       children: [
         Container(
           padding: EdgeInsets.only(left: width * .10, top: 40, right: width * .10, bottom: 40),
-          color: const Color(0xff30456b),
+    color: ColorConstants.colorStar,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,10 +46,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   children: [
                     Image.asset(
                       'assets/images/app_logo.png',
-                      width: width * .12,
-                    ),
-                    SizedBox(
-                      height: height * .02,
+                      // width: width * .12,
                     ),
                     Text(
                       'Prestigepay is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
@@ -73,18 +71,18 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    InkWell(
-                      child: Text(
-                        'FAQ’s',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-                      ),
-                      onTap: () {
-                        context.router.navigate(const FAQHelpRoute());
-                      },
-                    ),
-                    SizedBox(
-                      height: height * .03,
-                    ),
+                    // InkWell(
+                    //   child: Text(
+                    //     'FAQ’s',
+                    //     style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                    //   ),
+                    //   onTap: () {
+                    //     context.router.navigate(const FAQHelpRoute());
+                    //   },
+                    // ),
+                    // SizedBox(
+                    //   height: height * .03,
+                    // ),
                     InkWell(
                       onTap: () {
                         context.router.navigate(const RefundPolicyRoute());
@@ -140,21 +138,21 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     SizedBox(
                       height: height * .03,
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ContactUsAll()),
-                        );
-                      },
-                      child: Text(
-                        'Contact Us',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-                      ),
-                    ),
-                    SizedBox(
-                      height: height * .03,
-                    ),
+                    // InkWell(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(builder: (context) => ContactUsAll()),
+                    //     );
+                    //   },
+                    //   child: Text(
+                    //     'Contact Us',
+                    //     style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: height * .03,
+                    // ),
                     InkWell(
                       onTap: () {
                         context.router.navigate(const HelpRoute());
@@ -167,15 +165,15 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     SizedBox(
                       height: height * .03,
                     ),
-                    InkWell(
-                      onTap: () {
-                        context.router.navigate(const ProfileRoute());
-                      },
-                      child: Text(
-                        'Profile',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-                      ),
-                    ),
+                    // InkWell(
+                    //   onTap: () {
+                    //     context.router.navigate(const ProfileRoute());
+                    //   },
+                    //   child: Text(
+                    //     'Profile',
+                    //     style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

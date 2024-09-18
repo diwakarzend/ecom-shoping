@@ -3,6 +3,7 @@ import 'package:badges/badges.dart';
 import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
+import 'package:fabpiks_web/screens/contact.screen.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -23,9 +24,9 @@ class TopAppBar extends StatelessWidget {
         return Column(
           children: [
             Container(
-              height: height * .13,
+              height: height * .17,
               color: ColorConstants.colorYellowThree,
-              padding: EdgeInsets.symmetric(horizontal: width * .014),
+              padding: EdgeInsets.symmetric(horizontal: width * .018),
               alignment: Alignment.center,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -48,13 +49,52 @@ class TopAppBar extends StatelessWidget {
                   if (provider.loginDetails == null)
                     InkWell(
                       onTap: () {
+                        context.router.navigate(const ProfileRoute());
+                      },
+                      child: Text(
+                        'Profile',
+                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  InkWell(
+                    child: Text(
+                      'FAQ’s',
+                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                    ),
+                    onTap: () {
+                      context.router.navigate(const FAQHelpRoute());
+                    },
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactUsAll()),
+                      );
+                    },
+                    child: Text(
+                      'Contact Us',
+                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                    InkWell(
+                      onTap: () {
                         provider.changeLoginStatus(false, null, '', '', '');
                         context.router.navigate(SignupRoute(referCode: ''));
                       },
                       child: Text(
                         'Sign up',
                         style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w500,color: Colors.white
                         ),
                       ),
                     ),
@@ -68,14 +108,14 @@ class TopAppBar extends StatelessWidget {
                       style: TextHelper.extraSmallTextStyle.copyWith(
                         fontWeight: FontWeight.w600,
                         fontSize: 13.sp,
-                        color: ColorConstants.colorBlack,
+                          color: Colors.white
                       ),
                     ),
                   if (provider.loginDetails != null) SizedBox(width: width * .01),
                   if (provider.loginDetails != null)
                     const Icon(
                       Icons.waving_hand,
-                      color: Color(0xfffd9846),
+                      color: Color(0xff000000),
                     ),
                   if (provider.loginDetails != null) SizedBox(width: width * .01),
                   if (provider.loginDetails != null)
@@ -85,7 +125,7 @@ class TopAppBar extends StatelessWidget {
                       },
                       child: const Icon(
                         Icons.search,
-                        color: Colors.black,
+                        color: Colors.white,
                         size: 28,
                       ),
                     ),
@@ -99,6 +139,7 @@ class TopAppBar extends StatelessWidget {
                         'Sign in',
                         style: TextHelper.normalTextStyle.copyWith(
                           fontWeight: FontWeight.w500,
+                            color: Colors.white
                         ),
                       ),
                     ),
@@ -195,7 +236,6 @@ class TopAppBar extends StatelessWidget {
                     style: ButtonStyle(
                       foregroundColor: WidgetStateProperty.all(Colors.black),
                       // Text color
-                      side: WidgetStateProperty.all(const BorderSide(color: Colors.blue, width: 2.0)), // Border
                     ),
                     child: const Text('Download APK'),
                   ),

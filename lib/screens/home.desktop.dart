@@ -118,118 +118,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
-                  CarouselSlider(
-                    items: _banners
-                    // items: provider.banners
-                    //     .where((element) =>
-                    // (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
-                    //     element.deviceType == StringConstants.deviceTypeD)
-                        .map(
-                          (e) => CustomNetworkImage(
-                        imageUrl: e,
-                        width: width,
-                        height: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                        .toList(),
-                    options: CarouselOptions(
-                      disableCenter: true,
-                      viewportFraction: 1,
-                      height: height * .8,
-                      autoPlay: true,
-                      onPageChanged: (i, _) => setState(() => bannerIndex = i),
-                    ),
-                  ),
-                  SizedBox(height: height * .01),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // ...provider.banners
-                      //     .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                      //     .toList()
-                      ..._banners
-                          .asMap()
-                          .map(
-                            (i, v) => MapEntry(
-                          i,
-                          Container(
-                            width: 10,
-                            height: 10,
-                            margin: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: bannerIndex == i ? ColorConstants.colorBlack : Colors.transparent,
-                              border: Border.all(
-                                color: ColorConstants.colorBlack,
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                          .values,
-                    ],
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: height * .01),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Clothes ',
-                            textAlign: TextAlign.center,
-                            style: TextHelper.titleStyle.copyWith(
-                              fontWeight: FontWeight.bold,
-                              // fontSize: 25.0,
-                            ),
-                          ),
-                          const Spacer(),
-                          InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            splashColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              context.router.push(const DealsRoute());
-                            },
-                            child: Text(
-                              'View All ',
-                              style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          const Icon(Icons.arrow_forward_ios),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: height * .008, bottom: height * .03),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
-                            style: TextHelper.normalTextStyle.copyWith(
-                              color: Colors.black.withOpacity(0.8),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .06),
                     child: Row(
@@ -316,6 +204,118 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         ),                      ],
                     ),
                   ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: width * .12),
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: height * .01),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Clothes ',
+                            textAlign: TextAlign.center,
+                            style: TextHelper.titleStyle.copyWith(
+                              fontWeight: FontWeight.bold,
+                              // fontSize: 25.0,
+                            ),
+                          ),
+                          const Spacer(),
+                          InkWell(
+                            splashFactory: NoSplash.splashFactory,
+                            splashColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            onTap: () {
+                              context.router.push(const DealsRoute());
+                            },
+                            child: Text(
+                              'More Products ',
+                              style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          const Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: width * .12),
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: height * .008, bottom: height * .03),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
+                            style: TextHelper.normalTextStyle.copyWith(
+                              color: Colors.black.withOpacity(0.8),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  CarouselSlider(
+                    items: _banners
+                    // items: provider.banners
+                    //     .where((element) =>
+                    // (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
+                    //     element.deviceType == StringConstants.deviceTypeD)
+                        .map(
+                          (e) => CustomNetworkImage(
+                        imageUrl: e,
+                        width: width,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                        .toList(),
+                    options: CarouselOptions(
+                      disableCenter: true,
+                      viewportFraction: 1,
+                      height: height * .8,
+                      autoPlay: true,
+                      onPageChanged: (i, _) => setState(() => bannerIndex = i),
+                    ),
+                  ),
+                  // SizedBox(height: height * .01),
+                  // Row(
+                  //   mainAxisSize: MainAxisSize.max,
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: [
+                  //     // ...provider.banners
+                  //     //     .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
+                  //     //     .toList()
+                  //     ..._banners
+                  //         .asMap()
+                  //         .map(
+                  //           (i, v) => MapEntry(
+                  //         i,
+                  //         Container(
+                  //           width: 10,
+                  //           height: 10,
+                  //           margin: const EdgeInsets.all(2),
+                  //           decoration: BoxDecoration(
+                  //             shape: BoxShape.circle,
+                  //             color: bannerIndex == i ? ColorConstants.colorBlack : Colors.transparent,
+                  //             border: Border.all(
+                  //               color: ColorConstants.colorBlack,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     )
+                  //         .values,
+                  //   ],
+                  // ),
                   const BottomAppBarPage(),
                 ],
               ),
