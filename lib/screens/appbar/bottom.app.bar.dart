@@ -51,7 +51,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'Classicpay is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
+                      'Classicpay is an online sampling community of everyday people who try products & experiences from leading brands! In return for the offers you receive from brands, we ask that you share your opinion with our community and, if you liked the product, invite your friends, fans & followers to try it',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -255,7 +255,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'For Brands & Agencies',
+                      'Address',
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -266,7 +266,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       height: height * .02,
                     ),
                     Text(
-                      'Classicpay is an online sampling community of everyday people who try products & experiences from leading brands for free! In return for the offers you receive from',
+                      '265 PLOT NO C-33 2ND FLR, AGGARWAL MODERN BAZAAR, Keshav Puram (North West Delhi), North West Delhi, Delhi-  110035',
                       maxLines: 100,
                       textAlign: TextAlign.justify,
                       style: TextHelper.extraSmallTextStyle.copyWith(
@@ -275,20 +275,27 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                         fontSize: 12.0,
                       ),
                     ),
-                    // SizedBox(
-                    //   height: height * .02,
-                    // ),
-                    // Container(
-                    //   padding: EdgeInsets.symmetric(horizontal: width * .02, vertical: height * .01),
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.white,
-                    //     borderRadius: BorderRadius.circular(10),
-                    //   ),
-                    //   child: Text(
-                    //     'Click here',
-                    //     style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500),
-                    //   ),
-                    // ),
+                    SizedBox(
+                      height: height * .02,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: width * .02, vertical: height * .01),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () => _urlHelper.launchNonUrl(url: 'tel:+917838717985'),
+                        child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: width * .02, vertical: height * .01),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          child: const Text('Call Now'),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

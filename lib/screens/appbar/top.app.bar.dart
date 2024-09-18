@@ -190,15 +190,17 @@ class TopAppBar extends StatelessWidget {
                   // const SizedBox(
                   //   width: 15,
                   // ),
-                  ElevatedButton(
+                  TextButton(
                     onPressed: _downloadAPK,
-                    style: ButtonStyle(
-                      foregroundColor: WidgetStateProperty.all(Colors.black),
-                      // Text color
-                      side: WidgetStateProperty.all(const BorderSide(color: Colors.blue, width: 2.0)), // Border
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('Download APK',
+                      style: TextHelper.normalTextStyle.copyWith(
+                        fontWeight: FontWeight.w500,color: Colors.black),
+                        )],
                     ),
-                    child: const Text('Download APK'),
-                  ),
+                  )
                 ],
               ),
             ),
