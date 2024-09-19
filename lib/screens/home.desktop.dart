@@ -316,6 +316,25 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         ),                      ],
                     ),
                   ),
+                  if (provider.banners.any((element) => element.type == StringConstants.homeBannerMiddle))
+                    CarouselSlider(
+                      items: provider.banners
+                          .where((element) => element.type == StringConstants.homeBannerMiddle)
+                          .map(
+                            (e) => CustomNetworkImage(
+                          imageUrl: e.banner,
+                          width: width,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                          .toList(),
+                      options: CarouselOptions(
+                        disableCenter: true,
+                        viewportFraction: 1,
+                        height: height * .5,
+                        autoPlay: true,
+                      ),
+                    ),
                   const BottomAppBarPage(),
                 ],
               ),
