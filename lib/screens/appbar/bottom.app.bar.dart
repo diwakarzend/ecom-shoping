@@ -114,7 +114,37 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     ),
                   ),
                 ],
-              ),              // Expanded(
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              InkWell(
+                child: Text(
+                  'FAQ’s',
+                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                ),
+                onTap: () {
+                  context.router.navigate(const FAQHelpRoute());
+                },
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ContactUsAll()),
+                  );
+                },
+                child: Text(
+                  'Contact Us',
+                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),// Expanded(
               //     flex: 1,
               //     child: Column(
               //       mainAxisAlignment: MainAxisAlignment.start,

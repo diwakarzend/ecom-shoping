@@ -19,6 +19,7 @@ class TopAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Consumer<AppProvider>(
       builder: (context, provider, _) {
         return Column(
@@ -47,60 +48,26 @@ class TopAppBar extends StatelessWidget {
                   ),
                   const Spacer(),
                   if (provider.loginDetails == null)
-                    InkWell(
-                      onTap: () {
-                        context.router.navigate(const ProfileRoute());
-                      },
-                      child: Text(
-                        'Profile',
-                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
-                      ),
-                    ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  InkWell(
-                    child: Text(
-                      'FAQ’s',
-                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                    onTap: () {
-                      context.router.navigate(const FAQHelpRoute());
-                    },
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ContactUsAll()),
-                      );
-                    },
-                    child: Text(
-                      'Contact Us',
-                      style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                    InkWell(
-                      onTap: () {
-                        provider.changeLoginStatus(false, null, '', '', '');
-                        context.router.navigate(SignupRoute(referCode: ''));
-                      },
-                      child: Text(
-                        'Sign up',
-                        style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500,
+                    PopupMenuButton(
+                      icon: Icon(Icons.account_circle, color: Colors.black, size: 28),
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          value: 'signin',
+                          child: Text('Sign in'),
                         ),
-                      ),
-                    ),
-                  if (provider.loginDetails == null)
-                    const SizedBox(
-                      width: 20,
+                        PopupMenuItem(
+                          value: 'signup',
+                          child: Text('Sign up'),
+                        ),
+                      ],
+                      onSelected: (value) {
+                        if (value == 'signin') {
+                          context.router.navigate(LoginRoute());
+                        } else if (value == 'signup') {
+                          provider.changeLoginStatus(false, null, '', '', '');
+                          context.router.navigate(SignupRoute(referCode: ''));
+                        }
+                      },
                     ),
                   if (provider.loginDetails != null)
                     Text(
@@ -130,106 +97,6 @@ class TopAppBar extends StatelessWidget {
                       ),
                     ),
                   if (provider.loginDetails != null) SizedBox(width: width * .01),
-                  if (provider.loginDetails == null)
-                    InkWell(
-                      onTap: () {
-                        context.router.navigate(LoginRoute());
-                      },
-                      child: Text(
-                        'Sign in',
-                        style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  if (provider.loginDetails == null)
-                    const SizedBox(
-                      width: 22,
-                    ),
-                  // InkWell(
-                  //   onTap: () {
-                  //     context.router.navigate(const NotificationRoute());
-                  //   },
-                  //   child: Badge(
-                  //     showBadge: provider.reports
-                  //         .where((element) =>
-                  //             element.product != null &&
-                  //             element.product!.stock > 0 &&
-                  //             element.productId != null &&
-                  //             element.qualified &&
-                  //             !element.rejected &&
-                  //             provider.currentUser != null &&
-                  //             !provider.currentUser!.orders
-                  //                 .any((e) => e.products.any((o) => o.id == element.product?.id)))
-                  //         .isNotEmpty,
-                  //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                  //     position: BadgePosition.topEnd(top: -5, end: 0),
-                  //     badgeContent: Text(
-                  //       provider.reports
-                  //           .where((element) =>
-                  //               element.product != null &&
-                  //               element.product!.stock > 0 &&
-                  //               element.productId != null &&
-                  //               element.qualified &&
-                  //               !element.rejected &&
-                  //               provider.currentUser != null &&
-                  //               !provider.currentUser!.orders
-                  //                   .any((e) => e.products.any((o) => o.id == element.product?.id)))
-                  //           .length
-                  //           .toString(),
-                  //       style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
-                  //     ),
-                  //     child: const Icon(
-                  //       Icons.notifications_outlined,
-                  //       size: 28,
-                  //     ),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   width: 15,
-                  // ),
-                  // InkWell(
-                  //   onTap: () {
-                  //     context.router.navigate(const WishlistRoute());
-                  //   },
-                  //   child: Badge(
-                  //     showBadge: provider.wishlist != null && provider.wishlist!.count > 0,
-                  //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                  //     position: BadgePosition.topEnd(top: -5, end: 0),
-                  //     badgeContent: Text(
-                  //       provider.wishlist?.count.toString() ?? '',
-                  //       style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
-                  //     ),
-                  //     child: const Icon(
-                  //       Icons.favorite_outline,
-                  //       size: 28,
-                  //     ),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   width: 15,
-                  // ),
-                  // InkWell(
-                  //   onTap: () {
-                  //     context.router.navigate(const ShoppingTabOneDesktop());
-                  //   },
-                  //   child: Badge(
-                  //     showBadge: (provider.cart?.count ?? 0) > 0,
-                  //     badgeStyle: const BadgeStyle(badgeColor: Colors.red),
-                  //     position: BadgePosition.topEnd(top: -5, end: 0),
-                  //     badgeContent: Text(
-                  //       provider.cart?.count.toString() ?? '',
-                  //       style: TextHelper.extraSmallTextStyle.copyWith(color: Colors.white, fontSize: 8.sp),
-                  //     ),
-                  //     child: const Icon(
-                  //       Icons.shopping_cart_outlined,
-                  //       size: 28,
-                  //     ),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   width: 15,
-                  // ),
                   TextButton(
                     onPressed: _downloadAPK,
                     child: Row(
@@ -237,12 +104,15 @@ class TopAppBar extends StatelessWidget {
                       children: [
                         Icon(Icons.download, color: Colors.black),
                         SizedBox(width: 8),
-                        Text('Download APP',style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),),
+                        Text(
+                          'Download APP',
+                          style: TextHelper.normalTextStyle.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
