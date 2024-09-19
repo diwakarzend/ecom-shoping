@@ -313,7 +313,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                               ),
                             ),
                           ),
-                        ),                      ],
+                        ),
+                      ],
                     ),
                   ),
                   if (provider.banners.any((element) => element.type == StringConstants.homeBannerMiddle))

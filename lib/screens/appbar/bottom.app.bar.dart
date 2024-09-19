@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/screens/shipping.screen.dart';
 import 'package:fabpiks_web/screens/term.screen.dart';
@@ -14,22 +15,24 @@ class BottomAppBarPage extends StatefulWidget {
 }
 
 class _BottomAppBarPageState extends State<BottomAppBarPage> {
+  late UrlHelper _urlHelper;
+
   @override
   void initState() {
+    _urlHelper = UrlHelper.internal();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Container(
-          color: const Color(0xff30456b),
-          width: width * 2,
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: width * .10, vertical: 40),
+          color: ColorConstants.colorBlueNineteen,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -46,12 +49,11 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
                 ],
               ),
               const SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
                     onTap: () {
@@ -59,20 +61,24 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     },
                     child: Text(
                       'Refund Policy',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      style: TextHelper.smallTextStyle.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 20),
                   InkWell(
                     onTap: () {
                       context.router.navigate(const PrivacyPolicyRoute());
                     },
                     child: Text(
                       'Privacy Policy',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      style: TextHelper.smallTextStyle.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 20),
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -82,30 +88,37 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     },
                     child: Text(
                       'Shipping Policy',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      style: TextHelper.smallTextStyle.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 20),
                   InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TermConditionAll()),
-                      );
-                    },
+    onTap: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => TermConditionAll()),
+    );
+    },
                     child: Text(
-                      'Term & Condition',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      'Terms & Conditions',
+                      style: TextHelper.smallTextStyle.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 20),
                   InkWell(
                     onTap: () {
                       context.router.navigate(const HelpRoute());
                     },
                     child: Text(
                       'Need help?',
-                      style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                      style: TextHelper.smallTextStyle.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
@@ -114,7 +127,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 }
