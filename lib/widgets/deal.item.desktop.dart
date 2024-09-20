@@ -163,7 +163,7 @@ class DealItemDesktop extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.blueAccent,
+                        color: ColorConstants.colorBorder,
                       ),
                       child: Text(
                         'Add to Cart',

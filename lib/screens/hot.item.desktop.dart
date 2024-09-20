@@ -102,7 +102,6 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
       builder: (context, provider, _) {
         initProduct(provider);
         return Scaffold(
-          backgroundColor: ColorConstants.colorBorder,
           drawer: CustomDrawerDesktop(
             provider: provider,
             onSupportExtend: () {
@@ -559,7 +558,7 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                                 padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.blueAccent,
+                                  color: ColorConstants.colorBorder,
                                 ),
                                 child: Text(
                                   'Add to Cart',
@@ -640,7 +639,7 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'More from ${_product?.brand != null ? _product?.brand!.name : ''}',
+                          'More Product',
                           // style: TextHelper.normalTextStyle.copyWith(
                           style: TextHelper.normalTextStyle.copyWith(
                             color: ColorConstants.colorGreyThree,

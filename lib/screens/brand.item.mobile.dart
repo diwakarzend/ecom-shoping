@@ -689,7 +689,7 @@ class _BrandItemMobileState extends State<BrandItemMobile> with TickerProviderSt
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'More from ${_product?.brand != null ? _product?.brand!.name : ''}',
+                          'More Products',
                           style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyThree),
                         ),
                         InkWell(

@@ -99,7 +99,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
-            backgroundColor: ColorConstants.colorBorder,
             drawer: CustomDrawerDesktop(
               provider: provider,
               onSupportExtend: () {
@@ -118,91 +117,35 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 12,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: height * .03),
-                            child: CarouselSlider(
-                              // carouselController: _dealController,
-                              items: [
-                                if (dealIndex == 0)
-                                  ...provider.dealProducts
-                                      .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                      key: Key(e.id),
-                                      product: e,
-                                      onProductClick: () => _cartHelper.productClick(
-                                          context: context,
-                                          productId: e.id,
-                                          productType: e.productType,
-                                          provider: provider),
-                                      onAddToCart: () => _cartHelper.addToCart(
-                                        provider: provider,
-                                        context: context,
-                                        productId: e.id,
-                                      ),
-                                      provider: provider,
-                                      cartHelper: _cartHelper,
-                                      gridView: false, sub_category: '',
-                                    ),
-                                  )
-                                else
-                                  ...provider.dealProducts
-                                      .where((element) =>
-                                  element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                                      .take((provider.dealProducts
-                                      .where((element) =>
-                                  element.category?.id ==
-                                      provider.dealCategories[(dealIndex - 1)].id)
-                                      .length) >
-                                      10
-                                      ? 10
-                                      : provider.dealProducts
-                                      .where((element) =>
-                                  element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                                      .length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                      key: Key(e.id),
-                                      product: e,
-                                      onProductClick: () => _cartHelper.productClick(
-                                          context: context,
-                                          productId: e.id,
-                                          productType: e.productType,
-                                          provider: provider),
-                                      onAddToCart: () => _cartHelper.addToCart(
-                                        provider: provider,
-                                        context: context,
-                                        productId: e.id,
-                                      ),
-                                      provider: provider,
-                                      cartHelper: _cartHelper,
-                                      gridView: false, sub_category: '',
-                                    ),
-                                  ),
-                              ],
-                              options: CarouselOptions(
-                                // aspectRatio: 4.5,
-                                aspectRatio: 3.1,
-                                // viewportFraction: 0.15,
-                                viewportFraction: 0.2,
-                                initialPage: 0,
-                                enableInfiniteScroll: false,
-                                reverse: false,
-                                disableCenter: true,
-                                padEnds: false,
-                                autoPlay: true,
-                              ),
-                            ),
+                  Column(
+                    children: [
+                      CarouselSlider(
+                        items: _banners
+                            .map(
+                              (e) => CustomNetworkImage(
+                            imageUrl: e,
+                            width: width,
+                            height: double.infinity,
+                            fit: BoxFit.cover,
                           ),
-                        ),                      ],
-                    ),
+                        )
+                            .toList(),
+                        options: CarouselOptions(
+                          disableCenter: true,
+                          viewportFraction: 1,
+                          height: height * .8,
+                          autoPlay: true,
+                          onPageChanged: (i, _) => setState(() => bannerIndex = i),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 2.0),
+                        child: Image.asset('assets/images/banner2.png'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: width * .1,
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
@@ -211,14 +154,14 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       padding: EdgeInsets.only(bottom: height * .01),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Clothes ',
+                            'NEW COLLECTIONS ',
                             textAlign: TextAlign.center,
                             style: TextHelper.titleStyle.copyWith(
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w800,
                               // fontSize: 25.0,
                             ),
                           ),
@@ -242,80 +185,150 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: height * .008, bottom: height * .03),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: width * .02),
+                  child: Column(
+                    children: [
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
-                            style: TextHelper.normalTextStyle.copyWith(
-                              color: Colors.black.withOpacity(0.8),
+                          Expanded(
+                            flex: 12,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: height * .03),
+                              child: CarouselSlider(
+                                items: [
+                                  if (dealIndex == 0)
+                                    ...provider.dealProducts
+                                        .take(provider.dealProducts.length > 5 ? 5 : provider.dealProducts.length)
+                                        .map((e) => DealItemDesktop(
+                                      key: Key(e.id),
+                                      product: e,
+                                      onProductClick: () => _cartHelper.productClick(
+                                          context: context,
+                                          productId: e.id,
+                                          productType: e.productType,
+                                          provider: provider),
+                                      onAddToCart: () => _cartHelper.addToCart(
+                                        provider: provider,
+                                        context: context,
+                                        productId: e.id,
+                                      ),
+                                      provider: provider,
+                                      cartHelper: _cartHelper,
+                                      gridView: false,
+                                      sub_category: '',
+                                    ))
+                                  else
+                                    ...provider.dealProducts
+                                        .where((element) =>
+                                    element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                        .take(5)
+                                        .map((e) => DealItemDesktop(
+                                      key: Key(e.id),
+                                      product: e,
+                                      onProductClick: () => _cartHelper.productClick(
+                                          context: context,
+                                          productId: e.id,
+                                          productType: e.productType,
+                                          provider: provider),
+                                      onAddToCart: () => _cartHelper.addToCart(
+                                        provider: provider,
+                                        context: context,
+                                        productId: e.id,
+                                      ),
+                                      provider: provider,
+                                      cartHelper: _cartHelper,
+                                      gridView: false,
+                                      sub_category: '',
+                                    )),
+                                ],
+                                options: CarouselOptions(
+                                  aspectRatio: 3.1,
+                                  viewportFraction: 0.2,
+                                  initialPage: 0,
+                                  enableInfiniteScroll: false,
+                                  autoPlay: false,
+                                  // scrollPhysics: NeverScrollableScrollPhysics(),
+                                ),
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                  CarouselSlider(
-                    items: _banners
-                    // items: provider.banners
-                    //     .where((element) =>
-                    // (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
-                    //     element.deviceType == StringConstants.deviceTypeD)
-                        .map(
-                          (e) => CustomNetworkImage(
-                        imageUrl: e,
-                        width: width,
-                        height: double.infinity,
-                        fit: BoxFit.cover,
+                      SizedBox(height: 20),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 12,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: height * .03),
+                              child: CarouselSlider(
+                                items: [
+                                  if (dealIndex == 0)
+                                    ...provider.dealProducts
+                                        .skip(5)
+                                        .take(provider.dealProducts.length > 10 ? 5 : provider.dealProducts.length - 5)
+                                        .map((e) => DealItemDesktop(
+                                      key: Key(e.id),
+                                      product: e,
+                                      onProductClick: () => _cartHelper.productClick(
+                                          context: context,
+                                          productId: e.id,
+                                          productType: e.productType,
+                                          provider: provider),
+                                      onAddToCart: () => _cartHelper.addToCart(
+                                        provider: provider,
+                                        context: context,
+                                        productId: e.id,
+                                      ),
+                                      provider: provider,
+                                      cartHelper: _cartHelper,
+                                      gridView: false,
+                                      sub_category: '',
+                                    ))
+                                  else
+                                    ...provider.dealProducts
+                                        .where((element) =>
+                                    element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                        .skip(5)
+                                        .take(5)
+                                        .map((e) => DealItemDesktop(
+                                      key: Key(e.id),
+                                      product: e,
+                                      onProductClick: () => _cartHelper.productClick(
+                                          context: context,
+                                          productId: e.id,
+                                          productType: e.productType,
+                                          provider: provider),
+                                      onAddToCart: () => _cartHelper.addToCart(
+                                        provider: provider,
+                                        context: context,
+                                        productId: e.id,
+                                      ),
+                                      provider: provider,
+                                      cartHelper: _cartHelper,
+                                      gridView: false,
+                                      sub_category: '',
+                                    )),
+                                ],
+                                options: CarouselOptions(
+                                  aspectRatio: 3.1,
+                                  viewportFraction: 0.2,
+                                  initialPage: 0,
+                                  enableInfiniteScroll: false,
+                                  autoPlay: false,
+                                  // scrollPhysics: NeverScrollableScrollPhysics(),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    )
-                        .toList(),
-                    options: CarouselOptions(
-                      disableCenter: true,
-                      viewportFraction: 1,
-                      height: height * .8,
-                      autoPlay: true,
-                      onPageChanged: (i, _) => setState(() => bannerIndex = i),
-                    ),
+                    ],
                   ),
-                  // SizedBox(height: height * .01),
-                  // Row(
-                  //   mainAxisSize: MainAxisSize.max,
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   crossAxisAlignment: CrossAxisAlignment.center,
-                  //   children: [
-                  //     // ...provider.banners
-                  //     //     .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                  //     //     .toList()
-                  //     ..._banners
-                  //         .asMap()
-                  //         .map(
-                  //           (i, v) => MapEntry(
-                  //         i,
-                  //         Container(
-                  //           width: 10,
-                  //           height: 10,
-                  //           margin: const EdgeInsets.all(2),
-                  //           decoration: BoxDecoration(
-                  //             shape: BoxShape.circle,
-                  //             color: bannerIndex == i ? ColorConstants.colorBlack : Colors.transparent,
-                  //             border: Border.all(
-                  //               color: ColorConstants.colorBlack,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     )
-                  //         .values,
-                  //   ],
-                  // ),
+                ),
                   const BottomAppBarPage(),
                 ],
               ),
