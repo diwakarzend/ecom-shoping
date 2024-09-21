@@ -94,7 +94,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
-            backgroundColor: ColorConstants.colorBlueNineteen,
             drawer: CustomDrawerDesktop(
               provider: provider,
               onSupportExtend: () {
