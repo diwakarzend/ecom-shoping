@@ -57,7 +57,11 @@ class DealItemDesktop extends StatelessWidget {
               flex: 4,
               child: Stack(
                 children: [
-                  SizedBox(
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
                     width: double.infinity,
                     height: double.infinity,
                     child: CustomNetworkImage(
