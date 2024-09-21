@@ -45,7 +45,7 @@ class DealItemDesktop extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         margin: EdgeInsets.only(right: gridView ? 0 : 10),
         decoration: BoxDecoration(
-          color: ColorConstants.colorDeal,
+          // color: ColorConstants.colorDeal,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -57,7 +57,11 @@ class DealItemDesktop extends StatelessWidget {
               flex: 4,
               child: Stack(
                 children: [
-                  SizedBox(
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
                     width: double.infinity,
                     height: double.infinity,
                     child: CustomNetworkImage(
@@ -163,7 +167,7 @@ class DealItemDesktop extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.blueAccent,
+                        color: Color(0xff033F5C),
                       ),
                       child: Text(
                         'Add to Cart',

@@ -30,7 +30,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: width * .10, vertical: 40),
-          color: ColorConstants.colorBlueNineteen,
+          color: Color(0xff033F5C),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -44,7 +44,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
-                        'assets/images/app_logo.png',
+                        'assets/images/app_logo1.png',
                         width: width * .10,
                       ),
                     ),
@@ -83,7 +83,8 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ShippingPolicyAll()),
+                        MaterialPageRoute(
+                            builder: (context) => ShippingPolicyAll()),
                       );
                     },
                     child: Text(
@@ -95,12 +96,13 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     ),
                   ),
                   InkWell(
-    onTap: () {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => TermConditionAll()),
-    );
-    },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TermConditionAll()),
+                      );
+                    },
                     child: Text(
                       'Terms & Conditions',
                       style: TextHelper.smallTextStyle.copyWith(
