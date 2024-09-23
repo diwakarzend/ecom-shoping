@@ -54,10 +54,10 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
 
   int bannerIndex = 0;
 
-  List<String> _banners = [
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66dbf2e85ed75.jpg',
-    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66dbf2e85eccc.jpg'
-  ];
+
+  List<String> _banners = ['https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66f118422b852.png',
+    'https://d3r50zdh245qd1.cloudfront.net/storage/photos/63976a676aba4031c062e5b2/Banners/66d84c831a6d9.jpg'];
+
 
   @override
   void initState() {
@@ -65,7 +65,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
       BuildContext? dialogContext;
       Future.delayed(
         const Duration(milliseconds: 500),
-        () => showDialog(
+            () => showDialog(
           context: context,
           barrierDismissible: false,
           builder: (c) {
@@ -99,7 +99,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor:ColorConstants.colorGreenFour,
             drawer: CustomDrawerDesktop(
               provider: provider,
               onSupportExtend: () {
@@ -118,38 +118,27 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
-                  SizedBox(
-                    height: height * .03,
-                  ),
-                  Image.asset('assets/images/banner1.png'),
-                  SizedBox(
-                    height: height * .01,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      child: CarouselSlider(
-                        items: _banners
-                            .map(
-                              (e) => ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: CustomNetworkImage(
-                              imageUrl: e,
-                              width: width,
-                              height: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )
-                            .toList(),
-                        options: CarouselOptions(
-                          disableCenter: true,
-                          viewportFraction: 1,
-                          height: height * .6,
-                          autoPlay: true,
-                          onPageChanged: (i, _) => setState(() => bannerIndex = i),
-                        ),
+                  CarouselSlider(
+                    items: _banners
+                    // items: provider.banners
+                    //     .where((element) =>
+                    // (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
+                    //     element.deviceType == StringConstants.deviceTypeD)
+                        .map(
+                          (e) => CustomNetworkImage(
+                        imageUrl: e,
+                        width: width,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
                       ),
+                    )
+                        .toList(),
+                    options: CarouselOptions(
+                      disableCenter: true,
+                      viewportFraction: 1,
+                      height: height * .8,
+                      autoPlay: true,
+                      onPageChanged: (i, _) => setState(() => bannerIndex = i),
                     ),
                   ),
                   SizedBox(height: height * .01),
@@ -165,170 +154,244 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                           .asMap()
                           .map(
                             (i, v) => MapEntry(
-                              i,
-                              Container(
-                                width: 10,
-                                height: 10,
-                                margin: const EdgeInsets.all(2),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: bannerIndex == i
-                                      ? ColorConstants.colorBlack
-                                      : Colors.transparent,
-                                  border: Border.all(
-                                    color: ColorConstants.colorBlack,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                          .values,
-                    ],
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: height * .01),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'TRENDING SALE ',
-                            textAlign: TextAlign.center,
-                            style: TextHelper.titleStyle.copyWith(
-                              fontWeight: FontWeight.w800,
-                              // fontSize: 25.0,
-                            ),
-                          ),
-                          const Spacer(),
-                          InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            splashColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              context.router.push(const DealsRoute());
-                            },
-                            child: Text(
-                              'View All ',
-                              style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          const Icon(Icons.arrow_forward_ios),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 12,
-                          child: Padding(
-                            padding:
-                                EdgeInsets.symmetric(vertical: height * .03),
-                            child: CarouselSlider(
-                              // carouselController: _dealController,
-                              items: [
-                                if (dealIndex == 0)
-                                  ...provider.dealProducts
-                                      .take(provider.dealProducts.length > 10
-                                          ? 10
-                                          : provider.dealProducts.length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(
-                                                  context: context,
-                                                  productId: e.id,
-                                                  productType: e.productType,
-                                                  provider: provider),
-                                          onAddToCart: () =>
-                                              _cartHelper.addToCart(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                          sub_category: '',
-                                        ),
-                                      )
-                                else
-                                  ...provider.dealProducts
-                                      .where((element) =>
-                                          element.category?.id ==
-                                          provider
-                                              .dealCategories[(dealIndex - 1)]
-                                              .id)
-                                      .take((provider.dealProducts
-                                                  .where((element) =>
-                                                      element.category?.id ==
-                                                      provider
-                                                          .dealCategories[
-                                                              (dealIndex - 1)]
-                                                          .id)
-                                                  .length) >
-                                              10
-                                          ? 10
-                                          : provider.dealProducts
-                                              .where((element) =>
-                                                  element.category?.id ==
-                                                  provider
-                                                      .dealCategories[
-                                                          (dealIndex - 1)]
-                                                      .id)
-                                              .length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                          key: Key(e.id),
-                                          product: e,
-                                          onProductClick: () =>
-                                              _cartHelper.productClick(
-                                                  context: context,
-                                                  productId: e.id,
-                                                  productType: e.productType,
-                                                  provider: provider),
-                                          onAddToCart: () =>
-                                              _cartHelper.addToCart(
-                                            provider: provider,
-                                            context: context,
-                                            productId: e.id,
-                                          ),
-                                          provider: provider,
-                                          cartHelper: _cartHelper,
-                                          gridView: false,
-                                          sub_category: '',
-                                        ),
-                                      ),
-                              ],
-                              options: CarouselOptions(
-                                // aspectRatio: 4.5,
-                                aspectRatio: 3.1,
-                                // viewportFraction: 0.15,
-                                viewportFraction: 0.2,
-                                initialPage: 0,
-                                enableInfiniteScroll: false,
-                                reverse: false,
-                                disableCenter: true,
-                                padEnds: false,
-                                autoPlay: true,
+                          i,
+                          Container(
+                            width: 10,
+                            height: 10,
+                            margin: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: bannerIndex == i ? ColorConstants.colorBlack : Colors.transparent,
+                              border: Border.all(
+                                color: ColorConstants.colorBlack,
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      )
+                          .values,
+                    ],
                   ),
+                Container(
+                  width: 300,
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFDD978),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 8,
+                        spreadRadius: 2,
+                        offset: Offset(2, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'WOODEN FURNITURE',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'We understand your needs and so we make easy use for you many Features',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFFF5148),
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: Text(
+                          'View All',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                  Image.asset('assets/images/'),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(bottom: height * .01),
+                  //     child: Row(
+                  //       mainAxisSize: MainAxisSize.max,
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       crossAxisAlignment: CrossAxisAlignment.center,
+                  //       children: [
+                  //         Text(
+                  //           'Furniture  ',
+                  //           textAlign: TextAlign.center,
+                  //           style: TextHelper.titleStyle.copyWith(
+                  //               fontWeight: FontWeight.bold,
+                  //               color: Colors.white
+                  //             // fontSize: 25.0,
+                  //           ),
+                  //         ),
+                  //         const Spacer(),
+                  //         InkWell(
+                  //           splashFactory: NoSplash.splashFactory,
+                  //           splashColor: Colors.transparent,
+                  //           hoverColor: Colors.transparent,
+                  //           onTap: () {
+                  //             context.router.push(const DealsRoute());
+                  //           },
+                  //           child: Text(
+                  //             'View All ',
+                  //             style: TextHelper.normalTextStyle.copyWith(
+                  //                 fontWeight: FontWeight.w500,color: Colors.white
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         const Icon(Icons.arrow_forward_ios,color: Colors.white,),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .12),
+                  //   alignment: Alignment.center,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(top: height * .008, bottom: height * .03),
+                  //     child: Row(
+                  //       mainAxisSize: MainAxisSize.max,
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       crossAxisAlignment: CrossAxisAlignment.center,
+                  //       children: [
+                  //         Text(
+                  //           'A cool and comfortable graphic tee that expresses your personality. ',
+                  //           style: TextHelper.normalTextStyle.copyWith(
+                  //             color: Colors.white.withOpacity(0.8),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // Container(
+                  //   padding: EdgeInsets.symmetric(horizontal: width * .06),
+                  //   child: Row(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Expanded(
+                  //         flex: 12,
+                  //         child: Padding(
+                  //           padding: EdgeInsets.symmetric(vertical: height * .03),
+                  //           child: CarouselSlider(
+                  //             // carouselController: _dealController,
+                  //             items: [
+                  //               if (dealIndex == 0)
+                  //                 ...provider.dealProducts
+                  //                     .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
+                  //                     .map(
+                  //                       (e) => DealItemDesktop(
+                  //                     key: Key(e.id),
+                  //                     product: e,
+                  //                     onProductClick: () => _cartHelper.productClick(
+                  //                         context: context,
+                  //                         productId: e.id,
+                  //                         productType: e.productType,
+                  //                         provider: provider),
+                  //                     onAddToCart: () => _cartHelper.addToCart(
+                  //                       provider: provider,
+                  //                       context: context,
+                  //                       productId: e.id,
+                  //                     ),
+                  //                     provider: provider,
+                  //                     cartHelper: _cartHelper,
+                  //                     gridView: false, sub_category: '',
+                  //                   ),
+                  //                 )
+                  //               else
+                  //                 ...provider.dealProducts
+                  //                     .where((element) =>
+                  //                 element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                  //                     .take((provider.dealProducts
+                  //                     .where((element) =>
+                  //                 element.category?.id ==
+                  //                     provider.dealCategories[(dealIndex - 1)].id)
+                  //                     .length) >
+                  //                     10
+                  //                     ? 10
+                  //                     : provider.dealProducts
+                  //                     .where((element) =>
+                  //                 element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                  //                     .length)
+                  //                     .map(
+                  //                       (e) => DealItemDesktop(
+                  //                     key: Key(e.id),
+                  //                     product: e,
+                  //                     onProductClick: () => _cartHelper.productClick(
+                  //                         context: context,
+                  //                         productId: e.id,
+                  //                         productType: e.productType,
+                  //                         provider: provider),
+                  //                     onAddToCart: () => _cartHelper.addToCart(
+                  //                       provider: provider,
+                  //                       context: context,
+                  //                       productId: e.id,
+                  //                     ),
+                  //                     provider: provider,
+                  //                     cartHelper: _cartHelper,
+                  //                     gridView: false, sub_category: '',
+                  //                   ),
+                  //                 ),
+                  //             ],
+                  //             options: CarouselOptions(
+                  //               // aspectRatio: 4.5,
+                  //               aspectRatio: 3.1,
+                  //               // viewportFraction: 0.15,
+                  //               viewportFraction: 0.2,
+                  //               initialPage: 0,
+                  //               enableInfiniteScroll: false,
+                  //               reverse: false,
+                  //               disableCenter: true,
+                  //               padEnds: false,
+                  //               autoPlay: true,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),                      ],
+                  //   ),
+                  // ),
+                  // if (provider.banners.any((element) => element.type == StringConstants.homeBannerMiddle))
+                  //   CarouselSlider(
+                  //     items: provider.banners
+                  //         .where((element) => element.type == StringConstants.homeBannerMiddle)
+                  //         .map(
+                  //           (e) => CustomNetworkImage(
+                  //         imageUrl: e.banner,
+                  //         width: width,
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //     )
+                  //         .toList(),
+                  //     options: CarouselOptions(
+                  //       disableCenter: true,
+                  //       viewportFraction: 1,
+                  //       height: height * .5,
+                  //       autoPlay: true,
+                  //     ),
+                  //   ),
                   const BottomAppBarPage(),
                 ],
               ),
@@ -386,10 +449,7 @@ class _OrderDialog extends StatelessWidget {
                 SizedBox(height: height * .02),
                 Text(
                   'Thanks for your order!',
-                  style: TextHelper.smallTextStyle.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: ColorConstants.colorBlackTwo,
-                      fontSize: 13.sp),
+                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorBlackTwo, fontSize: 13.sp),
                 ),
                 SizedBox(height: height * .02),
                 Padding(

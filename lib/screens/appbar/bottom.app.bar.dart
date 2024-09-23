@@ -30,7 +30,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: width * .10, vertical: 40),
-          color: Color(0xff033F5C),
+          color: Color(0xffF9F9F9),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -44,7 +44,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
-                        'assets/images/app_logo1.png',
+                        'assets/images/app_logo.png',
                         width: width * .10,
                       ),
                     ),
@@ -63,7 +63,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       'Refund Policy',
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -75,7 +75,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       'Privacy Policy',
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -91,7 +91,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       'Shipping Policy',
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -107,7 +107,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       'Terms & Conditions',
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -119,7 +119,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       'Need help?',
                       style: TextHelper.smallTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),

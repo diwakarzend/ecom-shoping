@@ -186,6 +186,6 @@ class DealItemDesktop extends StatelessWidget {
 }
 
 void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/Artimbe1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

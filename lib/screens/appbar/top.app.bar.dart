@@ -38,6 +38,17 @@ class TopAppBar extends StatelessWidget {
                       if (provider.loginDetails == null)
                         InkWell(
                           onTap: () {
+                            context.router.navigate(HomeRoute());
+                          },
+                          child: Text(
+                            'Home',
+                            style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w500, color: Colors.black),
+                          ),
+                        ),
+                      const SizedBox(width: 20),
+                      InkWell(
+                          onTap: () {
                             context.router.navigate(const ProfileRoute());
                           },
                           child: Text(
@@ -162,10 +173,10 @@ class TopAppBar extends StatelessWidget {
                       ElevatedButton.icon(
                         onPressed: _downloadAPK,
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                          backgroundColor: Color(0xff0689C6),
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                          backgroundColor: Color(0xffEE2128),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(30),
                           ),
                         ),
                         icon: Icon(Icons.android, color: Colors.white, size: 24),
@@ -189,6 +200,6 @@ class TopAppBar extends StatelessWidget {
   }
 }
 void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

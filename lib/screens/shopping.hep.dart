@@ -78,7 +78,7 @@ class _ShoppingHelpState extends State<ShoppingHelp> {
                     });
                   },
                   title: Text(
-                    'What is Amanapay?',
+                    'What is Artimbe?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(
@@ -154,7 +154,7 @@ class _ShoppingHelpState extends State<ShoppingHelp> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  'Mail us at : info.Amanapaypvtltd@gmail.com',
+                  'Mail us at : info.Artimbepvtltd@gmail.com',
                   style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                 ),
               ),

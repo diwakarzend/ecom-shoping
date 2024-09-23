@@ -22,7 +22,7 @@ class _ContactUsDesktopState extends State<ContactUsDesktop> {
         final String contactUsText = """
 CONTACT US
 Phone: +91- 7836879833
-Email: amanapaypaymentsservicespvtltd@gmail.com
+Email: Artimbepaymentsservicespvtltd@gmail.com
 
 Address:
 F-108 &109 Plot No1 Aditya, Complex Blk-KP C.C, Saraswati

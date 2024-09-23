@@ -63,7 +63,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  'amanapaypaymentsservicespvtltd@gmail.com',
+                  'Artimbepaymentsservicespvtltd@gmail.com',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),
