@@ -30,7 +30,6 @@ class DealItemDesktop extends StatelessWidget {
     required this.cartHelper,
     required this.gridView,
     required this.sub_category,
-
   });
 
   @override
@@ -71,23 +70,29 @@ class DealItemDesktop extends StatelessWidget {
                     child: IconButton(
                       iconSize: 25,
                       onPressed: () async {
-                        cartHelper.addToWishList(provider: provider, context: context, productId: product.id);
+                        cartHelper.addToWishList(
+                            provider: provider,
+                            context: context,
+                            productId: product.id);
                       },
-                      icon: provider.wishlist != null && provider.wishlist!.records.any((element) => element.id == product.id)
+                      icon: provider.wishlist != null &&
+                              provider.wishlist!.records
+                                  .any((element) => element.id == product.id)
                           ? const Icon(
-                        Ionicons.heart,
-                        color: Colors.red,
-                      )
+                              Ionicons.heart,
+                              color: Colors.red,
+                            )
                           : Icon(
-                        Ionicons.heart_outline,
-                        color: ColorConstants.colorBlackTwo.withOpacity(0.5),
-                      ),
+                              Ionicons.heart_outline,
+                              color:
+                                  ColorConstants.colorBlackTwo.withOpacity(0.5),
+                            ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            // const SizedBox(height: 10),
             Expanded(
               flex: 2,
               child: Column(
@@ -146,7 +151,8 @@ class DealItemDesktop extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
                           title: const Text('Alert'),
-                          content: const Text('This feature is only available on our app.'),
+                          content: const Text(
+                              'This feature is only available on our app.'),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () => _downloadAPK(),
@@ -163,11 +169,16 @@ class DealItemDesktop extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 4, horizontal: width * .01),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.blueAccent,
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF2A84FF), Color(0xFF000590)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
                       ),
                       child: Text(
                         'Add to Cart',
-                        style: TextHelper.normalTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.normalTextStyle.copyWith(
+                            fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
                   ),
@@ -180,7 +191,9 @@ class DealItemDesktop extends StatelessWidget {
     );
   }
 }
+
 void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
+  const launchUri =
+      'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

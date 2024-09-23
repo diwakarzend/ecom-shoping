@@ -102,7 +102,7 @@ class _HotItemDesktopState extends State<HotItemDesktop> with TickerProviderStat
       builder: (context, provider, _) {
         initProduct(provider);
         return Scaffold(
-          backgroundColor: ColorConstants.colorBlueNineteen,
+          // backgroundColor: ColorConstants.colorBlueNineteen,
           drawer: CustomDrawerDesktop(
             provider: provider,
             onSupportExtend: () {

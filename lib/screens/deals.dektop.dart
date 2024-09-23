@@ -106,7 +106,7 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
       builder: (context, provider, _) {
         // addFirebaseAnalyticsHotProducts(provider);
         return Scaffold(
-          backgroundColor: ColorConstants.colorBlueNineteen,
+          // backgroundColor: ColorConstants.colorBlueNineteen,
           drawer: CustomDrawerDesktop(
             provider: provider,
             onSupportExtend: () {

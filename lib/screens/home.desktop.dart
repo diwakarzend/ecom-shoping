@@ -175,10 +175,10 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Clothes ',
+                            'TRENDING SALE ',
                             textAlign: TextAlign.center,
                             style: TextHelper.titleStyle.copyWith(
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w900,
                               // fontSize: 25.0,
                             ),
                           ),
@@ -202,112 +202,129 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: height * .008, bottom: height * .03),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Clothes: A cool and comfortable graphic tee that expresses your personality. ',
-                            style: TextHelper.normalTextStyle.copyWith(
-                              color: Colors.black.withOpacity(0.8),
-                            ),
-                          ),
-                        ],
+                  // Expanded(
+                  //   flex: 12,
+                  //   child: Align(
+                  //     alignment: Alignment.centerLeft, // Align to the left
+                  //     child: Padding(
+                  //       padding: EdgeInsets.symmetric(vertical: height * .03),
+                  //       child: CarouselSlider(
+                  //         items: [
+                  //           if (dealIndex == 0)
+                  //             ...provider.dealProducts
+                  //                 .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
+                  //                 .map(
+                  //                   (e) => DealItemDesktop(
+                  //                 key: Key(e.id),
+                  //                 product: e,
+                  //                 onProductClick: () => _cartHelper.productClick(
+                  //                     context: context,
+                  //                     productId: e.id,
+                  //                     productType: e.productType,
+                  //                     provider: provider),
+                  //                 onAddToCart: () => _cartHelper.addToCart(
+                  //                   provider: provider,
+                  //                   context: context,
+                  //                   productId: e.id,
+                  //                 ),
+                  //                 provider: provider,
+                  //                 cartHelper: _cartHelper,
+                  //                 gridView: false,
+                  //                 sub_category: '',
+                  //               ),
+                  //             )
+                  //           else
+                  //             ...provider.dealProducts
+                  //                 .where((element) =>
+                  //             element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                  //                 .take((provider.dealProducts
+                  //                 .where((element) =>
+                  //             element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                  //                 .length) >
+                  //                 10
+                  //                 ? 10
+                  //                 : provider.dealProducts
+                  //                 .where((element) =>
+                  //             element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                  //                 .length)
+                  //                 .map(
+                  //                   (e) => DealItemDesktop(
+                  //                 key: Key(e.id),
+                  //                 product: e,
+                  //                 onProductClick: () => _cartHelper.productClick(
+                  //                     context: context,
+                  //                     productId: e.id,
+                  //                     productType: e.productType,
+                  //                     provider: provider),
+                  //                 onAddToCart: () => _cartHelper.addToCart(
+                  //                   provider: provider,
+                  //                   context: context,
+                  //                   productId: e.id,
+                  //                 ),
+                  //                 provider: provider,
+                  //                 cartHelper: _cartHelper,
+                  //                 gridView: false,
+                  //                 sub_category: '',
+                  //               ),
+                  //             ),
+                  //         ],
+                  //         options: CarouselOptions(
+                  //           aspectRatio: 3.1,
+                  //           viewportFraction: 0.2,
+                  //           initialPage: 0,
+                  //           enableInfiniteScroll: false,
+                  //           reverse: false,
+                  //           disableCenter: true,
+                  //           padEnds: false,
+                  //           autoPlay: true,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  GridView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: width * .05, vertical: 17),
+                      itemCount: provider.dealProducts
+                          .take(provider.dealProducts.length >= 20
+                          ?20
+                          : provider.dealProducts.length)
+                          .toList()
+                          .length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 5,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                        childAspectRatio: 0.5,
                       ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 12,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: height * .03),
-                            child: CarouselSlider(
-                              // carouselController: _dealController,
-                              items: [
-                                if (dealIndex == 0)
-                                  ...provider.dealProducts
-                                      .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                      key: Key(e.id),
-                                      product: e,
-                                      onProductClick: () => _cartHelper.productClick(
-                                          context: context,
-                                          productId: e.id,
-                                          productType: e.productType,
-                                          provider: provider),
-                                      onAddToCart: () => _cartHelper.addToCart(
-                                        provider: provider,
-                                        context: context,
-                                        productId: e.id,
-                                      ),
-                                      provider: provider,
-                                      cartHelper: _cartHelper,
-                                      gridView: false, sub_category: '',
-                                    ),
-                                  )
-                                else
-                                  ...provider.dealProducts
-                                      .where((element) =>
-                                  element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                                      .take((provider.dealProducts
-                                      .where((element) =>
-                                  element.category?.id ==
-                                      provider.dealCategories[(dealIndex - 1)].id)
-                                      .length) >
-                                      10
-                                      ? 10
-                                      : provider.dealProducts
-                                      .where((element) =>
-                                  element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                                      .length)
-                                      .map(
-                                        (e) => DealItemDesktop(
-                                      key: Key(e.id),
-                                      product: e,
-                                      onProductClick: () => _cartHelper.productClick(
-                                          context: context,
-                                          productId: e.id,
-                                          productType: e.productType,
-                                          provider: provider),
-                                      onAddToCart: () => _cartHelper.addToCart(
-                                        provider: provider,
-                                        context: context,
-                                        productId: e.id,
-                                      ),
-                                      provider: provider,
-                                      cartHelper: _cartHelper,
-                                      gridView: false, sub_category: '',
-                                    ),
-                                  ),
-                              ],
-                              options: CarouselOptions(
-                                // aspectRatio: 4.5,
-                                aspectRatio: 3.1,
-                                // viewportFraction: 0.15,
-                                viewportFraction: 0.2,
-                                initialPage: 0,
-                                enableInfiniteScroll: false,
-                                reverse: false,
-                                disableCenter: true,
-                                padEnds: false,
-                                autoPlay: true,
-                              ),
-                            ),
+                      itemBuilder: (context, index) {
+                        final e = provider.dealProducts
+                            .take(provider.dealProducts.length >= 20
+                            ? 20
+                            : provider.dealProducts.length)
+                            .toList()[index];
+                        return DealItemDesktop(
+                          key: Key(e.id),
+                          product: e,
+                          onProductClick: () => _cartHelper.productClick(
+                              context: context,
+                              productId: e.id,
+                              productType: e.productType,
+                              provider: provider),
+                          onAddToCart: () => _cartHelper.addToCart(
+                            provider: provider,
+                            context: context,
+                            productId: e.id,
                           ),
-                        ),                      ],
-                    ),
-                  ),
+                          provider: provider,
+                          cartHelper: _cartHelper,
+                          gridView: true,
+                          sub_category: '',
+                        );
+                      }),
+
                   const BottomAppBarPage(),
                 ],
               ),

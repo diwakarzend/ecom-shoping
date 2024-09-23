@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
+import 'package:fabpiks_web/screens/contact.screen.dart';
+import 'package:fabpiks_web/screens/shipping.screen.dart';
+import 'package:fabpiks_web/screens/term.screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../routes/router.gr.dart';
@@ -24,8 +27,9 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.only(left: width * .10, to p: 40, right: width * .10, bottom: 40),
-          color: const Color(0xff30456b),
+          padding: EdgeInsets.only(
+              left: width * .10, top: 40, right: width * .10, bottom: 40),
+          color: const Color(0xff000357),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +81,8 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     InkWell(
                       child: Text(
                         'FAQ’s',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                       onTap: () {
                         context.router.navigate(const FAQHelpRoute());
@@ -92,7 +97,8 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Refund Policy',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
                     SizedBox(
@@ -104,7 +110,8 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Privacy Policy',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
                     SizedBox(
@@ -116,7 +123,8 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Need help?',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
                     SizedBox(
@@ -128,13 +136,68 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       },
                       child: Text(
                         'Profile',
-                        style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ShippingPolicyAll()),
+                        );
+                      },
+                      child: Text(
+                        'Shipping Policy',
+                        style: TextHelper.smallTextStyle.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TermConditionAll()),
+                        );
+                      },
+                      child: Text(
+                        'Terms & Conditions',
+                        style: TextHelper.smallTextStyle.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * .03,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ContactUsAll()),
+                        );
+                      },
+                      child: Text(
+                        'Contact Us',
+                        style: TextHelper.smallTextStyle.copyWith(
+                            fontWeight: FontWeight.w500, color: Colors.white),
                       ),
                     ),
                   ],
                 ),
               ),
-
             ],
           ),
         )
