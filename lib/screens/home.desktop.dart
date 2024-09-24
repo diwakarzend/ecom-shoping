@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
 
@@ -112,57 +113,99 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
-                  CarouselSlider(
-                    items: provider.banners
-                        .where((element) =>
-                    (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
-                        element.deviceType == StringConstants.deviceTypeD)
-                        .map(
-                          (e) => CustomNetworkImage(
-                        imageUrl: e.banner,
-                        width: width,
-                        height: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                        .toList(),
-                    options: CarouselOptions(
-                      disableCenter: true,
-                      viewportFraction: 1,
-                      height: height * .8,
-                      autoPlay: true,
-                      onPageChanged: (i, _) => setState(() => bannerIndex = i),
-                    ),
-                  ),
-                  SizedBox(height: height * .01),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ...provider.banners
-                          .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                          .toList()
-                          .asMap()
-                          .map(
-                            (i, v) => MapEntry(
-                          i,
-                          Container(
-                            width: 10,
-                            height: 10,
-                            margin: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: bannerIndex == i ? ColorConstants.colorBlack : Colors.transparent,
-                              border: Border.all(
-                                color: ColorConstants.colorBlack,
-                              ),
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30.0),
+                            gradient: LinearGradient(
+                              colors: [Color(0xFF0000A0), Color(0xFF0000D4)],
                             ),
                           ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                                  child: RichText(
+                                    text: TextSpan(
+                                      text: 'Download the app now! ',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+
+                                      children: [
+                                        TextSpan(
+                                          text: 'For the better experience download our app.',
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: _downloadAPK,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.android, color: Colors.black),
+                                      SizedBox(width: 8.0),
+                                      Text(
+                                        'Download APK',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      )
-                          .values,
-                    ],
+                        SizedBox(height: 16.0),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 8,
+                              child: Image.asset('assets/images/newbanner.png'),
+                            ),
+                            SizedBox(width: width * .01,),
+                            InkWell(
+                              splashFactory: NoSplash.splashFactory,
+                              splashColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              onTap: () {
+                                context.router.push(const DealsRoute());
+                              },
+                              child: Expanded(
+                                flex: 4,
+                                child: Image.asset(
+                                  'assets/images/newbanner1.png',
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
@@ -182,127 +225,31 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                               // fontSize: 25.0,
                             ),
                           ),
-                          const Spacer(),
-                          InkWell(
-                            splashFactory: NoSplash.splashFactory,
-                            splashColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            onTap: () {
-                              context.router.push(const DealsRoute());
-                            },
-                            child: Text(
-                              'View All ',
-                              style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          const Icon(Icons.arrow_forward_ios),
                         ],
                       ),
                     ),
                   ),
-                  // Expanded(
-                  //   flex: 12,
-                  //   child: Align(
-                  //     alignment: Alignment.centerLeft, // Align to the left
-                  //     child: Padding(
-                  //       padding: EdgeInsets.symmetric(vertical: height * .03),
-                  //       child: CarouselSlider(
-                  //         items: [
-                  //           if (dealIndex == 0)
-                  //             ...provider.dealProducts
-                  //                 .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
-                  //                 .map(
-                  //                   (e) => DealItemDesktop(
-                  //                 key: Key(e.id),
-                  //                 product: e,
-                  //                 onProductClick: () => _cartHelper.productClick(
-                  //                     context: context,
-                  //                     productId: e.id,
-                  //                     productType: e.productType,
-                  //                     provider: provider),
-                  //                 onAddToCart: () => _cartHelper.addToCart(
-                  //                   provider: provider,
-                  //                   context: context,
-                  //                   productId: e.id,
-                  //                 ),
-                  //                 provider: provider,
-                  //                 cartHelper: _cartHelper,
-                  //                 gridView: false,
-                  //                 sub_category: '',
-                  //               ),
-                  //             )
-                  //           else
-                  //             ...provider.dealProducts
-                  //                 .where((element) =>
-                  //             element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                  //                 .take((provider.dealProducts
-                  //                 .where((element) =>
-                  //             element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                  //                 .length) >
-                  //                 10
-                  //                 ? 10
-                  //                 : provider.dealProducts
-                  //                 .where((element) =>
-                  //             element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
-                  //                 .length)
-                  //                 .map(
-                  //                   (e) => DealItemDesktop(
-                  //                 key: Key(e.id),
-                  //                 product: e,
-                  //                 onProductClick: () => _cartHelper.productClick(
-                  //                     context: context,
-                  //                     productId: e.id,
-                  //                     productType: e.productType,
-                  //                     provider: provider),
-                  //                 onAddToCart: () => _cartHelper.addToCart(
-                  //                   provider: provider,
-                  //                   context: context,
-                  //                   productId: e.id,
-                  //                 ),
-                  //                 provider: provider,
-                  //                 cartHelper: _cartHelper,
-                  //                 gridView: false,
-                  //                 sub_category: '',
-                  //               ),
-                  //             ),
-                  //         ],
-                  //         options: CarouselOptions(
-                  //           aspectRatio: 3.1,
-                  //           viewportFraction: 0.2,
-                  //           initialPage: 0,
-                  //           enableInfiniteScroll: false,
-                  //           reverse: false,
-                  //           disableCenter: true,
-                  //           padEnds: false,
-                  //           autoPlay: true,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                   GridView.builder(
                       primary: false,
                       shrinkWrap: true,
                       padding: EdgeInsets.symmetric(
                           horizontal: width * .05, vertical: 17),
                       itemCount: provider.dealProducts
-                          .take(provider.dealProducts.length >= 20
-                          ?20
+                          .take(provider.dealProducts.length >= 8
+                          ?8
                           : provider.dealProducts.length)
                           .toList()
                           .length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5,
+                        crossAxisCount: 4,
                         crossAxisSpacing: 15,
                         mainAxisSpacing: 15,
                         childAspectRatio: 0.5,
                       ),
                       itemBuilder: (context, index) {
                         final e = provider.dealProducts
-                            .take(provider.dealProducts.length >= 20
-                            ? 20
+                            .take(provider.dealProducts.length >= 8
+                            ? 8
                             : provider.dealProducts.length)
                             .toList()[index];
                         return DealItemDesktop(
@@ -324,7 +271,13 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                           sub_category: '',
                         );
                       }),
-
+                  InkWell(
+                    onTap: _downloadAPK,
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 30.0),
+                      child: Image.asset('assets/images/bottomimage.png'),
+                    ),
+                  ),
                   const BottomAppBarPage(),
                 ],
               ),
@@ -334,6 +287,11 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
       },
     );
   }
+}
+void _downloadAPK() async {
+  const launchUri =
+      'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
+  await launchUrl(Uri.parse(launchUri));
 }
 
 class _OrderDialog extends StatelessWidget {
