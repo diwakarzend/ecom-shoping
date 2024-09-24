@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
 
@@ -121,72 +122,101 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   SizedBox(
                     height: height * .03,
                   ),
-                  Image.asset('assets/images/banner1.png'),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
+                    child: Image.asset(
+                      'assets/images/banner1.png',
+                      width: double.infinity,
+                    ),
+                  ),
                   SizedBox(
                     height: height * .01,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      child: CarouselSlider(
-                        items: _banners
-                            .map(
-                              (e) => ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: CustomNetworkImage(
-                              imageUrl: e,
-                              width: width,
-                              height: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )
-                            .toList(),
-                        options: CarouselOptions(
-                          disableCenter: true,
-                          viewportFraction: 1,
-                          height: height * .6,
-                          autoPlay: true,
-                          onPageChanged: (i, _) => setState(() => bannerIndex = i),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(20.0),
+                  //   child: Container(
+                  //     child: CarouselSlider(
+                  //       items: _banners
+                  //           .map(
+                  //             (e) => ClipRRect(
+                  //           borderRadius: BorderRadius.circular(20.0),
+                  //           child: CustomNetworkImage(
+                  //             imageUrl: e,
+                  //             width: width,
+                  //             height: double.infinity,
+                  //             fit: BoxFit.cover,
+                  //           ),
+                  //         ),
+                  //       )
+                  //           .toList(),
+                  //       options: CarouselOptions(
+                  //         disableCenter: true,
+                  //         viewportFraction: 1,
+                  //         height: height * .6,
+                  //         autoPlay: true,
+                  //         onPageChanged: (i, _) => setState(() => bannerIndex = i),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(height: height * .01),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // ...provider.banners
-                      //     .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                      //     .toList()
-                      ..._banners
-                          .asMap()
-                          .map(
-                            (i, v) => MapEntry(
-                              i,
-                              Container(
-                                width: 10,
-                                height: 10,
-                                margin: const EdgeInsets.all(2),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: bannerIndex == i
-                                      ? ColorConstants.colorBlack
-                                      : Colors.transparent,
-                                  border: Border.all(
-                                    color: ColorConstants.colorBlack,
+                  Padding(
+                    padding: EdgeInsets.only(left: width * .05),
+                    child: Row(children: [
+                      Expanded(
+                        flex: 7,
+                        child: Image.asset('assets/images/download.png',
+                            width: double.infinity),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: CarouselSlider(
+                          // carouselController: _dealController,
+                          items: [
+                            ...provider.dealProducts
+                                .take(provider.dealProducts.length > 5
+                                    ? 5
+                                    : provider.dealProducts.length)
+                                .map(
+                                  (e) => DealItemDesktop(
+                                    key: Key(e.id),
+                                    product: e,
+                                    onProductClick: () =>
+                                        _cartHelper.productClick(
+                                            context: context,
+                                            productId: e.id,
+                                            productType: e.productType,
+                                            provider: provider),
+                                    onAddToCart: () => _cartHelper.addToCart(
+                                      provider: provider,
+                                      context: context,
+                                      productId: e.id,
+                                    ),
+                                    provider: provider,
+                                    cartHelper: _cartHelper,
+                                    gridView: false,
+                                    sub_category: '',
                                   ),
                                 ),
-                              ),
-                            ),
-                          )
-                          .values,
-                    ],
+                          ],
+                          options: CarouselOptions(
+                            // aspectRatio: 4.5,
+                            aspectRatio: 1.5,
+                            // viewportFraction: 0.15,
+                            viewportFraction: 0.40,
+                            initialPage: 0,
+                            enableInfiniteScroll: false,
+                            reverse: false,
+                            disableCenter: true,
+                            padEnds: false,
+                            autoPlay: true,
+                          ),
+                        ),
+                      )
+                    ]),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .12),
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(bottom: height * .01),
@@ -224,7 +254,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * .06),
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -329,6 +359,18 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       ],
                     ),
                   ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(child: Image.asset('assets/images/bottom1.png', width: double.infinity)),
+                        SizedBox(width: width * .01),
+                        Expanded(child: Image.asset('assets/images/bottom2.png', width: double.infinity,)),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: height * .01),
                   const BottomAppBarPage(),
                 ],
               ),
@@ -437,4 +479,10 @@ class _OrderDialog extends StatelessWidget {
       ),
     );
   }
+}
+
+void _downloadAPK() async {
+  const launchUri =
+      'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+  await launchUrl(Uri.parse(launchUri));
 }

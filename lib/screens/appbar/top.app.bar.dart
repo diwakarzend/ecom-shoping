@@ -38,6 +38,17 @@ class TopAppBar extends StatelessWidget {
                       if (provider.loginDetails == null)
                         InkWell(
                           onTap: () {
+                            context.router.navigate( HomeRoute());
+                          },
+                          child: Text(
+                            'Home',
+                            style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w500, color: Colors.black),
+                          ),
+                        ),
+                      const SizedBox(width: 20),
+                        InkWell(
+                          onTap: () {
                             context.router.navigate(const ProfileRoute());
                           },
                           child: Text(
@@ -135,48 +146,70 @@ class TopAppBar extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 20),
+                      if (provider.loginDetails == null)
+                        InkWell(
+                            onTap: () {
+                              context.router.navigate(LoginRoute());
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xff0689C6),
+                                border: Border.all(color: Color(0xff0689C6)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                              child: Text(
+                                'Sign in',
+                                style: TextHelper.normalTextStyle.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                        ),
+                      const SizedBox(width: 20),
                       InkWell(
                         onTap: () {
                           provider.changeLoginStatus(false, null, '', '', '');
                           context.router.navigate(SignupRoute(referCode: ''));
                         },
-                        child: Text(
-                          'Sign up',
-                          style: TextHelper.normalTextStyle.copyWith(
-                              fontWeight: FontWeight.w500, color: Colors.black),
-                        ),
+                          splashColor: Colors.blue.withOpacity(0.3),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.black),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                            child: Text(
+                              'Sign Up',
+                              style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                              ),
+                            ),
+                          )
+
                       ),
-                      const SizedBox(width: 20),
-                      if (provider.loginDetails == null)
-                        InkWell(
-                          onTap: () {
-                            context.router.navigate(LoginRoute());
-                          },
-                          child: Text(
-                            'Sign in',
-                            style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500, color: Colors.black),
-                          ),
-                        ),
                       const SizedBox(width: 15),
-                      ElevatedButton.icon(
-                        onPressed: _downloadAPK,
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                          backgroundColor: Color(0xff0689C6),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                        icon: Icon(Icons.android, color: Colors.white, size: 24),
-                        label: Text(
-                          'Download APK',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
+                      // ElevatedButton.icon(
+                      //   onPressed: _downloadAPK,
+                      //   style: ElevatedButton.styleFrom(
+                      //     padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                      //     backgroundColor: Color(0xff0689C6),
+                      //     shape: RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.circular(20),
+                      //     ),
+                      //   ),
+                      //   icon: Icon(Icons.android, color: Colors.white, size: 24),
+                      //   label: Text(
+                      //     'Download APK',
+                      //     style: TextStyle(
+                      //       color: Colors.white,
+                      //       fontSize: 18,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],
@@ -187,8 +220,4 @@ class TopAppBar extends StatelessWidget {
       },
     );
   }
-}
-void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
-  await launchUrl(Uri.parse(launchUri));
 }

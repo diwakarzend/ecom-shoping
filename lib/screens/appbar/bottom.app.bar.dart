@@ -30,7 +30,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: width * .10, vertical: 40),
-          color: Color(0xff033F5C),
+          color: Color(0xff0E0E0E),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
