@@ -61,7 +61,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
       BuildContext? dialogContext;
       Future.delayed(
         const Duration(milliseconds: 500),
-            () => showDialog(
+        () => showDialog(
           context: context,
           barrierDismissible: false,
           builder: (c) {
@@ -113,99 +113,133 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
+                  // Padding(
+                  //   padding: EdgeInsets.all(16.0),
+                  //   child: Column(
+                  //     children: [
+                  //       Container(
+                  //         decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(30.0),
+                  //           gradient: LinearGradient(
+                  //             colors: [Color(0xFF0000A0), Color(0xFF0000D4)],
+                  //           ),
+                  //         ),
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             Expanded(
+                  //               child: Padding(
+                  //                 padding: EdgeInsets.symmetric(
+                  //                     horizontal: width * .05),
+                  //                 child: RichText(
+                  //                   text: TextSpan(
+                  //                     text: 'Download the app now! ',
+                  //                     style: TextStyle(
+                  //                       color: Colors.white,
+                  //                       fontSize: 16.0,
+                  //                       fontWeight: FontWeight.bold,
+                  //                     ),
+                  //                     children: [
+                  //                       TextSpan(
+                  //                         text:
+                  //                             'For the better experience download our app.',
+                  //                         style: TextStyle(
+                  //                           fontSize: 14.0,
+                  //                           fontWeight: FontWeight.normal,
+                  //                         ),
+                  //                       ),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             InkWell(
+                  //               onTap: _downloadAPK,
+                  //               child: Container(
+                  //                 padding: EdgeInsets.symmetric(
+                  //                     vertical: 8.0, horizontal: 16.0),
+                  //                 decoration: BoxDecoration(
+                  //                   color: Colors.white,
+                  //                   borderRadius: BorderRadius.circular(30.0),
+                  //                 ),
+                  //                 child: Row(
+                  //                   children: [
+                  //                     Icon(Icons.android, color: Colors.black),
+                  //                     SizedBox(width: 8.0),
+                  //                     Text(
+                  //                       'Download APK',
+                  //                       style: TextStyle(
+                  //                         color: Colors.black,
+                  //                         fontSize: 14.0,
+                  //                         fontWeight: FontWeight.bold,
+                  //                       ),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //       SizedBox(height: height * .03),
+                  //       // Padding(
+                  //       //   padding:
+                  //       //       EdgeInsets.symmetric(horizontal: width * .05),
+                  //       //   child: Row(
+                  //       //     children: [
+                  //       //       Expanded(
+                  //       //         flex: 8,
+                  //       //         child: Image.asset(
+                  //       //             'assets/images/newbanner.png',
+                  //       //             width: double.infinity),
+                  //       //       ),
+                  //       //       SizedBox(
+                  //       //         width: width * .01,
+                  //       //       ),
+                  //       //       InkWell(
+                  //       //         splashFactory: NoSplash.splashFactory,
+                  //       //         splashColor: Colors.transparent,
+                  //       //         hoverColor: Colors.transparent,
+                  //       //         onTap: () {
+                  //       //           context.router.push(const DealsRoute());
+                  //       //         },
+                  //       //         child: Expanded(
+                  //       //           flex: 4,
+                  //       //           child: Image.asset(
+                  //       //               'assets/images/newbanner1.png',
+                  //       //               width: double.infinity),
+                  //       //         ),
+                  //       //       ),
+                  //       //     ],
+                  //       //   ),
+                  //       // ),
+                  //     ],
+                  //   ),
+                  // ),
+                  SizedBox(height: height * .02,),
                   Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30.0),
-                            gradient: LinearGradient(
-                              colors: [Color(0xFF0000A0), Color(0xFF0000D4)],
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: 'Download the app now! ',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-
-                                      children: [
-                                        TextSpan(
-                                          text: 'For the better experience download our app.',
-                                          style: TextStyle(
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: _downloadAPK,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.android, color: Colors.black),
-                                      SizedBox(width: 8.0),
-                                      Text(
-                                        'Download APK',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                    padding: EdgeInsets.only(left: width * .05),
+                    child: Row(children: [
+                      Expanded(
+                        flex: 7,
+                        child: Image.asset('assets/images/newbanner.png',
+                            width: double.infinity),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child:  InkWell(
+                          splashFactory: NoSplash.splashFactory,
+                          splashColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          onTap: () {
+                            context.router.push(const DealsRoute());
+                          },
+                          child: Image.asset('assets/images/newbanner1.png',
+                            width: double.infinity
                           ),
                         ),
-                        SizedBox(height: 16.0),
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 8,
-                              child: Image.asset('assets/images/newbanner.png'),
-                            ),
-                            SizedBox(width: width * .01,),
-                            InkWell(
-                              splashFactory: NoSplash.splashFactory,
-                              splashColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              onTap: () {
-                                context.router.push(const DealsRoute());
-                              },
-                              child: Expanded(
-                                flex: 4,
-                                child: Image.asset(
-                                  'assets/images/newbanner1.png',
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                      ),
+                    ]),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
@@ -236,8 +270,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                           horizontal: width * .05, vertical: 17),
                       itemCount: provider.dealProducts
                           .take(provider.dealProducts.length >= 8
-                          ?8
-                          : provider.dealProducts.length)
+                              ? 8
+                              : provider.dealProducts.length)
                           .toList()
                           .length,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -249,8 +283,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       itemBuilder: (context, index) {
                         final e = provider.dealProducts
                             .take(provider.dealProducts.length >= 8
-                            ? 8
-                            : provider.dealProducts.length)
+                                ? 8
+                                : provider.dealProducts.length)
                             .toList()[index];
                         return DealItemDesktop(
                           key: Key(e.id),
@@ -288,6 +322,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
     );
   }
 }
+
 void _downloadAPK() async {
   const launchUri =
       'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
@@ -340,7 +375,10 @@ class _OrderDialog extends StatelessWidget {
                 SizedBox(height: height * .02),
                 Text(
                   'Thanks for your order!',
-                  style: TextHelper.smallTextStyle.copyWith(fontWeight: FontWeight.bold, color: ColorConstants.colorBlackTwo, fontSize: 13.sp),
+                  style: TextHelper.smallTextStyle.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: ColorConstants.colorBlackTwo,
+                      fontSize: 13.sp),
                 ),
                 SizedBox(height: height * .02),
                 Padding(

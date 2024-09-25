@@ -95,14 +95,13 @@ class TopAppBar extends StatelessWidget {
                   const SizedBox(width: 20),
                   if (provider.loginDetails == null)
                     InkWell(
-                      onTap: () {
-                        provider.changeLoginStatus(false, null, '', '', '');
-                        context.router.navigate(SignupRoute(referCode: ''));
-                      },
+                        onTap: () {
+                          context.router.navigate(LoginRoute());
+                        },
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
                               color: Colors.black,
@@ -110,10 +109,10 @@ class TopAppBar extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            'Sign Up',
+                            'Sign In',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              color: Colors.black,
+                              color: Colors.white,
                               fontSize: 16,
                             ),
                           ),
@@ -156,9 +155,10 @@ class TopAppBar extends StatelessWidget {
                     SizedBox(width: width * .01),
                   if (provider.loginDetails == null)
                     InkWell(
-                      onTap: () {
-                        context.router.navigate(LoginRoute());
-                      },
+                        onTap: () {
+                          provider.changeLoginStatus(false, null, '', '', '');
+                          context.router.navigate(SignupRoute(referCode: ''));
+                        },
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           decoration: BoxDecoration(
@@ -170,7 +170,7 @@ class TopAppBar extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            'Sign In',
+                            'Sign Up',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.black,
