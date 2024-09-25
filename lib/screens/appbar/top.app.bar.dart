@@ -24,7 +24,7 @@ class TopAppBar extends StatelessWidget {
           children: [
             Container(
               height: height * .17,
-              color: Colors.white,
+              color: Color(0xffffdccb),
               padding: EdgeInsets.symmetric(horizontal: width * .018),
               alignment: Alignment.center,
               child: Row(
@@ -32,31 +32,55 @@ class TopAppBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Left side menu
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/app_logo.png',
+                      width: width * .10,
+                    ),
+                  ),
+                  // Row(
+                  //   children: [
+                  //     if (provider.loginDetails == null)
+                  //
+                  //   ],
+                  // ),
                   Row(
                     children: [
-                      if (provider.loginDetails == null)
+                      if (provider.loginDetails != null)
                         InkWell(
                           onTap: () {
-                            context.router.navigate(HomeRoute());
+                            showSearch(
+                                context: context, delegate: DataSearch());
                           },
-                          child: Text(
-                            'Home',
-                            style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500, color: Colors.black),
+                          child: const Icon(
+                            Icons.search,
+                            color: Colors.black,
+                            size: 28,
                           ),
                         ),
+                      const SizedBox(width: 15),
+                      InkWell(
+                        onTap: () {
+                          context.router.navigate(HomeRoute());
+                        },
+                        child: Text(
+                          'Home',
+                          style: TextHelper.normalTextStyle.copyWith(
+                              fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                      ),
                       const SizedBox(width: 20),
                       InkWell(
-                          onTap: () {
-                            context.router.navigate(const ProfileRoute());
-                          },
-                          child: Text(
-                            'Profile',
-                            style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500, color: Colors.black),
-                          ),
+                        onTap: () {
+                          context.router.navigate(const ProfileRoute());
+                        },
+                        child: Text(
+                          'Profile',
+                          style: TextHelper.normalTextStyle.copyWith(
+                              fontWeight: FontWeight.w500, color: Colors.black),
                         ),
+                      ),
                       const SizedBox(width: 20),
                       InkWell(
                         onTap: () {
@@ -83,31 +107,6 @@ class TopAppBar extends StatelessWidget {
                               fontWeight: FontWeight.w500, color: Colors.black),
                         ),
                       ),
-                    ],
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        'assets/images/app_logo.png',
-                        width: width * .10,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      if (provider.loginDetails != null)
-                        InkWell(
-                          onTap: () {
-                            showSearch(context: context, delegate: DataSearch());
-                          },
-                          child: const Icon(
-                            Icons.search,
-                            color: Colors.black,
-                            size: 28,
-                          ),
-                        ),
-                      const SizedBox(width: 15),
                       InkWell(
                         onTap: () {
                           context.router.navigate(const NotificationRoute());
@@ -115,14 +114,14 @@ class TopAppBar extends StatelessWidget {
                         child: Badge(
                           showBadge: provider.reports
                               .where((element) =>
-                          element.product != null &&
-                              element.product!.stock > 0 &&
-                              element.productId != null &&
-                              element.qualified &&
-                              !element.rejected &&
-                              provider.currentUser != null &&
-                              !provider.currentUser!.orders.any(
-                                      (e) => e.products
+                                  element.product != null &&
+                                  element.product!.stock > 0 &&
+                                  element.productId != null &&
+                                  element.qualified &&
+                                  !element.rejected &&
+                                  provider.currentUser != null &&
+                                  !provider.currentUser!.orders.any((e) => e
+                                      .products
                                       .any((o) => o.id == element.product?.id)))
                               .isNotEmpty,
                           badgeStyle: const BadgeStyle(badgeColor: Colors.red),
@@ -130,14 +129,15 @@ class TopAppBar extends StatelessWidget {
                           badgeContent: Text(
                             provider.reports
                                 .where((element) =>
-                            element.product != null &&
-                                element.product!.stock > 0 &&
-                                element.productId != null &&
-                                element.qualified &&
-                                !element.rejected &&
-                                provider.currentUser != null &&
-                                !provider.currentUser!.orders.any((e) => e.products
-                                    .any((o) => o.id == element.product?.id)))
+                                    element.product != null &&
+                                    element.product!.stock > 0 &&
+                                    element.productId != null &&
+                                    element.qualified &&
+                                    !element.rejected &&
+                                    provider.currentUser != null &&
+                                    !provider.currentUser!.orders.any((e) =>
+                                        e.products.any((o) =>
+                                            o.id == element.product?.id)))
                                 .length
                                 .toString(),
                             style: TextHelper.extraSmallTextStyle
@@ -147,47 +147,49 @@ class TopAppBar extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       InkWell(
-                        onTap: () {
-                          provider.changeLoginStatus(false, null, '', '', '');
-                          context.router.navigate(SignupRoute(referCode: ''));
-                        },
-                        child: Text(
-                          'Sign up',
-                          style: TextHelper.normalTextStyle.copyWith(
-                              fontWeight: FontWeight.w500, color: Colors.black),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      if (provider.loginDetails == null)
-                        InkWell(
                           onTap: () {
                             context.router.navigate(LoginRoute());
                           },
-                          child: Text(
-                            'Sign in',
-                            style: TextHelper.normalTextStyle.copyWith(
-                                fontWeight: FontWeight.w500, color: Colors.black),
-                          ),
-                        ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xffEE2128),
+                              border: Border.all(color: Color(0xffEE2128)),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 24),
+                            child: Text(
+                              'Login',
+                              style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )),
+                      const SizedBox(width: 20),
+                      InkWell(
+                          onTap: () {
+                            provider.changeLoginStatus(false, null, '', '', '');
+                            context.router.navigate(SignupRoute(referCode: ''));
+                          },
+                          splashColor: Colors.blue.withOpacity(0.3),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xffEE2128),
+                              border: Border.all(color: Color(0xffEE2128)),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 24),
+                            child: Text(
+                              'Sign Up',
+                              style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )),
                       const SizedBox(width: 15),
-                      ElevatedButton.icon(
-                        onPressed: _downloadAPK,
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                          backgroundColor: Color(0xffEE2128),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        icon: Icon(Icons.android, color: Colors.white, size: 24),
-                        label: Text(
-                          'Download APK',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ],
@@ -198,8 +200,4 @@ class TopAppBar extends StatelessWidget {
       },
     );
   }
-}
-void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
-  await launchUrl(Uri.parse(launchUri));
 }

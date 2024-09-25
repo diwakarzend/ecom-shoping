@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
 
@@ -99,7 +100,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
-            backgroundColor:ColorConstants.colorGreenFour,
             drawer: CustomDrawerDesktop(
               provider: provider,
               onSupportExtend: () {
@@ -117,117 +117,119 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const TopAppBar(),
-                  CarouselSlider(
-                    items: _banners
-                    // items: provider.banners
-                    //     .where((element) =>
-                    // (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
-                    //     element.deviceType == StringConstants.deviceTypeD)
-                        .map(
-                          (e) => CustomNetworkImage(
-                        imageUrl: e,
-                        width: width,
-                        height: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                        .toList(),
-                    options: CarouselOptions(
-                      disableCenter: true,
-                      viewportFraction: 1,
-                      height: height * .8,
-                      autoPlay: true,
-                      onPageChanged: (i, _) => setState(() => bannerIndex = i),
-                    ),
-                  ),
-                  SizedBox(height: height * .01),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // ...provider.banners
-                      //     .where((element) => element.type == StringConstants.homeBanner && element.deviceType == StringConstants.deviceTypeD)
-                      //     .toList()
-                      ..._banners
-                          .asMap()
-                          .map(
-                            (i, v) => MapEntry(
-                          i,
-                          Container(
-                            width: 10,
-                            height: 10,
-                            margin: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: bannerIndex == i ? ColorConstants.colorBlack : Colors.transparent,
-                              border: Border.all(
-                                color: ColorConstants.colorBlack,
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                          .values,
-                    ],
-                  ),
                 Container(
-                  width: 300,
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFDD978),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 8,
-                        spreadRadius: 2,
-                        offset: Offset(2, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'WOODEN FURNITURE',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'We understand your needs and so we make easy use for you many Features',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black87,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFFF5148),
-                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                color: Colors.black, // Background color of the banner
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Download the app now!',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
                           ),
                         ),
-                        child: Text(
-                          'View All',
-                          style: TextStyle(fontSize: 16),
+                        SizedBox(width: 8),
+                        Text(
+                          'For the better experience download our app.',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton.icon(
+                        onPressed: _downloadAPK,
+                    icon: Icon(
+                        Icons.android,
+                        size: 24,
+                      ),
+                      label: Text('Download APK'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                        textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                  Image.asset('assets/images/'),
+                ),
+                  const TopAppBar(),
+                  // CarouselSlider(
+                  //   items: _banners
+                  //   // items: provider.banners
+                  //   //     .where((element) =>
+                  //   // (element.type == StringConstants.homeBanner || element.type == newBannerCategory) &&
+                  //   //     element.deviceType == StringConstants.deviceTypeD)
+                  //       .map(
+                  //         (e) => CustomNetworkImage(
+                  //       imageUrl: e,
+                  //       width: width,
+                  //       height: double.infinity,
+                  //       fit: BoxFit.cover,
+                  //     ),
+                  //   )
+                  //       .toList(),
+                  //   options: CarouselOptions(
+                  //     disableCenter: true,
+                  //     viewportFraction: 1,
+                  //     height: height * .8,
+                  //     autoPlay: true,
+                  //     onPageChanged: (i, _) => setState(() => bannerIndex = i),
+                  //   ),
+                  // )
+                  Image.asset('assets/images/banner2.png'),
+                  GridView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: width * .05, vertical: 17),
+                      itemCount: provider.dealProducts
+                          .take(provider.dealProducts.length >= 4
+                          ? 4
+                          : provider.dealProducts.length)
+                          .toList()
+                          .length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                        childAspectRatio: 0.5,
+                      ),
+                      itemBuilder: (context, index) {
+                        final e = provider.dealProducts
+                            .take(provider.dealProducts.length >= 4
+                            ? 4
+                            : provider.dealProducts.length)
+                            .toList()[index];
+                        return DealItemDesktop(
+                          key: Key(e.id),
+                          product: e,
+                          onProductClick: () => _cartHelper.productClick(
+                              context: context,
+                              productId: e.id,
+                              productType: e.productType,
+                              provider: provider),
+                          onAddToCart: () => _cartHelper.addToCart(
+                            provider: provider,
+                            context: context,
+                            productId: e.id,
+                          ),
+                          provider: provider,
+                          cartHelper: _cartHelper,
+                          gridView: true,
+                          sub_category: '',
+                        );
+                      }),
                   // Container(
                   //   padding: EdgeInsets.symmetric(horizontal: width * .12),
                   //   alignment: Alignment.center,
@@ -497,4 +499,8 @@ class _OrderDialog extends StatelessWidget {
       ),
     );
   }
+}
+void _downloadAPK() async {
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
+  await launchUrl(Uri.parse(launchUri));
 }
