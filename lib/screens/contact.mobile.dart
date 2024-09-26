@@ -63,7 +63,7 @@ class _ContactUsMobileState extends State<ContactUsMobile> {
                   ),
                 ),
                 const Text(
-                  'agilepaymentservicesprivatelim@gmail.com',
+                  'ChillWavepaymentservicesprivatelim@gmail.com',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),

@@ -198,6 +198,6 @@ class DealItemDesktop extends StatelessWidget {
 
 void _downloadAPK() async {
   const launchUri =
-      'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
+      'https://shoppingapps.s3.ap-south-1.amazonaws.com/ChillWave1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:badges/badges.dart';
-import 'package:fabpiks_web/constants.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/screens/contact.screen.dart';
@@ -24,19 +23,69 @@ class TopAppBar extends StatelessWidget {
         return Column(
           children: [
             Container(
-              height: height * .13,
+              height: height * .17,
               color: Colors.white,
-              padding: EdgeInsets.symmetric(horizontal: width * .014),
+              padding: EdgeInsets.symmetric(horizontal: width * .05),
               alignment: Alignment.center,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      context.router.navigate(HomeRoute());
-                    },
+                  // Left side menu
+                  Row(
+                    children: [
+                      if (provider.loginDetails == null)
+                        InkWell(
+                          onTap: () {
+                            context.router.navigate( HomeRoute());
+                          },
+                          child: Text(
+                            'Home',
+                            style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w500, color: Colors.black),
+                          ),
+                        ),
+                      const SizedBox(width: 20),
+                      InkWell(
+                        onTap: () {
+                          context.router.navigate(const ProfileRoute());
+                        },
+                        child: Text(
+                          'Profile',
+                          style: TextHelper.normalTextStyle.copyWith(
+                              fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      InkWell(
+                        onTap: () {
+                          context.router.navigate(const FAQHelpRoute());
+                        },
+                        child: Text(
+                          'FAQ’s',
+                          style: TextHelper.normalTextStyle.copyWith(
+                              fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ContactUsAll()),
+                          );
+                        },
+                        child: Text(
+                          'Contact Us',
+                          style: TextHelper.normalTextStyle.copyWith(
+                              fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Center(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
@@ -45,157 +94,106 @@ class TopAppBar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      context.router.navigate(HomeRoute());
-                    },
-                    child: Text(
-                      'Home',
-                      style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  InkWell(
-                    onTap: () {
-                      context.router.navigate(const ProfileRoute());
-                    },
-                    child: Text(
-                      'Profile',
-                      style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  InkWell(
-                    onTap: () {
-                      context.router.navigate(const FAQHelpRoute());
-                    },
-                    child: Text(
-                      'Faq’s',
-                      style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ContactUsAll()),
-                      );
-                    },
-                    child: Text(
-                      'Contact Us',
-                      style: TextHelper.normalTextStyle.copyWith(
-                          fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  if (provider.loginDetails == null)
-                    InkWell(
-                        onTap: () {
-                          context.router.navigate(LoginRoute());
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          decoration: BoxDecoration(
+                  Row(
+                    children: [
+                      if (provider.loginDetails != null)
+                        InkWell(
+                          onTap: () {
+                            showSearch(context: context, delegate: DataSearch());
+                          },
+                          child: const Icon(
+                            Icons.search,
                             color: Colors.black,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            ),
+                            size: 28,
                           ),
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
-                          ),
-                        )
-                    ),
-                  if (provider.loginDetails == null)
-                    const SizedBox(
-                      width: 20,
-                    ),
-                  if (provider.loginDetails != null)
-                    Text(
-                      'Hello,  ${provider.currentUser?.firstName}',
-                      style: TextHelper.extraSmallTextStyle.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13.sp,
-                        color: ColorConstants.colorBlack,
-                      ),
-                    ),
-                  if (provider.loginDetails != null)
-                    SizedBox(width: width * .01),
-                  if (provider.loginDetails != null)
-                    const Icon(
-                      Icons.waving_hand,
-                      color: Color(0xfffd9846),
-                    ),
-                  if (provider.loginDetails != null)
-                    SizedBox(width: width * .01),
-                  if (provider.loginDetails != null)
-                    InkWell(
-                      onTap: () {
-                        showSearch(context: context, delegate: DataSearch());
-                      },
-                      child: const Icon(
-                        Icons.search,
-                        color: Colors.black,
-                        size: 28,
-                      ),
-                    ),
-                  if (provider.loginDetails != null)
-                    SizedBox(width: width * .01),
-                  if (provider.loginDetails == null)
-                    InkWell(
+                        ),
+                      const SizedBox(width: 15),
+                      InkWell(
                         onTap: () {
-                          provider.changeLoginStatus(false, null, '', '', '');
-                          context.router.navigate(SignupRoute(referCode: ''));
+                          context.router.navigate(const NotificationRoute());
                         },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            ),
+                        child: Badge(
+                          showBadge: provider.reports
+                              .where((element) =>
+                          element.product != null &&
+                              element.product!.stock > 0 &&
+                              element.productId != null &&
+                              element.qualified &&
+                              !element.rejected &&
+                              provider.currentUser != null &&
+                              !provider.currentUser!.orders.any(
+                                      (e) => e.products
+                                      .any((o) => o.id == element.product?.id)))
+                              .isNotEmpty,
+                          badgeStyle: const BadgeStyle(badgeColor: Colors.red),
+                          position: BadgePosition.topEnd(top: -5, end: 0),
+                          badgeContent: Text(
+                            provider.reports
+                                .where((element) =>
+                            element.product != null &&
+                                element.product!.stock > 0 &&
+                                element.productId != null &&
+                                element.qualified &&
+                                !element.rejected &&
+                                provider.currentUser != null &&
+                                !provider.currentUser!.orders.any((e) => e.products
+                                    .any((o) => o.id == element.product?.id)))
+                                .length
+                                .toString(),
+                            style: TextHelper.extraSmallTextStyle
+                                .copyWith(color: Colors.white, fontSize: 8.sp),
                           ),
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
-                              fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      if (provider.loginDetails == null)
+                        InkWell(
+                            onTap: () {
+                              context.router.navigate(LoginRoute());
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xffF7941D),
+                                border: Border.all(color: Color(0xffF7941D)),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                              child: Text(
+                                'Sign in',
+                                style: TextHelper.normalTextStyle.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                        ),
+                      const SizedBox(width: 20),
+                      InkWell(
+                          onTap: () {
+                            provider.changeLoginStatus(false, null, '', '', '');
+                            context.router.navigate(SignupRoute(referCode: ''));
+                          },
+                          splashColor: Colors.blue.withOpacity(0.3),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.black),
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                          ),
-                        )
-                    ),
-                  if (provider.loginDetails == null)
-                    const SizedBox(
-                      width: 22,
-                    ),
-                  // TextButton(
-                  //   onPressed: _downloadAPK,
-                  //   child: Row(
-                  //     mainAxisSize: MainAxisSize.min,
-                  //     children: [
-                  //       Text(
-                  //         'Download APK',
-                  //         style: TextHelper.normalTextStyle.copyWith(
-                  //             fontWeight: FontWeight.w500, color: Colors.black),
-                  //       )
-                  //     ],
-                  //   ),
-                  // )
+                            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                            child: Text(
+                              'Sign Up',
+                              style: TextHelper.normalTextStyle.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                              ),
+                            ),
+                          )
+
+                      ),
+                      const SizedBox(width: 15),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -204,10 +202,4 @@ class TopAppBar extends StatelessWidget {
       },
     );
   }
-}
-
-void _downloadAPK() async {
-  const launchUri =
-      'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
-  await launchUrl(Uri.parse(launchUri));
 }

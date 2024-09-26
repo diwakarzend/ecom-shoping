@@ -78,7 +78,7 @@ class _PaymentHelpState extends State<PaymentHelp> {
                     });
                   },
                   title: Text(
-                    'What is Agile?',
+                    'What is ChillWave?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

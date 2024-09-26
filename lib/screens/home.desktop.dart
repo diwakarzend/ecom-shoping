@@ -113,133 +113,35 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
-                  // Padding(
-                  //   padding: EdgeInsets.all(16.0),
-                  //   child: Column(
-                  //     children: [
-                  //       Container(
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(30.0),
-                  //           gradient: LinearGradient(
-                  //             colors: [Color(0xFF0000A0), Color(0xFF0000D4)],
-                  //           ),
-                  //         ),
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: [
-                  //             Expanded(
-                  //               child: Padding(
-                  //                 padding: EdgeInsets.symmetric(
-                  //                     horizontal: width * .05),
-                  //                 child: RichText(
-                  //                   text: TextSpan(
-                  //                     text: 'Download the app now! ',
-                  //                     style: TextStyle(
-                  //                       color: Colors.white,
-                  //                       fontSize: 16.0,
-                  //                       fontWeight: FontWeight.bold,
-                  //                     ),
-                  //                     children: [
-                  //                       TextSpan(
-                  //                         text:
-                  //                             'For the better experience download our app.',
-                  //                         style: TextStyle(
-                  //                           fontSize: 14.0,
-                  //                           fontWeight: FontWeight.normal,
-                  //                         ),
-                  //                       ),
-                  //                     ],
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //             InkWell(
-                  //               onTap: _downloadAPK,
-                  //               child: Container(
-                  //                 padding: EdgeInsets.symmetric(
-                  //                     vertical: 8.0, horizontal: 16.0),
-                  //                 decoration: BoxDecoration(
-                  //                   color: Colors.white,
-                  //                   borderRadius: BorderRadius.circular(30.0),
-                  //                 ),
-                  //                 child: Row(
-                  //                   children: [
-                  //                     Icon(Icons.android, color: Colors.black),
-                  //                     SizedBox(width: 8.0),
-                  //                     Text(
-                  //                       'Download APK',
-                  //                       style: TextStyle(
-                  //                         color: Colors.black,
-                  //                         fontSize: 14.0,
-                  //                         fontWeight: FontWeight.bold,
-                  //                       ),
-                  //                     ),
-                  //                   ],
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //       SizedBox(height: height * .03),
-                  //       // Padding(
-                  //       //   padding:
-                  //       //       EdgeInsets.symmetric(horizontal: width * .05),
-                  //       //   child: Row(
-                  //       //     children: [
-                  //       //       Expanded(
-                  //       //         flex: 8,
-                  //       //         child: Image.asset(
-                  //       //             'assets/images/newbanner.png',
-                  //       //             width: double.infinity),
-                  //       //       ),
-                  //       //       SizedBox(
-                  //       //         width: width * .01,
-                  //       //       ),
-                  //       //       InkWell(
-                  //       //         splashFactory: NoSplash.splashFactory,
-                  //       //         splashColor: Colors.transparent,
-                  //       //         hoverColor: Colors.transparent,
-                  //       //         onTap: () {
-                  //       //           context.router.push(const DealsRoute());
-                  //       //         },
-                  //       //         child: Expanded(
-                  //       //           flex: 4,
-                  //       //           child: Image.asset(
-                  //       //               'assets/images/newbanner1.png',
-                  //       //               width: double.infinity),
-                  //       //         ),
-                  //       //       ),
-                  //       //     ],
-                  //       //   ),
-                  //       // ),
-                  //     ],
-                  //   ),
-                  // ),
-                  SizedBox(height: height * .02,),
+                  SizedBox(
+                    height: height * .02,
+                  ),
                   Padding(
-                    padding: EdgeInsets.only(left: width * .05),
-                    child: Row(children: [
-                      Expanded(
-                        flex: 7,
-                        child: Image.asset('assets/images/newbanner.png',
-                            width: double.infinity),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child:  InkWell(
-                          splashFactory: NoSplash.splashFactory,
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          onTap: () {
-                            context.router.push(const DealsRoute());
-                          },
-                          child: Image.asset('assets/images/newbanner1.png',
-                            width: double.infinity
-                          ),
-                        ),
-                      ),
-                    ]),
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
+                    child: Image.asset('assets/images/banner3.png'),
+                  ),
+                  SizedBox(
+                    height: height * .02,
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                            child: Image.asset('assets/images/banner1.png',
+                                width: double.infinity)),
+                        SizedBox(width: width * .01),
+                        Expanded(
+                            child: Image.asset(
+                          'assets/images/banner2.png',
+                          width: double.infinity,
+                        )),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * .02,
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
@@ -263,54 +165,120 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                       ),
                     ),
                   ),
-                  GridView.builder(
-                      primary: false,
-                      shrinkWrap: true,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: width * .05, vertical: 17),
-                      itemCount: provider.dealProducts
-                          .take(provider.dealProducts.length >= 8
-                              ? 8
-                              : provider.dealProducts.length)
-                          .toList()
-                          .length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 15,
-                        childAspectRatio: 0.5,
-                      ),
-                      itemBuilder: (context, index) {
-                        final e = provider.dealProducts
-                            .take(provider.dealProducts.length >= 8
-                                ? 8
-                                : provider.dealProducts.length)
-                            .toList()[index];
-                        return DealItemDesktop(
-                          key: Key(e.id),
-                          product: e,
-                          onProductClick: () => _cartHelper.productClick(
-                              context: context,
-                              productId: e.id,
-                              productType: e.productType,
-                              provider: provider),
-                          onAddToCart: () => _cartHelper.addToCart(
-                            provider: provider,
-                            context: context,
-                            productId: e.id,
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 12,
+                          child: Padding(
+                            padding:
+                                EdgeInsets.symmetric(vertical: height * .03),
+                            child: CarouselSlider(
+                              // carouselController: _dealController,
+                              items: [
+                                if (dealIndex == 0)
+                                  ...provider.dealProducts
+                                      .take(provider.dealProducts.length > 10
+                                          ? 10
+                                          : provider.dealProducts.length)
+                                      .map(
+                                        (e) => DealItemDesktop(
+                                          key: Key(e.id),
+                                          product: e,
+                                          onProductClick: () =>
+                                              _cartHelper.productClick(
+                                                  context: context,
+                                                  productId: e.id,
+                                                  productType: e.productType,
+                                                  provider: provider),
+                                          onAddToCart: () =>
+                                              _cartHelper.addToCart(
+                                            provider: provider,
+                                            context: context,
+                                            productId: e.id,
+                                          ),
+                                          provider: provider,
+                                          cartHelper: _cartHelper,
+                                          gridView: false,
+                                          sub_category: '',
+                                        ),
+                                      )
+                                else
+                                  ...provider.dealProducts
+                                      .where((element) =>
+                                          element.category?.id ==
+                                          provider
+                                              .dealCategories[(dealIndex - 1)]
+                                              .id)
+                                      .take((provider.dealProducts
+                                                  .where((element) =>
+                                                      element.category?.id ==
+                                                      provider
+                                                          .dealCategories[
+                                                              (dealIndex - 1)]
+                                                          .id)
+                                                  .length) >
+                                              10
+                                          ? 10
+                                          : provider.dealProducts
+                                              .where((element) =>
+                                                  element.category?.id ==
+                                                  provider
+                                                      .dealCategories[
+                                                          (dealIndex - 1)]
+                                                      .id)
+                                              .length)
+                                      .map(
+                                        (e) => DealItemDesktop(
+                                          key: Key(e.id),
+                                          product: e,
+                                          onProductClick: () =>
+                                              _cartHelper.productClick(
+                                                  context: context,
+                                                  productId: e.id,
+                                                  productType: e.productType,
+                                                  provider: provider),
+                                          onAddToCart: () =>
+                                              _cartHelper.addToCart(
+                                            provider: provider,
+                                            context: context,
+                                            productId: e.id,
+                                          ),
+                                          provider: provider,
+                                          cartHelper: _cartHelper,
+                                          gridView: false,
+                                          sub_category: '',
+                                        ),
+                                      ),
+                              ],
+                              options: CarouselOptions(
+                                // aspectRatio: 4.5,
+                                aspectRatio: 3.1,
+                                // viewportFraction: 0.15,
+                                viewportFraction: 0.2,
+                                initialPage: 0,
+                                enableInfiniteScroll: false,
+                                reverse: false,
+                                disableCenter: true,
+                                padEnds: false,
+                                autoPlay: true,
+                              ),
+                            ),
                           ),
-                          provider: provider,
-                          cartHelper: _cartHelper,
-                          gridView: true,
-                          sub_category: '',
-                        );
-                      }),
-                  InkWell(
-                    onTap: _downloadAPK,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 30.0),
-                      child: Image.asset('assets/images/bottomimage.png'),
+                        ),
+                      ],
                     ),
+                  ),
+                  SizedBox(
+                    height: height * .02,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * .05),
+                    child: InkWell(
+                      onTap: _downloadAPK,
+                        child: Image.asset('assets/images/banner4.png')),
                   ),
                   const BottomAppBarPage(),
                 ],
@@ -325,7 +293,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
 
 void _downloadAPK() async {
   const launchUri =
-      'https://shoppingapps.s3.ap-south-1.amazonaws.com/agilegames1-release.apk';
+      'https://shoppingapps.s3.ap-south-1.amazonaws.com/ChillWave1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }
 

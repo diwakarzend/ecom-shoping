@@ -22,7 +22,7 @@ class _ContactUsDesktopState extends State<ContactUsDesktop> {
         final String contactUsText = """
 CONTACT US
 Phone: +91- 7838717985
-Email: agilepaymentservicesprivatelim@gmail.com
+Email: ChillWavepaymentservicesprivatelim@gmail.com
 
 Address:
 Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant
