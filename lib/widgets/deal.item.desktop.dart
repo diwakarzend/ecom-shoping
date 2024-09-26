@@ -51,7 +51,7 @@ class DealItemDesktop extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              flex: 4,
+              flex: 3,
               child: Stack(
                 children: [
                   SizedBox(
