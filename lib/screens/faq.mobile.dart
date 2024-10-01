@@ -25,11 +25,11 @@ class _FAQHelpMobileState extends State<FAQHelpMobile> {
         final modifiedFaqs = provider.faqs.map((faq) {
           final modifiedQuestion = faq.question.replaceAll(
             'What is Agile?',
-            'What is Excueets?',
+            'What is perceptaa?',
           );
           final modifiedAnswer = faq.answer
-              .replaceAll('game.ship9x.com/', 'shop.excueetscloth.com/')
-              .replaceAll('shipantechprivatelimited5@gmail.com', 'excueetsimmediapvtltd@gmail.com');
+              .replaceAll('game.ship9x.com/', 'shop.perceptaain/')
+              .replaceAll('shipantechprivatelimited5@gmail.com', 'info.perceptaautopilopvtltd@gmail.com');
 
           return faq.copyWith(question: modifiedQuestion, answer: modifiedAnswer);
         }).toList();

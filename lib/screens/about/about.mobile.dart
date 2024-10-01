@@ -25,7 +25,7 @@ class _AboutScreenMobileState extends State<AboutScreenMobile> {
         return Scaffold(
           appBar: AppBar(
             title: const Text(
-              'About excueets',
+              'About perceptaa',
             ),
             centerTitle: false,
           ),
@@ -42,7 +42,7 @@ class _AboutScreenMobileState extends State<AboutScreenMobile> {
                     padding: EdgeInsets.symmetric(horizontal: width * .05),
                     child: Text(
                       provider.appSettings!.aboutUs
-                          .replaceAll('Agile', 'Excueets'),
+                          .replaceAll('Agile', 'perceptaa'),
                       maxLines: 10000000000,
                       style: TextHelper.smallTextStyle,
                     ),

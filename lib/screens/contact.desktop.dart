@@ -21,11 +21,12 @@ class _ContactUsDesktopState extends State<ContactUsDesktop> {
       builder: (context, provider, _) {
         final String contactUsText = """
 CONTACT US
-Phone: +91- 8859362732
-Email: excueetsimmediapvtltd@gmail.com
+Phone: +91- 9953024518
+Email: info.perceptaautopilopvtltd@gmail.com
 
 Address:
-355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085.
+126 PLOT NO-23 VARDHMAN PLAZA, KP-BLOCK COMMERCIAL COMPLEX, NEW DELHI,  DELHI, 110034
+
 """;
         return Scaffold(
           body: SingleChildScrollView(

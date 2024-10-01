@@ -21,19 +21,19 @@ class _TermConditionDesktopState extends State<TermConditionDesktop> {
     final String shippingPolicyText = """
 Terms of Use
 
-Access to and use of excueets and the products and service available through the website are subject to the following terms, conditions, and notices (“Terms of Service”). By browsing through these Terms of Service and using the services provided by our website (shop.excueetscloth.com), you agree to all Terms of Service along with the Privacy Policy on our website, which may be updated by us from time to time. Please check this page regularly to take notice of any changes we may have made to the Terms of Service. We reserve the right to review and withdraw or amend the services without notice. We will not be liable if for any reason this Website is unavailable at any time or for any period. From time to time, we may restrict access to some parts or this entire Website.
+Access to and use of perceptaa and the products and service available through the website are subject to the following terms, conditions, and notices (“Terms of Service”). By browsing through these Terms of Service and using the services provided by our website (shop.perceptaain), you agree to all Terms of Service along with the Privacy Policy on our website, which may be updated by us from time to time. Please check this page regularly to take notice of any changes we may have made to the Terms of Service. We reserve the right to review and withdraw or amend the services without notice. We will not be liable if for any reason this Website is unavailable at any time or for any period. From time to time, we may restrict access to some parts or this entire Website.
 
 Introduction
 
-The domain name shop.excueetscloth.com, a company incorporated under the laws of India with our registered office at:- 355, PLOT NO 4, 3RD FLOOR, COMMUNITY CENTER, SEC-14, Rithala, North West Delhi, Delhi- 110085.
+The domain name shop.perceptaain, a company incorporated under the laws of India with our registered office at:- 126 PLOT NO-23 VARDHMAN PLAZA, KP-BLOCK COMMERCIAL COMPLEX, NEW DELHI,  DELHI, 110034.
 
-excueets is an online retailer of apparel and lifestyle products offered at great values to the consumer. Membership allows customers to purchase a variety of products. Upon placing an order, excueets.in shall ship the product to you and be entitled to its payment for the service. Additionally, we may provide you with information about other services, we consider similar to those that you are either already using, or have enquired about, or that may interest you or any combination thereof. Upon registering with us, we may contact you by electronic means (i.e. either e-mail or SMS or telephone or any combination thereof) to inform you about these services.
+perceptaa is an online retailer of apparel and lifestyle products offered at great values to the consumer. Membership allows customers to purchase a variety of products. Upon placing an order, perceptaa.in shall ship the product to you and be entitled to its payment for the service. Additionally, we may provide you with information about other services, we consider similar to those that you are either already using, or have enquired about, or that may interest you or any combination thereof. Upon registering with us, we may contact you by electronic means (i.e. either e-mail or SMS or telephone or any combination thereof) to inform you about these services.
 
 Third Party Websites and Content
 
-Our website provides links for sharing our content on Facebook, Twitter, and other such third-party websites. These are only for sharing and/or listing purposes, and we take no responsibility for the third-party websites and/or their contents listed on our website shop.excueetscloth.com and disclaim all our liabilities arising out of any or all third-party websites.
+Our website provides links for sharing our content on Facebook, Twitter, and other such third-party websites. These are only for sharing and/or listing purposes, and we take no responsibility for the third-party websites and/or their contents listed on our website shop.perceptaain and disclaim all our liabilities arising out of any or all third-party websites.
 
-We disclaim all liabilities and take no responsibility for the content that may be posted on such third-party websites by the users of such websites in their personal capacity on any of the above-mentioned links for sharing and/or listing purposes as well as any content and/or comments that may be posted by such users in their personal capacity on any official webpage of excueets on any social networking platform.
+We disclaim all liabilities and take no responsibility for the content that may be posted on such third-party websites by the users of such websites in their personal capacity on any of the above-mentioned links for sharing and/or listing purposes as well as any content and/or comments that may be posted by such users in their personal capacity on any official webpage of perceptaa on any social networking platform.
 
 Privacy
 
@@ -76,7 +76,7 @@ Violation & Termination
 You agree that the Company may, in its sole discretion and without prior notice, terminate your access to the website and block your future access if we determine that you have violated these Terms of Service or any other policies. If you or the Company terminates your use of any service, you shall still be liable to pay for any service that you have already ordered till the time of such termination.
 
 Disclaimer
- IN NO EVENT WILL THE COMPANY OR ITS REPRESENTATIVES BE LIABLE FOR ANY DAMAGES, ARISING OUT OF OR RELATED TO MISUSE OF PERSONAL INFORMATION OF THE CUSTOMER AND THE CUSTOMER IS SOLELY LIABLE FOR SUCH ACTS AND THEY ARE ADVISED NOT TO SHARE THEIR CONFIDENTIAL INFORMATION LIKE OTP, CREDIT/DEBIT CARD EXPIRY AND CVV WITH ANYONE EVEN THOUGH THEY CLAIM TO BE A EXCUEETS IMMEDIA SERVICES PRIVATE LIMITED EMPLOYEE. NONE OF OUR EMPLOYEES WILL ASK FOR SUCH TYPE OF QUESTIONS.
+ IN NO EVENT WILL THE COMPANY OR ITS REPRESENTATIVES BE LIABLE FOR ANY DAMAGES, ARISING OUT OF OR RELATED TO MISUSE OF PERSONAL INFORMATION OF THE CUSTOMER AND THE CUSTOMER IS SOLELY LIABLE FOR SUCH ACTS AND THEY ARE ADVISED NOT TO SHARE THEIR CONFIDENTIAL INFORMATION LIKE OTP, CREDIT/DEBIT CARD EXPIRY AND CVV WITH ANYONE EVEN THOUGH THEY CLAIM TO BE A perceptaa IMMEDIA SERVICES PRIVATE LIMITED EMPLOYEE. NONE OF OUR EMPLOYEES WILL ASK FOR SUCH TYPE OF QUESTIONS.
 """;
 
     return Scaffold(

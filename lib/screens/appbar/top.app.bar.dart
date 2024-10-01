@@ -190,20 +190,20 @@ class TopAppBar extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  TextButton(
-                    onPressed: _downloadAPK,
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.black), // Text color
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.download, color: Colors.black),
-                        SizedBox(width: 8),
-                        Text('Download APK'),
-                      ],
-                    ),
-                  )
+                  // TextButton(
+                  //   onPressed: _downloadAPK,
+                  //   style: ButtonStyle(
+                  //     foregroundColor: MaterialStateProperty.all(Colors.black), // Text color
+                  //   ),
+                  //   child: Row(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     children: [
+                  //       Icon(Icons.download, color: Colors.black),
+                  //       SizedBox(width: 8),
+                  //       Text('Download APK'),
+                  //     ],
+                  //   ),
+                  // )
                 ],
               ),
             ),
@@ -215,6 +215,6 @@ class TopAppBar extends StatelessWidget {
 }
 
 void _downloadAPK() async {
-  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/excueets1-release.apk';
+  const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/perceptaa1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }
