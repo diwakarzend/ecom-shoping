@@ -198,7 +198,7 @@ class TopAppBar extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.download, color: Colors.white),
+                        Icon(Icons.download, color: Colors.black),
                         SizedBox(width: 8),
                         Text('Download APK'),
                       ],
