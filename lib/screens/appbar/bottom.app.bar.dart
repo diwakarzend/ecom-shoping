@@ -32,7 +32,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
           padding: EdgeInsets.symmetric(horizontal: width * .10, vertical: 40),
           color: Color(0xffF9F9F9),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +42,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                       context.router.navigate(HomeRoute());
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Image.asset(
                         'assets/images/app_logo.png',
                         width: width * .10,
