@@ -125,7 +125,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: width * .05),
                     child: Image.asset(
-                      'assets/images/bannernew.png',
+                      'assets/images/banner.png',
                       width: double.infinity,
                     ),
                   ),
@@ -364,9 +364,9 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(child: Image.asset('assets/images/bottom11.png', width: double.infinity)),
+                        Expanded(child: Image.asset('assets/images/bottom1.png', width: double.infinity)),
                         SizedBox(width: width * .01),
-                        Expanded(child: Image.asset('assets/images/bottom12.png', width: double.infinity,)),
+                        Expanded(child: Image.asset('assets/images/bottom2.png', width: double.infinity,)),
                       ],
                     ),
                   ),
