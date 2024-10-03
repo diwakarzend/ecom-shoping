@@ -66632,7 +66632,7 @@ s=s==null?null:s.b
 return new A.F3(s==null?"":s,null)},
 $S:840}
 A.b2g.prototype={
-$3(a,b,c){var s,r,q,p,o,n,m,l,k=null,j=this.a,i=A.lA(j.x,new A.b2b(j),b,j.d),h=this.b,g=h*0.03,f=this.c,e=f*0.05,d=A.bh("assets/images/bannernew.png",k,k,1/0)
+$3(a,b,c){var s,r,q,p,o,n,m,l,k=null,j=this.a,i=A.lA(j.x,new A.b2b(j),b,j.d),h=this.b,g=h*0.03,f=this.c,e=f*0.05,d=A.bh("assets/images/banner.png",k,k,1/0)
 h*=0.01
 s=A.aa(A.bh("assets/images/downloadapk.png",k,k,1/0),7)
 r=b.y
@@ -66648,7 +66648,7 @@ m=A.a([],n)
 l=r.length
 r=A.bL(r,0,A.bz(l>10?10:l,"count",p),o)
 B.b.G(m,new A.R(r,new A.b2e(j,a,b),r.$ti.h("R<aw.E,d>")))
-return A.cp(k,A.aR(k,B.i,A.aV(A.G(A.a([B.aE,new A.i(k,g,k,k),new A.a0(new A.u(e,0,e,0),d,k),new A.i(k,h,k,k),new A.i(k,h,k,k),new A.a0(new A.u(e,0,0,0),q,k),s,A.h(k,A.x(A.a([A.aa(new A.a0(new A.u(0,g,0,g),A.f0(m,A.du(3.1,!0,B.aH,!0,!1,k,0,k,!1,!1,0.2)),k),12)],n),B.h,B.l,B.e),B.c,k,k,k,k,k,k,k,new A.u(e,0,e,0),k,k,k),A.h(k,A.x(A.a([A.aa(A.bh("assets/images/bottom11.png",k,k,1/0),1),new A.i(f*0.01,k,k,k),A.aa(A.bh("assets/images/bottom12.png",k,k,1/0),1)],n),B.h,B.x,B.e),B.c,k,k,k,k,k,k,k,new A.u(e,0,e,0),k,k,k),new A.i(k,h,k,k),B.aA],n),B.h,B.l,B.e),k,B.v,k,B.I,k,B.B),k,i,!1,k,k),B.v,!1,k,k,k,k,k,k,k,k,k,k,k,k,k,new A.b2f(a),k,k,k,k,k,k)},
+return A.cp(k,A.aR(k,B.i,A.aV(A.G(A.a([B.aE,new A.i(k,g,k,k),new A.a0(new A.u(e,0,e,0),d,k),new A.i(k,h,k,k),new A.i(k,h,k,k),new A.a0(new A.u(e,0,0,0),q,k),s,A.h(k,A.x(A.a([A.aa(new A.a0(new A.u(0,g,0,g),A.f0(m,A.du(3.1,!0,B.aH,!0,!1,k,0,k,!1,!1,0.2)),k),12)],n),B.h,B.l,B.e),B.c,k,k,k,k,k,k,k,new A.u(e,0,e,0),k,k,k),A.h(k,A.x(A.a([A.aa(A.bh("assets/images/bottom1.png",k,k,1/0),1),new A.i(f*0.01,k,k,k),A.aa(A.bh("assets/images/bottom2.png",k,k,1/0),1)],n),B.h,B.x,B.e),B.c,k,k,k,k,k,k,k,new A.u(e,0,e,0),k,k,k),new A.i(k,h,k,k),B.aA],n),B.h,B.l,B.e),k,B.v,k,B.I,k,B.B),k,i,!1,k,k),B.v,!1,k,k,k,k,k,k,k,k,k,k,k,k,k,new A.b2f(a),k,k,k,k,k,k)},
 $C:"$3",
 $R:3,
 $S:30}
