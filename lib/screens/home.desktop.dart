@@ -165,8 +165,11 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                     child: Row(children: [
                       Expanded(
                         flex: 7,
-                        child: Image.asset('assets/images/downloadapk.png',
-                            width: double.infinity),
+                        child: InkWell(
+                          onTap: _downloadAPK,
+                          child: Image.asset('assets/images/downloadapk.png',
+                              width: double.infinity),
+                        ),
                       ),
                       Expanded(
                         flex: 5,
