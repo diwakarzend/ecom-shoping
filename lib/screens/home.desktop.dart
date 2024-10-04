@@ -113,6 +113,66 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF2A84FF), Color(0xFF000590)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 13.0, vertical: 12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Download the app now!',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  'For a better experience, download our app.',
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          ElevatedButton.icon(
+                            onPressed: _downloadAPK,
+                            icon: Icon(
+                              Icons.android,
+                              size: 24,
+                            ),
+                            label: Text('Download APK'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.black,
+                              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   // Padding(
                   //   padding: EdgeInsets.all(16.0),
                   //   child: Column(
@@ -220,14 +280,9 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   Padding(
                     padding: EdgeInsets.only(left: width * .05),
                     child: Row(children: [
-                      Expanded(
-                        flex: 7,
-                        child: Image.asset('assets/images/newbanner.png',
-                            width: double.infinity),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child:  InkWell(
+                    Image.asset('assets/images/newbanner.png',),
+                          SizedBox(width: 20),
+                          InkWell(
                           splashFactory: NoSplash.splashFactory,
                           splashColor: Colors.transparent,
                           hoverColor: Colors.transparent,
@@ -235,12 +290,11 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                             context.router.push(const DealsRoute());
                           },
                           child: Image.asset('assets/images/newbanner1.png',
-                            width: double.infinity
                           ),
                         ),
-                      ),
                     ]),
                   ),
+                  SizedBox(height: height * .02,),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
                     alignment: Alignment.center,
