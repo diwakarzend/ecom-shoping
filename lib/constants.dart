@@ -11,8 +11,8 @@ class StringConstants {
   static const String loginBoxOldKey = 'login';
   static const String loginBoxKey = 'login';
 
-  static const String apiUrl = 'https://www.ChillWavecloth.com/api/v2/';
-  static const String baseUrl = 'https://www.ChillWavecloth.com/';
+  static const String apiUrl = 'https://www.chillwaveelectronics.in/api/v2/';
+  static const String baseUrl = 'https://www.chillwaveelectronics.in/';
   static const String paytmChecksumApi = 'https://paytm.theserv.in/api/checksum';
   static const String paytmMID = 'CSeflW97347912891806';
   static const String pincodeApi = 'https://api.postalpincode.in/pincode/';
