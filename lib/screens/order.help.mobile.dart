@@ -77,7 +77,7 @@ class OrderHelpMobileState extends State<OrderHelpMobile> {
                     });
                   },
                   title: Text(
-                    'What is Amanapay?',
+                    'What is swacchLife?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

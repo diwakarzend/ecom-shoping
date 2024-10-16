@@ -48,7 +48,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   bool popupOpenedTwo = false;
 
   void _downloadAPK() async {
-    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/amanapay1-release.apk';
+    const launchUri = 'https://shoppingapps.s3.ap-south-1.amazonaws.com/swacchLife1-release.apk';
     await launchUrl(Uri.parse(launchUri));
   }
 

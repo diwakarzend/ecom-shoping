@@ -181,7 +181,7 @@ class _HelpScreenMobileState extends State<HelpScreenMobile> {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    'Mail us at : info.Amanapaypvtltd@gmail.com',
+                    'Mail us at : royal.swachhlifeprivatelimited@gmail.com',
                     style: TextHelper.subTitleStyle.copyWith(color: Colors.white),
                   ),
                 ),

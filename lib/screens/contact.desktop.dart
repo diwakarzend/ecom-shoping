@@ -21,8 +21,9 @@ class _ContactUsDesktopState extends State<ContactUsDesktop> {
       builder: (context, provider, _) {
         final String contactUsText = """
 CONTACT US
-Phone: +91- 7836879833
-Email: amanapaypaymentsservicespvtltd@gmail.com
+Phone: +91- 8859115770
+Email: royal.swachhlifeprivatelimited@gmail.com
+
 
 Address:
 F-108 &109 Plot No1 Aditya, Complex Blk-KP C.C, Saraswati
