@@ -112,7 +112,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   const TopAppBar(),
-                  Image.asset('assets/images/top_img.png',
+                  Image.asset('assets/images/top_new.png',
                       width: double.infinity),
                   SizedBox(height: height * .03),
                   Text(
@@ -183,7 +183,7 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   ),
                   SizedBox(height: height * .03),
                   Text(
-                    'Flash Deals \n Up to 65% off',
+                    'Flash Deals Up to 65% off',
                     style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
                   ),
                   Container(
@@ -313,10 +313,88 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                         width: double.infinity,),
                       )
                     ]),
-                  ),                  SizedBox(height: height * .02),
+                  ),
+                  SizedBox(height: height * .02),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: width * .05),
-                    child: Image.asset('assets/images/image14.png'),
+                    child: Column(
+                      children: [
+                        // Image.asset('assets/images/image14.png'),
+                        CarouselSlider(
+                          items: [
+                            if (dealIndex == 0)
+                              ...provider.dealProducts
+                                  .take(provider.dealProducts.length > 10 ? 10 : provider.dealProducts.length)
+                                  .map(
+                                    (e) => DealItemDesktop(
+                                  key: Key(e.id),
+                                  product: e,
+                                  onProductClick: () => _cartHelper.productClick(
+                                    context: context,
+                                    productId: e.id,
+                                    productType: e.productType,
+                                    provider: provider,
+                                  ),
+                                  onAddToCart: () => _cartHelper.addToCart(
+                                    provider: provider,
+                                    context: context,
+                                    productId: e.id,
+                                  ),
+                                  provider: provider,
+                                  cartHelper: _cartHelper,
+                                  gridView: false,
+                                  sub_category: '',
+                                ),
+                              )
+                            else
+                              ...provider.dealProducts
+                                  .where((element) =>
+                              element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                  .take(provider.dealProducts
+                                  .where((element) =>
+                              element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                  .length >
+                                  10
+                                  ? 10
+                                  : provider.dealProducts
+                                  .where((element) =>
+                              element.category?.id == provider.dealCategories[(dealIndex - 1)].id)
+                                  .length)
+                                  .map(
+                                    (e) => DealItemDesktop(
+                                  key: Key(e.id),
+                                  product: e,
+                                  onProductClick: () => _cartHelper.productClick(
+                                    context: context,
+                                    productId: e.id,
+                                    productType: e.productType,
+                                    provider: provider,
+                                  ),
+                                  onAddToCart: () => _cartHelper.addToCart(
+                                    provider: provider,
+                                    context: context,
+                                    productId: e.id,
+                                  ),
+                                  provider: provider,
+                                  cartHelper: _cartHelper,
+                                  gridView: false,
+                                  sub_category: '',
+                                ),
+                              ),
+                          ],
+                          options: CarouselOptions(
+                            aspectRatio: 3.1,
+                            viewportFraction: 0.2,
+                            initialPage: 0,
+                            enableInfiniteScroll: false,
+                            reverse: false,
+                            disableCenter: true,
+                            padEnds: false,
+                            autoPlay: true,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: height * .02),
                   // Expanded(
@@ -507,17 +585,17 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   ),
                   Row(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: InkWell(
-                          splashFactory: NoSplash.splashFactory,
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          onTap: () {
-                            context.router.push(const DealsRoute());
-                          },
+                      InkWell(
+                        splashFactory: NoSplash.splashFactory,
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        onTap: () {
+                          context.router.push(const DealsRoute());
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Image.asset(
-                            'assets/images/OIP.jpeg',
+                            'assets/images/image22.png',
                             // height: 200,
                             // width: 200,
                           ),
