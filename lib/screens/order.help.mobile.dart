@@ -77,7 +77,7 @@ class OrderHelpMobileState extends State<OrderHelpMobile> {
                     });
                   },
                   title: Text(
-                    'What is swacchLife?',
+                    'What is SwachhLife?',
                     style: TextHelper.subTitleStyle.copyWith(color: ColorConstants.colorGreyTwentyTwo),
                   ),
                   trailing: AnimatedSwitcher(

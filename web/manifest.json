@@ -1,6 +1,6 @@
 {
-    "name": "swacchLife",
-    "short_name": "swacchLife",
+    "name": "SwachhLife",
+    "short_name": "SwachhLife",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

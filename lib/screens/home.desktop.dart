@@ -846,6 +846,6 @@ class _OrderDialog extends StatelessWidget {
 
 void _downloadAPK() async {
   const launchUri =
-      'https://shoppingapps.s3.ap-south-1.amazonaws.com/swacchLife1-release.apk';
+      'https://shoppingapps.s3.ap-south-1.amazonaws.com/SwachhLife1-release.apk';
   await launchUrl(Uri.parse(launchUri));
 }

@@ -423,7 +423,7 @@ class CustomDrawerDesktop extends Drawer {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'About swacchLife',
+                                          'About SwachhLife',
                                           style: TextHelper.extraSmallTextStyle.copyWith(color: ColorConstants.colorBlack, fontWeight: FontWeight.w600),
                                         ),
                                       ],
