@@ -241,7 +241,6 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   //           ],
                   //         ),
                   //       ),
-                  //       SizedBox(height: height * .03),
                   //       // Padding(
                   //       //   padding:
                   //       //       EdgeInsets.symmetric(horizontal: width * .05),
@@ -276,9 +275,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   //     ],
                   //   ),
                   // ),
-                  SizedBox(height: height * .02,),
                   Padding(
-                    padding: EdgeInsets.only(left: width * .05),
+                    padding: EdgeInsets.only(left: width * .03),
                     child: Row(children: [
                     Image.asset('assets/images/newbanner.png',),
                           SizedBox(width: 20),
