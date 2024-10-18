@@ -124,7 +124,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                           end: Alignment.bottomRight,
                         ),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 13.0, vertical: 12.0),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 13.0, vertical: 12.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -162,7 +163,8 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.black,
-                              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: 12.0),
                               textStyle: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -275,24 +277,45 @@ class _HomeScreenDesktopState extends State<HomeScreenDesktop> {
                   //     ],
                   //   ),
                   // ),
+                  SizedBox(
+                    height: height * .02,
+                  ),
                   Padding(
-                    padding: EdgeInsets.only(left: width * .03),
-                    child: Row(children: [
-                    Image.asset('assets/images/newbanner.png',),
-                          SizedBox(width: 20),
-                          InkWell(
-                          splashFactory: NoSplash.splashFactory,
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          onTap: () {
-                            context.router.push(const DealsRoute());
-                          },
-                          child: Image.asset('assets/images/newbanner1.png',
+                    padding:
+                        EdgeInsets.only(left: width * .03, right: width * .03),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 9,
+                          child: Image.asset(
+                            'assets/images/newbanner.png',
+                            width: double.infinity,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                    ]),
+                        SizedBox(width: 20),
+                        Expanded(
+                          flex: 3,
+                          child: InkWell(
+                            splashFactory: NoSplash.splashFactory,
+                            splashColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            onTap: () {
+                              context.router.push(const DealsRoute());
+                            },
+                            child: Image.asset(
+                              'assets/images/newbanner1.png',
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: height * .02,),
+                  SizedBox(
+                    height: height * .02,
+                  ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: width * .12),
                     alignment: Alignment.center,
