@@ -56,6 +56,7 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: ImageGalleryRoute.page, guards: [AuthGuard()], path: '/product-images'),
         AutoRoute(page: TermsConditionRoute.page, path: '/terms'),
         AutoRoute(page: PrivacyPolicyRoute.page, path: '/privacy'),
+        AutoRoute(page: ContactRoute.page, path: '/contact'),
         AutoRoute(page: RefundPolicyRoute.page, path: '/refund-policy'),
         AutoRoute(page: ShoppingTabOneDesktop.page, guards: [AuthGuard()], path: '/checkout-one'),
         AutoRoute(page: ShoppingTabTwoDesktop.page, guards: [AuthGuard()], path: '/checkout-two'),
