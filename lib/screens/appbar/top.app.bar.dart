@@ -81,10 +81,7 @@ class TopAppBar extends StatelessWidget {
                   const SizedBox(width: 20),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ContactUsAll()),
-                      );
+                      context.router.navigate(ContactRoute());
                     },
                     child: Text(
                       'Contact Us',
