@@ -65710,7 +65710,7 @@ A.I4.prototype={
 O(){return new A.a8K($.dB(),A.hw(0,null,null))}}
 A.a8K.prototype={
 cL(a,b){var s=a.y,r=A.a(s.slice(0),A.l(s))
-s=60*b
+s=600*b
 if(r.length>s)return A.bL(r,0,A.bz(s,"count",t.S),A.l(r).c).ba(0)
 else return r},
 a4(){this.y.W(0,new A.aZi(this))
