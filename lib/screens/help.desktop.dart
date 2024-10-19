@@ -143,7 +143,7 @@ class _HelpScreenDesktopState extends State<HelpScreenDesktop> {
                           style: TextStyle(fontSize: 13.0, color: Colors.white, fontFamily: 'Montserrat', letterSpacing: 1),
                         ),
                         InkWell(
-                          onTap: () => _urlHelper.launchNonUrl(url: 'tel:+917838717985'),
+                          onTap: () => _urlHelper.launchNonUrl(url: 'tel:+918859303179'),
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: width * .03, vertical: height * .007),
                             margin: EdgeInsets.symmetric(vertical: height * .04),

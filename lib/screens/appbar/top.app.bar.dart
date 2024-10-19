@@ -35,6 +35,17 @@ class TopAppBar extends StatelessWidget {
                   // Left side menu
                   Row(
                     children: [
+                      InkWell(
+                        onTap: () {
+                          context.router.navigate( HomeRoute());
+                        },
+                        child: Text(
+                          'Home',
+                          style: TextHelper.normalTextStyle.copyWith(
+                              fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
                       if (provider.loginDetails == null)
                         InkWell(
                           onTap: () {
@@ -60,11 +71,8 @@ class TopAppBar extends StatelessWidget {
                       const SizedBox(width: 20),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ContactUsAll()),
-                          );
+                          context.router.navigate( ContactRoute());
+
                         },
                         child: Text(
                           'Contact Us',

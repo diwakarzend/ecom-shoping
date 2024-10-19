@@ -55,7 +55,7 @@ class _CategoryProductsDesktopScreenState extends State<CategoryProductsDesktopS
   int selectedPage = 1;
 
   List<Product> generateList(AppProvider provider, int page) {
-    int count = 60;
+    int count = 600;
     if (selectedIndex == 0 && selectedBrand != null) {
       List<Product> products = provider.miniProducts.where((element) => element.category?.id == category?.id && element.brandId == selectedBrand?.id).toList();
       if (products.length > (count * page)) {

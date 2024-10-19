@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fabpiks_web/screens/shipping.desktop.dart';
 import 'package:fabpiks_web/screens/shipping.mobile.dart';
 import 'package:fabpiks_web/screens/shipping.tab.dart';
 import 'package:fabpiks_web/style/responsive.dart';
 import 'package:flutter/cupertino.dart';
 
-// @RoutePage(name: 'WishlistRoute')
+@RoutePage(name: 'ShippingRoute')
 class ShippingPolicyAll extends StatefulWidget {
   const ShippingPolicyAll({super.key});
 

@@ -11,6 +11,7 @@ import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
+import 'package:fabpiks_web/screens/shopping.tab.one.desktop.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -217,7 +218,7 @@ class CartHelper {
                   return CustomDialog(
                     onTap: () {
                       if (Device.width >= 1024) {
-                        context.router.push(const ShoppingTabOneDesktop());
+                        // context.router.push( ShoppingTabOneDesktop() as PageRouteInfo);
                       } else {
                         context.router.push(const CartRoute());
                       }
@@ -254,7 +255,7 @@ class CartHelper {
                   return CustomDialog(
                     onTap: () {
                       if (Device.width >= 1024) {
-                        context.router.push(const ShoppingTabOneDesktop());
+                        // context.router.push(const ShoppingTabOneDesktop() as PageRouteInfo);
                       } else {
                         context.router.push(const CartRoute());
                       }
@@ -287,7 +288,7 @@ class CartHelper {
                   return CustomDialog(
                     onTap: () {
                       if (Device.width >= 1024) {
-                        context.router.push(const ShoppingTabOneDesktop());
+                        // context.router.push(const ShoppingTabOneDesktop() as PageRouteInfo);
                       } else {
                         context.router.push(const CartRoute());
                       }
@@ -309,7 +310,7 @@ class CartHelper {
                   return CustomDialog(
                     onTap: () {
                       if (Device.width >= 1024) {
-                        context.router.push(const ShoppingTabOneDesktop());
+                        // context.router.push(const ShoppingTabOneDesktop() as PageRouteInfo);
                       } else {
                         context.router.push(const CartRoute());
                       }

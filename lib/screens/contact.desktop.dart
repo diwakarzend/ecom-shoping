@@ -21,12 +21,11 @@ class _ContactUsDesktopState extends State<ContactUsDesktop> {
       builder: (context, provider, _) {
         final String contactUsText = """
 CONTACT US
-Phone: +91- 7838717985
+Phone: +91- 8859303179
 Email: info.prestigepaypvtltd@gmail.com
 
 Address:
-Unit No. 364, 3rd Floor, Aggarwal Plaza, Sec-14, Prashant
-Vihar, North West Delhi, Delhi- 110085
+364 3RD FLR AGGARWALPLAZA, COMM CENTER SEC14, Rithala, North West Delhi, Delhi- 110085
 
 """;
         return Scaffold(

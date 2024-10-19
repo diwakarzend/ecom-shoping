@@ -10,6 +10,8 @@ import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
 import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
+import 'package:fabpiks_web/screens/shopping.tab.one.desktop.dart';
+import 'package:fabpiks_web/screens/shopping.tab.one.desktop.dart';
 import 'package:fabpiks_web/widgets/custom.network.image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -156,7 +158,7 @@ class _NotificationScreenDesktopMobileState extends State<NotificationScreenDesk
                                                 onCheckout: () {
                                                   provider.addCartItems(productID: e.productId ?? '');
                                                   context.router.maybePop();
-                                                  context.router.push(const ShoppingTabOneDesktop());
+                                                  // context.router.push(const ShoppingTabOneDesktop() as PageRouteInfo);
                                                 },
                                                 onContinue: () {
                                                   provider.addCartItems(productID: e.productId ?? '');

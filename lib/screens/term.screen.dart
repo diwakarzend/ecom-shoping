@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fabpiks_web/screens/term.desktop.dart';
 import 'package:fabpiks_web/screens/term.mobile.dart';
 import 'package:fabpiks_web/screens/term.tab.dart';
 import 'package:fabpiks_web/style/responsive.dart';
 import 'package:flutter/cupertino.dart';
 
-// @RoutePage(name: 'WishlistRoute')
+@RoutePage(name: 'TermRoute')
 class TermConditionAll extends StatefulWidget {
   const TermConditionAll({super.key});
 

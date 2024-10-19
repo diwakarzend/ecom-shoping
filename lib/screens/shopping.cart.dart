@@ -16,6 +16,7 @@ import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/models/models.dart';
 import 'package:fabpiks_web/providers/app.provider.dart';
 import 'package:fabpiks_web/routes/router.gr.dart';
+import 'package:fabpiks_web/screens/shopping.tab.one.desktop.dart';
 import 'package:fabpiks_web/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -169,7 +170,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
               //   });
               // }
               if (!mounted) return;
-              context.router.popUntilRouteWithName(ShoppingTabOneDesktop.name);
+              // context.router.popUntilRouteWithName(ShoppingTabOneDesktop.name);
               ScaffoldSnackBar.of(context).show(msg);
               ScaffoldLoaderDialog.of(context).hide();
             } else {
@@ -226,7 +227,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
             //   });
             // }
             if (!mounted) return;
-            context.router.popUntilRouteWithName(ShoppingTabOneDesktop.name);
+            // context.router.popUntilRouteWithName(ShoppingTabOneDesktop.name);
             ScaffoldSnackBar.of(context).show(msg);
             ScaffoldLoaderDialog.of(context).hide();
           } else {
