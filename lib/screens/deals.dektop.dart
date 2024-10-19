@@ -46,7 +46,7 @@ class _DealsScreendesktopState extends State<DealsScreendesktop> {
   int selectedPage = 1;
 
   List<Product> generateList(AppProvider provider, int page) {
-    int count = 60;
+    int count = 600;
     if (selectedBrand != null && trialIndex > 0) {
       List<Product> products = provider.dealProducts
           .where((element) => element.category?.id == provider.dealCategories[(trialIndex - 1)].id && element.brandId == selectedBrand?.id)

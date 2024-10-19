@@ -65673,7 +65673,7 @@ A.I0.prototype={
 O(){return new A.a8I($.dC(),A.hw(0,null,null))}}
 A.a8I.prototype={
 cL(a,b){var s=a.y,r=A.a(s.slice(0),A.k(s))
-s=60*b
+s=600*b
 if(r.length>s)return A.bL(r,0,A.bz(s,"count",t.S),A.k(r).c).be(0)
 else return r},
 a4(){this.y.W(0,new A.aZ8(this))
