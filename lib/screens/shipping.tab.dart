@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fabpiks_web/helpers/helpers.dart';
 import 'package:fabpiks_web/providers/providers.dart';
 import 'package:fabpiks_web/screens/appbar/bottom.app.bar.dart';
@@ -5,6 +6,8 @@ import 'package:fabpiks_web/screens/appbar/top.app.bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
+@RoutePage(name: 'ShippingRoute')
 class ShippingPolicyTab extends StatefulWidget {
   const ShippingPolicyTab({super.key});
 

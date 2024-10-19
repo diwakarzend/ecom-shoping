@@ -145,11 +145,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ShippingPolicyAll()),
-                        );
+                        context.router.navigate(ShippingRoute());
                       },
                       child: Text(
                         'Shipping Policy',
@@ -183,11 +179,7 @@ class _BottomAppBarPageState extends State<BottomAppBarPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ContactUsAll()),
-                        );
+                        context.router.navigate(ContactRoute());
                       },
                       child: Text(
                         'Contact Us',
